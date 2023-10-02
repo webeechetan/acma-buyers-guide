@@ -82,6 +82,11 @@
   <script src="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.js"></script>
   <script src="{{ asset('admin/') }}/assets/vendor/js/menu.js"></script>
 
+  <!-- endbuild -->
+
+  <!-- Vendors JS -->
+  <script src="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
   <!-- Main JS -->
   <script src="{{ asset('admin/') }}/assets/js/main.js"></script>
 

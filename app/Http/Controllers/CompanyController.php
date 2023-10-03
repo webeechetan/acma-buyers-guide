@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use App\DataTables\CompanyDataTable;
+use App\Models\CompanyContactDetail;
 
 class CompanyController extends Controller
 {
@@ -25,7 +27,7 @@ class CompanyController extends Controller
 
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return 'company dashboard';
+            return redirect()->route('company.fillUpDetails');
         }
 
         $this->alert('Error', 'Invalid Details' , 'danger');
@@ -40,40 +42,14 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CompanyDataTable $datatable)
     {
-
-        return view('admin.companies.index');
+        return $datatable->render('admin.companies.index');
     }
 
-    public function companiesData(Request $request){
-        $columns = array(
-            0 =>'id',
-            1 =>'name',
-            2=> 'email',
-        );
-
-        $totalData = Company::count();
-
-        $totalFiltered = $totalData;
-
-        $limit = $request->input('length');
-        $start = $request->input('start');
-
-        $order = $columns[$request->input('order.0.column')];
-        $dir = $request->input('order.0.dir');
-
-        return response()->json([
-            'draw' => $request->input('draw'),
-            'recordsTotal' => intval($totalData),
-            'recordsFiltered' => intval($totalFiltered),
-            'data' => Company::offset($start)
-                ->limit($limit)
-                ->orderBy($order,$dir)
-                ->get()
-        ]);
-
-
+    public function fillUpDetails(Request $request){
+        $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
+        return view('website.auth.fill-up-details', compact('company_contact_details'));
     }
 
     /**
@@ -137,5 +113,17 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         //
+    }
+
+    public function fillUpDetailsStore(Request $request){
+        $company_id = Auth::guard('company')->user()->id;
+        $data = $request->all();
+        $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
+        if($company_contact_detail){
+            $company_contact_detail->update($data);
+        }else{
+            $data['company_id'] = $company_id;
+            CompanyContactDetail::create($data);
+        }
     }
 }

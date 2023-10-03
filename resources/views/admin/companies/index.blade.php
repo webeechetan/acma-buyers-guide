@@ -14,28 +14,13 @@
 
 <div class="card">
     <div class="card-datatable table-responsive">
-        <table id="emp" class="datatables-basic table border-top">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-        </table>
+        {{ $dataTable->table() }}
     </div>
 </div>
 @endsection
 
 @push('scripts')
-
     <script src="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    {{-- <script src="{{ asset('admin/') }}/assets/js/tables-datatables-basic.js"></script> --}}
-    <script src="{{ asset('admin/') }}/assets/js/datatable-init.js"></script>
-
-    <script>
-        dataTable('emp', "{{ route('admin.companies.data') }}")
-    </script>
-
+    {{ $dataTable->scripts() }}
 @endpush
 

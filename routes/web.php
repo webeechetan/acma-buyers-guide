@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
+use OpenSpout\Common\Entity\Row;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,8 @@ Route::post('/company/register', [CompanyController::class,'store'])->name('comp
 
 Route::get('/company/login', [CompanyController::class,'login'])->name('company.login');
 Route::post('/company/login', [CompanyController::class,'authenticate'])->name('company.authenticate');
+Route::get('/company/fill-up-details', [CompanyController::class,'fillUpDetails'])->name('company.fillUpDetails');
+Route::post('/company/fill-up-details', [CompanyController::class,'fillUpDetailsStore'])->name('company.fillUpDetailsStore');
 
 
 

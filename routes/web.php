@@ -19,7 +19,7 @@ use OpenSpout\Common\Entity\Row;
 */
 
 Route::get('/', function () {
-    return 'Home Page';
+    return view('website.index');
 });
 
 /************* Admin Routes ****************/

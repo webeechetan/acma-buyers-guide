@@ -49,6 +49,11 @@ class CompanyController extends Controller
 
     public function fillUpDetails(Request $request){
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
+        if(!$company_contact_details){
+            $company_contact_detail = new CompanyContactDetail();
+            $company_contact_detail->company_id = Auth::guard('company')->user()->id;
+            $company_contact_detail->save();
+        }
         return view('website.auth.fill-up-details', compact('company_contact_details'));
     }
 

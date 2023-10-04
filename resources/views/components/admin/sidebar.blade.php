@@ -34,7 +34,7 @@
       </li>
       {{-- Companies --}}
       <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link ">
+        <a href="{{ route('admin.companies') }}" class="menu-link ">
           <i class="menu-icon tf-icons bx bxs-factory"></i>
           <div class="text-truncate" data-i18n="Companies">Companies</div>
         </a>

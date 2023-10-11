@@ -48,43 +48,42 @@
 
 <div class="container-xxl">
     <div class="col-12 mb-4">
-        <small class="text-light fw-medium">Vertical Icons</small>
-        <div class="bs-stepper wizard-vertical vertical wizard-vertical-icons-example mt-2">
-          <div class="bs-stepper-header">
-            <div class="step crossed" data-target="#company_contact_details">
-              <button type="button" class="step-trigger" aria-selected="false">
-                <span class="bs-stepper-circle">
+        <div class="bs-stepper vertical-tab wizard-vertical vertical wizard-vertical-icons-example mt-2">
+          <div class="bs-stepper-header tab-header">
+            <div class="step crossed tab-one" data-target="#company_contact_details">
+              <button type="button" class="step-trigger btn-tab" aria-selected="false">
+                <span class="bs-stepper-circle tab-circle">
                   <i class="bx bx-detail"></i>
                 </span>
                 <span class="bs-stepper-label mt-1">
-                  <span class="bs-stepper-title">Company Contact Details</span>
+                  <span class="bs-stepper-title tab-title">Company Contact Details</span>
                   <span class="bs-stepper-subtitle company_contact_details_last_upload">
-                    <i class="bx bx-cloud-upload align-middle fs-5 ms-2"></i>
+                    <i class="bx bx-cloud-upload align-middle fs-5"></i>
                     <span class="company_contact_details_last_upload_counter">0</span> seconds ago
                   </span>
                 </span>
               </button>
             </div>
             <div class="line"></div>
-            <div class="step crossed" data-target="#personal-info-vertical">
-              <button type="button" class="step-trigger" aria-selected="false">
-                <span class="bs-stepper-circle">
+            <div class="step crossed tab-one" data-target="#personal-info-vertical">
+              <button type="button" class="step-trigger btn-tab" aria-selected="false">
+                <span class="bs-stepper-circle tab-circle">
                   <i class="bx bx-user"></i>
                 </span>
                 <span class="bs-stepper-label mt-1">
-                  <span class="bs-stepper-title">Personal Info</span>
+                  <span class="bs-stepper-title tab-title">Personal Info</span>
                   <span class="bs-stepper-subtitle">Add personal info</span>
                 </span>
               </button>
             </div>
             <div class="line"></div>
-            <div class="step active" data-target="#social-links-vertical">
-              <button type="button" class="step-trigger" aria-selected="true">
-                <span class="bs-stepper-circle">
+            <div class="step active tab-one" data-target="#social-links-vertical">
+              <button type="button" class="step-trigger btn-tab" aria-selected="true">
+                <span class="bs-stepper-circle tab-circle">
                   <i class="bx bxl-instagram"></i>
                 </span>
                 <span class="bs-stepper-label mt-1">
-                  <span class="bs-stepper-title">Social Links</span>
+                  <span class="bs-stepper-title tab-title">Social Links</span>
                   <span class="bs-stepper-subtitle">Add social links</span>
                 </span>
               </button>
@@ -94,9 +93,9 @@
             <form id="details_form" method="POST">
               <!-- Account Details -->
               <div id="company_contact_details" class="content dstepper-block">
-                <div class="content-header mb-3">
-                  <h6 class="mb-0">Company Contact Details</h6>
-                  <small>Enter Company Contact Details.</small>
+                <div class="content-header header-sub-title d-flex justify-content-between mb-3">
+                  <h4 class="mb-0">Company Contact Details</h4>
+                  <p class="text-primary">Enter Company Contact Details.</p>
                 </div>
                 <div class="row g-3">
 
@@ -108,7 +107,7 @@
 
                   <div class="col-sm-6">
                     <label class="form-label" for="company_address">Company Address</label>
-                    <textarea id="company_address" name="company_address" class="form-control" placeholder="ACMA" height="220" >{{ $company_contact_details->company_address }}</textarea>
+                    <textarea id="company_address" name="company_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->company_address }}</textarea>
                   </div>
 
                   <div class="col-sm-6">
@@ -138,12 +137,12 @@
 
                   <div class="col-sm-6">
                     <label class="form-label" for="company_address">Website Address (if any)</label>
-                    <textarea id="website_address" name="website_address" class="form-control" placeholder="ACMA" height="220" >{{ $company_contact_details->website_address }}</textarea>
+                    <textarea id="website_address" name="website_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->website_address }}</textarea>
                   </div>
 
                   <div class="col-sm-6">
                     <label class="form-label" for="main_plant_address">Main Plant Address</label>
-                    <textarea id="main_plant_address" name="main_plant_address" class="form-control" placeholder="ACMA" height="220" >{{ $company_contact_details->main_plant_address }}</textarea>
+                    <textarea id="main_plant_address" name="main_plant_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->main_plant_address }}</textarea>
                   </div>
 
                   <div class="col-sm-6">
@@ -173,21 +172,21 @@
 
                   <div class="col-sm-6">
                     <label class="form-label" for="overseas_plant_address">Overseas Plant Address</label>
-                    <textarea id="overseas_plant_address" name="overseas_plant_address" class="form-control" placeholder="ACMA" height="220" >{{ $company_contact_details->overseas_plant_address }}</textarea>
+                    <textarea id="overseas_plant_address" name="overseas_plant_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->overseas_plant_address }}</textarea>
                   </div>
 
                   <div class="col-sm-6">
                     <label class="form-label" for="other_plant_address">Other Plant Address</label>
-                    <textarea id="other_plant_address" name="other_plant_address" class="form-control" placeholder="ACMA" height="220" >{{ $company_contact_details->other_plant_address }}</textarea>
+                    <textarea id="other_plant_address" name="other_plant_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->other_plant_address }}</textarea>
                   </div>
 
 
                   <div class="col-12 d-flex justify-content-between">
-                    <button class="btn btn-label-secondary btn-prev" disabled="">
+                    <button class="btn btn-label-secondary btn-sm btn-prev" disabled="">
                       <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                       <span class="align-middle d-sm-inline-block d-none">Previous</span>
                     </button>
-                    <button class="btn btn-primary btn-next">
+                    <button class="btn btn-primary btn-sm btn-next">
                       <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                       <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
                     </button>
@@ -196,9 +195,9 @@
               </div>
               <!-- Personal Info -->
               <div id="personal-info-vertical" class="content dstepper-block">
-                <div class="content-header mb-3">
-                  <h6 class="mb-0">Personal Info</h6>
-                  <small>Enter Your Personal Info.</small>
+                <div class="content-header header-sub-title d-flex justify-content-between mb-3">
+                  <h4>Personal Info</h4>
+                  <p class="text-primary">Enter Your Personal Info.</p>
                 </div>
                 <div class="row g-3">
                   <div class="col-sm-6">
@@ -211,23 +210,25 @@
                   </div>
                   <div class="col-sm-6">
                     <label class="form-label" for="country1">Country</label>
-                    <div class="position-relative"><select class="select2 select2-hidden-accessible" id="country1" data-select2-id="country1" tabindex="-1" aria-hidden="true">
-                      <option label=" " data-select2-id="4"></option>
-                      <option>UK</option>
-                      <option>USA</option>
-                      <option>Spain</option>
-                      <option>France</option>
-                      <option>Italy</option>
-                      <option>Australia</option>
-                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="3" style="width: auto;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-country1-container"><span class="select2-selection__rendered" id="select2-country1-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Select value</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div>
+                    <div class="position-relative">
+                        <select class="select2 form-select" id="country1" data-select2-id="country1" tabindex="-1" aria-hidden="true" placeholder="Select Country">
+                            <option label=" " data-select2-id="4"></option>
+                            <option>UK</option>
+                            <option>USA</option>
+                            <option>Spain</option>
+                            <option>France</option>
+                            <option>Italy</option>
+                            <option>Australia</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="col-sm-6">
                     <label class="form-label" for="language1">Language</label>
-                    <div class="dropdown bootstrap-select show-tick w-auto"><select class="selectpicker w-auto" id="language1" data-style="btn-default" data-icon-base="bx" data-tick-icon="bx-check text-white" multiple="">
+                    <div class="dropdown bootstrap-select show-tick"><select class="selectpicker form-select" id="language1" data-style="btn-default" data-icon-base="bx" data-tick-icon="bx-check text-white">
                       <option>English</option>
                       <option>French</option>
                       <option>Spanish</option>
-                    </select><button type="button" tabindex="-1" class="btn dropdown-toggle bs-placeholder btn-default" data-bs-toggle="dropdown" role="combobox" aria-owns="bs-select-2" aria-haspopup="listbox" aria-expanded="false" title="Nothing selected" data-id="language1"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">Nothing selected</div></div> </div></button><div class="dropdown-menu "><div class="inner show" role="listbox" id="bs-select-2" tabindex="-1" aria-multiselectable="true"><ul class="dropdown-menu inner show" role="presentation"></ul></div></div></div>
+                    </select><div class="dropdown-menu "><div class="inner show" role="listbox" id="bs-select-2" tabindex="-1" aria-multiselectable="true"><ul class="dropdown-menu inner show" role="presentation"></ul></div></div></div>
                   </div>
                   <div class="col-12 d-flex justify-content-between">
                     <button class="btn btn-primary btn-prev">
@@ -243,9 +244,9 @@
               </div>
               <!-- Social Links -->
               <div id="social-links-vertical" class="content dstepper-block active">
-                <div class="content-header mb-3">
-                  <h6 class="mb-0">Social Links</h6>
-                  <small>Enter Your Social Links.</small>
+                <div class="content-header header-sub-title d-flex justify-content-between mb-3">
+                  <h4>Social Links</h4>
+                  <p class="text-primary">Enter Your Social Links.</p>
                 </div>
                 <div class="row g-3">
                   <div class="col-sm-6">

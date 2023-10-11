@@ -52,16 +52,56 @@
       <div class="card">
         <div class="card-body">
           <!-- Logo -->
-          <div class="app-brand justify-content-center">
-            <a href="index.html" class="app-brand-link gap-2">
-              <span class="app-brand-text demo text-body fw-bold">acma</span>
+          <div class="header-title">
+            <a href="index.html">
+              <span class="text-uppercase">acma</span>
             </a>
           </div>
           <!-- /Logo -->
-          <h4 class="mb-2">Welcome to Acma! 👋</h4>
-
-          <form id="" class="mb-3" action="{{ route('company.authenticate') }}" method="POST">
+         <div class="header-sub-title">
+             <h4 class="mb-2 text-center">Buyers Guide</h4>
+         </div>
+         <div class="mt-4">
+            <ul class="nav nav-pills nav-fill align-items-center" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="pill" href="#login">Login</a>
+              </li>
+              <li class="nav-item">or</li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="pill" href="#formRegistration">Sign Up</a>
+              </li>
+            </ul>
+         </div>
+         <div class="tab-content p-0 mt-4">
+          <form id="login" class="tab-pane active" action="{{ route('company.authenticate') }}" method="POST">
+              @csrf
+              <div class="mb-3">
+                <label for="email" class="form-label">Email </label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
+                <x-validation-error name="email" />
+              </div>
+              <div class="mb-3 form-password-toggle">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label" for="password">Password</label>
+                </div>
+                <div class="input-group input-group-merge">
+                  <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+                <x-validation-error name="password" />
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
+              </div>
+          </form>
+          <!--- Register ---->
+          <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
             @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Name </label>
+                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
+                <x-validation-error name="name" />
+            </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email </label>
               <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
@@ -74,13 +114,14 @@
               <div class="input-group input-group-merge">
                 <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-              </div>
-              <x-validation-error name="password" />
+            </div>
+            <x-validation-error name="password" />
             </div>
             <div class="mb-3">
-              <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+              <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
             </div>
           </form>
+         </div>
 
         </div>
       </div>

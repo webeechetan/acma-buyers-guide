@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\DataTables\CompanyDataTable;
 use App\Models\CompanyContactDetail;
+use App\Models\CompanyKeyPersonnel;
 
 class CompanyController extends Controller
 {
@@ -49,12 +50,21 @@ class CompanyController extends Controller
 
     public function fillUpDetails(Request $request){
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
+
         if(!$company_contact_details){
             $company_contact_detail = new CompanyContactDetail();
             $company_contact_detail->company_id = Auth::guard('company')->user()->id;
             $company_contact_detail->save();
         }
-        return view('website.auth.fill-up-details', compact('company_contact_details'));
+
+        if(!$company_key_personnels){
+            $company_key_personnel = new CompanyKeyPersonnel();
+            $company_key_personnel->company_id = Auth::guard('company')->user()->id;
+            $company_key_personnel->save();
+        }
+
+        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels'));
     }
 
     /**
@@ -124,11 +134,20 @@ class CompanyController extends Controller
         $company_id = Auth::guard('company')->user()->id;
         $data = $request->all();
         $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
+        $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
+
         if($company_contact_detail){
             $company_contact_detail->update($data);
         }else{
             $data['company_id'] = $company_id;
             CompanyContactDetail::create($data);
+        }
+
+        if($company_key_personnel){
+            $company_key_personnel->update($data);
+        }else{
+            $data['company_id'] = $company_id;
+            CompanyKeyPersonnel::create($data);
         }
     }
 }

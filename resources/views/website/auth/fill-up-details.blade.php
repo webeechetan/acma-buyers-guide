@@ -107,7 +107,7 @@
               </div>
               <div class="col-md-8 mb-3 mb-md-0">
                 <div class="card">
-                    <h2 id="heading" class="text-center">Company Details</h2>
+                    <h2 id="heading" class="text-center title">Company Details</h2>
                     <p class="text-center">Fill all form field to go to next step</p>
                     <form action="data.php" id="Multi-Steps-form" method="post" class="multi-steps-form">
                         <div class="progress-bar mt-2">

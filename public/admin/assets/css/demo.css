@@ -259,6 +259,7 @@ div.vertical-tab .tab-one.active .btn-tab span.tab-circle{
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
+  color: var(--primary);
 }
 .subscribe-box-wrapper{
   display: flex;

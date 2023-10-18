@@ -134,82 +134,112 @@
                 </div>
                 <div class="subscribe-form">
                   <div class="subscribe-form-wrapper">
-                    <div class="tab-content">
-                      <form id="login" class="tab-pane active signup" action="{{ route('company.authenticate') }}" method="POST">
-                          @csrf
-                          <div class="signup-form">
-                            <h2>Sign In</h2>
-                            <span class="user-account">or use your account</span>
-                            <!-- <div class="social-icons">
-                              <a href=""><i class='bx bxl-facebook'></i></a>
-                              <a href=""><i class='bx bxl-linkedin' ></i></a>
-                              <a href=""><i class='bx bxl-instagram' ></i></a>
-                            </div> -->
-                          </div>
-                          
-                          <div class="mb-3">
-                            <label for="email" class="form-label">Email </label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
-                            <x-validation-error name="email" />
-                          </div>
-                          <div class="mb-3 form-password-toggle">
-                            <div class="d-flex justify-content-between">
-                              <label class="form-label" for="password">Password</label>
+                        <div class="tab-content">
+                          <form id="login" class="tab-pane active signup" action="{{ route('company.authenticate') }}" method="POST">
+                            @csrf
+                            <div class="signup-form">
+                              <h2>Sign In</h2>
+                              <span class="user-account">or use your account</span>
+                              <!-- <div class="social-icons">
+                                <a href=""><i class='bx bxl-facebook'></i></a>
+                                <a href=""><i class='bx bxl-linkedin' ></i></a>
+                                <a href=""><i class='bx bxl-instagram' ></i></a>
+                              </div> -->
                             </div>
-                            <div class="input-group input-group-merge">
-                              <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                            </div>
-                            <x-validation-error name="password" />
-                          </div>
-                          <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
-                            <div><input type="checkbox" checked="checked" name="remember"> <span>Remember me</span></div>
-                            <a href="#" class="forgot-password">Forgot your password?</a>
-                          </div>
-                          <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
                             
-                          </div>
-                      </form>
-                      <!--- Register ---->
-                        <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
-                        @csrf
-                          <div class="signup-form">
-                            <h2>Create Account</h2>
-                            <span>or use your email for registration</span>
-                            <!-- <div class="social-icons">
-                              <a href=""><i class='bx bxl-facebook'></i></a>
-                              <a href=""><i class='bx bxl-linkedin' ></i></a>
-                              <a href=""><i class='bx bxl-instagram' ></i></a>
-                            </div> -->
-                          </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name </label>
-                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
-                            <x-validation-error name="name" />
-                        </div>
-                        <div class="mb-3">
-                          <label for="email" class="form-label">Email </label>
-                          <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
-                          <x-validation-error name="email" />
-                        </div>
-                        <div class="mb-3 form-password-toggle">
-                          <div class="d-flex justify-content-between">
-                            <label class="form-label" for="password">Password</label>
-                          </div>
-                          <div class="input-group input-group-merge">
-                            <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                        </div>
-                        <x-validation-error name="password" />
-                        </div>
-                        <div class="mb-3">
-                            <p class="terms">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Service</a>.</p>
-                        </div>
-                        <div class="mb-3">
-                          <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
-                        </div>
-                      </form>
+                            <div class="mb-3">
+                              <label for="email" class="form-label">Email </label>
+                              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
+                              <x-validation-error name="email" />
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                              <div class="d-flex justify-content-between">
+                                <label class="form-label" for="password">Password</label>
+                              </div>
+                              <div class="input-group input-group-merge">
+                                <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                              </div>
+                              <x-validation-error name="password" />
+                            </div>
+                            <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
+                              <div><input type="checkbox" checked="checked" name="remember"> <span>Remember me</span></div>
+                              <a href="#" class="forgot-password">Forgot your password?</a>
+                            </div>
+                            <div class="mb-3">
+                              <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
+                              
+                            </div>
+                          </form>
+                        <!--- Register ---->
+                          <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
+                            @csrf
+                            <div class="signup-form">
+                              <h2>Create Account</h2>
+                              <span>or use your email for registration</span>
+                              <!-- <div class="social-icons">
+                                <a href=""><i class='bx bxl-facebook'></i></a>
+                                <a href=""><i class='bx bxl-linkedin' ></i></a>
+                                <a href=""><i class='bx bxl-instagram' ></i></a>
+                              </div> -->
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name </label>
+                                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
+                                <x-validation-error name="name" />
+                            </div>
+                            <div class="mb-3">
+                              <label for="email" class="form-label">Email </label>
+                              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
+                              <x-validation-error name="email" />
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                              <div class="d-flex justify-content-between">
+                                <label class="form-label" for="password">Password</label>
+                              </div>
+                              <div class="input-group input-group-merge">
+                                <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                              <x-validation-error name="password" />
+                              </div>
+                              <div class="mb-3">
+                                  <p class="terms">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Service</a>.</p>
+                              </div>
+                              <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" id="signup-btn" type="submit">Sign Up</button>
+                              </div>
+                          </form>
+                          <!---- Payement subscibe ---->
+                          <form id="payments" class="mb-3" action="{{ route('company.store') }}" method="POST">
+                            @csrf
+                            <div class="signup-form">
+                              <h2>Proceed Payment</h2>
+                              <span>fill the information</span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label"> Company Name </label>
+                                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
+                                <x-validation-error name="name" />
+                            </div>
+                            <div class="mb-3">
+                              <label for="email" class="form-label">Email</label>
+                              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
+                              <x-validation-error name="email" />
+                            </div>
+                            <div class="mb-3">
+                              <label for="email" class="form-label">Contact Number</label>
+                              <input type="number" class="form-control" id="number" name="number" placeholder="" autofocus>
+                              <x-validation-error name="email" />
+                            </div>
+                            <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
+                              <div><input type="checkbox" checked="checked" name="remember"> <span> Rs 600</span></div>
+                              <a href="#" class="forgot-password text-primary">Please Subscribe Buyers Guide</a>
+                            </div>
+                              <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" id="proceed-btn" type="submit">Proceed Payments</button>
+                              </div>
+                          </form>
                     </div>
                   </div>
                 </div>
@@ -304,6 +334,21 @@
 
   <script src="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#signup-btn').click(function() {
+        // Hide the "Create Account" form
+      $('#formRegistration').hide();
+
+        // Show the "Payments" form
+        $('#payments').show();
+      });
+      $('#proceed-button').click(function() {
+        $('#payments').hide();
+        $('#login').show();
+      });
+    });
+  </script>
 
 
   @if(session()->has('alert'))

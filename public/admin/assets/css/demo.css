@@ -7,6 +7,8 @@
   --text-color: #000;
   --secondary: #1448ad;
   --copy-color: #2a2e3f;
+  --light_green: #ebf9ff;
+  --light_purple: #9ca6ec;
 }
 .menu .app-brand.demo {
   height: 64px;
@@ -129,12 +131,19 @@
 }
 
 /*---- New Css ---*/
-
+body{
+  background-color: #fff;
+  color: #000;
+}
 .sec-space{
   padding-top: 50px;
   padding-bottom: 50px;
 }
-
+ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 .text-primary{
   color: var(--primary) !important;
 }
@@ -165,6 +174,24 @@
 .header-sub-title h4{
   color: var(--text-color);
   font-weight: 600;
+}
+.dropdown-menu{
+  transform: translate(0px, 50px) !important;
+}
+.dropdown-menu::before{
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 16px;
+  height: 10px;
+  width: 10px;
+  transform: rotate(45deg);
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+.dropdown-item i{
+  color: var(--light_purple);
 }
 .nav-pills .nav-link{
   box-shadow: none !important;
@@ -200,6 +227,10 @@
   color: var(--text-color);
   text-transform: capitalize;
   font-size: 14px;
+}
+
+.form-control:focus,.form-select:focus{
+  border-color: var(--primary) !important;
 }
 /*---- Company Details ---*/
 .bs-stepper.vertical .bs-stepper-header{
@@ -378,8 +409,12 @@ padding-top: 30px;
 /*--- Multiple Step Form ----*/
 
 .card{
-  padding: 30px;
-  box-shadow: none !important;
+  padding: 25px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.07);
+
+}
+.card-body{
+  padding: 0;
 }
 .multi-steps-form .form-step{
   padding-top: 30px;
@@ -516,6 +551,10 @@ footer{
 
 /* Media query for mobile screens */
 @media (max-width: 767px) {
+  .title{
+    font-size: 22px;
+    line-height: 32px;
+  }
   .subscribe-box-wrapper {
     height: auto;
     position: inherit;
@@ -561,3 +600,70 @@ footer{
   }
 }
 
+/*---- Company Dashboard ----*/
+.custom_search_filter {
+  position: relative;
+}
+.custom_search_filter_inputMask {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+}
+/*--- Company Card ---*/
+.company-card{
+  margin-top: 30px;
+}
+.company-information_card{
+  padding: 25px;
+  height: 100%;
+}
+.company-information_card .company_title{
+  background: url('../img/company/img-1.png') no-repeat center left / 100% 100%; 
+  padding: 15px 15px 25px 45px;
+  margin-left: -40px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.company-information_card .company_title2{
+  background: url('../img/company/img-2.png') no-repeat center left / 100% 100%; 
+}
+.bg-light_green{
+  background-color: var(--light_green);
+}
+.information-list ul{
+  display: grid;
+}
+.information-list li{
+  font-weight: 600;
+  display: inline-flex;
+  align-items: flex-start;
+}
+.information-list li:not(:last-child){
+  margin-bottom: 15px;
+}
+.information-list li > div:nth-child(1) {
+  display: inline-block;
+  position: relative;
+  margin-right: 5px;
+  padding-right: 15px;
+}
+.information-list li i {
+  margin-right: 10px;
+  color: var(--light_purple);
+}
+.information-list li > div:nth-child(1):after {
+  content: ":";
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.information-list li a {
+  color: var(--primary);
+}
+ #payments {
+  display: none;
+}

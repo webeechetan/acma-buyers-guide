@@ -150,4 +150,10 @@ class CompanyController extends Controller
             CompanyKeyPersonnel::create($data);
         }
     }
+    
+    public function dashboard()
+    {
+        return view('admin.companies.dashboard');
+    }
+ 
 }

@@ -10,6 +10,8 @@ use Illuminate\Auth\Events\Registered;
 use App\DataTables\CompanyDataTable;
 use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
+use App\Models\CompanyProductDetails;
+use App\Models\CompanyFproductDetails;
 
 class CompanyController extends Controller
 {
@@ -49,6 +51,7 @@ class CompanyController extends Controller
     }
 
     public function fillUpDetails(Request $request){
+
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
 
@@ -63,6 +66,9 @@ class CompanyController extends Controller
             $company_key_personnel->company_id = Auth::guard('company')->user()->id;
             $company_key_personnel->save();
         }
+
+        $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
 
         return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels'));
     }
@@ -85,6 +91,10 @@ class CompanyController extends Controller
             'email' => 'required|email|unique:companies',
             'password' => 'required|min:6',
         ]);
+        
+        
+
+
 
         $company = new Company();
         $company->name = $request->company_name;
@@ -133,21 +143,75 @@ class CompanyController extends Controller
     public function fillUpDetailsStore(Request $request){
         $company_id = Auth::guard('company')->user()->id;
         $data = $request->all();
+
         $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
         $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
 
-        if($company_contact_detail){
-            $company_contact_detail->update($data);
-        }else{
-            $data['company_id'] = $company_id;
-            CompanyContactDetail::create($data);
-        }
+        $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
+        $company_fproduct_detail = CompanyFproductDetails::where('company_id',$company_id)->first();
 
-        if($company_key_personnel){
-            $company_key_personnel->update($data);
-        }else{
-            $data['company_id'] = $company_id;
-            CompanyKeyPersonnel::create($data);
-        }
+        $success = true;
+
+
+        try {
+
+                if($company_contact_detail){
+                    $company_contact_detail->update($data);
+                }else{
+                    $data['company_id'] = $company_id;
+                    CompanyContactDetail::create($data);
+                }
+
+                if($company_key_personnel){
+                    $company_key_personnel->update($data);
+                }else{
+                    $data['company_id'] = $company_id;
+                    CompanyKeyPersonnel::create($data);
+                }
+
+                if($company_product_detail){
+                    $company_product_detail->update($data);
+                }else{
+                    $data['company_id'] = $company_id;
+                    CompanyProductDetails::create($data);
+                }
+
+                if($company_fproduct_detail){
+                    $company_fproduct_detail->update($data);
+                }else{
+                    $data['company_id'] = $company_id;
+                    CompanyFProductDetails::create($data);
+
+                }
+            }catch (\Exception $e) {
+
+                $success = false;
+
+            }
+
+            
+
+            if($success){
+
+                $response = ['status' => 'success',
+                             'message' => 'Data Uploaded successfully',
+                             'code' => 1];
+            }else{
+                $response = ['status' => 'error',
+                             'message' => 'Some error occured',
+                             'code' => 0];
+            }
+
+
+        return response()->json($response);
+
+        
     }
+
+    public function dashboard() {
+    
+        return view('admin.companies.dashboard');
+    
+    }
+
 }

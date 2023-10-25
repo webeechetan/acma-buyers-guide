@@ -173,7 +173,7 @@
                       </form>
                       <!--- Register ---->
                         <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
-                        @csrf
+                         @csrf
                           <div class="signup-form">
                             <h2>Create Account</h2>
                             <span>or use your email for registration</span>
@@ -183,33 +183,33 @@
                               <a href=""><i class='bx bxl-instagram' ></i></a>
                             </div> -->
                           </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name </label>
-                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
-                            <x-validation-error name="name" />
-                        </div>
-                        <div class="mb-3">
-                          <label for="email" class="form-label">Email </label>
-                          <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
-                          <x-validation-error name="email" />
-                        </div>
-                        <div class="mb-3 form-password-toggle">
-                          <div class="d-flex justify-content-between">
-                            <label class="form-label" for="password">Password</label>
+                          <div class="mb-3">
+                              <label for="name" class="form-label">Name </label>
+                              <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
+                              <x-validation-error name="name" />
                           </div>
-                          <div class="input-group input-group-merge">
-                            <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                        </div>
-                        <x-validation-error name="password" />
-                        </div>
-                        <div class="mb-3">
-                            <p class="terms">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Service</a>.</p>
-                        </div>
-                        <div class="mb-3">
-                          <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
-                        </div>
-                      </form>
+                          <div class="mb-3">
+                            <label for="email" class="form-label">Email </label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
+                            <x-validation-error name="email" />
+                          </div>
+                          <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                              <label class="form-label" for="password">Password</label>
+                            </div>
+                            <div class="input-group input-group-merge">
+                              <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                          </div>
+                          <x-validation-error name="password" />
+                          </div>
+                          <div class="mb-3">
+                              <p class="terms">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Service</a>.</p>
+                          </div>
+                          <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
+                          </div>
+                        </form>
                     </div>
                   </div>
                 </div>

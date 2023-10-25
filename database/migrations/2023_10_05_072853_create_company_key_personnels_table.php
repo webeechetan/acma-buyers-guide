@@ -56,6 +56,16 @@ return new class extends Migration
             $table->string('plant_in_charge')->nullable();
             $table->string('plant_in_charge_email')->nullable();
             $table->string('plant_in_charge_contact')->nullable();
+
+            $table->string('hrd_incharge')->nullable();
+            $table->string('rnd_incharge')->nullable();
+
+            $table->string('responded')->nullable();
+            $table->string('serial_no')->nullable();
+            $table->string('update')->nullable();
+            $table->string('update_date')->nullable();
+            $table->string('region')->nullable();
+
             $table->timestamps();
         });
     }

@@ -108,7 +108,23 @@
               <div class="col-md-8 mb-3 mb-md-0">
                 <div class="card">
                     <h2 id="heading" class="text-center title">Company Details</h2>
-                    <p class="text-center">Fill all form field to go to next step</p>
+                    <p class="text-center">
+                      Fill all form field to go to next step
+                    </p>
+                    <div class="text-center">
+                      <span class="auto_save_icons">
+                        <span class="auto_save_icon_uploading d-none">
+                          <i class="bx bx-refresh me-2"></i>
+                          <span class="mt-2">
+                            saving...
+                          </span>
+                        </span>
+                        <span class="auto_save_icon_upload">
+                          <i class="bx bx-cloud-upload me-2"></i>
+                          <span class="auto_save_uploaded_msg mt-2">saved</span>
+                        </span>
+                      </span>
+                    </div>
                     <form action="{{route('company.fillUpDetailsStore')}}" id="Multi-Steps-form" method="post" class="multi-steps-form">
                       @csrf
                         <div class="progress-bar mt-2">
@@ -1285,6 +1301,8 @@
 <script>
     $(document).ready(function(){
 
+      $(".auto_save_uploaded_msg").hide();
+
 
         function autoSave(){
 
@@ -1302,6 +1320,14 @@
 
                   if(!response.success){
                     toastr.error(response.message);
+                  }else{
+                    $(".auto_save_icon_uploading").removeClass('bx-fade-up');
+                    $(".auto_save_icon_uploading").addClass('d-none');
+                    $(".auto_save_icon_upload").removeClass('d-none');
+                    $(".auto_save_uploaded_msg").show();
+                    setTimeout(() => {
+                      $(".auto_save_uploaded_msg").hide();
+                    }, 1000);
                   }
                     
                 },
@@ -1314,19 +1340,10 @@
 
         setInterval(() => {
             autoSave();
-            $(".company_contact_details_last_upload_counter").text('Saved');
-            $(".company_contact_details_last_upload").addClass('text-success');
-            $(".bx-cloud-upload").addClass('bx-fade-up');
-            setTimeout(() => {
-                $(".company_contact_details_last_upload_counter").text(parseInt(0));
-                $(".company_contact_details_last_upload").removeClass('text-success');
-                $(".bx-cloud-upload").removeClass('bx-fade-up');
-            }, 1000);
-        }, 11000);
-
-        setInterval(()=>{
-            $(".company_contact_details_last_upload_counter").text(parseInt($(".company_contact_details_last_upload_counter").text()) + 5);
-        },5000)
+            $(".auto_save_icon_upload").addClass('d-none');
+            $(".auto_save_icon_uploading").removeClass('d-none');
+            $(".auto_save_icon_uploading").addClass('bx-fade-up');
+        }, 5000);
 
     });
     $(document).ready(function() {

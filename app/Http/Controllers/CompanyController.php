@@ -148,61 +148,28 @@ class CompanyController extends Controller
         $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
 
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
-        $company_fproduct_detail = CompanyFproductDetails::where('company_id',$company_id)->first();
+        $company_fproduct_detail = CompanyFproductDetails::where('company_id',$company_id)->first();    
+        
+        
+        try{
+            $company_contact_detail->update($data);
+            $company_key_personnel->update($data);
+            $company_product_detail->update($data);
+            $company_fproduct_detail->update($data);
 
-        $success = true;
+            return response()->json([
+                'success' => true,
+                'message' => 'Details Updated Successfully',
+                'data' => null
+            ]);
 
-
-        try {
-
-                if($company_contact_detail){
-                    $company_contact_detail->update($data);
-                }else{
-                    $data['company_id'] = $company_id;
-                    CompanyContactDetail::create($data);
-                }
-
-                if($company_key_personnel){
-                    $company_key_personnel->update($data);
-                }else{
-                    $data['company_id'] = $company_id;
-                    CompanyKeyPersonnel::create($data);
-                }
-
-                if($company_product_detail){
-                    $company_product_detail->update($data);
-                }else{
-                    $data['company_id'] = $company_id;
-                    CompanyProductDetails::create($data);
-                }
-
-                if($company_fproduct_detail){
-                    $company_fproduct_detail->update($data);
-                }else{
-                    $data['company_id'] = $company_id;
-                    CompanyFProductDetails::create($data);
-
-                }
-            }catch (\Exception $e) {
-
-                $success = false;
-
-            }
-            
-
-            if($success){
-
-                $response = ['status' => 'success',
-                             'message' => 'Data Uploaded successfully',
-                             'code' => 1];
-            }else{
-                $response = ['status' => 'error',
-                             'message' => 'Some error occured',
-                             'code' => 0];
-            }
-
-
-        return response()->json($response);
+        }catch(\Exception $e){
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+                'data' => null
+            ]);
+        }
 
         
     }

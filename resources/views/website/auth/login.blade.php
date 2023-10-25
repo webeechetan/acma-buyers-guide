@@ -304,6 +304,7 @@
 
   <script src="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
+  <script src="{{ asset('website/') }}/validations/register.js"></script>
 
 
   @if(session()->has('alert'))

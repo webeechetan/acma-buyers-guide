@@ -188,7 +188,6 @@ class CompanyController extends Controller
                 $success = false;
 
             }
-
             
 
             if($success){

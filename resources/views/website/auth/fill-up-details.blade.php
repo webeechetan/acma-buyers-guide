@@ -1299,16 +1299,15 @@
                 processData: false,
                 success: function (response) {
                   
-                  toastr.success(response.message);
 
-                  setTimeout(function() {
-                      window.location.href = "{{ route('company.dashboard') }}";
-                  }, 2000); 
+                  if(!response.success){
+                    toastr.error(response.message);
+                  }
                     
                 },
                 error: function (response) {
                  
-                    toastr.danger(response.message);
+                    
                 }
             })
         }

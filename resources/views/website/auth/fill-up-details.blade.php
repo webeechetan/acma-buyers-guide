@@ -425,46 +425,43 @@
                               <div class="row g-3">
                                
                                 
-
-
-
                                 {{-- ////////////New Excel fields added by AJ on 18 oct -2023////////////// --}}
 
                                 <div class="col-sm-4">
                                   <label class="form-label" for="Responded">Responded</label>
-                                  <input type="text" id="responded" name="responded" class="form-control" placeholder="" value="">
+                                  <input type="text" id="responded" name="responded" class="form-control" placeholder="" value="{{ $company_key_personnels->responded}}">
                                 </div>
                                 
                                 <div class="col-sm-4">
                                   <label class="form-label" for="SerialNo">SerialNo</label>
-                                  <input type="text" id="serial_no" name="serial_no" class="form-control" placeholder="" value="">
+                                  <input type="text" id="serial_no" name="serial_no" class="form-control" placeholder="" value="{{ $company_key_personnels->serial_no }}">
                                 </div>
                                 
                                 <div class="col-sm-4">
                                   <label class="form-label" for="Update">Update</label>
-                                  <input type="text" id="update" name="update" class="form-control" placeholder="" value="">
+                                  <input type="text" id="update" name="update" class="form-control" placeholder="" value="{{ $company_key_personnels->update }}">
                                 </div>
                                 
                                 <div class="col-sm-4">
                                   <label class="form-label" for="Update_Date">Update Date</label>
-                                  <input type="text" id="update_date" name="update_date" class="form-control" placeholder="" value="">
+                                  <input type="text" id="update_date" name="update_date" class="form-control" placeholder="" value=" {{ $company_key_personnels->update_date }}">
                                 </div>
                                 
                                 <div class="col-sm-4">
                                   <label class="form-label" for="REGION">Region</label>
-                                  <input type="text" id="region" name="region" class="form-control" placeholder="" value="">
+                                  <input type="text" id="region" name="region" class="form-control" placeholder="" value=" {{ $company_key_personnels->region }}">
                                 </div>
                                 
                               
                               <div class="col-sm-4">
                                 <label class="form-label" for="OverseasPlant_1">Overseas Plant_1</label>
-                                <input type="text" id="overseas_plant_1" name="overseas_plant_1" class="form-control" placeholder="" value="">
+                                <input type="text" id="overseas_plant_1" name="overseas_plant_1" class="form-control" placeholder="" value=" {{ $company_product_details->overseas_plant_1 }}">
                               </div>
 
 
                               <div class="col-sm-4">
                                 <label class="form-label" for="OverseasPlant_2">Overseas Plant_2</label>
-                                <input type="text" id="overseas_plant_2" name="overseas_plant_2" class="form-control" placeholder="" value="">
+                                <input type="text" id="overseas_plant_2" name="overseas_plant_2" class="form-control" placeholder="" value=" {{ $company_product_details->overseas_plant_2 }}">
                               </div>
                               
                               <div class="col-sm-4">

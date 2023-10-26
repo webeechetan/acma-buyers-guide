@@ -54,6 +54,8 @@ class CompanyController extends Controller
 
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_fproduct_details = CompanyFproductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
 
         if(!$company_contact_details){
             $company_contact_detail = new CompanyContactDetail();
@@ -69,8 +71,12 @@ class CompanyController extends Controller
 
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_fproduct_details = CompanyFproductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
 
-        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels'));
+      
+        //dd($company_key_personnels);
+        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels','company_product_details','company_fproduct_details'));
     }
 
     /**

@@ -217,16 +217,7 @@
                                 <label class="form-label" for="other_plant_address">Other Plant Address</label>
                                 <textarea id="other_plant_address" name="other_plant_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->other_plant_address }}</textarea>
                                 </div>
-                                <!-- <div class="col-12 d-flex justify-content-between">
-                                  <button class="btn btn-label-secondary btn-sm btn-prev" disabled="">
-                                    <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                  </button>
-                                  <button class="btn btn-primary btn-sm btn-next">
-                                    <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                    <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-                                  </button>
-                                </div> -->
+                               
                               </div>
                             </div>
                         </div>
@@ -403,16 +394,7 @@
                                 <input type="text" id="plant_in_charge_contact" name="plant_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->plant_in_charge_contact }}">
                               </div>
 
-                              <!-- <div class="col-12 d-flex justify-content-between">
-                                <button class="btn btn-primary btn-sm btn-prev">
-                                  <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                                  <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                </button>
-                                <button class="btn btn-primary btn-sm btn-next">
-                                  <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                  <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-                                </button>
-                              </div> -->
+                             
                             </div>
                           </div>
                         </div>
@@ -887,17 +869,7 @@
                               
                                 {{-- //////////// Above New Excel fields added by AJ on 18 oct -2023////////////// --}}
 
-                                
-                                <!-- <div class="col-12 d-flex justify-content-between">
-                                  <button class="btn btn-label-secondary btn-sm btn-prev" disabled="">
-                                    <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                  </button>
-                                  <button class="btn btn-primary btn-sm btn-next">
-                                    <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                    <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-                                  </button>
-                                </div> -->
+                               
                               </div>
                             </div>
                         </div>
@@ -1159,17 +1131,6 @@
                                 <input type="text" id="custom_duty" name="custom_duty" class="form-control" placeholder="Total Custom Duty paid in 2018-19 " value="{{ $company_key_personnels->managing_director_email }}">
                               </div>
                           
-                            
-                              <!-- <div class="col-12 d-flex justify-content-between">
-                                <button class="btn btn-primary btn-sm btn-prev">
-                                  <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                                  <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                </button>
-                                <button class="btn btn-primary btn-sm btn-next">
-                                  <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                  <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-                                </button>
-                              </div> -->
                             </div>
                           </div>
                         </div>

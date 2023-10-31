@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_fproduct_details', function (Blueprint $table) {
+        Schema::create('company_foreign_collaborations', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('company_id');
@@ -78,7 +78,6 @@ return new class extends Migration
             $table->string('japan_quality_medal')->nullable();
             $table->string('emark')->nullable();
             $table->string('bismark')->nullable();
-           
             $table->timestamps();
         });
     }
@@ -88,6 +87,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_fproduct_details');
+        Schema::dropIfExists('company_foreign_collaborations');
     }
 };

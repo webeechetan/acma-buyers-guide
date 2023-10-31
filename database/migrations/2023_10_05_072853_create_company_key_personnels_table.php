@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('managing_director')->nullable();
             $table->string('managing_director_email')->nullable();
             $table->string('managing_director_contact')->nullable();
-            $table->string('cheif_executive')->nullable();
-            $table->string('cheif_executive_email')->nullable();
-            $table->string('cheif_executive_contact')->nullable();
+            $table->string('chief_executive')->nullable();
+            $table->string('chief_executive_email')->nullable();
+            $table->string('chief_executive_contact')->nullable();
             $table->string('sales_in_charge')->nullable();
             $table->string('sales_in_charge_email')->nullable();
             $table->string('sales_in_charge_contact')->nullable();

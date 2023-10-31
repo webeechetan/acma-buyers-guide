@@ -59,7 +59,7 @@
           </div>
           <!-- /Logo -->
           <h4 class="mb-2">Welcome to Acma! 👋</h4>
-
+          
           <form id="formAuthentication" class="mb-3" action="{{ route('admin.authenticate') }}" method="POST">
             @csrf
             <div class="mb-3">

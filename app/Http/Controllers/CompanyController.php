@@ -12,6 +12,7 @@ use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyFproductDetails;
+use App\Models\CompanyForeignCollaboration;
 
 class CompanyController extends Controller
 {
@@ -55,7 +56,9 @@ class CompanyController extends Controller
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
-        $company_fproduct_details = CompanyFproductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
+        //$company_fproduct_details = CompanyFproductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
+
+        $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
         if(!$company_contact_details){
             $company_contact_detail = new CompanyContactDetail();
@@ -69,14 +72,26 @@ class CompanyController extends Controller
             $company_key_personnel->save();
         }
 
+        if(!$company_product_details){
+            $company_product_detail = new CompanyProductDetails();
+            $company_product_detail->company_id = Auth::guard('company')->user()->id;
+            $company_product_detail->save();
+        }
+
+        if(!$company_foreign_collaboration){
+            $company_foreign_collaboration = new CompanyForeignCollaboration();
+            $company_foreign_collaboration->company_id = Auth::guard('company')->user()->id;
+            $company_foreign_collaboration->save();
+        }
+
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
-        $company_fproduct_details = CompanyFproductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
       
         //dd($company_key_personnels);
-        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels','company_product_details','company_fproduct_details'));
+        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
     }
 
     /**
@@ -109,7 +124,7 @@ class CompanyController extends Controller
 
         if ($company->save()) {
             $this->alert('Success', 'Company Registered Successfully' , 'success');
-            return redirect()->route('company.login');
+            return redirect()->route('company.payments');
         }
 
     }
@@ -154,14 +169,16 @@ class CompanyController extends Controller
         $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
 
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
-        $company_fproduct_detail = CompanyFproductDetails::where('company_id',$company_id)->first();    
+      //  $company_fproduct_detail = CompanyFproductDetails::where('company_id',$company_id)->first();
+        
+        $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
         
         try{
             $company_contact_detail->update($data);
             $company_key_personnel->update($data);
             $company_product_detail->update($data);
-            $company_fproduct_detail->update($data);
+            $company_foreign_collaboration->update($data);
 
             return response()->json([
                 'success' => true,
@@ -184,6 +201,14 @@ class CompanyController extends Controller
     
         return view('admin.companies.dashboard');
     
+    }
+
+
+    public function logout()
+    {
+        $this->alert('success', 'You are logged out successfully','success');
+        Auth::guard('company')->logout();
+        return redirect()->route('company.login');
     }
 
 }

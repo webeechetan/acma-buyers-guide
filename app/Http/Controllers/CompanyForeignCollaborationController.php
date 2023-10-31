@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompanyFproductDetails;
+use App\Models\CompanyForeignCollaboration;
 use Illuminate\Http\Request;
 
-class CompanyFproductDetailsController extends Controller
+class CompanyForeignCollaborationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class CompanyFproductDetailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CompanyFproductDetails $companyFproductDetails)
+    public function show(CompanyForeignCollaboration $companyForeignCollaboration)
     {
         //
     }
@@ -42,7 +42,7 @@ class CompanyFproductDetailsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CompanyFproductDetails $companyFproductDetails)
+    public function edit(CompanyForeignCollaboration $companyForeignCollaboration)
     {
         //
     }
@@ -50,7 +50,7 @@ class CompanyFproductDetailsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CompanyFproductDetails $companyFproductDetails)
+    public function update(Request $request, CompanyForeignCollaboration $companyForeignCollaboration)
     {
         //
     }
@@ -58,7 +58,7 @@ class CompanyFproductDetailsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompanyFproductDetails $companyFproductDetails)
+    public function destroy(CompanyForeignCollaboration $companyForeignCollaboration)
     {
         //
     }

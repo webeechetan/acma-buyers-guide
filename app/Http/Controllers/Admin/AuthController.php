@@ -39,4 +39,5 @@ class AuthController extends Controller
         auth()->logout();
         return redirect()->route('admin.login');
     }
+
 }

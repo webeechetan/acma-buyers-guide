@@ -124,7 +124,7 @@
                     
                       <li class="nav-item">or</li>
                       <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="pill" href="#login">Login</a>
+                        <a class="nav-link active" data-bs-toggle="pill" href="#login">Sign In</a>
                       </li>
                     </ul>
                   </div>
@@ -167,7 +167,7 @@
                             <a href="#" class="forgot-password">Forgot your password?</a>
                           </div>
                           <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">Sign In</button>
                             
                           </div>
                       </form>

@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
 use OpenSpout\Common\Entity\Row;
+use App\Http\Controllers\PaymentsPlanController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,12 +33,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
    
 
    
-
-   
     Route::get('/companies', [CompanyController::class,'index'])->name('admin.companies');
     Route::get('/companies-data', [CompanyController::class,'companiesData'])->name('admin.companies.data');
-    
-
     Route::get('/logout', [AuthController::class,'logout'])->name('admin.logout');
 });
 
@@ -50,11 +48,17 @@ Route::post('/company/login', [CompanyController::class,'authenticate'])->name('
 Route::get('/company/fill-up-details', [CompanyController::class,'fillUpDetails'])->name('company.fillUpDetails');
 Route::post('/company/fill-up-details', [CompanyController::class,'fillUpDetailsStore'])->name('company.fillUpDetailsStore');
 
-
-
 Route::get('/company/dashboard', [CompanyController::class,'dashboard'])->name('company.dashboard');
 
 
+
+
+Route::get('/company/logout', [CompanyController::class,'logout'])->name('company.logout');
+
+/************* payments Routes ****************/
+
+
+Route::get('/company/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
 
 
 

@@ -92,7 +92,7 @@
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
-                    </li>
+                    </li> -->
                   </ul>
               </div>
         </div>
@@ -1138,7 +1138,7 @@
                     
                       <div class="form-navigation mt-3">
                         <button type="button" class="btn btn-primary" id="prev">Previous</button>
-                        <button type="button" class="btn btn-primary" id="next">Next</button>
+                        <button type="button" class="btn btn-primary ms-auto" id="next">Next</button>
                         <button type="submit" class="btn btn-primary" id="submit" style="display: none;">Submit</button>
                       </div>
                   </form>
@@ -1161,7 +1161,7 @@
     <div class="container-xxl">
       <div class="footer-sec">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3 mb-md-0">
           <h4 class="mb-3 text-white">Contact Us</h4>
               <ul class="contact-list">
                 <li><i class="fas fa-phone-alt"></i>  <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -1194,12 +1194,12 @@
   </footer>
   <div class="footer-copyright py-3">
     <div class="container-xxl">
-        <div class="row">
+        <div class="row text-center">
           <div class="col-md-6">
-            <p class="mb-2 mb-sm-0 text-white">© Copyright 2022 ACMA India, All Right Reserved.</p>
+            <p class="mb-2 mb-sm-0 text-white text-md-start">© Copyright 2022 ACMA India, All Right Reserved.</p>
           </div>
     
-          <div class="col-md-6 text-end">
+          <div class="col-md-6 text-md-end">
             <p class="mb-0 text-white">Powered By <a href="https://www.webeesocial.com/" class="text-white">Webeesocial</a>
             </p>
           </div>

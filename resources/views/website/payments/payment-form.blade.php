@@ -38,50 +38,57 @@
           <!-- Pyament form -->
             <div class="subscribe-box-wrapper">
             <div class="subscribe-banner">
-                <div class="logo">
+              <div class="signup-logo">
                 <img src="https://www.acma.in/images/logo.png" alt="">
-                </div>
-                <div class="subscribe-content">
+              </div>
+              <div class="subscribe-content">
                 <h2 class="title">Buyers Guide</h2>
-                <p>Enter your personal details and start journey with us</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat repellendus minima consequuntur asperiores incidunt modi optio nihil amet excepturi a labore, cumque, velit vero quisquam ipsa nam sequi repellat eos earum dolore autem qui, vitae iusto vel? Amet sapiente, facilis, adipisci, fuga veniam illo consequuntur ad deserunt earum exercitationem aliquam.</p>
+              </div>
+              <div class="subscribe-social">
+                <h4 class="sub-title text-white mb-0"> Follow Us</h4>
+                <div class="subscribe-social-icons">
+                  <a href=""><i class='bx bxl-facebook'></i></a>
+                  <a href=""><i class='bx bxl-linkedin' ></i></a>
+                  <a href=""><i class='bx bxl-instagram' ></i></a>
                 </div>
-                <div class="copyright">
+              </div>  
+              <div class="copyright">
                 <p>© Copyright 2022 ACMA India, All Right Reserved.</p>
-                </div>
+              </div>
             </div>
             <div class="subscribe-form">
                 <div class="subscribe-form-wrapper">
-                    <div class="tab-content">
-                        <!---- Payement subscibe ---->
-                        <form id="payments" class="mb-3" action="" method="POST">
-                            @csrf
-                            <div class="signup-form">
-                                <h2>Proceed Payment</h2>
-                                <span>fill the information</span>
-                            </div>
-                            <div class="mb-3">
-                                <label for="name" class="form-label"> Company Name </label>
-                                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
-                                <x-validation-error name="name" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
-                                <x-validation-error name="email" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Contact Number</label>
-                                <input type="number" class="form-control" id="number" name="number" placeholder="" autofocus>
-                                <x-validation-error name="email" />
-                            </div>
-                            <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
-                                <div><input type="checkbox" checked="checked" name="remember" required> <span> Rs 600</span></div>
-                                <a href="#" class="forgot-password text-primary">Please Subscribe Buyers Guide</a>
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary d-grid w-100" id="proceed-btn" type="submit">Proceed Payments</button>
-                            </div>
-                        </form>
+                    <div class="subscribe-form-border">
+                      <form action="">
+                        <div class="subscribe-plan">
+                         <h2 class="title text-center">subscribe Plan</h2>
+                         <p class="text-center">Proceed to payments for subscribe</p>
+                          <div class="company-user-detail">
+                                <div class="user-detail">
+                                    <p>Company Name</p>
+                                    <span>Webeesocial</span>
+                                </div>
+                                <div class="user-detail">
+                                    <p>Phone Number</p>
+                                    <span>890079118</span>
+                                </div>
+                                <div class="user-detail">
+                                    <p>Company Email</p>
+                                    <span>himanshu@webeesocial.com</span>
+                                </div>
+                                <div class="user-detail">
+                                    <p>Password</p>
+                                    <span>krt@33rt. <span class="bx bx-low-vision ms-2"></span></span>
+                                </div>
+                          </div>
+                        </div>
+                        <div class="payment-card">
+                          <div class="payment-check"><span class="bx bx-check"></span></div>
+                          <div>Rs 600 / 6 months </div>
+                        </div>
+                        <button class="btn btn-primary d-grid w-100" type="submit">Proceed to pay</button>
+                      </form>
                     </div>
                 </div>
             </div>

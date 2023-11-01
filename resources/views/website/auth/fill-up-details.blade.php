@@ -700,12 +700,12 @@
                               
                               <div class="col-sm-3">
                                 <label class="form-label" for="NATURE5">NATURE5</label>
-                                <input type="text" id="nature5" name="nature5" class="form-control" placeholder="" value="{{$company_foreign_collaboration}}">
+                                <input type="text" id="nature5" name="nature5" class="form-control" placeholder="" value="{{$company_foreign_collaboration->nature5 }}">
                               </div>
                               
                               <div class="col-sm-3">
                                 <label class="form-label" for="per5">Per5</label>
-                                <input type="text" id="per5" name="per5" class="form-control" placeholder="" value="{{$company_foreign_collaboration->nature5 }}">
+                                <input type="text" id="per5" name="per5" class="form-control" placeholder="" value="{{$company_foreign_collaboration->per5 }}">
                               </div>
                               
                               <div class="col-sm-3">
@@ -770,7 +770,7 @@
                               
                               <div class="col-sm-3">
                                 <label class="form-label" for="F_COLLAB9">F_COLLAB9</label>
-                                <input type="text" id="f_collab9" name="f_collab9" class="form-control" placeholder="" value="{{$company_foreign_collaboration}}">
+                                <input type="text" id="f_collab9" name="f_collab9" class="form-control" placeholder="" value="{{$company_foreign_collaboration->f_collab9}}">
                               </div>
                               
                               <div class="col-sm-3">

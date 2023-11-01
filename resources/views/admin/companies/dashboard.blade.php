@@ -155,13 +155,11 @@
       </nav>
     </header>
     <!---- Main Dahboard ----->
-    <section class="">
+    <!-- <section class="dashboard-banner">
+
+    </section> -->
+    <section class="sec-space">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-3">
-            <img src="https://www.acma.in/images/Reverse-buyers-sellers-banner.jpg" class="img-fluid">
-          </div>
-        </div>
         <div class="row">
           <!-- <div class="col-md-2">
             <div class="advertisement-one">
@@ -170,12 +168,12 @@
           </div> -->
           <div class="col-md-12">
             <!--- Search Filter ---->
-            <div class="card mb-3">
+            <div class="card mb-2">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-3 mb-3 mb-md-0">
                     <div class="custom_search_filter">
-                      <form action="https://inquiry.webeesocial.tech/admin/inquiries" method="GET">
+                      <form action="" method="GET">
                         <input type="text" class="form-control" id="search" name="search" placeholder="Quick Search" value="">
                         <div class="custom_search_filter_inputMask">
                           <i class="bx bx-search"></i>
@@ -191,68 +189,97 @@
                   <div class="col-md-3">
                     <div class="custom_search_filter">
                       <form action="/" method="GET">
-                        <div class="category-dropdown">
-                          <input type="text" class="form-control" id="filter_category" name="filter_category" placeholder="Filter By Category" value="">
+                          <input type="text" data-bs-toggle="modal" data-bs-target="#basicModal" class="form-control" id="filter_category" name="filter_category" placeholder="Filter By Category" value="">
                           <div class="custom_search_filter_inputMask">
                             <i class="bx bx-search"></i>
                           </div>
-                          <div class="category-dropdown-menu" id="category-options">
-                            <h4 class="sub-title text-center">Advance Filter</h4>
-                            <ul class="filter-list">
-                              <li>
-                                <a href="#" id="company-option">Company</a>
-                              </li>
-                              <li>
-                                <a href="#">Location</a>
-                              </li>
-                              <li>
-                                <a href="#">Region</a>
-                              </li>
-                              <li>
-                                <a href="#">Products</a>
-                              </li>
-                              <li>
-                                <a href="#">Company</a>
-                              </li>
-                              <li>
-                                <a href="#">Location</a>
-                              </li>
-                              <li>
-                                <a href="#">Region</a>
-                              </li>
-                              <li>
-                                <a href="#">Products</a>
-                              </li>
-                              <li>
-                                <a href="#">Company</a>
-                              </li>
-                              <li>
-                                <a href="#">Location</a>
-                              </li>
-                              <li>
-                                <a href="#">Region</a>
-                              </li>
-                              <li>
-                                <a href="#">Products</a>
-                              </li>
+                      </form>
+                        <!-- Modal -->
+                        <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 class="modal-title title text-center" id="exampleModalLabel1">Advance Filter</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                 <ul class="filter-list">
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
+                                      <a href="#" id="company-option">Company</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Location</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Region</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Products</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Trade Mark</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Sales Turnover</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Export Turnover</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">No. of Employees</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Quality System Standard</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Domestic Customer</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">international Customer</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Overseas Aftermarket</a>
+                                    </li>
+                                    <li>
+                                      <a href="#">Foreign Collaboration</a>
+                                    </li>
                               <!-- Add more options here -->
-                            </ul>
-                          </div>
-                          <div class="multiple-selection">
-                              <select id="select2Basic" class="select2 form-select form-select-lg" placeholder="Search By Category" data-allow-clear="true">
-                                <optgroup>
-                                <option value="AK">New Delhi</option>
-                                <option value="HI">Gorgon</option>
-                                <option value="HI">Ranchi</option>
-                                <option value="HI">Pune</option>
-                                <option value="HI">Pune</option>
-                                <option value="HI">Pune</option>
-                                <option value="HI">Pune</option>
-                                </optgroup>
-                              </select>
+                                 </ul>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </form>
+                        <!--- Advance Filter Form---->
+                         <div class="modal fade" id="defaultModal" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 class="modal-title title text-center" id="filterModal">Filter By Company</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                  <div>
+                                  <label for="select2Basic" class="form-label">Company Name</label>
+                                   <select id="select2Basic" placeholder="Search By Company Name" class="select2 form-select form-select-lg" data-allow-clear="true">
+                                      <option value="AK">Alaska</option>
+                                      <option value="HI">Hawaii</option>
+                                      <option value="CA">California</option>
+                                      <option value="NV">Nevada</option>
+                                      <option value="OR">Oregon</option>
+                                      <option value="WA">Washington</option>
+                                      <option value="AZ">Arizona</option>
+                                      <option value="CO">Colorado</option>
+                                      <option value="ID">Idaho</option>
+                                      <option value="MT">Montana</option>
+                                      <option value="NE">Nebraska</option>
+                                      <option value="NM">New Mexico</option>
+                                      <option value="ND">North Dakota</option>
+                                    </select>  
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -261,18 +288,25 @@
             <!--- Company Card --->
             <div class="company-card">
               <div class="row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-2">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>Phone (s)
+                            <i class='bx bxs-location-plus' ></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <i class="fa fa-phone"></i>Phone
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -307,18 +341,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-2">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>Phone (s)
+                            <i class='bx bxs-location-plus' ></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <i class="fa fa-phone"></i>Phone
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -353,18 +394,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-2">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>Phone (s)
+                            <i class='bx bxs-location-plus'></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <i class="fa fa-phone"></i>Phone
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -399,18 +447,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-2">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>Phone (s)
+                            <i class='bx bxs-location-plus'></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <i class="fa fa-phone"></i>Phone
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -445,18 +500,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-2">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>Phone (s)
+                            <i class='bx bxs-location-plus'></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <i class="fa fa-phone"></i>Phone
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -491,18 +553,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
+                        <li>
+                            <div>
+                            <i class='bx bxs-location-plus'></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>Phone (s)
+                              <i class="fa fa-phone"></i>Phone
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -537,18 +606,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>PHONE (s)
+                            <i class='bx bxs-location-plus'></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <i class="fa fa-phone"></i>PHONE
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -583,18 +659,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="card">
                     <div class="company-card">
                       <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
                     </div>
                     <div class="card-body">
                       <div class="information-list">
                         <ul>
                           <li>
                             <div>
-                              <i class="fa fa-phone"></i>Phone (s)
+                            <i class='bx bxs-location-plus'></i>Address
+                            </div>
+                            <div>
+                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <i class="fa fa-phone"></i>Phone
                             </div>
                             <div>
                               <a href="tel:+91-11-26160315">+91-11-26160315</a>
@@ -629,55 +712,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                      <p>It is digital Agency. this is provide all digital solution</p>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone (s)
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+             
               </div>
               <div class="row">
-                <div class="col-md-12 text-center mt-3">
+                <div class="col-md-12 text-center mt-2">
                   <button class="btn btn-primary" class="download-button">Download Pdf</button>
                 </div>
               </div>
@@ -685,11 +723,6 @@
             <!--- Multiple select --->
              
           </div>
-          <!-- <div class="col-md-2">
-            <div class="advertisement-one">
-              <img src="http://dummyimage.com/700x500/" alt="placeholder" class="img-fluid img-placeholder">
-            </div>
-          </div> -->
         </div>
       </div>
     </section>
@@ -710,7 +743,7 @@
                   <a href="mailto:acma@acma.in">acma@acma.in</a>
                 </li>
                 <li>
-                  <div class="d-flex ml-4 mt-3">
+                  <div class="d-flex">
                     <div>
                       <a href="https://www.facebook.com/india.acma/" target="_blank" class="fb">
                         <i class="fab fa-facebook-square"></i>
@@ -758,32 +791,12 @@
     <script src="{{ asset('admin/') }}/assets/vendor/js/bootstrap.js"></script>
     <script src="{{ asset('admin/') }}/assets/vendor/libs/select2/select2.js"></script>
     <script src="{{ asset('admin/') }}/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+
     <script>
       $(document).ready(function() {
         $(".select2").select2();
-        $("#filter_category").on("click", function() {
-          $("#category-options").toggle();
-        });
       });
     </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const companyOption = document.getElementById('company-option');
-        const selectElement = document.getElementById('select2Basic');
-
-        companyOption.addEventListener('click', function (event) {
-            event.preventDefault();
-            selectElement.style.display = 'block';
-        });
-
-        // Hide the select when clicking outside of it
-        document.addEventListener('click', function (event) {
-            if (event.target !== selectElement && event.target !== companyOption) {
-                selectElement.style.display = 'none';
-            }
-        });
-    });
-</script>
 
 
 

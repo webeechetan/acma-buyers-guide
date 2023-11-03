@@ -111,7 +111,7 @@
     </div>
   </div>
    
-  <div class="footer-copyright py-3 d-md-none">
+  <div class="footer-copyright py-3  d-lg-none d-block">
     <div class="container-xxl">
         <div class="row text-center text-md-start">
           <div class="col-md-6">

@@ -9,6 +9,8 @@ use OpenSpout\Common\Entity\Row;
 use App\Http\Controllers\PaymentsPlanController;
 use App\Http\Controllers\PaymentController;
 
+use App\Http\Controllers\CCAvenueController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,4 +59,5 @@ Route::get('/company/logout', [CompanyController::class,'logout'])->name('compan
 Route::get('/company/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
 
 
+Route::post('/company/paymentRequest', [CCAvenueController::class, 'index'])->name('payment.request');
 

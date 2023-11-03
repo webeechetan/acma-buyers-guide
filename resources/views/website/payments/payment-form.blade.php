@@ -60,22 +60,23 @@
             <div class="subscribe-form">
                 <div class="subscribe-form-wrapper">
                     <div class="subscribe-form-border">
-                      <form action="">
+                      <form action="{{ route('payment.request') }}" method="POST" name="form_subscription_payment">
+                        @csrf 
                         <div class="subscribe-plan">
-                         <h2 class="title text-center">subscribe Plan</h2>
+                         <h2 class="title text-center">Subscribe Plan</h2>
                          <p class="text-center">Proceed to payments for subscribe</p>
                           <div class="company-user-detail">
                                 <div class="user-detail">
                                     <p>Company Name</p>
-                                    <span>Webeesocial</span>
+                                    <span>{{ $company_contact_details->company_name }}</span>
                                 </div>
                                 <div class="user-detail">
                                     <p>Phone Number</p>
-                                    <span>890079118</span>
+                                    <span>{{ $company_contact_details->phone }}</span>
                                 </div>
                                 <div class="user-detail">
                                     <p>Company Email</p>
-                                    <span>himanshu@webeesocial.com</span>
+                                    <span>{{ $company_contact_details->email }}</span>
                                 </div>
                                 <div class="user-detail">
                                     <p>Password</p>

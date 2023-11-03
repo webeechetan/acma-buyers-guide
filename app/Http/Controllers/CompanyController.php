@@ -11,7 +11,6 @@ use App\DataTables\CompanyDataTable;
 use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
-use App\Models\CompanyFproductDetails;
 use App\Models\CompanyForeignCollaboration;
 
 class CompanyController extends Controller
@@ -56,8 +55,7 @@ class CompanyController extends Controller
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
-        //$company_fproduct_details = CompanyFproductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
-
+        
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
         if(!$company_contact_details){
@@ -89,8 +87,6 @@ class CompanyController extends Controller
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
-      
-        //dd($company_key_personnels);
         return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
     }
 

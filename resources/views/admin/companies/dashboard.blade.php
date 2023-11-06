@@ -289,15 +289,15 @@
 
             @foreach ($companies as $company)
 
-             
-
+            {{ $company->key_personnels->managing_director }}
                 <div class="company-card">
                   <div class="row">
                     <div class="col-md-3 mb-2">
                       <div class="card">
                         <div class="company-card">
-                          <h4 class="sub-title mb-0"> {{ $company->name }} - {{ $company->key_personnels->managing_director }}</h4>
+                          <h4 class="sub-title mb-0"> {{ $company->name }} -   </h4>
                         </div>
+                       
                         <div class="card-body">
                           <div class="information-list">
                             <ul>
@@ -306,7 +306,7 @@
                                 <i class='bx bxs-location-plus' ></i>Address
                                 </div>
                                 <div>
-                                  <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                                  <a href="tel:+91-11-26160315">ff</a>
                                 </div>
                               </li>
                               <li>

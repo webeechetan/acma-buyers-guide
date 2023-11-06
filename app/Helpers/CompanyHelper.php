@@ -37,6 +37,28 @@ class CompanyHelper {
         }
     }
 
+    public static function filter($request){
+
+        $companies = Company::with('key_personnels','contact_details');
+
+        $filter = '';
+
+        if($request->has('name')){
+            $companies = $companies->where('name','like','%'.$request->name.'%');
+        }
+
+        if($request->has('email')){
+            $companies = $companies->where('email','like','%'.$request->email.'%');
+        }
+
+        if($request->has('phone')){
+            $companies = $companies->where('phone','like','%'.$request->phone.'%');
+        }
+
+        return $companies->get();
+
+    }
+
 }
 
 ?>

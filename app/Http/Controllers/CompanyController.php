@@ -164,13 +164,7 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
 
-        if($request->has('name')){
-            $companies = Company::with('key_personnels','contact_details');
-            $companies->where('name','like','%'.$request->name.'%');
-            $companies = $companies->get();
-        }else{
-            $companies = Company::with('key_personnels','contact_details')->get();
-        }
+        $companies = CompanyHelper::filter($request);
 
         return view('admin.companies.dashboard', compact('companies'));
     

@@ -304,10 +304,12 @@
           <div class="company-card">
             <div class="row">
               @foreach ($companies as $company)
+
+              
               <div class="col-md-3 mb-2">
                 <div class="card">
                   <div class="company-card">
-                    <h4 class="sub-title mb-0"> {{ $company->name }} - </h4>
+                    <h4 class="sub-title mb-0"> {{ $company->name }} - {{$company->key_personnels->managing_director}} </h4>
                   </div>
 
                   <div class="card-body">
@@ -318,7 +320,7 @@
                             <i class='bx bxs-location-plus'></i>Address
                           </div>
                           <div>
-                            <a href="tel:+91-11-26160315">ff</a>
+                            <a href="tel:+91-11-26160315">{{$company->contact_details->company_address}}</a>
                           </div>
                         </li>
                         <li>
@@ -326,7 +328,7 @@
                             <i class="fa fa-phone"></i>Phone
                           </div>
                           <div>
-                            <a href="tel:+91-11-26160315">+91-11-26160315</a>
+                            <a href="tel:+91-11-26160315">{{$company->contact_details->phone}}</a>
                           </div>
                         </li>
                         <li>
@@ -334,7 +336,7 @@
                             <i class="fa fa-fax"></i>Fax
                           </div>
                           <span>
-                            <a href="fax:+91-11-26160317">+91-11-26160317</a>
+                            <a href="fax:+91-11-26160317">{{$company->contact_details->fax}}</a>
                           </span>
                         </li>
                         <li>
@@ -342,7 +344,7 @@
                             <i class="fa fa-envelope"></i>E-mail
                           </div>
                           <div>
-                            <a href="mail-to:acma@acma.in">acma@acma.in</a>
+                            <a href="mail-to:acma@acma.in">{{$company->contact_details->email}}</a>
                           </div>
                         </li>
                         <li>
@@ -350,7 +352,7 @@
                             <i class="fa fa-globe"></i>Website
                           </div>
                           <div>
-                            <a href="http://www.acma.in">www.acma.in</a>
+                            <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
                           </div>
                         </li>
                       </ul>

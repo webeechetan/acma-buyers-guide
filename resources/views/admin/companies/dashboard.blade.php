@@ -60,7 +60,7 @@
                   <div class="dropdown-divider"></div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="pages-profile-user.html">
+                  <a class="dropdown-item" href="">
                     <i class='bx bx-user-plus me-2'></i>
                     <span class="align-middle">Account Details List</span>
                   </a>
@@ -124,7 +124,7 @@
                     <div class="dropdown-divider"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="pages-profile-user.html">
+                    <a class="dropdown-item" href="{{ route('company.fillUpDetails') }}">
                       <i class='bx bx-user-plus me-2'></i>
                       <span class="align-middle">Account Details List</span>
                     </a>
@@ -207,43 +207,43 @@
                                     <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#" id="company-option">Company</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Location</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Region</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Products</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Trade Mark</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Sales Turnover</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Export Turnover</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">No. of Employees</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Quality System Standard</a>
-                                    </li>
-                                    <li>
+                                    </li >
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Domestic Customer</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">international Customer</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Overseas Aftermarket</a>
                                     </li>
-                                    <li>
+                                    <li data-bs-toggle="modal" data-bs-target="#defaultModal">
                                       <a href="#">Foreign Collaboration</a>
                                     </li>
-                              <!-- Add more options here -->
+                                      <!-- Add more options here -->
                                  </ul>
                               </div>
                             </div>
@@ -286,446 +286,94 @@
               </div>
             </div>
             <!--- Company Card --->
-            <div class="company-card">
-              <div class="row">
-                <div class="col-md-3 mb-2">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                            <i class='bx bxs-location-plus' ></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-2">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                            <i class='bx bxs-location-plus' ></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-2">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                            <i class='bx bxs-location-plus'></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-2">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                            <i class='bx bxs-location-plus'></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-2">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                            <i class='bx bxs-location-plus'></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                        <li>
-                            <div>
-                            <i class='bx bxs-location-plus'></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                            <i class='bx bxs-location-plus'></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>PHONE
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>FAX
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="company-card">
-                      <h4 class="sub-title mb-0">Webeesocial</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="information-list">
-                        <ul>
-                          <li>
-                            <div>
-                            <i class='bx bxs-location-plus'></i>Address
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">Perl, new Delhi</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-phone"></i>Phone
-                            </div>
-                            <div>
-                              <a href="tel:+91-11-26160315">+91-11-26160315</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-fax"></i>Fax
-                            </div>
-                            <span>
-                              <a href="fax:+91-11-26160317">+91-11-26160317</a>
-                            </span>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-envelope"></i>E-mail
-                            </div>
-                            <div>
-                              <a href="mail-to:acma@acma.in">acma@acma.in</a>
-                            </div>
-                          </li>
-                          <li>
-                            <div>
-                              <i class="fa fa-globe"></i>Website
-                            </div>
-                            <div>
-                              <a href="http://www.acma.in">www.acma.in</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+
+            @foreach ($company_contact_details as $company_contact_detail)
+
              
-              </div>
-              <div class="row">
-                <div class="col-md-12 text-center mt-2">
-                  <button class="btn btn-primary" class="download-button">Download Pdf</button>
+
+                <div class="company-card">
+                  <div class="row">
+                    <div class="col-md-3 mb-2">
+                      <div class="card">
+                        <div class="company-card">
+                          <h4 class="sub-title mb-0"> {{ $company_contact_detail->company_name }} {{ $company_key_personnel->managing_director }}</h4>
+                        </div>
+                        <div class="card-body">
+                          <div class="information-list">
+                            <ul>
+                              <li>
+                                <div>
+                                <i class='bx bxs-location-plus' ></i>Address
+                                </div>
+                                <div>
+                                  <a href="tel:+91-11-26160315">Perl, new Delhi</a>
+                                </div>
+                              </li>
+                              <li>
+                                <div>
+                                  <i class="fa fa-phone"></i>Phone
+                                </div>
+                                <div>
+                                  <a href="tel:+91-11-26160315">+91-11-26160315</a>
+                                </div>
+                              </li>
+                              <li>
+                                <div>
+                                  <i class="fa fa-fax"></i>Fax
+                                </div>
+                                <span>
+                                  <a href="fax:+91-11-26160317">+91-11-26160317</a>
+                                </span>
+                              </li>
+                              <li>
+                                <div>
+                                  <i class="fa fa-envelope"></i>E-mail
+                                </div>
+                                <div>
+                                  <a href="mail-to:acma@acma.in">acma@acma.in</a>
+                                </div>
+                              </li>
+                              <li>
+                                <div>
+                                  <i class="fa fa-globe"></i>Website
+                                </div>
+                                <div>
+                                  <a href="http://www.acma.in">www.acma.in</a>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>            
+                  </div>
+
                 </div>
-              </div>
-            </div>
+                @endforeach
+              
+                    
+                  <div class="row">
+                    <div class="col-md-12 text-center mt-2">
+                      <button class="btn btn-primary" class="download-button">Download Pdf</button>
+                    </div>
+                  </div>
+              
+
+             
+           
             <!--- Multiple select --->
              
           </div>
         </div>
       </div>
     </section>
+
+
+
+
+
+    
     <!--- Footer ---->
     <footer class="sec-space-ft">
       <div class="container-xxl">

@@ -11,4 +11,8 @@ class CompanyContactDetail extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    public function contact_details(){
+        return $this->belongsTo(Company::class,'company_id');
+    }
+
 }

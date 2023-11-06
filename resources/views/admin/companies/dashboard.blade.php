@@ -287,8 +287,7 @@
             </div>
             <!--- Company Card --->
 
-
-            @foreach ($company_contact_details as $company_contact_detail)
+            @foreach ($companies as $company)
 
              
 
@@ -297,7 +296,7 @@
                     <div class="col-md-3 mb-2">
                       <div class="card">
                         <div class="company-card">
-                          <h4 class="sub-title mb-0"> {{ $company_contact_detail->company_name }} {{ $company_key_personnel->managing_director }}</h4>
+                          <h4 class="sub-title mb-0"> {{ $company->name }} - {{ $company->key_personnels->managing_director }}</h4>
                         </div>
                         <div class="card-body">
                           <div class="information-list">

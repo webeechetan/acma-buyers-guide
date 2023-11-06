@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\CompanyKeyPersonnel;
 
 class Company extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    public function key_personnels(){
+        return $this->hasOne(CompanyKeyPersonnel::class);
+    }
 }

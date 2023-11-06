@@ -195,15 +195,11 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
     
-
-        $company_contact_details = CompanyContactDetail::all();
-        $company_key_personnels = CompanyKeyPersonnel::all();
-        $company_product_details = CompanyProductDetails::all();
-        $company_foreign_collaboration = CompanyForeignCollaboration::all();
+        $companies = Company::with('key_personnels')->get();
 
       
         
-        return view('admin.companies.dashboard', compact('company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
+        return view('admin.companies.dashboard', compact('companies'));
     
     }
 

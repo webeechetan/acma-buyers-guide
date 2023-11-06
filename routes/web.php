@@ -50,7 +50,7 @@ Route::post('/company/login', [CompanyController::class,'authenticate'])->name('
 Route::get('/company/fill-up-details', [CompanyController::class,'fillUpDetails'])->name('company.fillUpDetails');
 Route::post('/company/fill-up-details', [CompanyController::class,'fillUpDetailsStore'])->name('company.fillUpDetailsStore');
 
-Route::get('/company/dashboard', [CompanyController::class,'dashboard'])->name('company.dashboard');
+Route::get('/company/dashboard/{filter?}', [CompanyController::class,'dashboard'])->name('company.dashboard');
 Route::get('/company/logout', [CompanyController::class,'logout'])->name('company.logout');
 
 /************* payments Routes ****************/

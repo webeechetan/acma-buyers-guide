@@ -67,7 +67,6 @@ class PaymentController extends Controller
 
     public function subscription_payment() 
     {
-
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
       
         return view('website.payments.payment-form', compact('company_contact_details'));

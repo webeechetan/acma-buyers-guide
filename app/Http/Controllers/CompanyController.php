@@ -12,6 +12,7 @@ use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
+use App\Helpers\CompanyHelper;
 
 class CompanyController extends Controller
 {
@@ -51,37 +52,7 @@ class CompanyController extends Controller
     }
 
     public function fillUpDetails(Request $request){
-
-        $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
-        $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
-        $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
-        
-        $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
-
-        if(!$company_contact_details){
-            $company_contact_detail = new CompanyContactDetail();
-            $company_contact_detail->company_id = Auth::guard('company')->user()->id;
-            $company_contact_detail->save();
-        }
-
-        if(!$company_key_personnels){
-            $company_key_personnel = new CompanyKeyPersonnel();
-            $company_key_personnel->company_id = Auth::guard('company')->user()->id;
-            $company_key_personnel->save();
-        }
-
-        if(!$company_product_details){
-            $company_product_detail = new CompanyProductDetails();
-            $company_product_detail->company_id = Auth::guard('company')->user()->id;
-            $company_product_detail->save();
-        }
-
-        if(!$company_foreign_collaboration){
-            $company_foreign_collaboration = new CompanyForeignCollaboration();
-            $company_foreign_collaboration->company_id = Auth::guard('company')->user()->id;
-            $company_foreign_collaboration->save();
-        }
-
+        CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
@@ -101,25 +72,23 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, CompanyHelper $companyHelper)
     {
+
         $request->validate([
             'company_name' => 'required',
             'email' => 'required|email|unique:companies',
             'password' => 'required|min:6',
         ]);
         
-        
-
-
-
         $company = new Company();
         $company->name = $request->company_name;
         $company->email = $request->email;
         $company->password = Hash::make($request->password);
 
         if ($company->save()) {
-            $this->alert('Success', 'Company Registered Successfully' , 'success');
+            $companyHelper->generateCompanyDataAsNull($company->id);
+            Auth::guard('company')->login($company);
             return redirect()->route('company.payments');
         }
 
@@ -194,9 +163,15 @@ class CompanyController extends Controller
     }
 
     public function dashboard(Request $request) {
-    
-        $companies = Company::with('key_personnels','contact_details')->get();
-       
+
+        if($request->has('name')){
+            $companies = Company::with('key_personnels','contact_details');
+            $companies->where('name','like','%'.$request->name.'%');
+            $companies = $companies->get();
+        }else{
+            $companies = Company::with('key_personnels','contact_details')->get();
+        }
+
         return view('admin.companies.dashboard', compact('companies'));
     
     }

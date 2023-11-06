@@ -1422,7 +1422,7 @@
 
       toastr.success('Form submitted successfully!', 'Success')
     // window.location.href = "{{ route('company.dashboard') }}";
-    window.location.href = "{{ route('company.payments') }}";
+    window.location.href = "{{ route('company.dashboard') }}";
     
    });
 

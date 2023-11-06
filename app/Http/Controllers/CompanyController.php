@@ -30,7 +30,7 @@ class CompanyController extends Controller
 
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->route('company.fillUpDetails');
+            return redirect()->route('company.dashboard');
         }
 
         $this->alert('Error', 'Invalid Details' , 'danger');
@@ -193,9 +193,17 @@ class CompanyController extends Controller
         
     }
 
-    public function dashboard() {
+    public function dashboard(Request $request) {
     
-        return view('admin.companies.dashboard');
+
+        $company_contact_details = CompanyContactDetail::all();
+        $company_key_personnels = CompanyKeyPersonnel::all();
+        $company_product_details = CompanyProductDetails::all();
+        $company_foreign_collaboration = CompanyForeignCollaboration::all();
+
+      
+        
+        return view('admin.companies.dashboard', compact('company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
     
     }
 

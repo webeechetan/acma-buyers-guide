@@ -74,7 +74,8 @@
                       </ul>
                     </div>
                     <div class="tab-content">
-                      <form id="login" class="tab-pane active signup" action="{{ route('company.authenticate') }}" method="POST"> @csrf 
+                      <form id="login" class="tab-pane active signup" action="{{ route('company.authenticate') }}" method="POST"> 
+                        @csrf 
                         <div class="mb-3">
                           <label for="email" class="form-label">Email </label>
                           <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>

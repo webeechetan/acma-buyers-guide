@@ -6,6 +6,7 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CompanyContactDetail;
+use App\Models\Company;
 
 class PaymentController extends Controller
 {
@@ -67,8 +68,10 @@ class PaymentController extends Controller
 
     public function subscription_payment() 
     {
-        $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
-      
+        //$company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
+
+        $company_contact_details = Company::where('id',Auth::guard('company')->user()->id)->first();
+
         return view('website.payments.payment-form', compact('company_contact_details'));
     }
 }

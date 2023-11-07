@@ -42,7 +42,7 @@
 
       {{-- Members --}}
       <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link ">
+        <a href="{{ route('admin.members')}}" class="menu-link ">
           <i class="menu-icon tf-icons bx bx-user"></i>
           <div class="text-truncate" data-i18n="Members">Members</div>
         </a>

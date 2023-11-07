@@ -37,12 +37,15 @@ Route::post('/admin/login', [AuthController::class,'authenticate'])->name('admin
 Route::post('/admin/login', [AuthController::class,'authenticate'])->name('admin.authenticate');
 
 
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+   
+    
 Route::get('/dashboard', function () { 
     return view('admin.dashboard');
     })->name('admin.dashboard');
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-   
+
+
 
    
     Route::get('/companies', [CompanyController::class,'index'])->name('admin.companies');

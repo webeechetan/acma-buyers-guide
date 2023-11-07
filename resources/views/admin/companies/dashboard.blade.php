@@ -237,31 +237,21 @@
                               <li  class="filter-name" data-filter="product">
                                 <a href="#">Products</a>
                               </li>
-                              <li  >
+                              <li class="filter-name" data-filter="trademark" >
                                 <a href="#">Trade Mark</a>
                               </li>
-                              <li  >
+                              <li class="filter-name" data-filter="salesTurnover" >
                                 <a href="#">Sales Turnover</a>
                               </li>
-                              <li  >
+                             
+                              <li class="filter-name" data-filter="exportTurnover" >
                                 <a href="#">Export Turnover</a>
                               </li>
-                              <li  >
-                                <a href="#">No. of Employees</a>
-                              </li>
-                              <li  >
-                                <a href="#">Quality System Standard</a>
-                              </li>
-                              <li  >
-                                <a href="#">Domestic Customer</a>
-                              </li>
-                              <li  >
-                                <a href="#">international Customer</a>
-                              </li>
-                              <li  >
+                              
+                              <li class="filter-name" data-filter="OverseasAftermarket" >
                                 <a href="#">Overseas Aftermarket</a>
                               </li>
-                              <li  >
+                              <li class="filter-name" data-filter="ForeignCollaboration" >
                                 <a href="#">Foreign Collaboration</a>
                               </li>
                               <!-- Add more options here -->
@@ -281,7 +271,7 @@
                           <div class="modal-body">
                             <div>
                               <form action="" method="GET">
-                                <label for="select2Basic" class="form-label">Company Name</label>
+                                <label for="select2Basic" class="form-label filter_label_name">Company Name</label>
                                 <input type="text" name="name" placeholder="Search By Company Name"
                                   class="form-control advance-filter-input" data-allow-clear="true" />
                                 <div class="mt-3">
@@ -458,6 +448,7 @@
         // show advance filter modal
         $("#advance-filter-modal").modal('show');
         $(".advance-filter-input").attr('name', filter_name);
+        $(".filter_label_name").html(filter_name);
         $(".advance-filter-input").attr('placeholder', 'Search By '+filter_name);
 
       });

@@ -89,6 +89,8 @@ class CompanyController extends Controller
         if ($company->save()) {
             $companyHelper->generateCompanyDataAsNull($company->id);
             Auth::guard('company')->login($company);
+
+            $this->alert('Success', 'Registration Successful' , 'success');
             return redirect()->route('company.payments');
         }
 
@@ -132,10 +134,7 @@ class CompanyController extends Controller
 
         $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
         $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
-
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
-      //  $company_fproduct_detail = CompanyFproductDetails::where('company_id',$company_id)->first();
-        
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
         

@@ -67,7 +67,7 @@
                          <p class="text-center">Proceed to payments for subscribe</p>
                           <div class="company-user-detail">
                               <div class="user-detail">
-                                  <p>Company Name:- {{ $company_contact_details->company_name }}</p>   
+                                  <p>Company Name:- {{ $company_contact_details->name }}</p>   
                               </div>
                               <div class="user-detail">
                                   <p>Phone No:- {{ $company_contact_details->phone }} </p>                                    

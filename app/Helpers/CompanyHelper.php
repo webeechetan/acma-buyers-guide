@@ -39,7 +39,7 @@ class CompanyHelper {
 
     public static function filter($request){
 
-        $companies = Company::with('key_personnels','contact_details');
+        $companies = Company::with('key_personnels','contact_details','product_details');
 
         $filter = '';
 
@@ -55,8 +55,88 @@ class CompanyHelper {
             $companies = $companies->where('phone','like','%'.$request->phone.'%');
         }
 
+        if ($request->has('salesTurnover')) {
+            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+                $query->where('sales_turnover', 'like', '%' . $request->salesTurnover . '%');
+            });
+        }
+
+        if ($request->has('location')) {
+            $companies = $companies->whereHas('contact_details', function ($query) use ($request) {
+                $query->where('company_address', 'like', '%' . $request->location . '%');
+            });
+        }
+
+        if ($request->has('region')) {
+            $companies = $companies->whereHas('key_personnels', function ($query) use ($request) {
+                $query->where('region', 'like', '%' . $request->region . '%');
+            });
+        }
+
+        if ($request->has('product')) {
+            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+                $query->where('products_manufactured', 'like', '%' . $request->region . '%');
+            });
+        }
+
+        if ($request->has('product')) {
+            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+                $query->where('products_manufactured', 'like', '%' . $request->product . '%')
+                      ->orWhere('product2', 'like', '%' . $request->product . '%')
+                      ->orWhere('product3', 'like', '%' . $request->product . '%')
+                      ->orWhere('product4', 'like', '%' . $request->product . '%');
+            });
+        }
+
+        if ($request->has('trademark')) {
+            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+                $query->where('trademark', 'like', '%' . $request->trademark . '%');
+            });
+        }
+
+        if ($request->has('exportTurnover')) {
+            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+                $query->where('export_turn_02_03', 'like', '%' . $request->exportTurnover . '%');
+            });
+        }
+
+        if ($request->has('salesTurnover')) {
+            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+                $query->where('sales_turnover', 'like', '%' . $request->salesTurnover . '%');
+            });
+        }
+
+        if ($request->has('ForeignCollaboration')) {
+            $companies = $companies->whereHas('foreign_collaboration', function ($query) use ($request) {
+                $query->where('f_collab1', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab2', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab3', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab4', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab4', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab5', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab6', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab7', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab8', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab9', 'like', '%' . $request->ForeignCollaboration . '%')
+                      ->orWhere('f_collab10', 'like', '%' . $request->ForeignCollaboration . '%');
+            });
+        }
+
+        if ($request->has('OverseasAftermarket')) {
+            $companies = $companies->whereHas('contact_details', function ($query) use ($request) {
+                $query->where('overseas_plant_1', 'like', '%' . $request->OverseasAftermarket . '%')
+                    ->orWhere('overseas_plant_address', 'like', '%' . $request->OverseasAftermarket . '%')
+                    ->orWhere('overseas_plant_2', 'like', '%' . $request->OverseasAftermarket . '%')
+                    ->orWhere('overseas_plant_3', 'like', '%' . $request->OverseasAftermarket . '%');
+            });
+        }
+        
+        
+        
+
         return $companies->get();
 
+        
     }
 
 }

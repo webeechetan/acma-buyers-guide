@@ -19,7 +19,7 @@
     <ul class="menu-inner py-1">
       <!-- Dashboards -->
       <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link">
+        <a href="{{ route('admin.dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
         </a>
@@ -27,7 +27,7 @@
 
       <!-- Subscriptions -->
       <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link ">
+        <a href="{{ route('admin.subscription') }}" class="menu-link ">
           <i class='menu-icon tf-icons bx bx-purchase-tag-alt'></i>
           <div class="text-truncate" data-i18n="Subscriptions">Subscriptions</div>
         </a>
@@ -49,7 +49,7 @@
       </li>
       {{-- Payments --}}
       <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link ">
+        <a href="{{ route('admin.payments') }}" class="menu-link ">
           <i class="menu-icon tf-icons bx bx-dollar"></i>
           <div class="text-truncate" data-i18n="Payments">Payments</div>
         </a>

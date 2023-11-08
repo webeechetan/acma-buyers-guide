@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\SubscriptionController;
+use App\Http\Controllers\Admin\AdminPaymentController;
+
+use App\Models\Admin\Member;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
@@ -10,6 +16,8 @@ use App\Http\Controllers\PaymentsPlanController;
 use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\CCAvenueController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,11 +55,23 @@ Route::get('/dashboard', function () {
 
 
 
+    
+
+    Route::get('/members', [MemberController::class, 'index'])->name('admin.members');
+    
+    Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');
+
+    Route::get('/payments', [AdminPaymentController::class, 'index'])->name('admin.payments');
+
+
    
     Route::get('/companies', [CompanyController::class,'index'])->name('admin.companies');
     Route::get('/companies-data', [CompanyController::class,'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class,'logout'])->name('admin.logout');
+
+    
 });
+
 
 /************* Company Routes ****************/
 

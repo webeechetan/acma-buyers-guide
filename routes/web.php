@@ -74,3 +74,5 @@ Route::get('/company/payments', [PaymentController::class, 'subscription_payment
 
 Route::post('/company/paymentRequest', [CCAvenueController::class, 'index'])->name('payment.request');
 
+/********** Admin Payments *******/
+Route::post('/company/paymentRequest', [adminPaymentController::class, 'index'])->name('admin.payment');

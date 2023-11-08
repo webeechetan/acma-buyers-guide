@@ -1023,3 +1023,35 @@ footer {
 .light-style .select2-dropdown {
   z-index: 10001;
 }
+/*---- Admin Panel Styles ---*/
+.bg-menu-theme{
+  background-color: var(--primary) !important;
+}
+.menu-item  .menu-link{
+  color: #fff;
+}
+.app-brand .layout-menu-toggle{
+  background-color: var(--primary) !important;
+}
+.dt-button{
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  color: #fff;
+  border-radius: .375rem;
+  padding: 0.35rem;
+}
+.dataTable thead{
+  background-color: var(--primary);
+}
+.table:not(.table-dark) th {
+  color: #fff !important;
+}
+.page-item.active .page-link{
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+}
+.page-item.active .page-link:hover{
+  background-color: var(--secondary) !important;
+  box-shadow: none;
+}

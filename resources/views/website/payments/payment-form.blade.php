@@ -60,7 +60,7 @@
             <div class="subscribe-form">
                 <div class="subscribe-form-wrapper">
                     <div class="subscribe-form-border">
-                      <form action="{{ route('payment.request') }}" method="POST" name="form_subscription_payment">  
+                      <form action="{{ route('payment.makepayment') }}" method="post" name="form_subscription_payment">  
                         @csrf 
                         <div class="subscribe-plan">
                          <h2 class="title text-center">Subscribe Plan</h2>
@@ -81,6 +81,7 @@
                           <div class="payment-check"><span class="bx bx-check"></span></div>
                           <div>Rs 600 / 6 months </div>
                         </div>
+                        <input type="hidden" name="amount" value="600" />
                         <button class="btn btn-primary d-grid w-100" type="submit">Proceed to pay</button>
                       </form>
                     </div>

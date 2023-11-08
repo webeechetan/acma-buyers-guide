@@ -12,7 +12,7 @@ class CCAvenueController extends Controller
      */
     public function index()
     {
-        return View('website.ccavenue.ccavRequestHandler');
+        //return View('website.ccavenue.ccavRequestHandler');
     }
 
     /**

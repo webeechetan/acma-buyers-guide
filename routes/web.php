@@ -53,18 +53,9 @@ Route::get('/dashboard', function () {
     })->name('admin.dashboard');
 
 
-
-
-    
-
-    Route::get('/members', [MemberController::class, 'index'])->name('admin.members');
-    
+    Route::get('/members', [MemberController::class, 'index'])->name('admin.members');    
     Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');
-
     Route::get('/payments', [AdminPaymentController::class, 'index'])->name('admin.payments');
-
-
-   
     Route::get('/companies', [CompanyController::class,'index'])->name('admin.companies');
     Route::get('/companies-data', [CompanyController::class,'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class,'logout'])->name('admin.logout');
@@ -92,5 +83,6 @@ Route::get('/company/logout', [CompanyController::class,'logout'])->name('compan
 Route::get('/company/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
 
 
-Route::post('/company/paymentRequest', [CCAvenueController::class, 'index'])->name('payment.request');
+//Route::post('/company/paymentRequest', [CCAvenueController::class, 'index'])->name('payment.request');
 
+Route::post('/company/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');

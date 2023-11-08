@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\SubscriptionController;
+use App\Http\Controllers\Admin\AdminPaymentController;
+
 use App\Models\Admin\Member;
 
 use App\Models\User;
@@ -55,7 +58,10 @@ Route::get('/dashboard', function () {
     
 
     Route::get('/members', [MemberController::class, 'index'])->name('admin.members');
+    
+    Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');
 
+    Route::get('/payments', [AdminPaymentController::class, 'index'])->name('admin.payments');
 
 
    

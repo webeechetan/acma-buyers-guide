@@ -9,7 +9,7 @@ use App\Models\CompanyContactDetail;
 use App\Models\Company;
 
 
-use App\ccavenue;
+use App\Ccavenue\ccavRequestHandler;
 
 // use App\ccavenue\ccavRequestHandler;
 // use App\ccavenue\ccavResponseHandler;
@@ -84,11 +84,7 @@ class PaymentController extends Controller
 
     public function makePayment( Request $request)
     {
-        
-        $paymentData = $request->all();
-
-        dd($paymentData);
-
-        dd('payment.listing');
+        $cc_request = new ccavRequestHandler();
+        $cc_request->init($request->all()); 
     }
 }

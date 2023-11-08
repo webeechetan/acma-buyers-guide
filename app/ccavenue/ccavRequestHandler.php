@@ -1,3 +1,25 @@
+<?php
+namespace App\Ccavenue;
+
+use App\Ccavenue\Crypto;
+
+class ccavRequestHandler{
+
+	public function __construct()
+	{
+
+	}
+
+	public function init($request){
+		$_POST = $request;
+	}
+
+}
+
+$crypto = new Crypto();
+?>
+
+
 <html>
 <head>
 <title> Custom Form Kit </title>
@@ -5,7 +27,6 @@
 <body>
 <center>
 
-<?php include('Crypto.php')?>
 <?php 
 
 	error_reporting(0);
@@ -18,7 +39,7 @@
 		$merchant_data.=$key.'='.urlencode($value).'&';
 	}
 
-	$encrypted_data=encrypt($merchant_data,$working_key); // Method for encrypting the data.
+	$encrypted_data=$crypto->encrypt($merchant_data,$working_key); // Method for encrypting the data.
 
 ?>
 <form method="post" name="redirect" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction"> 
@@ -31,4 +52,5 @@ echo "<input type=hidden name=access_code value=$access_code>";
 <script language='javascript'>document.redirect.submit();</script>
 </body>
 </html>
+
 

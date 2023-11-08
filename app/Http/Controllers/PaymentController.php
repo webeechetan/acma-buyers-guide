@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\CompanyContactDetail;
 use App\Models\Company;
 
+
+use App\ccavenue;
+
+// use App\ccavenue\ccavRequestHandler;
+// use App\ccavenue\ccavResponseHandler;
+// use App\ccavenue\Crypto;
+
 class PaymentController extends Controller
 {
     /**
@@ -15,7 +22,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -68,10 +75,20 @@ class PaymentController extends Controller
 
     public function subscription_payment() 
     {
-        //$company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
-
+       
         $company_contact_details = Company::where('id',Auth::guard('company')->user()->id)->first();
-
         return view('website.payments.payment-form', compact('company_contact_details'));
+    }
+
+
+
+    public function makePayment( Request $request)
+    {
+        
+        $paymentData = $request->all();
+
+        dd($paymentData);
+
+        dd('payment.listing');
     }
 }

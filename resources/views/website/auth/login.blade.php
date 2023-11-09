@@ -34,7 +34,7 @@
   <body>
     <!-- Content -->
     <!--- Header --->
-    <div class="container-xxl subscribe">
+    <div class="subscribe">
       <div class="authentication-wrapper authentication-basic">
         <div class="authentication-inner subscribe-box">
           <!-- Register -->

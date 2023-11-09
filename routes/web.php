@@ -92,7 +92,7 @@ Route::get('/company/logout', [CompanyController::class,'logout'])->name('compan
 Route::get('/company/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
 
 
-Route::post('/company/paymentRequest', [CCAvenueController::class, 'index'])->name('payment.request');
+// Route::post('/company/paymentRequest', [CCAvenueController::class, 'index'])->name('payment.request');
 
 /********** Admin Payments *******/
 Route::post('/company/paymentRequest', [adminPaymentController::class, 'index'])->name('admin.payment');

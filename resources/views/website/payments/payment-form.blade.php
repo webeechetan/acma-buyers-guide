@@ -32,7 +32,7 @@
     <script src="{{ asset('admin/') }}/assets/js/config.js"></script>
 </head>
 <body>
-  <div class="container-xxl subscribe">
+  <div class="subscribe">
      <div class="authentication-wrapper authentication-basic">
         <div class="authentication-inner subscribe-box">
           <!-- Pyament form -->

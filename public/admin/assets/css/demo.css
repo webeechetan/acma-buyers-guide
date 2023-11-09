@@ -499,7 +499,7 @@ div.subscribe-box {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   padding: 0 80px;
   height: 100%;
 }
@@ -716,6 +716,10 @@ div.subscribe-box {
 /*--- Footer ---*/
 footer {
   background-color: var(--primary);
+  position: fixed;
+  height: 150px;
+  bottom: 0;
+  width: 100%;
 }
 
 .contact-list {
@@ -744,6 +748,12 @@ footer {
 
 .footer-copyright {
   background-color: var(--copy-color);
+  position: fixed;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+
+
 }
 
 /*---- Company Dashboard ----*/
@@ -846,37 +856,29 @@ footer {
   color: #fff;
 }
 
-.filter-list {
+.modal-body.nav-pills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
 }
-
-.filter-list li {
+.filter-content{
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+  border-radius: 0px;
+}
+.filter-content .tab-pane{
+  padding-top: 30px;
+}
+.modal-body .nav-pills li .nav-link{
   border: 1px solid var(--primary);
   border-radius: 0.375rem;
-  padding: 12px 25px;
+  padding: 8px !important;
   transition: all ease 0.3s;
+  font-size: 11px;
+  font-weight: 500;
 }
-
-.filter-list li:hover {
-  background-color: var(--primary);
-
-}
-
-.filter-list li:hover a {
-  color: #fff;
-}
-
-.filter-list li a {
-  color: var(--text-color);
-  font-size: 16px;
-}
-
-.dashboard-banner {
-  background: url('../img/company/img-1.png') no-repeat center center;
-  min-height: 150px;
-  width: 100%;
+.nav-pills .nav-link.active{
+  background-color: var(--primary) !important;
 }
 
 /*---- Modal ---*/

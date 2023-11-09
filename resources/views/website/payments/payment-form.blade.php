@@ -60,7 +60,7 @@
             <div class="subscribe-form">
                 <div class="subscribe-form-wrapper">
                     <div class="subscribe-form-border">
-                      <form action="{{ route('payment.request') }}" method="POST" name="form_subscription_payment">  
+                      <form action="{{ route('payment.makepayment') }}" method="post" name="form_subscription_payment">  
                         @csrf 
                         <div class="subscribe-plan">
                          <h2 class="title text-center">Subscribe Plan</h2>
@@ -81,6 +81,14 @@
                           <div class="payment-check"><span class="bx bx-check"></span></div>
                           <div>Rs 600 / 6 months </div>
                         </div>
+                        <input type="hidden" name="amount" value="600" />
+                        <input type="hidden" name="currency" value="INR" />
+                        <input type="hidden" name="payment_for" value="subscription" />
+                        <input type="hidden" name="order_id" value="{{ rand(000000,999999) }}"/>
+                        <input type="hidden" name="redirect_url" value="{{ env('CCAVENUE_REDIRECT_URL') }}"/>
+                        <input type="hidden" name="cancel_url" value="{{ env('CCAVENUE_CANCEL_URL') }}"/>
+                        <input type="hidden" name="merchant_id" value="{{ env('CCAVENUE_MERCHANT_ID') }}"/>
+
                         <button class="btn btn-primary d-grid w-100" type="submit">Proceed to pay</button>
                       </form>
                     </div>
@@ -108,7 +116,7 @@
     <div class="container-xxl">
         <div class="row text-center text-md-start">
           <div class="col-md-6">
-            <p class="mb-2 mb-sm-0 text-white">© Copyright 2022 ACMA India, All Right Reserved.</p>
+            <p class="mb-2 mb-sm-0 text-white">© Copyright 2023 ACMA India, All Right Reserved.</p>
           </div>
           <div class="col-md-6 text-md-end">
             <p class="mb-0 text-white">Powered By <a href="https://www.webeesocial.com/" class="text-white">Webeesocial</a>

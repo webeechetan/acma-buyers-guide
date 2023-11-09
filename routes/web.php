@@ -86,45 +86,50 @@ Route::get('/company/payments', [PaymentController::class, 'subscription_payment
 
 Route::post('/company/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');
 
-Route::post('/payment-success', function (Request $request) {
 
-    // dd($request->all());
 
-    $crypto = new Crypto();
+Route::post('/payment-success', [PaymentController::class, 'payment_success'])->name('payment.success');
 
-    error_reporting(0);
+   
+// Route::post('/payment-success', function (Request $request) {
 
-    $workingKey = '6F36707D0668636B26E60F3992104416';        //Working Key should be provided here.
-    $encResponse = $request->encResp;           //This is the response sent by the CCAvenue Server
-    $rcvdString = $crypto->decrypt($encResponse, $workingKey);        //Crypto Decryption used as per the specified working key.
-    $order_status = "";
-    $decryptValues = explode('&', $rcvdString);
-    $dataSize = sizeof($decryptValues);
-    echo "<center>";
+//     // dd($request->all());
 
-    for ($i = 0; $i < $dataSize; $i++) {
-        $information = explode('=', $decryptValues[$i]);
-        if ($i == 3)    $order_status = $information[1];
-    }
+//     $crypto = new Crypto();
 
-    if ($order_status === "Success") {
-        echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
-    } else if ($order_status === "Aborted") {
-        echo "<br>Thank you for shopping with us.We will keep you posted regarding the status of your order through e-mail";
-    } else if ($order_status === "Failure") {
-        echo "<br>Thank you for shopping with us.However,the transaction has been declined.";
-    } else {
-        echo "<br>Security Error. Illegal access detected";
-    }
+//     error_reporting(0);
 
-    echo "<br><br>";
+//     $workingKey = '6F36707D0668636B26E60F3992104416';        //Working Key should be provided here.
+//     $encResponse = $request->encResp;           //This is the response sent by the CCAvenue Server
+//     $rcvdString = $crypto->decrypt($encResponse, $workingKey);        //Crypto Decryption used as per the specified working key.
+//     $order_status = "";
+//     $decryptValues = explode('&', $rcvdString);
+//     $dataSize = sizeof($decryptValues);
+//     echo "<center>";
 
-    echo "<table cellspacing=4 cellpadding=4>";
-    for ($i = 0; $i < $dataSize; $i++) {
-        $information = explode('=', $decryptValues[$i]);
-        echo '<tr><td>' . $information[0] . '</td><td>' . urldecode($information[1]) . '</td></tr>';
-    }
+//     for ($i = 0; $i < $dataSize; $i++) {
+//         $information = explode('=', $decryptValues[$i]);
+//         if ($i == 3)    $order_status = $information[1];
+//     }
 
-    echo "</table><br>";
-    echo "</center>";
-})->name('payment.success');
+//     if ($order_status === "Success") {
+//         echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
+//     } else if ($order_status === "Aborted") {
+//         echo "<br>Thank you for shopping with us.We will keep you posted regarding the status of your order through e-mail";
+//     } else if ($order_status === "Failure") {
+//         echo "<br>Thank you for shopping with us.However,the transaction has been declined.";
+//     } else {
+//         echo "<br>Security Error. Illegal access detected";
+//     }
+
+//     echo "<br><br>";
+
+//     echo "<table cellspacing=4 cellpadding=4>";
+//     for ($i = 0; $i < $dataSize; $i++) {
+//         $information = explode('=', $decryptValues[$i]);
+//         echo '<tr><td>' . $information[0] . '</td><td>' . urldecode($information[1]) . '</td></tr>';
+//     }
+
+//     echo "</table><br>";
+//     echo "</center>";
+// })->name('payment.success');

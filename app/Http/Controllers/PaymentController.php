@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\CompanyContactDetail;
 use App\Models\Company;
 
+use App\Ccavenue\Crypto;
 
 use App\Ccavenue\ccavRequestHandler;
 
@@ -86,5 +87,22 @@ class PaymentController extends Controller
     {
         $cc_request = new ccavRequestHandler();
         $cc_request->init($request->all()); 
+    }
+
+
+
+    public function payment_success( Request $request) 
+    {
+
+            $crypto = new Crypto();
+            $workingKey = '6F36707D0668636B26E60F3992104416';        //Working Key should be provided here.
+            $encResponse = $request->encResp;           //This is the response sent by the CCAvenue Server
+            $rcvdString = $crypto->decrypt($encResponse, $workingKey);        //Crypto Decryption used as per the specified working key.
+            $order_status = "";
+            $decryptValues = explode('&', $rcvdString);
+            $dataSize = sizeof($decryptValues);
+
+            return view('website.payments.payment-success-template', compact('workingKey', 'encResponse', 'rcvdString' , 'order_status', 'decryptValues','dataSize'));
+
     }
 }

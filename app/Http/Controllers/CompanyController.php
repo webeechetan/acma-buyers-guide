@@ -14,6 +14,8 @@ use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
 use App\Helpers\CompanyHelper;
 
+//use Illuminate\Support\Facades\Cookie;
+
 class CompanyController extends Controller
 {
 
@@ -24,6 +26,7 @@ class CompanyController extends Controller
 
     public function authenticate(Request $request)
     {
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
@@ -31,7 +34,23 @@ class CompanyController extends Controller
 
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
+
+            //setting cookies in client browser
+
+            
+            if (($request->remember) && !($request->remember)) {
+                
+                setcookie("email", $request->email, time() + 3600 * 24 * 7);
+               
+            } else {
+                setcookie("email", "", time() - 3600); 
+                
+            }
+            
             return redirect()->route('company.dashboard');
+
+            
+           
         }
 
         $this->alert('Error', 'Invalid Details' , 'danger');

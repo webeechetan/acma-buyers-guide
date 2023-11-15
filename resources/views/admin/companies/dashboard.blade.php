@@ -263,132 +263,22 @@
                             <div class="col-md-9">
                               <div class="tab-content">
                                 <div class="tab-pane container active" id="company">
-                                  <form action="" method="GET">
+                                  <form action="" method="POST">
                                     <label for="select2Basic" class="form-label filter_label_name text-center"><b>Company Name</b></label>
                                     <input type="text" name="name" placeholder="Search By Company Name"
                                       class="form-control advance-filter-input" data-allow-clear="true" />
                                    <div class="row">
+
+                                    @foreach($companies as $company)
                                       <div class="col-md-4">
                                         <div class="mt-4">
                                           <div class="form-check form-check-inline mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
-                                          </div>
-                                         
-                                        </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                        <div class="mt-4">
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
+                                            <input class="form-check-input" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}">
+                                            <label class="form-check-label" for="">{{ $company['name'] }}</label>
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="col-md-4">
-                                        <div class="mt-4">
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
-                                          </div>
-                                        </div>
-                                      </div>
+                                    @endforeach
                                    </div>
                                     <div class="mt-3">
                                       <button class="btn btn-primary btn-sm">Apply</button>

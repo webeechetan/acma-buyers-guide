@@ -1054,3 +1054,6 @@ footer {
   background-color: var(--secondary) !important;
   box-shadow: none;
 }
+.dropdown-menu-end[data-bs-popper]{
+  left: 0 !important;
+}

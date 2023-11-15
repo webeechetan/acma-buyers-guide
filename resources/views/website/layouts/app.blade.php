@@ -9,8 +9,7 @@
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <title>@yield('title')</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon"
-    href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="https://www.acma.in/img/favicon.ico" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com/">

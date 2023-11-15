@@ -12,7 +12,7 @@
   <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon"
-    href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+    href="https://www.acma.in/img/favicon.ico" />
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -179,7 +179,7 @@
 
     </section> -->
   <section class="sec-space">
-    <div class="container">
+    <div class="container-xxl">
       <div class="row">
         <!-- <div class="col-md-2">
             <div class="advertisement-one">
@@ -188,10 +188,10 @@
           </div> -->
         <div class="col-md-12">
           <!--- Search Filter ---->
-          <div class="card mb-2">
+          <div class="card mb-3">
             <div class="card-body">
               <div class="row">
-                <div class="col-md-3 mb-3 mb-md-0">
+                <!-- <div class="col-md-3 mb-3 mb-md-0">
                   <div class="custom_search_filter">
                     <form action="" method="GET">
                       <input type="text" class="form-control" id="search" name="search" placeholder="Quick Search"
@@ -201,13 +201,13 @@
                       </div>
                     </form>
                   </div>
-                </div>
-                <div class="col-md-6">
+                </div> -->
+                <div class="col-md-8">
                   <div>
-                    <h2 class="title mb-md-0 text-center">Highlighted Companies</h2>
+                    <h2 class="title mb-md-0">Highlighted Companies</h2>
                   </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                   <div class="custom_search_filter">
                     <form action="/" method="GET">
                       <input type="text" data-bs-toggle="modal" data-bs-target="#basicModal" class="form-control"
@@ -225,44 +225,358 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <ul class="filter-list">
-                              <li  class="filter-name" data-filter="name">
-                                <a href="#">Company</a>
-                              </li>
-                              <li  class="filter-name" data-filter="location">
-                                <a href="#">Location</a>
-                              </li>
-                              <li  class="filter-name" data-filter="region">
-                                <a href="#">Region</a>
-                              </li>
-                              <li  class="filter-name" data-filter="product">
-                                <a href="#">Products</a>
-                              </li>
-                              <li class="filter-name" data-filter="trademark" >
-                                <a href="#">Trade Mark</a>
-                              </li>
-                              <li class="filter-name" data-filter="salesTurnover" >
-                                <a href="#">Sales Turnover</a>
-                              </li>
-                             
-                              <li class="filter-name" data-filter="exportTurnover" >
-                                <a href="#">Export Turnover</a>
-                              </li>
-                              
-                              <li class="filter-name" data-filter="OverseasAftermarket" >
-                                <a href="#">Overseas Aftermarket</a>
-                              </li>
-                              <li class="filter-name" data-filter="ForeignCollaboration" >
-                                <a href="#">Foreign Collaboration</a>
-                              </li>
-                              <!-- Add more options here -->
-                            </ul>
+                           <div class="row">
+                            <div class="col-md-3">
+                                <ul class="nav nav-pills flex-column">
+                                  <li  class="filter-name nav-item mb-2" data-filter="name">
+                                    <a class="nav-link active" data-bs-toggle="pill" href="#company">Company</a>
+                                  </li>
+                                  <li  class="filter-name mb-2" data-filter="location">
+                                  <a class="nav-link" data-bs-toggle="pill" href="#location">Location</a>
+                                  </li>
+                                  <li  class="filter-name mb-2" data-filter="region">
+                                  <a class="nav-link" data-bs-toggle="pill" href="#region">Region</a>
+                                  </li>
+                                  <li  class="filter-name mb-2" data-filter="product">
+                                  <a class="nav-link" data-bs-toggle="pill" href="#product">Product</a>
+                                  </li>
+                                  <li class="filter-name mb-2" data-filter="trademark" >
+                                  <a class="nav-link" data-bs-toggle="pill" href="#trademark">Trademark</a>
+                                  </li>
+                                  <li class="filter-name mb-2" data-filter="salesTurnover" >
+                                  <a class="nav-link" data-bs-toggle="pill" href="#salesTurnover">Sales Turnover</a>
+                                  </li>
+                                
+                                  <li class="filter-name mb-2" data-filter="exportTurnover" >
+                                      <a class="nav-link" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
+                                  </li>
+                                  
+                                  <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
+                                    <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
+                                  </li>
+                                  <li class="filter-name mb-2" data-filter="ForeignCollaboration" >
+                                    <a class="nav-link" data-bs-toggle="pill" href="ForeignCollaboration">Foreign Collaboration</a> 
+                                  </li>
+                                  <!-- Add more options here -->
+                                </ul>
+                            </div>
+                            <div class="col-md-9">
+                              <div class="tab-content">
+                                <div class="tab-pane container active" id="company">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Company Name</b></label>
+                                    <input type="text" name="name" placeholder="Search By Company Name"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                   <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check form-check-inline mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
+                                          </div>
+                                         
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Webeesocial</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Acma</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">swiftInnovation</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Webeesocial</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                   </div>
+                                    <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="location">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Location Name</b></label>
+                                    <input type="text" name="name" placeholder="Search By Company Name"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">New Delhi</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Pune</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Bombay</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Thane</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">Kolkata</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Raipur</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Indore</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Grograms</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Basti</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Kanpur</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">Nagpur</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Boribali</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">New Delhi</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Pune</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Bombay</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Thane</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">Kolkata</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Raipur</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Indore</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Grograms</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Basti</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Kanpur</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">Nagpur</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Boribali</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">New Delhi</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Pune</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Bombay</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Thane</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">Kolkata</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Raipur</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Indore</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Grograms</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Basti</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Kanpur</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">Nagpur</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox6">Boribali</label>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="menu2">...</div>
+                              </div>
+                            </div>
+                           </div>
+                            
                           </div>
                         </div>
                       </div>
                     </div>
                     <!--- Advance Filter Form---->
-                    <div class="modal fade" id="advance-filter-modal" tabindex="-1" aria-hidden="true">
+                    <!-- <div class="modal fade" id="advance-filter-modal" tabindex="-1" aria-hidden="true">
                       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -284,7 +598,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -300,7 +614,7 @@
               <div class="col-md-3 mb-2">
                 <div class="card">
                   <div class="company-card">
-                    <h4 class="sub-title mb-0"> {{ $company->name }} - {{$company->key_personnels->managing_director}} </h4>
+                    <h4 class="sub-title mb-0 text-secondary"> {{ $company->name }} - {{$company->key_personnels->managing_director}} </h4>
                   </div>
 
                   <div class="card-body">
@@ -308,7 +622,7 @@
                       <ul>
                         <li>
                           <div>
-                            <i class='bx bxs-location-plus'></i>Address
+                          <i class="fa fa-map-marker" aria-hidden="true"></i>Address
                           </div>
                           <div>
                             <a href="tel:+91-11-26160315">{{$company->contact_details->company_address}}</a>
@@ -377,7 +691,7 @@
             <h4 class="mb-3 text-white">Contact Us</h4>
             <ul class="contact-list">
               <li>
-                <i class="fas fa-phone-alt"></i>
+                <i class="fa fa-phone" aria-hidden="true"></i>
                 <a href="tel:+91-11-26160315">+91-11-26160315</a>
               </li>
               <li>

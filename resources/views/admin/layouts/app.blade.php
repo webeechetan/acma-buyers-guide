@@ -9,8 +9,7 @@
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <title>@yield('title')</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon"
-    href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="https://www.acma.in/img/favicon.ico" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -36,6 +35,13 @@
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.css" />
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.css" />
+  <!---- DataTable css ---->
+  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-select-bs5/select.bootstrap5.css">
+  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
+  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5.css">
+  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5.css">
 
 
   <script src="{{ asset('admin/') }}/assets/vendor/js/helpers.js"></script>
@@ -82,6 +88,9 @@
   <script src="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.js"></script>
   <script src="{{ asset('admin/') }}/assets/vendor/js/menu.js"></script>
 
+
+ <!--- Vendor -->
+ <script src="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
   <!-- Main JS -->
   <script src="{{ asset('admin/') }}/assets/js/main.js"></script>
 
@@ -90,6 +99,7 @@
   <script src="{{ asset('admin/') }}/assets/js/dashboards-analytics.js"></script>
   <script src="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
+  <script src="{{ asset('admin/') }}/assets/js/tables-datatables-extensions.js"></script>
 
   @stack('scripts')
 

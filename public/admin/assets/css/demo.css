@@ -603,6 +603,7 @@ div.subscribe-box {
 
 .card {
   padding: 15px 20px;
+  border: 1px solid #eee;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -856,7 +857,7 @@ footer {
   color: #fff;
 }
 
-.modal-body.nav-pills {
+.modal-bod.nav-pills {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
@@ -874,7 +875,7 @@ footer {
   border-radius: 0.375rem;
   padding: 8px !important;
   transition: all ease 0.3s;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
 }
 .nav-pills .nav-link.active{
@@ -1026,14 +1027,10 @@ footer {
   z-index: 10001;
 }
 /*---- Admin Panel Styles ---*/
-.bg-menu-theme{
-  background-color: var(--primary) !important;
-}
-.menu-item  .menu-link{
-  color: #fff;
-}
-.app-brand .layout-menu-toggle{
-  background-color: var(--primary) !important;
+
+.bg-menu-theme .menu-inner>.menu-item.active>.menu-link{
+  color: #696cff;
+  background-color: rgba(105,108,255,.16) !important;
 }
 .dt-button{
   background-color: var(--primary);

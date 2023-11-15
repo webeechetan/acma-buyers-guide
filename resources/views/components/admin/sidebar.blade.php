@@ -2,7 +2,7 @@
     <div class="app-brand demo ">
       <a href="index.html" class="app-brand-link">
         <span class="app-brand-logo demo">
-            <img src="https://www.acma.in/images/logo.png" alt="Logo" height="40">
+            <img src="https://startup.acma.in/assets/images/logo.jpg" alt="Logo" height="40">
         </span>
         {{-- <span class="app-brand-text demo menu-text fw-bold ms-2">Acma</span> --}}
       </a>
@@ -18,7 +18,7 @@
     
     <ul class="menu-inner py-1">
       <!-- Dashboards -->
-      <li class="menu-item ">
+      <li class="menu-item active ">
         <a href="{{ route('admin.dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>

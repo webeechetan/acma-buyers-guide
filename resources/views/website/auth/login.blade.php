@@ -7,7 +7,7 @@
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="https://www.acma.in/img/favicon.ico" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -82,7 +82,7 @@
                           <x-validation-error name="email" />
                         </div>
                           <div class="mb-3 form-password-toggle">
-                            <label class="form-label" for="password">Password</label>
+                            <label class="form-label" for="password">Password</label>`
                             <div class="input-group input-group-merge">
                               <input type="password" id="password" class="form-control" name="password" value="" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
                               <span class="input-group-text cursor-pointer">
@@ -102,7 +102,7 @@
                         <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
                          @csrf
                           <div class="mb-3">
-                              <label for="name" class="form-label">Name </label>
+                              <label for="name" class="form-label"> Company Name </label>
                               <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
                               <x-validation-error name="name" />
                           </div>
@@ -120,9 +120,6 @@
                               <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                           </div>
                           <x-validation-error name="password" />
-                          </div>
-                          <div class="mb-3">
-                              <p class="terms">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Service</a>.</p>
                           </div>
                           <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>

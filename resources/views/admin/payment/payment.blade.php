@@ -5,5 +5,5 @@
 @section('content')
 
 
-<h5>Welcome to Payment page</h5>
+<h5>Welcome to Payment and  page</h5>
 @endsection

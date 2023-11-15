@@ -109,6 +109,7 @@
                 toast('{{ $toastHead }}','{{ $toastBody }}','{{ $toastType }}');
             });
         </script>
+    
     @endif
 </body>
 

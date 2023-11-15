@@ -210,14 +210,14 @@
                 <div class="col-md-4">
                   <div class="custom_search_filter">
                     <form action="/" method="GET">
-                      <input type="text" data-bs-toggle="modal" data-bs-target="#basicModal" class="form-control"
+                      <input type="text" data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="form-control"
                         id="filter_category" name="filter_category" placeholder="Filter By Category" value="">
                       <div class="custom_search_filter_inputMask">
                         <i class="bx bx-search"></i>
                       </div>
                     </form>
                     <!-- Modal -->
-                    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal fade" id="static"  data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -255,7 +255,7 @@
                                     <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
                                   </li>
                                   <li class="filter-name mb-2" data-filter="ForeignCollaboration" >
-                                    <a class="nav-link" data-bs-toggle="pill" href="ForeignCollaboration">Foreign Collaboration</a> 
+                                    <a class="nav-link" data-bs-toggle="pill" href="#ForeignCollaboration">Foreign Collaboration</a> 
                                   </li>
                                   <!-- Add more options here -->
                                 </ul>
@@ -566,7 +566,629 @@
                                     </div>
                                   </form>
                                 </div>
-                                <div class="tab-pane container fade" id="menu2">...</div>
+                                <div class="tab-pane container fade" id="region">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Region Name</b></label>
+                                    <input type="text" name="name" placeholder="Search By Company Name"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="product">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Products Name</b></label>
+                                    <input type="text" name="name" placeholder="Search By Products Name"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="trademark">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Trade Mark</b></label>
+                                    <input type="text" name="name" placeholder="Search By Products Name"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="salesTurnover">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Sales Turnover</b></label>
+                                    <input type="text" name="name" placeholder="Search By Products Name"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="exportTurnover">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Export Turnover</b></label>
+                                    <input type="text" name="name" placeholder="Search By Products Name"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="OverseasAftermarket">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Overseas Aftermarket</b></label>
+                                    <input type="text" name="name" placeholder="Search By overseas aftermarket"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="tab-pane container fade" id="ForeignCollaboration">
+                                  <form action="" method="GET">
+                                    <label for="select2Basic" class="form-label filter_label_name text-center"><b>Foreign Collaboration</b></label>
+                                    <input type="text" name="name" placeholder="Search By overseas aftermarket"
+                                      class="form-control advance-filter-input" data-allow-clear="true" />
+                                     <div class="row">
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div class="mt-4">
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">South</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Western</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
+                                          </div>
+                                          <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox5">North-West</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                     </div>
+                                      <div class="mt-3">
+                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                      <button class="btn btn-primary btn-sm">Reset</button>
+                                    </div>
+                                  </form>
+                                </div>
                               </div>
                             </div>
                            </div>

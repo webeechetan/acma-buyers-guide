@@ -16,9 +16,9 @@
   
     
     
-    <ul class="menu-inner py-1">
+    <ul class="menu-inner py-1 ps--active-y">
       <!-- Dashboards -->
-      <li class="menu-item active ">
+      <li class="menu-item active">
         <a href="{{ route('admin.dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
@@ -57,3 +57,11 @@
       
     </ul>
 </aside>
+<script>
+      $(document).ready(function() {
+        $('.menu-item').click(function() {
+            $('.menu-link').toggleClass('active');
+        });
+      });
+
+</script>

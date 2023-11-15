@@ -21,44 +21,39 @@
                 <thead>
                     <tr class="odd">
                     <th>id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Date</th>
-                    <th>Payment</th>
+                    <th>Company Name</th>
+                    <th>Payment Date</th>
+                    <th>PPayment Mode</th>
                     <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="even">
-                        <td>1</td>
+                        <td>#5089</td>
                         <td><div class="d-flex justify-content-start align-items-center user-name"><div class="avatar-wrapper"><div class="avatar me-2"><span class="avatar-initial rounded-circle bg-label-warning">Wbs</span></div></div><div class="d-flex flex-column"><span class="emp_name text-truncate">Webeesocial</span><small class="emp_post text-truncate text-muted">It</small></div></div></td>
-                        <td>admin@gmail.com</td>
                         <td>12/8/23</td>
-                        <td>Rs 600</td>
+                        <td>Online</td>
                         <td><span class="badge bg-label-warning"> Pending</span></td>
                     </tr>
                     <tr class="odd">
-                        <td>2</td>
+                        <td>#5080</td>
                         <td><div class="d-flex justify-content-start align-items-center user-name"><div class="avatar-wrapper"><div class="avatar me-2"><span class="avatar-initial rounded-circle bg-label-primary">RB</span></div></div><div class="d-flex flex-column"><span class="emp_name text-truncate">Refresh Botanical</span><small class="emp_post text-truncate text-muted">Ecommerce</small></div></div></td>
-                        <td>admin@gmail.com</td>
                         <td>1/8/23</td>
-                        <td>Rs 600</td>
+                        <td>Credit Card</td>
                         <td> <span class="badge bg-label-success">Successful</span></td>
                     </tr>
                     <tr class="even">
-                        <td>3</td>
+                        <td>#5081</td>
                         <td><div class="d-flex justify-content-start align-items-center user-name"><div class="avatar-wrapper"><div class="avatar me-2"><span class="avatar-initial rounded-circle bg-label-success">SW</span></div></div><div class="d-flex flex-column"><span class="emp_name text-truncate">swiftInnovation</span><small class="emp_post text-truncate text-muted">It Company</small></div></div></td>
-                        <td>admin@gmail.com</td>
                         <td>1/9/23</td>
-                        <td>Rs 600</td>
+                        <td>Upi</td>
                         <td> <span class="badge bg-label-danger">Rejected </span></td>
                     </tr>
                     <tr>
-                        <td>4</td>
+                        <td>#5067</td>
                         <td><div class="d-flex justify-content-start align-items-center user-name"><div class="avatar-wrapper"><div class="avatar me-2"><span class="avatar-initial rounded-circle bg-label-secondary">Ac</span></div></div><div class="d-flex flex-column"><span class="emp_name text-truncate">Acma</span><small class="emp_post text-truncate text-muted">It Company</small></div></div></td>
-                        <td>admin@gmail.com</td>
                         <td>1/9/23</td>
-                        <td>Rs 600</td>
+                        <td>RozaarPay</td>
                         <td><span class="badge bg-label-success">Successful</span></td>
                     </tr>
                 </tbody>

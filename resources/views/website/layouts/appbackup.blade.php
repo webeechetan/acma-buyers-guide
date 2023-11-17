@@ -45,10 +45,10 @@
 </head>
 
 <body>
-<div class="">
-   
+<div class="layout-wrapper layout-content-navbar  ">
+    <div class="layout-container">
       {{-- <x-admin.sidebar /> --}}
-      
+      <div class="layout-page">
        <x-website.header />
 
         <div class="content-wrapper">
@@ -58,8 +58,8 @@
             <x-website.footer />
           <div class="content-backdrop fade"></div>
         </div>
-      
-    
+      </div>
+    </div>
     <div class="layout-overlay layout-menu-toggle"></div>
     <div>
         <div class="bs-toast toast toast-placement-ex m-2 fade  top-0 end-0 hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">

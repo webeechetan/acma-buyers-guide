@@ -21,7 +21,10 @@ class CompanyDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))->setRowId('id');
+        return (new EloquentDataTable($query))->setRowId('id')
+            ->editColumn('name', function ($data) {
+                return strtolower($data->name);
+            });
     }
 
     /**
@@ -60,12 +63,13 @@ class CompanyDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
+            Column::make('name')
+            ->data('name', 'name'),
             Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at'),
-            Column::computed('Action')
-            
+            Column::computed('action')
+                ->defaultContent('<a href=""> <button class="btn btn-primary btn-sm">Delete</button></a>')
         ];
     }
 

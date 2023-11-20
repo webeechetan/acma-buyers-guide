@@ -116,6 +116,20 @@
             });
         </script>
     @endif
+<script>
+
+$(document).ready(function () {
+    $(document).on("click", ".menu-item", function () {
+        // Remove 'active' class from all menu items
+        $(".menu-item").removeClass("active");
+
+        // Add 'active' class to the clicked menu item
+        $(this).addClass("active");
+    });
+});
+
+</script>
+
 </body>
 
 </html>

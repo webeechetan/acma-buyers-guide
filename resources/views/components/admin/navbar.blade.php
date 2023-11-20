@@ -18,7 +18,7 @@
                 <img src="{{ asset('admin/') }}/assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
               </div>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end show" data-bs-popper="static">
+            <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="static">
               <li>
                 <a class="dropdown-item" href="pages-account-settings-account.html">
                   <div class="d-flex">
@@ -38,13 +38,13 @@
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="pages-profile-user.html">
+                <a class="dropdown-item" href="">
                   <i class="bx bx-user me-2"></i>
                   <span class="align-middle">My Profile</span>
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                <a class="dropdown-item" href="{{ route('admin.logout') }}">
                   <i class="bx bx-power-off me-2"></i>
                   <span class="align-middle">Log Out</span>
                 </a>

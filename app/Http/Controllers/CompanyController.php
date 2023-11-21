@@ -70,6 +70,7 @@ class CompanyController extends Controller
        return $datatable->render('admin.companies.index');
     }
 
+
     public function fillUpDetails(Request $request){
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
@@ -144,7 +145,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        dd("destroy");
     }
 
     public function fillUpDetailsStore(Request $request){

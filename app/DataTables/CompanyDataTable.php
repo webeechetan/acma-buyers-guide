@@ -21,10 +21,14 @@ class CompanyDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))->setRowId('id')
-            ->editColumn('name', function ($data) {
-                return strtolower($data->name);
-            });
+        // return (new EloquentDataTable($query))->setRowId('id')
+        //     ->editColumn('name', function ($data) {
+        //         return strtolower($data->name);
+        //     });
+
+        return (new EloquentDataTable($query))
+            ->addColumn('action', 'posts.action')
+            ->setRowId('id');
     }
 
     /**
@@ -68,10 +72,17 @@ class CompanyDataTable extends DataTable
             Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at'),
-            Column::computed('action')
-                ->defaultContent('<a href=""> <button class="btn btn-primary btn-sm">Delete</button></a>')
+            Column::make('Action'),            
+           
+
+        
         ];
     }
+
+    // Column::computed('action')
+    //         ->defaultContent(function ($data) {
+    //             return '<a href="'.route('admin.companies.destroy', ['id' => $data->id]).'"><button class="btn btn-danger btn-sm">Delete</button></a>';
+    //         }),
 
     /**
      * Get the filename for export.

@@ -58,6 +58,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');
     Route::get('/payments', [AdminPaymentController::class, 'index'])->name('admin.payments');
     Route::get('/companies', [CompanyController::class, 'index'])->name('admin.companies');
+
+    Route::get('/companies/{id}', [CompanyController::class, 'destroy'])->name('admin.companies.destroy');
+
     Route::get('/companies-data', [CompanyController::class, 'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 });

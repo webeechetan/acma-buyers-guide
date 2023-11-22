@@ -143,8 +143,13 @@
 body {
   background-color: #fff;
   color: #000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
+.main-content{
+  flex-grow: 1;
+}
 .sec-space {
   padding-top: 39px;
   padding-bottom: 39px;
@@ -761,7 +766,10 @@ footer {
 .custom_search_filter {
   position: relative;
 }
-
+.form-check{
+  display: flex;
+  column-gap: 20px;
+}
 .custom_search_filter_inputMask {
   position: absolute;
   right: 15px;
@@ -1027,7 +1035,12 @@ footer {
   z-index: 10001;
 }
 /*---- Admin Panel Styles ---*/
-
+.bg-menu-theme{
+  background-color: var(--primary) !important;
+}
+.bg-menu-theme .menu-item .menu-link {
+  color: #fff ;
+}
 .bg-menu-theme .menu-inner>.menu-item.active>.menu-link{
   color: #696cff;
   background-color: rgba(105,108,255,.16) !important;

@@ -15,7 +15,7 @@
 <div>
     <div class="row">
         <div class="col-md-12">
-        <div class="card">
+        <div class="card p-0">
             <div class="card-datatable table-responsive">
                 <table class="table dataTable no-footer border-top" id="payment">
                 <thead>

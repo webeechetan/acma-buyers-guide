@@ -184,7 +184,7 @@
     </header>
  
  <div class="main-content">
-     <div class="container-xxl">
+   <div class="container-xxl">
           <div class="row justify-content-center sec-space">
             
               <div class="col-md-12 mb-3 mb-md-0">

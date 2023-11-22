@@ -14,41 +14,26 @@
   
     <div class="menu-inner-shadow"></div>
   
-    
-    
     <ul class="menu-inner py-1 ps--active-y">
       <!-- Dashboards -->
-      <li class="menu-item active">
+      <li class="menu-item {{ Route::is('admin.dashboard') ? 'active' : ''  }}">
         <a href="{{ route('admin.dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
         </a>
       </li>
 
-      <!-- Subscriptions -->
-      <!-- <li class="menu-item ">
-        <a href="{{ route('admin.subscription') }}" class="menu-link ">
-          <i class='menu-icon tf-icons bx bx-purchase-tag-alt'></i>
-          <div class="text-truncate" data-i18n="Subscriptions">Subscriptions</div>
-        </a>
-      </li> -->
       {{-- Companies --}}
-      <li class="menu-item ">
+      <li class="menu-item {{ Route::is('admin.companies') ? 'active' : '' }}">
         <a href="{{ route('admin.companies') }}" class="menu-link ">
           <i class="menu-icon tf-icons bx bxs-factory"></i>
           <div class="text-truncate" data-i18n="Companies">Companies</div>
         </a>
       </li>
 
-      {{-- Members --}}
-      <!-- <li class="menu-item ">
-        <a href="{{ route('admin.members')}}" class="menu-link ">
-          <i class="menu-icon tf-icons bx bx-user"></i>
-          <div class="text-truncate" data-i18n="Members">Members</div>
-        </a>
-      </li> -->
+     
       {{-- Payments --}}
-      <li class="menu-item ">
+      <li class="menu-item {{Route::is('admin.payments') ? 'active' : '' }} ">
         <a href="{{ route('admin.payments') }}" class="menu-link ">
           <i class="menu-icon tf-icons bx bx-dollar"></i>
           <div class="text-truncate" data-i18n="Payments">Payments</div>
@@ -57,11 +42,3 @@
       
     </ul>
 </aside>
-<script>
-      $(document).ready(function() {
-        $('.menu-item').click(function() {
-            $('.menu-link').toggleClass('active');
-        });
-      });
-
-</script>

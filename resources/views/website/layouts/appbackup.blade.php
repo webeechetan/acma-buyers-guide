@@ -35,13 +35,6 @@
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.css" />
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.css" />
-  <!---- DataTable css ---->
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-select-bs5/select.bootstrap5.css">
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5.css">
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5.css">
 
 
   <script src="{{ asset('admin/') }}/assets/vendor/js/helpers.js"></script>
@@ -54,14 +47,15 @@
 <body>
 <div class="layout-wrapper layout-content-navbar  ">
     <div class="layout-container">
-      <x-admin.sidebar />
+      {{-- <x-admin.sidebar /> --}}
       <div class="layout-page">
-       <x-admin.navbar />
+       <x-website.header />
+
         <div class="content-wrapper">
           <div class="container-xxl flex-grow-1 container-p-y">
                 @yield('content')
           </div>
-            <x-admin.footer />
+            <x-website.footer />
           <div class="content-backdrop fade"></div>
         </div>
       </div>
@@ -88,9 +82,11 @@
   <script src="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.js"></script>
   <script src="{{ asset('admin/') }}/assets/vendor/js/menu.js"></script>
 
+  <!-- endbuild -->
 
- <!--- Vendor -->
- <script src="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+  <!-- Vendors JS -->
+  <script src="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
   <!-- Main JS -->
   <script src="{{ asset('admin/') }}/assets/js/main.js"></script>
 
@@ -99,7 +95,6 @@
   <script src="{{ asset('admin/') }}/assets/js/dashboards-analytics.js"></script>
   <script src="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
-  <script src="{{ asset('admin/') }}/assets/js/tables-datatables-extensions.js"></script>
 
   @stack('scripts')
 
@@ -115,21 +110,8 @@
                 toast('{{ $toastHead }}','{{ $toastBody }}','{{ $toastType }}');
             });
         </script>
+    
     @endif
-<script>
-
-$(document).ready(function () {
-    $(document).on("click", ".menu-item", function () {
-        // Remove 'active' class from all menu items
-        $(".menu-item").removeClass("active");
-
-        // Add 'active' class to the clicked menu item
-        $(this).addClass("active");
-    });
-});
-
-</script>
-
 </body>
 
 </html>

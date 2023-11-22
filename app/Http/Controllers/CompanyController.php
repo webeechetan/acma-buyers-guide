@@ -67,8 +67,9 @@ class CompanyController extends Controller
      */
     public function index(CompanyDataTable $datatable)
     {
-        return $datatable->render('admin.companies.index');
+       return $datatable->render('admin.companies.index');
     }
+
 
     public function fillUpDetails(Request $request){
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
@@ -144,7 +145,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        dd("destroy");
     }
 
     public function fillUpDetailsStore(Request $request){
@@ -182,8 +183,8 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
 
+       // dd($request->all());
         $companies = CompanyHelper::filter($request);
-
         return view('admin.companies.dashboard', compact('companies'));
     
     }

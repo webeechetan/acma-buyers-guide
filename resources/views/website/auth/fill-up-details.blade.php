@@ -47,7 +47,7 @@
 <body>
   <!-- Content -->
   <!--- Header --->
-  <header class="header">
+    <header class="header">
       <nav class="navbar navbar-expand-lg">
         <div class="container-xxl">
           <a class="navbar-brand" href="#">
@@ -182,7 +182,9 @@
         </div>
       </nav>
     </header>
-  <div class="container-xxl">
+ 
+ <div class="main-content">
+     <div class="container-xxl">
           <div class="row justify-content-center sec-space">
             
               <div class="col-md-12 mb-3 mb-md-0">
@@ -1240,7 +1242,8 @@
           </div>
     </div>
   </div>
-  <footer class="sec-space-ft">
+ </div>
+    <footer class="sec-space-ft">
     <div class="container-xxl">
       <div class="footer-sec">
         <div class="row">

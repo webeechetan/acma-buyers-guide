@@ -5,18 +5,17 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\AdminPaymentController;
-
 use App\Models\Admin\Member;
-
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
 use OpenSpout\Common\Entity\Row;
 use App\Http\Controllers\PaymentsPlanController;
 use App\Http\Controllers\PaymentController;
-
 use App\Http\Controllers\CCAvenueController;
 use App\Ccavenue\Crypto;
+use App\Imports\CompanyImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 
@@ -30,6 +29,22 @@ use App\Ccavenue\Crypto;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// import excel file 
+
+Route::get('/import', function () {
+
+    return view('website.test');
+
+});
+
+Route::post('/import', function (Request $request) {
+    // return $request->abg;
+    Excel::import(new CompanyImport, $request->abg) ;
+
+    // return redirect('/')->with('success', 'All good!');
+
+})->name('import.post');
 
 Route::get('/', function () {
     return view('website.index');
@@ -58,6 +73,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');
     Route::get('/payments', [AdminPaymentController::class, 'index'])->name('admin.payments');
     Route::get('/companies', [CompanyController::class, 'index'])->name('admin.companies');
+
+    Route::get('/companies/{id}', [CompanyController::class, 'destroy'])->name('admin.companies.destroy');
+
     Route::get('/companies-data', [CompanyController::class, 'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 });
@@ -82,54 +100,9 @@ Route::get('/company/logout', [CompanyController::class, 'logout'])->name('compa
 Route::get('/company/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
 
 
-//Route::post('/company/paymentRequest', [CCAvenueController::class, 'index'])->name('payment.request');
-
 Route::post('/company/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');
 
 
 
 Route::post('/payment-success', [PaymentController::class, 'payment_success'])->name('payment.success');
 
-   
-// Route::post('/payment-success', function (Request $request) {
-
-//     // dd($request->all());
-
-//     $crypto = new Crypto();
-
-//     error_reporting(0);
-
-//     $workingKey = '6F36707D0668636B26E60F3992104416';        //Working Key should be provided here.
-//     $encResponse = $request->encResp;           //This is the response sent by the CCAvenue Server
-//     $rcvdString = $crypto->decrypt($encResponse, $workingKey);        //Crypto Decryption used as per the specified working key.
-//     $order_status = "";
-//     $decryptValues = explode('&', $rcvdString);
-//     $dataSize = sizeof($decryptValues);
-//     echo "<center>";
-
-//     for ($i = 0; $i < $dataSize; $i++) {
-//         $information = explode('=', $decryptValues[$i]);
-//         if ($i == 3)    $order_status = $information[1];
-//     }
-
-//     if ($order_status === "Success") {
-//         echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
-//     } else if ($order_status === "Aborted") {
-//         echo "<br>Thank you for shopping with us.We will keep you posted regarding the status of your order through e-mail";
-//     } else if ($order_status === "Failure") {
-//         echo "<br>Thank you for shopping with us.However,the transaction has been declined.";
-//     } else {
-//         echo "<br>Security Error. Illegal access detected";
-//     }
-
-//     echo "<br><br>";
-
-//     echo "<table cellspacing=4 cellpadding=4>";
-//     for ($i = 0; $i < $dataSize; $i++) {
-//         $information = explode('=', $decryptValues[$i]);
-//         echo '<tr><td>' . $information[0] . '</td><td>' . urldecode($information[1]) . '</td></tr>';
-//     }
-
-//     echo "</table><br>";
-//     echo "</center>";
-// })->name('payment.success');

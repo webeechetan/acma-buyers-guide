@@ -717,9 +717,9 @@ div.subscribe-box {
 /*--- Footer ---*/
 footer {
   background-color: var(--primary);
-  position: fixed;
+  position: sticky;
   height: 150px;
-  bottom: 0;
+  top: 100%;
   width: 100%;
 }
 
@@ -749,9 +749,9 @@ footer {
 
 .footer-copyright {
   background-color: var(--copy-color);
-  position: fixed;
+  position: sticky;
   height: 50px;
-  bottom: 0;
+  top: 100%;
   width: 100%;
 
 

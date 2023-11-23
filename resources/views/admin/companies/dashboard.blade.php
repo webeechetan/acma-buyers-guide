@@ -19,14 +19,16 @@
                         </div>
                      </div>
                      <div class="col-md-4">
-                        <div class="custom_search_filter">
-                           <form action="/" method="GET">
+                        <div class="custom_search_filter text-end">
+                           <!-- <form action="/" method="GET">
                               <input type="text" data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="form-control"
                                  id="filter_category" name="filter_category" placeholder="Filter By Category" value="">
                               <div class="custom_search_filter_inputMask">
                                  <i class="bx bx-search"></i>
                               </div>
-                           </form>
+                           </form> -->
+                           <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"
+                                 id="filter_category" name="filter_category">Filter By Category</button>
                            <!-- Modal -->
                            <div class="modal fade" id="static"  data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog modal-lg" role="document">

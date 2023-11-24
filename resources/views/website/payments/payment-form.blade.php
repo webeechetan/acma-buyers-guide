@@ -69,9 +69,7 @@
                               <div class="user-detail">
                                   <p>Company Name:- {{ $company_contact_details->name }}</p>   
                               </div>
-                              <div class="user-detail">
-                                  <p>Phone No:- {{ $company_contact_details->phone }} </p>                                    
-                              </div>
+                             
                               <div class="user-detail">
                                   <p>Company Email:-{{ $company_contact_details->email }}</p>
                               </div>

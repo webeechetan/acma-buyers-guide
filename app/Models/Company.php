@@ -21,7 +21,9 @@ class Company extends Authenticatable
 
 
     public function contact_details(){
-        return $this->hasOne(CompanyContactDetail::class);
+
+         return $this->hasOne(CompanyContactDetail::class);
+       
     }
 
     public function product_details(){
@@ -31,4 +33,6 @@ class Company extends Authenticatable
     public function foreign_collaboration(){
         return $this->hasOne(CompanyForeignCollaboration::class);
     }
+
+    
 }

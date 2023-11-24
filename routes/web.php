@@ -106,3 +106,21 @@ Route::post('/company/subscription-payment', [PaymentController::class, 'makePay
 
 Route::post('/payment-success', [PaymentController::class, 'payment_success'])->name('payment.success');
 
+
+////////////Emailer template for company detals update for company and admin
+
+
+
+Route::get('company/edit-details', function () {
+
+    return view('website.edit-emailer');
+
+});
+
+
+
+Route::get('admin/edit-details', function () {
+    
+    return view('admin.edit-emailer');
+
+});

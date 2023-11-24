@@ -9,10 +9,8 @@
       <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.css" />
   @endpush
 
-
     @section('content')
    
-
 
  <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row invoice-preview">

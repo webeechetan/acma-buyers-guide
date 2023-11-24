@@ -28,7 +28,7 @@
                               </div>
                            </form> -->
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"
-                                 id="filter_category" name="filter_category">Filter By Category</button>
+                                 id="filter_category" name="filter_category">Filter By Category`</button>
                            <!-- Modal -->
                            <div class="modal fade" id="static"  data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog modal-lg" role="document">

@@ -63,12 +63,12 @@
                                                 <li class="filter-name mb-2" data-filter="exportTurnover" >
                                                    <a class="nav-link" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
                                                 </li>
-                                                <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
+                                                {{-- <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
                                                    <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="ForeignCollaboration" >
                                                    <a class="nav-link" data-bs-toggle="pill" href="#ForeignCollaboration">Foreign Collaboration</a> 
-                                                </li>
+                                                </li> --}}
                                                 <!-- Add more options here -->
                                              </ul>
                                           </div>
@@ -82,10 +82,12 @@
                                                          @foreach($companies as $company)
                                                          <div class="col-md-4">
                                                             <div class="mt-4">
+                                                               @if(isset($company['name']) && !empty($company['name']))
                                                                <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}">
+                                                                  <input class="form-check-input" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}">
                                                                   <label class="form-check-label" for="">{{ $company['name'] }}</label>
                                                                </div>
+                                                               @endif
                                                             </div>
                                                          </div>
                                                          @endforeach
@@ -104,8 +106,7 @@
                                                             <div class="mt-4">
                                                                 @php
                                                                     $cities = [
-                                                                        'New Delhi', 'Pune', 'Mumbai', 'Thane', 'Kolkata', 'Raipur',
-                                                                        'Indore', 'Gorakhpur', 'Basti', 'Kanpur', 'Nagpur', 'Borivali'
+                                                                        'New Delhi', 'Pune'
                                                                     ];
                                                                 @endphp
                                                 
@@ -122,7 +123,7 @@
                                                         <button class="btn btn-primary btn-sm">Apply</button>
                                                         <button class="btn btn-primary btn-sm">Reset</button>
                                                     </div>
-                                                </form>
+                                                 </form>
                                                 
                                                 </div>
                                                 <div class="tab-pane container fade" id="region">
@@ -130,30 +131,18 @@
                                                       <input type="text" name="name" placeholder="Search By Region"
                                                          class="form-control advance-filter-input" data-allow-clear="true" />
                                                       <div class="row">
+                                                         @foreach ($companies as $company)
                                                          <div class="col-md-4">
                                                             <div class="mt-4">
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox1">North</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox2">South</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                                  <label class="form-check-label" for="inlineCheckbox3">Western</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox5">North-West</label>
-                                                               </div>
+                                                               @if(isset($company->key_personnels->region) && !empty($company->key_personnels->region))
+                                                                  <div class="form-check mb-2">
+                                                                     <input class="form-check-input" type="checkbox" name="regions[]" id="regions" value="{{ $company->key_personnels->region }}">
+                                                                     <label class="form-check-label" for="inlineCheckbox1">{{ $company->key_personnels->region }}</label>
+                                                                  </div>
+                                                               @endif
                                                             </div>
                                                          </div>
+                                                         @endforeach
                                                       </div>
                                                       <div class="mt-3">
                                                          <button class="btn btn-primary btn-sm">Apply</button>
@@ -166,30 +155,18 @@
                                                       <input type="text" name="name" placeholder="Search By Products Name"
                                                          class="form-control advance-filter-input" data-allow-clear="true" />
                                                       <div class="row">
+                                                         @foreach ($companies as $company)
                                                          <div class="col-md-4">
                                                             <div class="mt-4">
+                                                               @if(isset($company->product_details->products_manufactured) && !empty($company->product_details->products_manufactured))
                                                                <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                                                  <input class="form-check-input" type="checkbox" name="products[]" id="products" value="{{$company->product_details->products_manufactured}}">
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $company->product_details->products_manufactured }}</label>
                                                                </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox2">South</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                                  <label class="form-check-label" for="inlineCheckbox3">Western</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox5">North-West</label>
-                                                               </div>
+                                                               @endif
                                                             </div>
                                                          </div>
+                                                         @endforeach
                                                       </div>
                                                       <div class="mt-3">
                                                          <button class="btn btn-primary btn-sm">Apply</button>
@@ -202,30 +179,21 @@
                                                       <input type="text" name="name" placeholder="Search By Trade Mark"
                                                          class="form-control advance-filter-input" data-allow-clear="true" />
                                                       <div class="row">
+
+                                                         @foreach ($companies as $company)
+ 
                                                          <div class="col-md-4">
                                                             <div class="mt-4">
+                                                               @if(isset($company->product_details->trademark) && !empty($company->product_details->trademark))
                                                                <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                                                  <input class="form-check-input" type="checkbox" name="trademarks[]" id="trademarks" value="{{$company->product_details->trademark}}">
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{$company->product_details->trademark}}</label>
                                                                </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox2">South</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                                  <label class="form-check-label" for="inlineCheckbox3">Western</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox5">North-West</label>
-                                                               </div>
+                                                               @endif
+                                                             
                                                             </div>
                                                          </div>
+                                                         @endforeach
                                                       </div>
                                                       <div class="mt-3">
                                                          <button class="btn btn-primary btn-sm">Apply</button>
@@ -238,30 +206,18 @@
                                                       <input type="text" name="name" placeholder="Search By Sales Turnover"
                                                          class="form-control advance-filter-input" data-allow-clear="true" />
                                                       <div class="row">
+                                                         @foreach($companies as $company)
                                                          <div class="col-md-4">
                                                             <div class="mt-4">
+                                                               @if(isset($company->product_details->sales_turnover) && !empty($company->product_details->sales_turnover))
                                                                <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                                                  <input class="form-check-input" type="checkbox" name="salesTurnover" id="salesTurnover" value="{{$company->product_details->sales_turnover }}">
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{$company->product_details->sales_turnover }}</label>
                                                                </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox2">South</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                                  <label class="form-check-label" for="inlineCheckbox3">Western</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox5">North-West</label>
-                                                               </div>
+                                                               @endif
                                                             </div>
                                                          </div>
+                                                         @endforeach
                                                       </div>
                                                       <div class="mt-3">
                                                          <button class="btn btn-primary btn-sm">Apply</button>
@@ -274,30 +230,18 @@
                                                       <input type="text" name="name" placeholder="Search By Export Turnover"
                                                          class="form-control advance-filter-input" data-allow-clear="true" />
                                                       <div class="row">
+                                                         @foreach($companies as $company)
                                                          <div class="col-md-4">
                                                             <div class="mt-4">
+                                                               @if(isset($company->product_details->export_turn_02_03) && !empty($company->product_details->export_turn_02_03))
                                                                <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox1">North</label>
+                                                                  <input class="form-check-input" type="checkbox" name="exportTurnover" id="inlineCheckbox1" value=" {{ $company->product_details->export_turn_02_03 }}">
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $company->product_details->export_turn_02_03 }}</label>
                                                                </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox2">South</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                                  <label class="form-check-label" for="inlineCheckbox3">Western</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox5">North-West</label>
-                                                               </div>
+                                                               @endif
                                                             </div>
                                                          </div>
+                                                         @endforeach
                                                       </div>
                                                       <div class="mt-3">
                                                          <button class="btn btn-primary btn-sm">Apply</button>
@@ -316,22 +260,7 @@
                                                                   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                                                                   <label class="form-check-label" for="inlineCheckbox1">North</label>
                                                                </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox2">South</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                                  <label class="form-check-label" for="inlineCheckbox3">Western</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox5">North-West</label>
-                                                               </div>
+                                                              
                                                             </div>
                                                          </div>
                                                       </div>
@@ -352,22 +281,7 @@
                                                                   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                                                                   <label class="form-check-label" for="inlineCheckbox1">North</label>
                                                                </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox2">South</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                                  <label class="form-check-label" for="inlineCheckbox3">Western</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                  <label class="form-check-label" for="inlineCheckbox4">Eastern</label>
-                                                               </div>
-                                                               <div class="form-check mb-2">
-                                                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                                  <label class="form-check-label" for="inlineCheckbox5">North-West</label>
-                                                               </div>
+                                                             
                                                             </div>
                                                          </div>
                                                       </div>
@@ -418,6 +332,9 @@
             <div class="company-card">
                <div class="row">
                   @foreach ($companies as $company)
+
+                  
+                  
                   <div class="col-md-3 mb-2">
                      <div class="card">
                         <div class="company-card">

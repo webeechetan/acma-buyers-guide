@@ -74,14 +74,12 @@ class CompanyController extends Controller
 
     public function fillUpDetails(Request $request){
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
-
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
-        $company = Company::where('id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
-        return view('website.auth.fill-up-details', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
+        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
     }
 
     /**
@@ -160,18 +158,19 @@ class CompanyController extends Controller
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
-        $this->alert('Success', 'details under review. we will notify you once approved. ' , 'success');
-        return redirect()->route('company.dashboard');
+        $company_contact_detail->update($data);
+        $company_key_personnel->update($data);
+        $company_product_detail->update($data);
+        $company_foreign_collaboration->update($data);
+
+        $this->alert('Success', 'details under review. we will notify you once opproved. ' , 'success');
+        return redirect()->route('company.payments');
     }
 
     public function dashboard(Request $request) {
 
        // dd($request->all());
         $companies = CompanyHelper::filter($request);
-
-        
-
-        
         return view('admin.companies.dashboard', compact('companies'));
     
     }

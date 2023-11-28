@@ -84,7 +84,7 @@
                           <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Password</label>`
                             <div class="input-group input-group-merge">
-                              <input type="password" id="password" class="form-control" name="password" value="" placeholder="Password" aria-describedby="password" />
+                              <input type="password" id="password" class="form-control" name="password" @if(isset($_COOKIE["password"]))  value="{{ $_COOKIE["password"] }}" @endif placeholder="Password" aria-describedby="password" />
                               <span class="input-group-text cursor-pointer">
                                 <i class="bx bx-hide"></i>
                               </span>

@@ -45,10 +45,12 @@ class CompanyController extends Controller
                 
                 
                 setcookie("email", $request->email, time() + 3600 * 24 * 7);
+                setcookie("password", $request->password, time() + 3600 * 24 * 7);
                
             } else {
                
                 setcookie("email", "", time() - 3600); 
+                setcookie("password", "", time() - 3600); 
                 
             }
             
@@ -164,7 +166,7 @@ class CompanyController extends Controller
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
-        $this->alert('Success', 'details under review. we will notify you once approved. ' , 'success');
+        $this->alert('Success', 'Details under review. we will notify you once approved. ' , 'success');
         return redirect()->route('company.dashboard');
     }
 

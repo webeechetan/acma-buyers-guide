@@ -36,6 +36,8 @@ class CompanyContactDetailsObserver
      */
     public function updating(CompanyContactDetail $companyContactDetail)
     {
+
+        dd("companyContactDetail");
         // get the original data
         $original = $companyContactDetail->getOriginal();
         // get the updated data

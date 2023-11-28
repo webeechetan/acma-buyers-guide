@@ -45,10 +45,12 @@ class CompanyController extends Controller
                 
                 
                 setcookie("email", $request->email, time() + 3600 * 24 * 7);
+                setcookie("password", $request->password, time() + 3600 * 24 * 7);
                
             } else {
                
                 setcookie("email", "", time() - 3600); 
+                setcookie("password", "", time() - 3600); 
                 
             }
             
@@ -77,13 +79,16 @@ class CompanyController extends Controller
 
 
     public function fillUpDetails(Request $request){
+
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
+
+        $company = Company::where('id',Auth::guard('company')->user()->id)->first();
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
-        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
+        return view('website.auth.fill-up-details', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
     }
 
     /**
@@ -116,7 +121,7 @@ class CompanyController extends Controller
             Auth::guard('company')->login($company);
 
             $this->alert('Success', 'Registration Successful' , 'success');
-            return redirect()->route('company.payments');
+            return redirect()->route('company.dashboard');
         }
 
     }
@@ -167,8 +172,8 @@ class CompanyController extends Controller
         $company_product_detail->update($data);
         $company_foreign_collaboration->update($data);
 
-        $this->alert('Success', 'details under review. we will notify you once opproved. ' , 'success');
-        return redirect()->route('company.payments');
+        $this->alert('Success', 'Details under review. we will notify you once opproved. ' , 'success');
+        return redirect()->route('company.dashboard');
     }
 
     public function dashboard(Request $request) {

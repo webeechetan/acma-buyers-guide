@@ -40,6 +40,7 @@ class CompanyImport implements ToCollection
             $company_contact_details->pin = $row['pin'];
             $company_contact_details->phone = $row['phone'];
             $company_contact_details->fax = $row['fax'];
+            $company_contact_details->email = $company->email; //added by ajay//
             $company_contact_details->website = $row['website'];
             $company_contact_details->website_address = $row['website_address'];
             $company_contact_details->main_plant_address = $row['main_plant_address'];
@@ -289,7 +290,7 @@ class CompanyImport implements ToCollection
             $companies_data_format['managing_director'] = $row[25];
 
 
-            $companies_data_format['managing_director'] = $row[26];
+            $companies_data_format['managing_director_email'] = $row[26];
             $companies_data_format['managing_director_email'] = $row[27];
             $companies_data_format['managing_director_contact'] = $row[28];
             $companies_data_format['chief_executive'] = $row[29];

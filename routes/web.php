@@ -117,8 +117,6 @@ Route::get('company/edit-details', function () {
 
 });
 
-
-
 Route::get('admin/edit-details', function () {
     
     return view('admin.edit-emailer');

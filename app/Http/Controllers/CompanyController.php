@@ -39,11 +39,15 @@ class CompanyController extends Controller
             //setting cookies in client browser
 
             
-            if (($request->remember) && !($request->remember)) {
+            // if (($request->remember) && !($request->remember)) {
+
+                if ($request->has('remember')) {
+                
                 
                 setcookie("email", $request->email, time() + 3600 * 24 * 7);
                
             } else {
+               
                 setcookie("email", "", time() - 3600); 
                 
             }
@@ -166,13 +170,15 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
 
-       // dd($request->all());
         $companies = CompanyHelper::filter($request);
-
         
+        $companies_name = Company::select('name')->groupBy('name')->get();
+        $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();
+        $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
+        $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
+        $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
 
-        
-        return view('admin.companies.dashboard', compact('companies'));
+        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','products','salesTurnovers'));
     
     }
 

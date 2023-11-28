@@ -43,6 +43,53 @@ class CompanyHelper {
 
         $filter = '';
 
+
+        // checkbox filters for company name
+        if ($request->has('company_name')) {
+            $selectedCompanies = $request->input('company_name');
+
+            if (is_array($selectedCompanies)) {
+                $companies = $companies->whereIn('name', $selectedCompanies);
+            }
+        }
+        
+
+        
+        // checkbox filters for Region
+        if ($request->has('regions')) {
+            $selectedRegion = $request->input('regions');
+            
+            if (is_array($selectedRegion)) {
+                $companies = $companies->whereHas('key_personnels', function ($query) use ($selectedRegion) {
+                    $query->whereIn('region', $selectedRegion);
+                });
+            }
+        }
+
+        //checkbox filters for products
+        if($request->has('products')) {
+            $selectedProducts = $request->input('products');
+            if(is_array($selectedProducts)) {
+                $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {
+                
+                    $query->whereIn('products_manufactured', $selectedProducts);
+                });
+            }
+        }
+
+        //checkbox filter for trademarks
+
+       
+        if($request->has('trademarks')) {
+            $selectedtrademarks = $request->input('trademarks');
+            if(is_array($selectedtrademarks)) {
+                $companies = $companies->whereHas('product_details', function ($query) use ($selectedtrademarks) {
+                
+                    $query->whereIn('trademark', $selectedtrademarks);
+                });
+            }
+        }
+
         if($request->has('name')){
             $companies = $companies->where('name','like','%'.$request->name.'%');
         }

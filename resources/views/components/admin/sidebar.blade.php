@@ -2,7 +2,7 @@
     <div class="app-brand demo ">
       <a href="index.html" class="app-brand-link">
         <span class="app-brand-logo demo">
-            <img src="https://startup.acma.in/assets/images/logo.jpg" alt="Logo" height="40">
+            <img src="{{ asset('admin/') }}/assets/img/company/logo.png" alt="Logo" height="40">
         </span>
         {{-- <span class="app-brand-text demo menu-text fw-bold ms-2">Acma</span> --}}
       </a>

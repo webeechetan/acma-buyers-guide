@@ -115,6 +115,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                <a class="nav-link active me-3" aria-current="page" href="#">Billing</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link me-4" href="#">Profile</a>
               </li>
               <li class="nav-item dropdown">
@@ -134,6 +137,7 @@
                         </div>
                         <div class="flex-grow-1">
                           <span class="fw-medium d-block">John Doe</span>
+                          <small class="text-muted">Admin</small>
                         </div>
                       </div>
                     </a>
@@ -144,13 +148,25 @@
                   <li>
                     <a class="dropdown-item" href="pages-profile-user.html">
                       <i class='bx bx-user-plus me-2'></i>
-                      <span class="align-middle">Account Details</span>
+                      <span class="align-middle">Account Details List</span>
                     </a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="pages-profile-user.html">
                       <i class='bx bx-building-house me-2'></i>
                       <span class="align-middle">Company Name</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="pages-profile-user.html">
+                      <i class='bx bx-envelope me-2'></i>
+                      <span class="align-middle">Email</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="pages-profile-user.html">
+                      <i class='bx bx-map me-2'></i>
+                      <span class="align-middle">Address</span>
                     </a>
                   </li>
                   <li>
@@ -165,7 +181,7 @@
           </div>
         </div>
       </nav>
-  </header>
+    </header>
   <div class="container-xxl">
           <div class="row justify-content-center sec-space">
             
@@ -1225,7 +1241,7 @@
           </div>
     </div>
   </div>
-  <footer class="sec-space-ft" style="display: none">
+  <footer class="sec-space-ft">
     <div class="container-xxl">
       <div class="footer-sec">
         <div class="row">
@@ -1343,12 +1359,12 @@
             })
         }
 
-        // setInterval(() => {
-        //     autoSave();
-        //     $(".auto_save_icon_upload").addClass('d-none');
-        //     $(".auto_save_icon_uploading").removeClass('d-none');
-        //     $(".auto_save_icon_uploading").addClass('bx-fade-up');
-        // }, 5000);
+        setInterval(() => {
+            autoSave();
+            $(".auto_save_icon_upload").addClass('d-none');
+            $(".auto_save_icon_uploading").removeClass('d-none');
+            $(".auto_save_icon_uploading").addClass('bx-fade-up');
+        }, 5000);
 
     });
     $(document).ready(function() {
@@ -1408,14 +1424,14 @@
 
 
 
-  //  $('#Multi-Steps-form').on('submit', function(event) {
-  //     event.preventDefault();
+   $('#Multi-Steps-form').on('submit', function(event) {
+      event.preventDefault();
 
-  //     toastr.success('Form submitted successfully!', 'Success')
-  //   // window.location.href = "{{ route('company.dashboard') }}";
-  //   window.location.href = "{{ route('company.dashboard') }}";
+      toastr.success('Form submitted successfully!', 'Success')
+    // window.location.href = "{{ route('company.dashboard') }}";
+    window.location.href = "{{ route('company.dashboard') }}";
     
-  //  });
+   });
 
 
    

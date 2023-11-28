@@ -45,7 +45,7 @@
 </head>
 
 <body>
-<div class="">
+<div class="main-wrapper">
    
       {{-- <x-admin.sidebar /> --}}
       
@@ -55,9 +55,10 @@
           <div class="container-xxl flex-grow-1 container-p-y">
                 @yield('content')
           </div>
-            <x-website.footer />
+ 
           <div class="content-backdrop fade"></div>
         </div>
+        <x-website.footer />
       
     
     <div class="layout-overlay layout-menu-toggle"></div>

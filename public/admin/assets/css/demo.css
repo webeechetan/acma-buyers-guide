@@ -143,6 +143,10 @@
 body {
   background-color: #fff;
   color: #000;
+  min-height: 100vh;
+}
+.main-wrapper{
+  min-height: 100vh;
 }
 
 .sec-space {
@@ -717,12 +721,14 @@ div.subscribe-box {
 /*--- Footer ---*/
 footer {
   background-color: var(--primary);
-  position: fixed;
+  position: sticky;
   height: 150px;
-  bottom: 0;
+  top: 100%;
   width: 100%;
 }
-
+.footer{
+  height: 50px;
+}
 .contact-list {
   list-style-type: none;
   color: #fff;
@@ -749,9 +755,9 @@ footer {
 
 .footer-copyright {
   background-color: var(--copy-color);
-  position: fixed;
+  position: sticky;
   height: 50px;
-  bottom: 0;
+  top: 100%;
   width: 100%;
 
 
@@ -1027,6 +1033,12 @@ footer {
   z-index: 10001;
 }
 /*---- Admin Panel Styles ---*/
+.bg-menu-theme{
+  background-color: var(--primary) !important;
+}
+.bg-menu-theme .menu-inner>.menu-item>.menu-link{
+  color: #fff;
+}
 
 .bg-menu-theme .menu-inner>.menu-item.active>.menu-link{
   color: #696cff;
@@ -1056,4 +1068,7 @@ footer {
 }
 .dropdown-menu-end[data-bs-popper]{
   left: 0 !important;
+}
+.app-brand .layout-menu-toggle{
+  background-color: var(--primary) !important;
 }

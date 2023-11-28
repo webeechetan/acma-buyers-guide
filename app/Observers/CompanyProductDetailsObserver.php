@@ -26,8 +26,7 @@ class CompanyProductDetailsObserver
 
     public function updating(CompanyProductDetails $companyProductDetails)
     {
-
-        dd('companyProductDetails');
+        
         $original = $companyProductDetails->getOriginal();
 
         $updated = $companyProductDetails->getAttributes();

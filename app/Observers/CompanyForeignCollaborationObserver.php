@@ -28,7 +28,6 @@ class CompanyForeignCollaborationObserver
  public function updating(CompanyForeignCollaboration $companyForeignCollaboration)
  {
 
-     dd('companyForeignCollaboration');
      $original = $companyForeignCollaboration->getOriginal();
      $updated = $companyForeignCollaboration->getAttributes();
 

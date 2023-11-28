@@ -16,7 +16,7 @@ class CompanyKeyPersonnelObserver
     public function updating(CompanyKeyPersonnel $CompanyKeyPersonnel)
     {
 
-        dd('companyKeyPersonnel');
+        
         // get the original data
         $original = $CompanyKeyPersonnel->getOriginal();
         // get the updated data

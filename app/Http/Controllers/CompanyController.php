@@ -13,6 +13,7 @@ use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
 use App\Helpers\CompanyHelper;
+use App\Models\CompanyUpdateRequest;
 
 //use Illuminate\Support\Facades\Cookie;
 
@@ -157,28 +158,8 @@ class CompanyController extends Controller
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
-        
-        try{
-            $company_contact_detail->update($data);
-            $company_key_personnel->update($data);
-            $company_product_detail->update($data);
-            $company_foreign_collaboration->update($data);
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Details Updated Successfully',
-                'data' => null
-            ]);
-
-        }catch(\Exception $e){
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage(),
-                'data' => null
-            ]);
-        }
-
-        
+        $this->alert('Success', 'details under review. we will notify you once approved. ' , 'success');
+        return redirect()->route('company.dashboard');
     }
 
     public function dashboard(Request $request) {

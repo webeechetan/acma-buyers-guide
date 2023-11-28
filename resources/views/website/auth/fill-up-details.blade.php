@@ -1240,7 +1240,7 @@
           </div>
     </div>
   </div>
-  <footer class="sec-space-ft">
+  <footer class="sec-space-ft" style="display: none">
     <div class="container-xxl">
       <div class="footer-sec">
         <div class="row">
@@ -1358,12 +1358,12 @@
             })
         }
 
-        setInterval(() => {
-            autoSave();
-            $(".auto_save_icon_upload").addClass('d-none');
-            $(".auto_save_icon_uploading").removeClass('d-none');
-            $(".auto_save_icon_uploading").addClass('bx-fade-up');
-        }, 5000);
+        // setInterval(() => {
+        //     autoSave();
+        //     $(".auto_save_icon_upload").addClass('d-none');
+        //     $(".auto_save_icon_uploading").removeClass('d-none');
+        //     $(".auto_save_icon_uploading").addClass('bx-fade-up');
+        // }, 5000);
 
     });
     $(document).ready(function() {
@@ -1423,14 +1423,14 @@
 
 
 
-   $('#Multi-Steps-form').on('submit', function(event) {
-      event.preventDefault();
+  //  $('#Multi-Steps-form').on('submit', function(event) {
+  //     event.preventDefault();
 
-      toastr.success('Form submitted successfully!', 'Success')
-    // window.location.href = "{{ route('company.dashboard') }}";
-    window.location.href = "{{ route('company.dashboard') }}";
+  //     toastr.success('Form submitted successfully!', 'Success')
+  //   // window.location.href = "{{ route('company.dashboard') }}";
+  //   window.location.href = "{{ route('company.dashboard') }}";
     
-   });
+  //  });
 
 
    

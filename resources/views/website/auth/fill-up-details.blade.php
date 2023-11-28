@@ -207,7 +207,7 @@
                               <div class="row g-3">
                                 <div class="col-md-2">
                                 <label class="form-label" for="company_name">Company Name</label>
-                                <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company_contact_details->company_name }}">
+                                {{-- <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company_contact_details->company_name }}"> --}}
                                 <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company->name }}">
                                 </div>
 

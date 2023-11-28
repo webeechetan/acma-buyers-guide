@@ -78,6 +78,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/companies-data', [CompanyController::class, 'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
 });
 
 

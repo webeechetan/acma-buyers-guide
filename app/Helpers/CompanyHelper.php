@@ -46,16 +46,13 @@ class CompanyHelper {
 
         // checkbox filters for company name
         if ($request->has('company_name')) {
-            $selectedCompanies = $request->input('company_name');
-
+            $selectedCompanies = $request->input('company_name');            
             if (is_array($selectedCompanies)) {
                 $companies = $companies->whereIn('name', $selectedCompanies);
             }
         }
         
-
-        
-        // checkbox filters for Region
+       // checkbox filters for Region
         if ($request->has('regions')) {
             $selectedRegion = $request->input('regions');
             
@@ -64,14 +61,14 @@ class CompanyHelper {
                     $query->whereIn('region', $selectedRegion);
                 });
             }
+           
         }
 
         //checkbox filters for products
         if($request->has('products')) {
             $selectedProducts = $request->input('products');
             if(is_array($selectedProducts)) {
-                $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {
-                
+                $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {       
                     $query->whereIn('products_manufactured', $selectedProducts);
                 });
             }
@@ -79,7 +76,6 @@ class CompanyHelper {
 
         //checkbox filter for trademarks
 
-       
         if($request->has('trademarks')) {
             $selectedtrademarks = $request->input('trademarks');
             if(is_array($selectedtrademarks)) {
@@ -89,6 +85,28 @@ class CompanyHelper {
                 });
             }
         }
+
+
+        //checkbox filter for sales turnover
+        if ($request->has('range')) {
+            $range = $request->input('range');
+
+            [$min, $max] = explode('-', $range);
+
+            $min = (int) $min;
+            $max = (int) $max;
+       
+            
+            $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
+                $query->whereBetween('sales_turnover', [$min, $max]);
+            });
+        }
+
+
+
+        
+        
+
 
         if($request->has('name')){
             $companies = $companies->where('name','like','%'.$request->name.'%');
@@ -179,12 +197,13 @@ class CompanyHelper {
         }
         
         
-        
-
-        return $companies->get();
+         return $companies->get();
 
         
     }
+
+
+   
 
 }
 

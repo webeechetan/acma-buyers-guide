@@ -1192,11 +1192,11 @@
 
                               <div class="col-md-6">
                                 <label class="form-label" for="net_duty_paid">Net Excise duty paid to govt. in 2018-19</label>
-                                <input type="text" id="net_duty_paid" name="net_duty_paid" class="form-control" placeholder="Net Excise duty paid to govt. in 2018-19" value="{{ $company_key_personnels->managing_director }}">
+                                <input type="text" id="net_duty_paid" name="net_duty_paid" class="form-control" placeholder="Net Excise duty paid to govt. in 2018-19" value="{{ $company_product_details->net_duty_paid }}">
                               </div>
                               <div class="col-md-6">
                                 <label class="form-label" for="custom_duty">Total Custom Duty paid in 2018-19 </label>
-                                <input type="text" id="custom_duty" name="custom_duty" class="form-control" placeholder="Total Custom Duty paid in 2018-19 " value="{{ $company_key_personnels->managing_director_email }}">
+                                <input type="text" id="custom_duty" name="custom_duty" class="form-control" placeholder="Total Custom Duty paid in 2018-19 " value="{{ $company_product_details->custom_duty }}">
                               </div>
                           
                             </div>

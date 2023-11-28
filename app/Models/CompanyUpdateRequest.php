@@ -9,11 +9,16 @@ use App\Models\Company;
 use App\Models\CompanyContactDetail;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
-
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 
 class CompanyUpdateRequest extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+
+    public function routeNotificationForMail(Notification $notification): array|string{
+        return $this->company->email;
+    }
 
     public function company()
     {
@@ -21,6 +26,9 @@ class CompanyUpdateRequest extends Model
     }
 
     public function approve(){
+        if($this->status == 'approved'){
+            return false;
+        }
         $data = json_decode($this->data, true);
         $company = Company::find($this->company_id);
         $company_contact_detail = CompanyContactDetail::where('company_id', $this->company_id)->first();
@@ -33,7 +41,7 @@ class CompanyUpdateRequest extends Model
                 $company_contact_detail->$key = $value['new'];
             }
             try{
-                $company_contact_detail->save();
+                $company_contact_detail->saveQuietly();
                 $this->status = 'approved';
                 $this->save();
                 return true;
@@ -48,7 +56,7 @@ class CompanyUpdateRequest extends Model
                 $company_key_personnel->$key = $value['new'];
             }
             try{
-                $company_key_personnel->save();
+                $company_key_personnel->saveQuietly();
                 $this->status = 'approved';
                 $this->save();
                 return true;
@@ -57,12 +65,12 @@ class CompanyUpdateRequest extends Model
             }
         }
 
-        if($this->modal == 'CompanyProductDetails'){
+        if($this->modal == 'CompanyProductDetail'){
             foreach ($data as $key => $value) {
                 $company_product_detail->$key = $value['new'];
             }
             try{
-                $company_product_detail->save();
+                $company_product_detail->saveQuietly();
                 $this->status = 'approved';
                 $this->save();
                 return true;
@@ -76,7 +84,7 @@ class CompanyUpdateRequest extends Model
                 $company_foreign_collaboration->$key = $value['new'];
             }
             try{
-                $company_foreign_collaboration->save();
+                $company_foreign_collaboration->saveQuietly();
                 $this->status = 'approved';
                 $this->save();
                 return true;

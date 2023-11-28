@@ -45,12 +45,10 @@ class CompanyProductDetailsObserver
 
         $company_update_request->company_id = $companyProductDetails->company_id;
         $company_update_request->data = json_encode($update_request);
-        $company_update_request->modal = 'CompanyProductDetails';
+        $company_update_request->modal = 'CompanyProductDetail';
         $company_update_request->save();
 
-
         return false;
-
 
     }
 

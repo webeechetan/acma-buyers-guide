@@ -16,6 +16,8 @@ class ProfileApprovalController extends Controller
          // Retrieve pending update requests
             $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->get();
 
+            // dd($pendingRequests);
+
             return view('admin.profileapproval.index', compact('pendingRequests'));
     }
 
@@ -54,23 +56,13 @@ class ProfileApprovalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        $request = CompanyUpdateRequest::findOrFail($id);
 
-        $NewData = json_decode($request->data, true);
-        $company_id = $request->company_id;
+        
 
-        foreach ($NewData as $key => $values) {
-            $company_id->$key = $values['new'];
-        }
-
-        $company_id->save();
-    
-
-
-        $request->status = 'approved';
-        $company_id->save();
+        $company_update_request = CompanyUpdateRequest::find($id);  
+        $res = $company_update_request->approve();
 
         $this->alert('Success', 'Details Approved sucessfully' , 'success');
         return view('admin.profileapproval.index');

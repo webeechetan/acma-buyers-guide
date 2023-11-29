@@ -14,6 +14,7 @@ use OpenSpout\Common\Entity\Row;
 use App\Http\Controllers\PaymentsPlanController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CCAvenueController;
+use App\Http\Controllers\Admin\ProfileApprovalController;
 use App\Ccavenue\Crypto;
 use App\Imports\CompanyImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -31,11 +32,13 @@ use Maatwebsite\Excel\Facades\Excel;
 |
 */
 
-Route::get('/update-request', function () {
-    $company_update_request = CompanyUpdateRequest::find(15);
-    $res = $company_update_request->approve();
-    dd($res);
-});
+// Route::get('/update-request', function () {
+//     $company_update_request = CompanyUpdateRequest::find(31);
+//     $res = $company_update_request->approve();
+//     dd($res);
+// });
+
+
 
 // import excel file 
 
@@ -62,10 +65,6 @@ Route::get('/', function () {
 Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admin.authenticate');
 
-Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admin.authenticate');
-
-
-Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admin.authenticate');
 
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -85,6 +84,16 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/companies-data', [CompanyController::class, 'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+
+
+//     Route::get('admi/Profile', function(){
+//         return view('admin.profileapproval.index');
+// })->name('admin.profile.approval');
+    
+    Route::get('/profile', [ProfileApprovalController::class, 'index'])->name('admin.profile.approval');
+
+    Route::get('/profile/approve/{id}', [ProfileApprovalController::class, 'update'])->name('admin.profile.approve');
 
 });
 

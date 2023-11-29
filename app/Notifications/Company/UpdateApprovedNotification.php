@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Log;
 
-class UpdateUnderReviewNotification extends Notification
+class UpdateApprovedNotification extends Notification
 {
     use Queueable;
 
@@ -18,12 +18,9 @@ class UpdateUnderReviewNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct($company_update_request, $company)
+    public function __construct()
     {
-
-        // dd($company);
-        $this->company_update_request = $company_update_request;
-        $this->company = $company;
+      
     }
 
     /**
@@ -42,12 +39,10 @@ class UpdateUnderReviewNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Your company update request is under review')
-            ->greeting('Hello ' . $this->company->name . ',')
-            ->line('Your company update request is under review.')
-            ->line('We will notify you once it is approved.')
-            ->view('website.edit-emailer');
-            
+                    ->subject('Company Requested to Approve profile')
+                    ->greeting('Hello ')
+                    ->line('Please approve the .')
+                    ->line('Thank you for using our application!');
     }
 
     /**

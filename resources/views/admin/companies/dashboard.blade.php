@@ -28,7 +28,7 @@
                               </div>
                            </form> -->
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"
-                                 id="filter_category" name="filter_category">Filter By Category`</button>
+                                 id="filter_category" name="filter_category">Filter By Category</button>
                            <!-- Modal -->
                            <div class="modal fade" id="static"  data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog modal-lg" role="document">
@@ -75,118 +75,122 @@
                                              </ul>
                                           </div>
                                           <div class="col-md-9">
+                                            <form action="">
                                              <div class="tab-content">
-
-                                                <form action="">
-                                                      <div class="tab-pane container active" id="company">
-                                                         <div class="row">
-                                                            @foreach($companies_name as $company)
-                                                            <div class="col-md-4">
-                                                               <div class="mt-4">
-                                                                  @if(isset($company['name']) && !empty($company['name']))
-                                                                  <div class="form-check form-check-inline mb-2">
-                                                                     <input class="form-check-input" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>
-                                                                                                                                                                                                      
-                                                                     <label class="form-check-label" for="">{{ $company['name'] }}</label>
-                                                                  </div>
-                                                                  @endif
-                                                               </div>
+                                                <div class="tab-pane container active" id="company">
+                                                   <div class="row">
+                                                      <h6 class="mb-0 text-justify text-dark">Company Filter</h6>
+                                                      @foreach($companies_name as $company)
+                                                      <div class="col-md-4">
+                                                         <div class="mt-4">
+                                                            @if(isset($company['name']) && !empty($company['name']))
+                                                            <div class="form-check form-check-inline mb-2">
+                                                               <input class="form-check-input" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>
+                                                                                                                                                                                                
+                                                               <label class="form-check-label" for="">{{ $company['name'] }}</label>
                                                             </div>
-                                                            @endforeach
+                                                            @endif
                                                          </div>
                                                       </div>
-                                                      <div class="tab-pane container fade" id="region">
-                                                          <div class="row">
-                                                               @foreach ($regions as $region)
+                                                      @endforeach
+                                                   </div>
+                                                </div>
+                                                <div class="tab-pane container fade" id="region">
+                                                      <div class="row">
+                                                         <h6 class="mb-0 text-justify text-dark">Region Filter</h6>
+                                                         @foreach ($regions as $region)
 
-                                                            
-                                                               <div class="col-md-4">
-                                                                  <div class="mt-4">
-                                                                     @if(isset($region['region']) && !empty($region['region']))
-                                                                        <div class="form-check mb-2">
-                                                                           <input class="form-check-input" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
-                                                                           <label class="form-check-label" for="inlineCheckbox1">{{ $region['region'] }}</label>
-                                                                        </div>
-                                                                     @endif
-                                                                  </div>
-                                                               </div>
-                                                               @endforeach
-                                                            </div>
-                                                            
-                                                      </div>
-                                                      <div class="tab-pane container fade" id="product">
-                                                        
-                                                            <div class="row">
-                                                               @foreach ($products as $product)
-
-
-                                                               <div class="col-md-4">
-                                                                  <div class="mt-4">
-                                                                     @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
-                                                                     <div class="form-check mb-2">
-                                                                        <input class="form-check-input" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
-                                                                        <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
-                                                                     </div>
-                                                                     @endif
-                                                                  </div>
-                                                               </div>
-                                                               
-                                                               @endforeach
-                                                            </div>
-                                                            
-                                                      </div>
-                                                      <div class="tab-pane container fade" id="trademark">
-                                                       
-                                                            <div class="row">
-
-                                                               @foreach ($trademarks as $trademark)
-
-                                                               <div class="col-md-4">
-                                                                  <div class="mt-4">
-                                                                     @if(isset($trademark['trademark']) && !empty($trademark['trademark']))
-                                                                     <div class="form-check mb-2">
-                                                                        <input class="form-check-input" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
-                                                                        <label class="form-check-label" for="inlineCheckbox1">{{$trademark['trademark']}}</label>
-                                                                     </div>
-                                                                     @endif
-                                                                  
-                                                                  </div>
-                                                               </div>
-                                                               @endforeach
-                                                            </div>
-                                                           
-                                                      </div>
-                                                      <div class="tab-pane container fade" id="salesTurnover">
-                                                       
-                                                            <div class="row">
-                                                              
-                                                               <label>
-                                                                  <input type="radio" name="range" value="0-5000" {{ request('range') == '0-5000' ? 'checked' : '' }}>
-                                                                  0 - 5000
-                                                            </label>
-                                                            
-                                                            <label>
-                                                                  <input type="radio" name="range" value="5001-10000" {{ request('range') == '5001-10000' ? 'checked' : '' }}>
-                                                                  5001 - 10000
-                                                            </label>
-                                                            
-                                                            <label>
-                                                                  <input type="radio" name="range" value="10001-15000" {{ request('range') == '10001-15000' ? 'checked' : '' }}>
-                                                                  10001 - 15000
-                                                            </label>
-                                                            
-                                                            </div>
-                                                           
-                                                      </div>
-                                                     
                                                       
-                                                  
-                                                      <div class="mt-3">
-                                                         <button class="btn btn-primary btn-sm">Apply</button>
-                                                         <a href="{{ url()->current() }}" class="btn btn-primary btn-sm">Reset</a>
+                                                         <div class="col-md-4">
+                                                            <div class="mt-4">
+                                                               @if(isset($region['region']) && !empty($region['region']))
+                                                                  <div class="form-check form-check-inline mb-2">
+                                                                     <input class="form-check-input" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
+                                                                     <label class="form-check-label" for="inlineCheckbox1">{{ $region['region'] }}</label>
+                                                                  </div>
+                                                               @endif
+                                                            </div>
+                                                         </div>
+                                                         @endforeach
                                                       </div>
-                                                   </form>
+                                                      
+                                                </div>
+                                                <div class="tab-pane container fade" id="product">
+                                                   
+                                                      <div class="row">
+                                                         <h6 class="mb-0 text-justify text-dark">Product Filter</h6>
+                                                         @foreach ($products as $product)
+
+
+                                                         <div class="col-md-4">
+                                                            <div class="mt-4">
+                                                               @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                               </div>
+                                                               @endif
+                                                            </div>
+                                                         </div>
+                                                         
+                                                         @endforeach
+                                                      </div>
+                                                      
+                                                </div>
+                                                <div class="tab-pane container fade" id="trademark">
+                                                   
+                                                      <div class="row">
+                                                        <h6 class="mb-0 text-justify text-dark">Trademark Filter</h6>
+                                                         @foreach ($trademarks as $trademark)
+
+                                                         <div class="col-md-4">
+                                                            <div class="mt-4">
+                                                               @if(isset($trademark['trademark']) && !empty($trademark['trademark']))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{$trademark['trademark']}}</label>
+                                                               </div>
+                                                               @endif
+                                                            
+                                                            </div>
+                                                         </div>
+                                                         @endforeach
+                                                      </div>
+                                                      
+                                                </div>
+                                                <div class="tab-pane container fade" id="salesTurnover">
+                                                    <h6 class="mb-0 text-justify text-dark">Sales Turnover Filter</h6>
+                                                      <div class="row mt-4">
+                                                      <div class="form-check form-check-inline">
+                                                         <input class="form-check-input" type="checkbox" name="range" value="0-5000" {{ request('range') == '0-5000' ? 'checked' : '' }}id="checkbox-one">
+                                                         <label class="form-check-label" for="checkbox-one">
+                                                            0 - 5000
+                                                         </label>
+                                                      </div>
+                                                      <div class="form-check form-check-inline">
+                                                         <input class="form-check-input" type="checkbox" name="range" value="5000-10000" {{ request('range') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                         <label class="form-check-label" for="checkbox-one">
+                                                            5000-10000
+                                                         </label>
+                                                      </div>
+                                                      
+                                                      <div class="form-check form-check-inline">
+                                                         <input class="form-check-input" type="checkbox" name="range" value="5000-15000" {{ request('range') == '5000-15000' ? 'checked' : '' }}id="checkbox-one">
+                                                         <label class="form-check-label" for="checkbox-one">
+                                                             5000-15000
+                                                         </label>
+                                                      </div>
+                                                      
+                                                      </div>
+                                                      
+                                                </div>
+
                                              </div>
+                                                <div class="mt-3">
+                                                      <button class="btn btn-primary btn-sm">Apply</button>
+                                                      <a href="{{ url()->current() }}" class="btn btn-primary btn-sm">Reset</a>
+                                                </div>
+                                            </form>
                                           </div>
                                        
                                        </div>
@@ -346,10 +350,15 @@
          $(".filter_label_name").html(filter_name);
          $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
       });
-
-
+      document.add
+    
+});
 
    
-   });
+
 </script>
+
+
+
+
 @endpush

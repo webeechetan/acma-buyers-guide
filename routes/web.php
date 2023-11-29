@@ -122,3 +122,8 @@ Route::get('admin/edit-details', function () {
     return view('admin.edit-emailer');
 
 });
+Route::get('company/profile', function () {
+    
+    return view('website.profile');
+
+});

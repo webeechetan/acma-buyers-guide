@@ -862,6 +862,9 @@ footer {
 .custom_search_filter .category-dropdown ul li:hover a {
   color: #fff;
 }
+.text-justify{
+  text-align: justify !important;
+}
 
 .modal-bod.nav-pills {
   display: grid;
@@ -886,6 +889,10 @@ footer {
 }
 .nav-pills .nav-link.active{
   background-color: var(--primary) !important;
+}
+div.form-check-inline{
+  display: flex !important;
+  column-gap: 15px !important;
 }
 
 /*---- Modal ---*/
@@ -1071,4 +1078,22 @@ footer {
 }
 .app-brand .layout-menu-toggle{
   background-color: var(--primary) !important;
+}
+/*---- Profile Page ----*/
+.user-profile-header-banner img {
+  width: 100%;
+  object-fit: cover;
+  height: 250px;
+}
+.user-profile-header {
+  margin-top: -2rem
+}
+
+.user-profile-header .user-profile-img {
+  border: 5px solid;
+  width: 120px
+}
+
+.light-style .user-profile-header .user-profile-img {
+  border-color: #fff
 }

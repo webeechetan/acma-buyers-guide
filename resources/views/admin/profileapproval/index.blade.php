@@ -9,13 +9,14 @@
 @endpush
 @section('content')
 
-<!-- resources/views/admin/approval/index.blade.php -->
-
 <h4>Pending Profile Approve Requests</h4>
 <div class="row">
     @foreach ($pendingRequests as $request)
         <div class="col-md-4 mb-4">
             <div class="card">
+                <div class="card-head">
+                    {{ $request->company->name  }}
+                </div>
                 <div class="card-body">
                     <!-- Decode JSON data and loop through it -->
                     @php
@@ -43,7 +44,7 @@
                     </table>
                     
                    
-                        <a href="{{route('admin.profile.approve',$request->id)}}"><button type="submit" class="btn btn-success sm">Approve</button></a>
+                        <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success sm">Approve</button></a>
                    
 
                     {{-- <form method="post" action="{{route('admin.profileUpdateRequest.destroy' , $request->id )}}">

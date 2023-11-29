@@ -13,12 +13,8 @@ class ProfileApprovalController extends Controller
      */
     public function index()
     {
-         // Retrieve pending update requests
-            $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->get();
-
-            // dd($pendingRequests);
-
-            return view('admin.profileapproval.index', compact('pendingRequests'));
+        $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->get();
+        return view('admin.profileapproval.index', compact('pendingRequests'));
     }
 
     /**
@@ -58,14 +54,15 @@ class ProfileApprovalController extends Controller
      */
     public function update(Request $request, int $id)
     {
-
-        
-
         $company_update_request = CompanyUpdateRequest::find($id);  
         $res = $company_update_request->approve();
-
-        $this->alert('Success', 'Details Approved sucessfully' , 'success');
-        return view('admin.profileapproval.index');
+        if($res){
+            $this->alert('Success', 'Details Approved sucessfully' , 'success');
+        }
+        else{
+            $this->alert('Error', 'Something went wrong' , 'error');
+        }
+        return redirect()->route('admin.profile.approval');
         
     }
 

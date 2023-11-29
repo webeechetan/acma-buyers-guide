@@ -15,6 +15,8 @@ class CompanyKeyPersonnelObserver
      */
     public function updating(CompanyKeyPersonnel $CompanyKeyPersonnel)
     {
+
+        
         // get the original data
         $original = $CompanyKeyPersonnel->getOriginal();
         // get the updated data

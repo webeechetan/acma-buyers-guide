@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\AdminPaymentController;
 use App\Models\Admin\Member;
 use App\Models\User;
+use App\Models\CompanyUpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
 use OpenSpout\Common\Entity\Row;
@@ -29,6 +30,12 @@ use Maatwebsite\Excel\Facades\Excel;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/update-request', function () {
+    $company_update_request = CompanyUpdateRequest::find(15);
+    $res = $company_update_request->approve();
+    dd($res);
+});
 
 // import excel file 
 
@@ -78,6 +85,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/companies-data', [CompanyController::class, 'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
 });
 
 

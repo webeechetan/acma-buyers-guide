@@ -45,10 +45,12 @@ class CompanyController extends Controller
                 
                 
                 setcookie("email", $request->email, time() + 3600 * 24 * 7);
+                setcookie("password", $request->password, time() + 3600 * 24 * 7);
                
             } else {
                
                 setcookie("email", "", time() - 3600); 
+                setcookie("password", "", time() - 3600); 
                 
             }
             
@@ -77,10 +79,11 @@ class CompanyController extends Controller
 
 
     public function fillUpDetails(Request $request){
+
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
 
-        $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company = Company::where('id',Auth::guard('company')->user()->id)->first();
+        $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
@@ -118,7 +121,7 @@ class CompanyController extends Controller
             Auth::guard('company')->login($company);
 
             $this->alert('Success', 'Registration Successful' , 'success');
-            return redirect()->route('company.payments');
+            return redirect()->route('company.dashboard');
         }
 
     }
@@ -164,7 +167,12 @@ class CompanyController extends Controller
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
-        $this->alert('Success', 'details under review. we will notify you once approved. ' , 'success');
+        $company_contact_detail->update($data);
+        $company_key_personnel->update($data);
+        $company_product_detail->update($data);
+        $company_foreign_collaboration->update($data);
+
+        $this->alert('Success', 'Details under review. we will notify you once opproved. ' , 'success');
         return redirect()->route('company.dashboard');
     }
 

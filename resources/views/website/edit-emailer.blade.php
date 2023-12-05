@@ -37,7 +37,7 @@
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px">
          
           <tr>
-            <td><p style="margin-bottom: 0;">Hello</p></td>
+            <td><p style="margin-bottom: 0;">Helloss</p></td>
           </tr>
 
           <tr>

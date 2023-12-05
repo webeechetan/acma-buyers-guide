@@ -6,26 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\CompanyController;
 
-class UpdateUnderReviewNotification extends Notification
+class ForgotPasswordOtpNotification extends Notification
 {
     use Queueable;
 
-    public $company_update_request;
-    public $company;
+    public $user;
+    public $otp;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($company_update_request, $company)
+    public function __construct($user, $otp)
     {
-
-        
-        $this->company_update_request = $company_update_request;
-        $this->company = $company;
-
-       
+        $this->user = $user;
+        $this->otp = $otp;
     }
 
     /**
@@ -43,16 +39,13 @@ class UpdateUnderReviewNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-
-        
         return (new MailMessage)
-            ->subject('Your company update request is under review')
-            ->greeting('Hello ' . $this->company->name . ',')
-            ->line('Your company update request is under review.')
-            ->line('We will notify you once it is approved.');
-            // ->view('website.edit-emailer');
 
-            
+                    ->subject('OTP to reset your password')
+                    ->greeting('Hello ' . $this->user->name . ',' )
+                    ->line('We received a request to reset your Acma Buyers Guide account password. Please use the following one-time password to verify yourself')
+                    ->line('**Here is your OTP: ' . $this->otp . '**')
+                    ->line('Thank you for using our application!');
     }
 
     /**

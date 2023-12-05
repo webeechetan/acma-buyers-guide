@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\DataTables\CompanyDataTable;
+use Illuminate\Cache\RateLimiter;
 use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
+use App\Notifications\Company\ForgotPasswordOtpNotification;
 use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
+use Illuminate\Support\Facades\Password;
 
 //use Illuminate\Support\Facades\Cookie;
 
@@ -38,9 +41,6 @@ class CompanyController extends Controller
 
             //setting cookies in client browser
 
-            
-            // if (($request->remember) && !($request->remember)) {
-
                 if ($request->has('remember')) {
                 
                 
@@ -50,13 +50,9 @@ class CompanyController extends Controller
             } else {
                
                 setcookie("email", "", time() - 3600); 
-                setcookie("password", "", time() - 3600); 
-                
+                setcookie("password", "", time() - 3600);    
             }
-            
             return redirect()->route('company.dashboard');
-
-            
            
         }
 
@@ -80,6 +76,7 @@ class CompanyController extends Controller
 
     public function fillUpDetails(Request $request){
 
+      
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
 
         $company = Company::where('id',Auth::guard('company')->user()->id)->first();
@@ -197,5 +194,109 @@ class CompanyController extends Controller
         Auth::guard('company')->logout();
         return redirect()->route('company.login');
     }
+
+    public function forgotpassword_view()
+    {
+        return view('website.forgotpassword.forgotpassword');
+    }
+
+
+    
+    public function forget_password(Request $request,  RateLimiter $limiter)
+    {
+
+        $request->validate([
+
+            'email' => 'required|email|exists:companies'
+        ]);
+        
+      
+        $user = Company::where('email',$request->email)->first();       
+
+        $request->session()->put('Otp_email', $user->email);
+       
+            $otp = rand(000000,999999);
+
+            $user->otp = $otp;
+            $user->save();
+            $user->notify(new ForgotPasswordOtpNotification($user, $otp));
+
+            $this->alert('Success', 'Otp sent to your registered email address sucessfully' , 'success');
+            return redirect()->route('company.forgotpassword.otpverify');
+       
+    }
+
+
+
+    public function otp_verify_form(Request $request) 
+    {
+
+        return view('website.forgotpassword.otpverification');
+    }
+
+    public function otp_authentication(Request $request)
+    {
+        
+        $request->validate([
+            'otp' => 'required|numeric|exists:companies',
+        ]);
+
+
+        $otpEmail = session('Otp_email');
+
+        $user = Company::where('email', $otpEmail)->first();
+       
+        if ($user) {
+            return view('website.forgotpassword.resetpassword', compact('user'));
+        }            
+        
+        return redirect()->back();
+    }
+
+
+    public function reset_password_form(Request $request)
+    {
+
+        return view('website.forgotpassword.resetpassword');
+    }
+
+    public function reset_password_update(Request $request)
+    {
+
+
+        // $request->validate([
+        //     'email' => 'required|email|exists:companies,email',
+        //     'password' => 'required|min:6|confirmed',
+        // ]);
+
+        
+
+        $email = $request->email;
+        $password = $request->password;
+        $confirm_password = $request->password_confirmation;
+
+
+        if ($password == $confirm_password){
+
+            $user = Company::where('email', $email)->first();
+            
+            $hashedPassword  = Hash::make($password);
+            $user->password = $hashedPassword;
+
+            $user->save();
+            return redirect()->route('company.login');
+        
+
+        }else{
+           // return back();
+
+            // return redirect()->route('company.Otpauthentication');
+             dd('not okay');
+           
+       }
+
+
+    }
+
 
 }

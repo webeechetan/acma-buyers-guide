@@ -1097,3 +1097,13 @@ div.form-check-inline{
 .light-style .user-profile-header .user-profile-img {
   border-color: #fff
 }
+
+
+.forgot-password-templates{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
+
+}

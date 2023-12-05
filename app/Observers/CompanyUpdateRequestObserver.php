@@ -25,6 +25,7 @@ class CompanyUpdateRequestObserver
 
     public function created(CompanyUpdateRequest $CompanyUpdateRequest)
     {
+       
         $CompanyUpdateRequest->notify(new UpdateUnderReviewNotification($CompanyUpdateRequest, $CompanyUpdateRequest->company));
         $admin = User::find(1);
         $admin->notify(new NewUpdateRequestNotification($CompanyUpdateRequest, $CompanyUpdateRequest->company));

@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Http\Controllers\Admin\ProfileApprovalController;
 use Illuminate\Support\Facades\Log;
 
 class UpdateApprovedNotification extends Notification
@@ -18,9 +19,10 @@ class UpdateApprovedNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($company_update_request, $company)
     {
-      
+      $this->company_update_request = $company_update_request;
+      $this->company = $company;
     }
 
     /**
@@ -38,10 +40,12 @@ class UpdateApprovedNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+
+        
         return (new MailMessage)
-                    ->subject('Company Requested to Approve profile')
-                    ->greeting('Hello ')
-                    ->line('Please approve the .')
+                    ->subject('Your Profile update request is approved successfully')
+                    ->greeting('Hello' . $this->company->name . ',' )
+                    ->line('Your Profile Update request is Approved.')
                     ->line('Thank you for using our application!');
     }
 

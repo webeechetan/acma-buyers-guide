@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyUpdateRequest;
+use App\Models\Company;
+use App\Notifications\Company\UpdateApprovedNotification;
 use Illuminate\Http\Request;
 
 class ProfileApprovalController extends Controller
@@ -54,10 +56,21 @@ class ProfileApprovalController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $company_update_request = CompanyUpdateRequest::find($id);  
+        $company_update_request = CompanyUpdateRequest::find($id);
+
+        // getting details to send the email notification
+
+        $company_id = $company_update_request->company_id;
+        $company = Company::find($company_id);
+
+        $company_update_request->notify(new UpdateApprovedNotification($company_update_request, $company));
+        // above getting details to send the email notification
+
         $res = $company_update_request->approve();
         if($res){
             $this->alert('Success', 'Details Approved sucessfully' , 'success');
+
+            
         }
         else{
             $this->alert('Error', 'Something went wrong' , 'error');

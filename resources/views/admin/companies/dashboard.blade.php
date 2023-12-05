@@ -351,6 +351,7 @@
          $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
       });
 
+});
    
 
 </script>

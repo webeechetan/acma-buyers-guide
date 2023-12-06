@@ -195,8 +195,10 @@ class CompanyController extends Controller
         return redirect()->route('company.login');
     }
 
-    public function forgotpassword_view()
+    public function forgotpassword_view(Request $request)
     {
+        
+        
         return view('website.forgotpassword.forgotpassword');
     }
 
@@ -269,7 +271,15 @@ class CompanyController extends Controller
         //     'password' => 'required|min:6|confirmed',
         // ]);
 
-        
+
+        $request->validate([
+            'email' => 'required|email|exists:companies,email',
+            'password' => 'required|min:6|confirmed',
+        ], [
+            'email.exists' => 'The provided email does not exist in the companies table.',
+        ]);
+
+        exit;
 
         $email = $request->email;
         $password = $request->password;

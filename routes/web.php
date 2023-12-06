@@ -94,7 +94,7 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 
         Route::get('/dashboard/{filter?}', [CompanyController::class, 'dashboard'])->name('company.dashboard');
   
-        Route::post('/register', [CompanyController::class, 'store'])->name('company.store');
+      
       
         Route::get('/fill-up-details', [CompanyController::class, 'fillUpDetails'])->name('company.fillUpDetails');
         Route::post('/fill-up-details', [CompanyController::class, 'fillUpDetailsStore'])->name('company.fillUpDetailsStore');
@@ -120,6 +120,7 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 });
 
 
+Route::post('/register', [CompanyController::class, 'store'])->name('company.store');
 Route::get('company/register', [CompanyController::class, 'register'])->name('company.register');
 Route::get('company/login', [CompanyController::class, 'login'])->name('company.login');
 

@@ -52,7 +52,6 @@
                   <div class="mb-3">
                     <label for="password" class="form-label">Password </label>
                     <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
-
                     @error('password')
                        <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -62,7 +61,6 @@
                     <label for="cpassword" class="form-label">Confirm Password </label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="" placeholder="Confirm Password">
                    
-                    
                  </div>
                   <div class="mb-3">
                      <button class="btn btn-primary d-grid w-100" type="submit">Reset Password</button>

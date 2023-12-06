@@ -265,22 +265,15 @@ class CompanyController extends Controller
     public function reset_password_update(Request $request)
     {
 
-
-        // $request->validate([
-        //     'email' => 'required|email|exists:companies,email',
-        //     'password' => 'required|min:6|confirmed',
-        // ]);
-
+        dd('password update');
 
         $request->validate([
+
+            
             'email' => 'required|email|exists:companies,email',
             'password' => 'required|min:6|confirmed',
-        ], [
-            'email.exists' => 'The provided email does not exist in the companies table.',
         ]);
-
-        exit;
-
+      
         $email = $request->email;
         $password = $request->password;
         $confirm_password = $request->password_confirmation;

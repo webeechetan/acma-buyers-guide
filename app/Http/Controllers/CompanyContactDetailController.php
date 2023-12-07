@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CompaniesExport;
 use App\Models\CompanyContactDetail;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CompanyContactDetailController extends Controller
 {
@@ -61,5 +63,10 @@ class CompanyContactDetailController extends Controller
     public function destroy(CompanyContactDetail $companyContactDetail)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new CompaniesExport, 'Companies.xlsx');
     }
 }

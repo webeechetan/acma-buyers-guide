@@ -37,16 +37,28 @@
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px">
          
           <tr>
-            <td><p style="margin-bottom: 0;">Helloss</p></td>
+            <td><p style="margin-bottom: 0;"><b>Hello  {{ $user->name }} , <b><br> </p></td>
           </tr>
 
           <tr>
-            <td><p style="margin-bottom: 0;">Your company update request is under review.</p></td>
+            <td><p style="margin-bottom: 0;">We recieved a request to Reset yout Acma buyers Guide password.</p></td>
           </tr>
 
           <tr>
-            <td><p style="margin-bottom: 0;">We will notify you once it is approved.<br></p></td>
+            <td><p style="margin-bottom: 0;">Here is your OTP-<b> {{ $otp }} </b></p></td>
           </tr>
+          <tr>
+            <td>
+                <p style="margin-bottom: 0;">Regards,</p>
+            </td>
+        </tr>
+    
+        <!-- Add Acma Buyers Guide Section -->
+        <tr>
+            <td>
+                <h3 style="color:#07395C; margin: 10px 0;">Acma Buyers Guide</h3>
+            </td>
+        </tr>
         </table>        
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px; background-color: #07395C;">
         <tr>

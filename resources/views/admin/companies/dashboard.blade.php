@@ -15,7 +15,7 @@
                   <div class="row">
                      <div class="col-md-8">
                         <div>
-                           <h2 class="title mb-md-0">Highlighted Companies</h2>
+                           <h2 class="title mb-md-0">Buyers Guide Database</h2>
                         </div>
                      </div>
                      <div class="col-md-4">
@@ -62,9 +62,9 @@
                                                    <a class="nav-link" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
                                                 </li> --}}
 
-                                                <li  class="filter-name mb-2" data-filter="location">
+                                                {{-- <li  class="filter-name mb-2" data-filter="location">
                                                    <a class="nav-link" data-bs-toggle="pill" href="#location">Location</a>
-                                                </li>
+                                                </li> --}}
                                                 {{-- <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
                                                    <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
                                                 </li>
@@ -235,92 +235,94 @@
 
                   
                   <div class="col-md-3 mb-2">
-                     <div class="card">
-                        <div class="company-card">
-                           <h4 class="sub-title mb-0 text-secondary"> {{ $company->name }} </h4>
-                        </div>
-                        <div class="card-body">
-                           <div class="information-list">
-                              <ul>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-map-marker" aria-hidden="true"></i>Address
-                                    </div>
+                     
+                        <div class="card">
+                           <div class="company-card">
+                              <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }} </h4></a>
+                           </div>
+                           <div class="card-body">
+                              <div class="information-list">
+                                 <ul>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-map-marker" aria-hidden="true"></i>Address
+                                       </div>
 
-                                    <div>
-                                       @if($company && $company->contact_details)
-                                           <span>{{ $company->contact_details->company_address }}</span>
-                                       @else
-                                       <p>NA</P>
-                                       @endif
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-phone"></i>Phone
-                                    </div>
-                                    <div>
+                                       <div>
+                                          @if($company && $company->contact_details)
+                                             <span>{{ $company->contact_details->company_address }}</span>
+                                          @else
+                                          <p>NA</P>
+                                          @endif
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-phone"></i>Phone
+                                       </div>
+                                       <div>
 
-                                       @if($company && $company->contact_details)
-                                       
-                                             <span>{{$company->contact_details->phone}}</span>
-                                       @else 
-                                       <p>NA</p>
-                                       @endif
-                                   
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-fax"></i>Fax
-                                    </div>
+                                          @if($company && $company->contact_details)
+                                          
+                                                <span>{{$company->contact_details->phone}}</span>
+                                          @else 
+                                          <p>NA</p>
+                                          @endif
                                     
-                                     
-                                       @if($company && $company->contact_details)
-                                           <span>{{$company->contact_details->fax}}</span> 
-                                           @else 
-                                           <p>NA</p>
-                                           @endif
-                                   
-                                    </span>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-envelope"></i>E-mail
-                                    </div>
-                                    <div>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-fax"></i>Fax
+                                       </div>
                                        
-                                       @if($company && $company->contact_details)
-                                       <a href={{$company->contact_details}}>  {{$company->contact_details->email}}</a>
-                                       @else 
-                                       <p>NA</p>
+                                       
+                                          @if($company && $company->contact_details)
+                                             <span>{{$company->contact_details->fax}}</span> 
+                                             @else 
+                                             <p>NA</p>
+                                             @endif
+                                    
+                                       </span>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-envelope"></i>E-mail
+                                       </div>
+                                       <div>
+                                          
+                                          @if($company && $company->contact_details)
+                                          <a href={{$company->contact_details}}>  {{$company->contact_details->email}}</a>
+                                          @else 
+                                          <p>NA</p>
+                                          @endif
+                                       
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-globe"></i>Website
+                                       </div>
+                                       <div>
+                                          @if($company && $company->contact_details)
+                                          <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
+                                          @else 
+                                          <p>NA</P>
                                        @endif
-                                     
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-globe"></i>Website
-                                    </div>
-                                    <div>
-                                       @if($company && $company->contact_details)
-                                       <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
-                                       @else 
-                                       <p>NA</P>
-                                      @endif
-                                    </div>
-                                 </li>
-                              </ul>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </div>
                            </div>
                         </div>
-                     </div>
+                     
                   </div>
                   @endforeach
                </div>
             </div>
             <div class="row">
                <div class="col-md-12 text-center mt-2">
-                  {{-- <button class="btn btn-primary" class="download-button">Download Pdf</button> --}}
+                  <a href="{{route('dashboard.company.export')}}"><button class="btn btn-primary" class="download-button">Download CSV</a></button>
                </div>
             </div>
             <!--- Multiple select --->

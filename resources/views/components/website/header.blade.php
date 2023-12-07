@@ -117,7 +117,7 @@
                 <li>
 
 
-                  <a class="dropdown-item" href="pages-profile-user.html">
+                  <a class="dropdown-item" href="">
                     <i class='bx bx-building-house me-2'></i>
                     <span class="align-middle">{{ $authenticatedCompany->name }}</span>
                     </a>
@@ -126,7 +126,7 @@
                 <li>
 
 
-                    <a class="dropdown-item" href="pages-profile-user.html">
+                    <a class="dropdown-item" href="">
                         <i class='bx bxs-envelope'></i>
                       <span class="align-middle">{{ $authenticatedCompany->email }}</span>
                       </a>

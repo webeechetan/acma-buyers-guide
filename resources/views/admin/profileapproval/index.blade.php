@@ -9,13 +9,14 @@
 @endpush
 @section('content')
 
-<!-- resources/views/admin/approval/index.blade.php -->
-
 <h4>Pending Profile Approve Requests</h4>
 <div class="row">
     @foreach ($pendingRequests as $request)
         <div class="col-md-4 mb-4">
             <div class="card">
+                <div class="card-head">
+                    {{ $request->company->name  }}
+                </div>
                 <div class="card-body">
                     <!-- Decode JSON data and loop through it -->
                     @php
@@ -23,9 +24,9 @@
                     @endphp
                     
 
-                    <table class="table">
+                    <table class="table" id="profile">
                         <thead>
-                            <tr style="color: red;">
+                            <tr style="color: rgb(38, 5, 5);">
                                 <th>Field</th>
                                 <th>Old Value</th>
                                 <th>New Value</th>
@@ -42,17 +43,15 @@
                         </tbody>
                     </table>
                     
-                    <form method="post" action="{{ route('admin.profileUpdate.approved', $request->id) }}">
-                        @csrf
-                        @method('put')
-                        <button type="submit" class="btn btn-success sm">Approve</button>
-                    </form>
+                   
+                        <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success sm">Approve</button></a>
+                   
 
-                    <form method="post" action="{{route('admin.profileUpdateRequest.destroy' , $request->id )}}">
+                    {{-- <form method="post" action="{{route('admin.profileUpdateRequest.destroy' , $request->id )}}">
                         @csrf
                         @method('put')
                         <button type="submit" class="btn btn-danger sm">Disapprove</button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
@@ -66,7 +65,7 @@
 @push('scripts')
 <script src="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
 <script>
-   new DataTable('#payment');
+   new DataTable('#profile');
    
 </script>
 @endpush

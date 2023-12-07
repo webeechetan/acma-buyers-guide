@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('logo')->default('default.png');
             $table->string('website')->nullable();
             $table->string('password');
+            $table->string('otp')->nullable(); //otp option added
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

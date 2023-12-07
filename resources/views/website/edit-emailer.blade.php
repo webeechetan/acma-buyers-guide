@@ -31,39 +31,26 @@
         <table width="100%" cellspacing="0" cellpadding="0" style="background-color: #07395C; padding: 5px 20px">
           <tr>
             <td style="width: 275px;"><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></td>
-            <td><h3 style="color:#fff;">Acma Buyers Guide Details</h3></td>
+            <td><h3 style="color:#fff;">Acma Buyers Guide</h3></td>
           </tr>
         </table>
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px">
+         
           <tr>
-            
-            <td><h4 style="color:#000;margin-bottom: 0;">Dear Employee,</h4></td>
+            <td><p style="margin-bottom: 0;">Helloss</p></td>
           </tr>
+
           <tr>
-            <td><p style="margin-bottom: 0;">Your update details is here:-</p></td>
+            <td><p style="margin-bottom: 0;">Your company update request is under review.</p></td>
           </tr>
-        </table>
-        <table width="100%" cellspacing="0" cellpadding="0" style="padding: 0 20px">
+
           <tr>
-            
-            <td><p style="margin-bottom: 0;"><b>Company Name:</b> Acma</p></td>
-            <td><p style="margin-bottom: 0;"><b>Email:</b> Admin@gmail.com</p></td>
+            <td><p style="margin-bottom: 0;">We will notify you once it is approved.<br></p></td>
           </tr>
-          <tr>
-            
-            <td><p style="margin-bottom: 0;"><b>Manager Name:</b> Jhon</p></td>
-            <td><p style="margin-bottom: 0;"><b>Fax:</b> 89989890</p></td>
-          </tr>
-          
-        </table>
-        <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px;">
-          <tr>
-            <td><p>These details are update request for you</p></td>
-          </tr>
-        </table>
+        </table>        
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px; background-color: #07395C;">
         <tr>
-            <td><p style="text-align: center; color: #fff;">Have any Question check out here</p></td>
+            <td><p style="text-align: center; color: #fff;">Thank you </p></td>
           </tr>
         </table>
       </td>

@@ -17,6 +17,7 @@ class CompanyUpdateRequest extends Model
     use HasFactory, Notifiable;
 
     public function routeNotificationForMail(Notification $notification): array|string{
+        
         return $this->company->email;
     }
 
@@ -65,7 +66,7 @@ class CompanyUpdateRequest extends Model
             }
         }
 
-        if($this->modal == 'CompanyProductDetail'){
+        if($this->modal == 'CompanyProductDetails'){
             foreach ($data as $key => $value) {
                 $company_product_detail->$key = $value['new'];
             }
@@ -93,6 +94,7 @@ class CompanyUpdateRequest extends Model
             }
         }
 
+        
         return false;
 
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyUpdateRequest;
+use App\Models\Company;
+use App\Notifications\Company\UpdateApprovedNotification;
 use Illuminate\Http\Request;
 
 class ProfileApprovalController extends Controller
@@ -13,10 +15,8 @@ class ProfileApprovalController extends Controller
      */
     public function index()
     {
-         // Retrieve pending update requests
-            $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->get();
-
-            return view('admin.profileapproval.index', compact('pendingRequests'));
+        $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->get();
+        return view('admin.profileapproval.index', compact('pendingRequests'));
     }
 
     /**
@@ -54,26 +54,28 @@ class ProfileApprovalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        $request = CompanyUpdateRequest::findOrFail($id);
+        $company_update_request = CompanyUpdateRequest::find($id);
 
-        $NewData = json_decode($request->data, true);
-        $company_id = $request->company_id;
+        // getting details to send the email notification
 
-        foreach ($NewData as $key => $values) {
-            $company_id->$key = $values['new'];
+        $company_id = $company_update_request->company_id;
+        $company = Company::find($company_id);
+
+        $company_update_request->notify(new UpdateApprovedNotification($company_update_request, $company));
+        // above getting details to send the email notification
+
+        $res = $company_update_request->approve();
+        if($res){
+            $this->alert('Success', 'Details Approved sucessfully' , 'success');
+
+            
         }
-
-        $company_id->save();
-    
-
-
-        $request->status = 'approved';
-        $company_id->save();
-
-        $this->alert('Success', 'Details Approved sucessfully' , 'success');
-        return view('admin.profileapproval.index');
+        else{
+            $this->alert('Error', 'Something went wrong' , 'error');
+        }
+        return redirect()->route('admin.profile.approval');
         
     }
 

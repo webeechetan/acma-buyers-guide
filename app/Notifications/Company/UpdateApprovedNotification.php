@@ -6,9 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Http\Controllers\Admin\ProfileApprovalController;
 use Illuminate\Support\Facades\Log;
 
-class UpdateUnderReviewNotification extends Notification
+class UpdateApprovedNotification extends Notification
 {
     use Queueable;
 
@@ -20,12 +21,8 @@ class UpdateUnderReviewNotification extends Notification
      */
     public function __construct($company_update_request, $company)
     {
-
-        
-        $this->company_update_request = $company_update_request;
-        $this->company = $company;
-
-       
+      $this->company_update_request = $company_update_request;
+      $this->company = $company;
     }
 
     /**
@@ -46,13 +43,10 @@ class UpdateUnderReviewNotification extends Notification
 
         
         return (new MailMessage)
-            ->subject('Your company update request is under review')
-            ->greeting('Hello ' . $this->company->name . ',')
-            ->line('Your company update request is under review.')
-            ->line('We will notify you once it is approved.');
-            // ->view('website.edit-emailer');
-
-            
+                    ->subject('Your Profile update request is approved successfully')
+                    ->greeting('Hello' . $this->company->name . ',' )
+                    ->line('Your Profile Update request is Approved.')
+                    ->line('Thank you for using our application!');
     }
 
     /**

@@ -15,6 +15,7 @@ class Company extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
     public function key_personnels(){
         return $this->hasOne(CompanyKeyPersonnel::class);
     }

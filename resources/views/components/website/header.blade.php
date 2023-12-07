@@ -81,6 +81,10 @@
                     alt="" class="w-px-40 h-auto rounded-circle">
                 </div>
                 </a>
+
+                @php
+                $authenticatedCompany = Auth::guard('company')->user();
+                @endphp
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                     <a class="dropdown-item" href="/">
@@ -93,7 +97,7 @@
                         </div>
                         </div>
                         <div class="flex-grow-1">
-                        <span class="fw-medium d-block">John Doe</span>
+                        <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
                         </div>
                     </div>
                     </a>
@@ -107,13 +111,31 @@
                     <span class="align-middle">Account Details</span>
                     </a>
                 </li>
+
+
+ 
                 <li>
-                    <a class="dropdown-item" href="pages-profile-user.html">
+
+
+                  <a class="dropdown-item" href="pages-profile-user.html">
                     <i class='bx bx-building-house me-2'></i>
-                    <span class="align-middle">Company Name</span>
+                    <span class="align-middle">{{ $authenticatedCompany->name }}</span>
                     </a>
                 </li>
-                <li> <a class="dropdown-item" href="{{ route('company.logout') }}"> <i class='bx bx-power-off me-2'></i> <span class="align-middle">Logout</span> </a> </li>
+
+                <li>
+
+
+                    <a class="dropdown-item" href="pages-profile-user.html">
+                        <i class='bx bxs-envelope'></i>
+                      <span class="align-middle">{{ $authenticatedCompany->email }}</span>
+                      </a>
+                  </li>
+
+
+                <li>
+                     <a class="dropdown-item" href="{{ route('company.logout') }}"><i class='bx bx-power-off me-2'></i> <span class="align-middle">Logout</span></a>
+                </li>
                 </ul>
             </li>
             </ul>

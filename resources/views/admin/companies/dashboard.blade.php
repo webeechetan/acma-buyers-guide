@@ -350,6 +350,7 @@
          $(".filter_label_name").html(filter_name);
          $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
       });
+   });
 
    
 

@@ -41,13 +41,9 @@
                </div>
                <!-- /Logo -->
                <h2 class="mb-2">Reset Password</h2>
-               <p>Enter the email address associated with your account.</p>
+               
                <form id="" class="mb-3" action="{{route('company.ResetPassword.update')}}" method="POST">
                   @csrf
-                  <div class="mb-3">
-                     <label for="email" class="form-label">Email </label>
-                     <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" placeholder="Enter your email" readonly autofocus>
-                  </div>
 
                   <div class="mb-3">
                     <label for="password" class="form-label">Password </label>

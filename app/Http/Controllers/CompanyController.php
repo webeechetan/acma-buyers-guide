@@ -76,7 +76,6 @@ class CompanyController extends Controller
 
     public function fillUpDetails(Request $request){
 
-      
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
 
         $company = Company::where('id',Auth::guard('company')->user()->id)->first();
@@ -198,7 +197,6 @@ class CompanyController extends Controller
     public function forgotpassword_view(Request $request)
     {
         
-        
         return view('website.forgotpassword.forgotpassword');
     }
 
@@ -249,7 +247,7 @@ class CompanyController extends Controller
         $user = Company::where('email', $otpEmail)->first();
        
         if ($user) {
-            return view('website.forgotpassword.resetpassword', compact('user'));
+            return redirect()->route('company.ResetPassword.form');
         }            
         
         return redirect()->back();
@@ -265,41 +263,41 @@ class CompanyController extends Controller
     public function reset_password_update(Request $request)
     {
 
-        dd('password update');
-
-        $request->validate([
-
-            
-            'email' => 'required|email|exists:companies,email',
-            'password' => 'required|min:6|confirmed',
-        ]);
-      
-        $email = $request->email;
         $password = $request->password;
         $confirm_password = $request->password_confirmation;
-
-
-        if ($password == $confirm_password){
-
-            $user = Company::where('email', $email)->first();
+        
+        $request->validate([    
+            'password' => 'required|min:6|confirmed',
+        ]);
+    
+            $otpEmail = session('Otp_email');
+            $user = Company::where('email', $otpEmail)->first();
             
             $hashedPassword  = Hash::make($password);
             $user->password = $hashedPassword;
 
             $user->save();
+
+            $this->alert('success', 'Password Updated Successfully' , 'success');
             return redirect()->route('company.login');
-        
-
-        }else{
-           // return back();
-
-            // return redirect()->route('company.Otpauthentication');
-             dd('not okay');
-           
-       }
-
 
     }
 
+
+    public function view_company(Request $request) 
+    {
+        $id = $request->id;
+
+        $company = Company::where('id',Auth::guard('company')->user()->id)->first();
+        $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
+        $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
+
+    
+        return view('website.company.view-company', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
+
+
+    }
 
 }

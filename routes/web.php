@@ -5,6 +5,8 @@ use App\Http\Middleware\CompanyAuthMiddleware;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\AdminPaymentController;
+
+use App\Http\Controllers\CompanyContactDetailController;
 use App\Models\Admin\Member;
 use App\Models\User;
 use App\Models\CompanyUpdateRequest;
@@ -104,6 +106,10 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         Route::get('/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
         Route::post('/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');
 
+
+            
+        Route::get('/view-company/{id}', [CompanyController::class, 'view_company'])->name('company.view_company');
+        
       
         ////////////Emailer template for company detals update for company and admin
 
@@ -120,6 +126,11 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 });
 
 
+// Route::get('company/export/', [CompanyContactDetailController::class, 'export']);
+Route::get('company/export/', [CompanyContactDetailController::class, 'export'])->name('dashboard.company.export');
+
+
+
 Route::post('/register', [CompanyController::class, 'store'])->name('company.store');
 Route::get('company/register', [CompanyController::class, 'register'])->name('company.register');
 Route::get('company/login', [CompanyController::class, 'login'])->name('company.login');
@@ -129,10 +140,10 @@ Route::post('company/login', [CompanyController::class, 'authenticate'])->name('
 
   Route::get('/forgot-password', [CompanyController::class, 'forgotpassword_view'])->name('company.forgotpassword.view');
   Route::post('/forgot-password', [CompanyController::class, 'forget_password'])->name('company.forgotpassword');
-  Route::get('/otp-verify-form', [CompanyController::class, 'otp_verify_form'])->name('company.forgotpassword.otpverify');
+  Route::get('/otp-verify', [CompanyController::class, 'otp_verify_form'])->name('company.forgotpassword.otpverify');
   Route::post('/otp-authentication', [CompanyController::class, 'otp_authentication'])->name('company.Otpauthentication');
-  Route::get('/reset-password-form', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');
-  Route::post('/reset-password/update', [CompanyController::class, 'reset_password_update'])->name('company.ResetPassword.update');
+  Route::get('/reset-password', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');
+  Route::post('/reset-password', [CompanyController::class, 'reset_password_update'])->name('company.ResetPassword.update');
 
 
 

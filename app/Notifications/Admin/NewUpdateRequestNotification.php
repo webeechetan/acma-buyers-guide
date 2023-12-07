@@ -41,19 +41,14 @@ class NewUpdateRequestNotification extends Notification
         $data = $this->company_update_request->data;
         $data = json_decode($data , true);
         $updating_data = '';
-        foreach ($data as $key => $value) {
-            if(!$value['old']){
-                $value['old'] = 'NULL';
-            }
-            $updating_data .= $key . ' From ' . $value['old'] . ' to ' . $value['new'] . '</br>';
-        }
-
+       
         return (new MailMessage)
             ->subject('New Update Request')
-            ->line('New Update Request for ' . $this->company->name . ' is pending for approval.')
-            ->line('Updating Data : ' . $updating_data)
-            ->action('View', url('/admin/profile-approval'))
-            ->line('Thank you for using our application!');
+            ->markdown('admin.emailers.newupdaterequest', [
+                'company' => $this->company,
+                'data' => $data,
+                'updating_data' =>$updating_data,
+            ]);
     }
 
     /**

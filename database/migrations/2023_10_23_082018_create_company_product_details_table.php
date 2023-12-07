@@ -62,9 +62,7 @@ return new class extends Migration
             $table->string('advertisement')->nullable();
             $table->string('field1')->nullable();
             $table->string('field2')->nullable();
-            $table->string('net_duty_paid')->nullable();
-            $table->string('custom_duty')->nullable();
-
+           
 
             $table->string('other_mark1')->nullable();
             $table->string('other_mark2')->nullable();

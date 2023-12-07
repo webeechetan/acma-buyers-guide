@@ -35,7 +35,7 @@
       {{-- Payments --}}
       {{-- <li class="menu-item {{Route::is('admin.payments') ? 'active' : '' }} ">
         <a href="{{ route('admin.payments') }}" class="menu-link ">
-          <i class="menu-icon tf-icons bx bx-dollar"></i>
+          <i class=' "menu-icon bx bx-user'></i>
           <div class="text-truncate" data-i18n="Payments">Payments</div>
         </a>
       </li>

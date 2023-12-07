@@ -12,19 +12,19 @@
 <h4>Pending Profile Approve Requests</h4>
 <div class="row">
     @foreach ($pendingRequests as $request)
-        <div class="col-md-4 mb-4">
+        <div class="col-md-6 mb-4">
             <div class="card">
-                <div class="card-head">
-                    {{ $request->company->name  }}
+                <div>
+                   <h5 class="text-primary"> {{ $request->company->name  }}</h5>
                 </div>
-                <div class="card-body">
+                <div class="profile-approve">
                     <!-- Decode JSON data and loop through it -->
                     @php
                         $profile = json_decode($request->data, true);
                     @endphp
                     
 
-                    <table class="table" id="profile">
+                    <table class="table mb-3" id="profile">
                         <thead>
                             <tr style="color: rgb(38, 5, 5);">
                                 <th>Field</th>
@@ -44,7 +44,7 @@
                     </table>
                     
                    
-                        <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success sm">Approve</button></a>
+                        <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>
                    
 
                     {{-- <form method="post" action="{{route('admin.profileUpdateRequest.destroy' , $request->id )}}">

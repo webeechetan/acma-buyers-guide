@@ -55,7 +55,7 @@
           <div class="container-xxl flex-grow-1">
                 @yield('content')
           </div>
-        
+ 
           <div class="content-backdrop fade"></div>
         </div>
         <x-website.footer />

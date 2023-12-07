@@ -72,7 +72,7 @@ class CompanyDataTable extends DataTable
             Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at'),
-            Column::make('Action'),            
+                       
            
 
         

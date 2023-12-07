@@ -16,7 +16,7 @@
                <table class="table dataTable no-footer border-top" id="payment">
                   <thead>
                      <tr class="odd">
-                        <th>id</th>
+                        <th> Payment id</th>
                         <th>Company Name</th>
                         <th>Payment Date</th>
                         <th>PPayment Mode</th>

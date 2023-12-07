@@ -33,10 +33,18 @@
 
      
       {{-- Payments --}}
-      <li class="menu-item {{Route::is('admin.payments') ? 'active' : '' }} ">
+      {{-- <li class="menu-item {{Route::is('admin.payments') ? 'active' : '' }} ">
         <a href="{{ route('admin.payments') }}" class="menu-link ">
-          <i class="menu-icon tf-icons bx bx-dollar"></i>
+          <i class=' "menu-icon bx bx-user'></i>
           <div class="text-truncate" data-i18n="Payments">Payments</div>
+        </a>
+      </li>
+       --}}
+
+       <li class="menu-item">
+        <a href="{{route('admin.profile.approval')}}" class="menu-link ">
+          <i class="menu-icon tf-icons bx bx-dollar"></i>
+          <div class="text-truncate" data-i18n="Approve Profile">Approve Profile</div>
         </a>
       </li>
       

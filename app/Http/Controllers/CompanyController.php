@@ -8,11 +8,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\DataTables\CompanyDataTable;
+use Illuminate\Cache\RateLimiter;
 use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
+use App\Notifications\Company\ForgotPasswordOtpNotification;
 use App\Helpers\CompanyHelper;
+use App\Models\CompanyUpdateRequest;
+use Illuminate\Support\Facades\Password;
 
 //use Illuminate\Support\Facades\Cookie;
 
@@ -37,19 +41,18 @@ class CompanyController extends Controller
 
             //setting cookies in client browser
 
-            
-            if (($request->remember) && !($request->remember)) {
+                if ($request->has('remember')) {
+                
                 
                 setcookie("email", $request->email, time() + 3600 * 24 * 7);
+                setcookie("password", $request->password, time() + 3600 * 24 * 7);
                
             } else {
+               
                 setcookie("email", "", time() - 3600); 
-                
+                setcookie("password", "", time() - 3600);    
             }
-            
             return redirect()->route('company.dashboard');
-
-            
            
         }
 
@@ -72,13 +75,17 @@ class CompanyController extends Controller
 
 
     public function fillUpDetails(Request $request){
+
+      
         CompanyHelper::generateCompanyDataAsNull(Auth::guard('company')->user()->id);
+
+        $company = Company::where('id',Auth::guard('company')->user()->id)->first();
         $company_contact_details = CompanyContactDetail::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_key_personnels = CompanyKeyPersonnel::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
-        return view('website.auth.fill-up-details', compact('company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
+        return view('website.auth.fill-up-details', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
     }
 
     /**
@@ -111,7 +118,7 @@ class CompanyController extends Controller
             Auth::guard('company')->login($company);
 
             $this->alert('Success', 'Registration Successful' , 'success');
-            return redirect()->route('company.payments');
+            return redirect()->route('company.dashboard');
         }
 
     }
@@ -157,35 +164,26 @@ class CompanyController extends Controller
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
-        
-        try{
-            $company_contact_detail->update($data);
-            $company_key_personnel->update($data);
-            $company_product_detail->update($data);
-            $company_foreign_collaboration->update($data);
+        $company_contact_detail->update($data);
+        $company_key_personnel->update($data);
+        $company_product_detail->update($data);
+        $company_foreign_collaboration->update($data);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Details Updated Successfully',
-                'data' => null
-            ]);
-
-        }catch(\Exception $e){
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage(),
-                'data' => null
-            ]);
-        }
-
-        
+        $this->alert('Success', 'Details under review. we will notify you once opproved. ' , 'success');
+        return redirect()->route('company.dashboard');
     }
 
     public function dashboard(Request $request) {
 
-       // dd($request->all());
         $companies = CompanyHelper::filter($request);
-        return view('admin.companies.dashboard', compact('companies'));
+        
+        $companies_name = Company::select('name')->groupBy('name')->get();
+        $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();
+        $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
+        $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
+        $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
+
+        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','products','salesTurnovers'));
     
     }
 
@@ -196,5 +194,112 @@ class CompanyController extends Controller
         Auth::guard('company')->logout();
         return redirect()->route('company.login');
     }
+
+    public function forgotpassword_view(Request $request)
+    {
+        
+        
+        return view('website.forgotpassword.forgotpassword');
+    }
+
+
+    
+    public function forget_password(Request $request,  RateLimiter $limiter)
+    {
+
+        $request->validate([
+
+            'email' => 'required|email|exists:companies'
+        ]);
+        
+      
+        $user = Company::where('email',$request->email)->first();       
+
+        $request->session()->put('Otp_email', $user->email);
+       
+            $otp = rand(000000,999999);
+
+            $user->otp = $otp;
+            $user->save();
+            $user->notify(new ForgotPasswordOtpNotification($user, $otp));
+
+            $this->alert('Success', 'Otp sent to your registered email address sucessfully' , 'success');
+            return redirect()->route('company.forgotpassword.otpverify');
+       
+    }
+
+
+
+    public function otp_verify_form(Request $request) 
+    {
+
+        return view('website.forgotpassword.otpverification');
+    }
+
+    public function otp_authentication(Request $request)
+    {
+        
+        $request->validate([
+            'otp' => 'required|numeric|exists:companies',
+        ]);
+
+
+        $otpEmail = session('Otp_email');
+
+        $user = Company::where('email', $otpEmail)->first();
+       
+        if ($user) {
+            return view('website.forgotpassword.resetpassword', compact('user'));
+        }            
+        
+        return redirect()->back();
+    }
+
+
+    public function reset_password_form(Request $request)
+    {
+
+        return view('website.forgotpassword.resetpassword');
+    }
+
+    public function reset_password_update(Request $request)
+    {
+
+        dd('password update');
+
+        $request->validate([
+
+            
+            'email' => 'required|email|exists:companies,email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+      
+        $email = $request->email;
+        $password = $request->password;
+        $confirm_password = $request->password_confirmation;
+
+
+        if ($password == $confirm_password){
+
+            $user = Company::where('email', $email)->first();
+            
+            $hashedPassword  = Hash::make($password);
+            $user->password = $hashedPassword;
+
+            $user->save();
+            return redirect()->route('company.login');
+        
+
+        }else{
+           // return back();
+
+            // return redirect()->route('company.Otpauthentication');
+             dd('not okay');
+           
+       }
+
+
+    }
+
 
 }

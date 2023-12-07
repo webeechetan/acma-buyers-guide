@@ -84,7 +84,7 @@
                           <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Password</label>`
                             <div class="input-group input-group-merge">
-                              <input type="password" id="password" class="form-control" name="password" value="" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                              <input type="password" id="password" class="form-control" name="password" @if(isset($_COOKIE["password"]))  value="{{ $_COOKIE["password"] }}" @endif placeholder="Password" aria-describedby="password" />
                               <span class="input-group-text cursor-pointer">
                                 <i class="bx bx-hide"></i>
                               </span>
@@ -92,7 +92,7 @@
                           </div>
                           <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
                             <div><input type="checkbox" name="remember" @if(isset($_COOKIE['email'])) checked="" @endif > <span>Remember me</span></div>
-                             <a href="#" class="forgot-password">Forgot your password?</a>
+                             <a href="{{route('company.forgotpassword.view')}}" class="forgot-password">Forgot your password?</a>
                           </div>
                           <button class="btn btn-primary d-grid w-100" type="submit">Sign In</button>
                             

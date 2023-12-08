@@ -18,12 +18,11 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CCAvenueController;
 use App\Http\Controllers\Admin\ProfileApprovalController;
 use App\Ccavenue\Crypto;
+use App\Exports\CompanyExport;
 use App\Imports\CompanyImport;
 use Maatwebsite\Excel\Facades\Excel;
-
-
-
-
+use App\Http\Controllers\ExportController;
+use App\Models\Company;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,7 +122,7 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 });
 
 
-Route::get('company/export/', [CompanyContactDetailController::class, 'export'])->name('dashboard.company.export');
+Route::get('company/export/', [ExportController::class, 'export_company'])->name('dashboard.company.export');
 
 
 

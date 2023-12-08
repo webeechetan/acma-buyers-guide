@@ -173,7 +173,6 @@ class CompanyController extends Controller
     }
 
     public function dashboard(Request $request) {
-
         $companies = CompanyHelper::filter($request);
         
         $companies_name = Company::select('name')->groupBy('name')->get();

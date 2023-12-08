@@ -252,13 +252,13 @@
             <!--- Company Card --->
             <div class="company-card">
                <div class="row">
+                  <form action="{{ route('dashboard.company.export') }}">
                   @foreach ($companies as $company)                 
                   
                   <div class="col-md-3 mb-2">
-                     
                         <div class="card">
                            <div class="company-card">
-                              <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }} </h4></a>
+                              <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }} <input type="checkbox" name="company_ids[]" id="" value="{{ $company->id }}"></h4></a>
                            </div>
                            <div class="card-body">
                               <div class="information-list">
@@ -338,14 +338,14 @@
                      
                   </div>
                   @endforeach
+                  <div class="row">
+                     <div class="col-md-12 text-center mt-2">
+                        <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
+                     </div>
+                  </div>
+                  </form>
                </div>
             </div>
-            <div class="row">
-               <div class="col-md-12 text-center mt-2">
-                  <a href="{{route('dashboard.company.export')}}"><button class="btn btn-primary" class="download-button">Download CSV</a></button>
-               </div>
-            </div>
-            <!--- Multiple select --->
          </div>
       </div>
    </div>

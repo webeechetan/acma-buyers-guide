@@ -41,7 +41,7 @@
       </li>
        --}}
 
-       <li class="menu-item">
+       <li class="menu-item {{ Route::is('admin.profile.approval') ? 'active' : '' }} ">
         <a href="{{route('admin.profile.approval')}}" class="menu-link ">
           <i class="menu-icon tf-icons bx bx-dollar"></i>
           <div class="text-truncate" data-i18n="Approve Profile">Approve Profile</div>

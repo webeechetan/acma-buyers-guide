@@ -5,7 +5,7 @@ use App\Http\Middleware\CompanyAuthMiddleware;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\AdminPaymentController;
-
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CompanyContactDetailController;
 use App\Models\Admin\Member;
 use App\Models\User;
@@ -85,6 +85,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/edit-details', function () {  
         return view('admin.edit-emailer');
     });
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+   
 });
 
 
@@ -107,26 +111,18 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         Route::post('/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');
 
 
-            
         Route::get('/view-company/{id}', [CompanyController::class, 'view_company'])->name('company.view_company');
         
       
         ////////////Emailer template for company detals update for company and admin
 
-        Route::get('/edit-details', function () {
+        Route::get('/myprofile',[CompanyController::class, 'myprofile'])->name('company.profile');
 
-            return view('website.edit-emailer');
-
-        });
-
-        Route::get('/profile', function () {
-            return view('website.profile');
-        });
+     
 
 });
 
 
-// Route::get('company/export/', [CompanyContactDetailController::class, 'export']);
 Route::get('company/export/', [CompanyContactDetailController::class, 'export'])->name('dashboard.company.export');
 
 

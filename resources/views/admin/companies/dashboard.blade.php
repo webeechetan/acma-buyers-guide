@@ -62,9 +62,9 @@
                                                    <a class="nav-link" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
                                                 </li> --}}
 
-                                                {{-- <li  class="filter-name mb-2" data-filter="location">
+                                                <li  class="filter-name mb-2" data-filter="location">
                                                    <a class="nav-link" data-bs-toggle="pill" href="#location">Location</a>
-                                                </li> --}}
+                                                </li>
                                                 {{-- <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
                                                    <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
                                                 </li>
@@ -185,6 +185,28 @@
                                                       
                                                 </div>
 
+                                                <div class="tab-pane container fade" id="location">
+                                                   
+                                                   <div class="row">
+                                                      <h6 class="mb-0 text-justify text-dark">State Filter</h6>
+                                                      @foreach ($states as $state)
+
+                                                      <div class="col-md-4">
+                                                         <div class="mt-4">
+                                                            @if(isset($state['state']) && !empty($state['state']))
+                                                            <div class="form-check form-check-inline mb-2">
+                                                               <input class="form-check-input" type="checkbox" name="state[]" id="states" value="{{ $state['state'] }}" {{ in_array($state['state'], (array)request()->input('state')) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $state['state'] }}</label>
+                                                            </div>
+                                                            @endif
+                                                         </div>
+                                                      </div>
+                                                      
+                                                      @endforeach
+                                                   </div>
+                                                   
+                                             </div>
+
                                              </div>
                                                 <div class="mt-3">
                                                       <button class="btn btn-primary btn-sm">Apply</button>
@@ -231,8 +253,6 @@
             <div class="company-card">
                <div class="row">
                   @foreach ($companies as $company)                 
-                  
-
                   
                   <div class="col-md-3 mb-2">
                      

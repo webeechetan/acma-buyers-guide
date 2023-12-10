@@ -76,40 +76,21 @@
                 <h6 class="mb-0 text-warning">Request Sent</h6>
                 <small class="text-muted">{{$CompanyUpdateRequest->created_at->format('d M-y')}}</small>
               </div>
-              <p class="mb-2">update contact number,fax number, address and email</p>
+              <p class="mb-2">List</p>
             </div>
           </li>
+         
           <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-info"></span></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0 text-info">Request Received</h6>
-                <small class="text-muted">{{$CompanyUpdateRequest->created_at->format('d M-y')}}</small>
-              </div>
-              <p class="mb-0">Your profile details update request received by admin</p>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-primary"></span></span>
+            <span class="timeline-point-wrapper"><span class="timeline-point {{ $CompanyUpdateRequest->status === 'approved' ? 'timeline-point-success' : 'timeline-point-primary' }}"></span></span>
             <div class="timeline-event">
               <div class="timeline-header mb-1">
                 <h6 class="mb-0 text-primary">Request Status</h6>
                 <small class="text-muted">{{ucfirst($CompanyUpdateRequest->status)}}</small>
               </div>
-              <p class="mb-2">Your request for update company details are in progress</p>
+              <p class="mb-2">{{ucfirst($CompanyUpdateRequest->status)}}</p>
             </div>
           </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-success"></span></span>
-            <div class="timeline-event pb-0">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">{{ucfirst($CompanyUpdateRequest->status)}}</h6>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-end-indicator">
-            <i class="bx bx-check-circle"></i>
-          </li>
+        
         </ul>
 
         <div class="view-btn mt-5">

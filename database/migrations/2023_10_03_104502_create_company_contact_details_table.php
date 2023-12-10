@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('company_id')
                 ->references('id')->on('companies')
                 ->onDelete('cascade');
-            $table->string('company_name')->nullable();
+            // $table->string('company_name')->nullable();
             $table->longText('company_address')->nullable();
             $table->string('pin')->nullable();
             $table->string('city')->nullable();
@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('address3')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
-            $table->string('email')->nullable();
-            $table->string('website')->nullable();
+            // $table->string('email')->nullable();
+            // $table->string('website')->nullable();
             
             $table->longText('mainaddress1')->nullable();
             $table->longText('mainaddress2')->nullable();

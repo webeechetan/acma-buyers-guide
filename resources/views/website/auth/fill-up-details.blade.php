@@ -106,7 +106,7 @@
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="website">Company Webiste</label>
-                                <input type="text" id="website" name="website" class="form-control" placeholder="acma.in" value="{{ $company_contact_details->website }}">
+                                <input type="text" id="website" name="website" class="form-control" placeholder="acma.in" value="{{ $company->website }}">
                                 </div>
 
                                
@@ -134,7 +134,7 @@
 
                                 <div class="col-md-2">
                                   <label class="form-label" for="main_state">Main State</label>
-                                  <input type="text" id="main_state" name="main_state" class="form-control" placeholder="Main State" value="{{ $company_contact_details->main_state }}">
+                                  <input type="text" id="mainstate" name="mainstate" class="form-control" placeholder="Main State" value="{{ $company_contact_details->mainstate }}">
                                   </div>
 
 

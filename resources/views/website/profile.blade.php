@@ -101,7 +101,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="text-primary mb-0" id="exampleModalLabel">Update Company Details</h4>
+                <h4 class="text-primary mb-0" id="exampleModalLabel">Updates Company Details</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   </button>
               </div>

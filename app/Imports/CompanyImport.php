@@ -25,6 +25,7 @@ class CompanyImport implements ToCollection
 
         foreach($formatted_rows as $row){
             
+            
             $company = new Company();
             $company->name = $row['name'];
             $company->email = $row['email'];
@@ -33,9 +34,7 @@ class CompanyImport implements ToCollection
 
 
             $company_contact_details = new CompanyContactDetail();
-
             $company_contact_details->company_id = $company->id;
-            
             $company_contact_details->company_address = $row['company_address'];
             $company_contact_details->pin = $row['pin'];
             $company_contact_details->city = $row['city'];
@@ -44,19 +43,14 @@ class CompanyImport implements ToCollection
             $company_contact_details->address3 = $row['address3'];
             $company_contact_details->phone = $row['phone'];
             $company_contact_details->fax = $row['fax'];
-           
-
             $company_contact_details->mainaddress1 = $row['mainaddress1'];
             $company_contact_details->mainaddress2 = $row['mainaddress2'];
             $company_contact_details->maincity = $row['maincity'];
-          
             $company_contact_details->plant_pin = $row['plant_pin'];
             $company_contact_details->mainstate = $row['mainstate'];
             $company_contact_details->plant_phone = $row['plant_phone'];
             $company_contact_details->plant_fax = $row['plant_fax'];
             $company_contact_details->plant_email = $row['plant_email'];
-           
-           
             $company_contact_details->overseas_plant_1 = $row['overseas_plant_1'];
             $company_contact_details->overseas_plant_2 = $row['overseas_plant_2'];
             $company_contact_details->overseas_plant_3 = $row['overseas_plant_3'];
@@ -72,13 +66,9 @@ class CompanyImport implements ToCollection
             $CompanyKeyPersonnel = new CompanyKeyPersonnel();
             $CompanyKeyPersonnel->company_id = $company->id;
             $CompanyKeyPersonnel->managing_director = $row['managing_director'];
-           
             $CompanyKeyPersonnel->chief_executive  = $row['chief_executive'];
-           
             $CompanyKeyPersonnel-> sales_in_charge = $row['sales_in_charge'];
-            
             $CompanyKeyPersonnel-> export_in_charge = $row['export_in_charge'];
-            
             $CompanyKeyPersonnel->production_in_charge = $row['production_in_charge'];
             $CompanyKeyPersonnel->quality_in_charge = $row['quality_in_charge'];
             $CompanyKeyPersonnel->hrd_incharge = $row['hrd_incharge'];
@@ -89,139 +79,138 @@ class CompanyImport implements ToCollection
             $CompanyKeyPersonnel->update_date = $row['update_date'];
             $CompanyKeyPersonnel->region = $row['region'];
            
-             $CompanyKeyPersonnel->save();
+            $CompanyKeyPersonnel->save();
 
-             $CompanyProductDetails = new CompanyProductDetails();
-             $CompanyProductDetails->company_id = $company->id;
-             $CompanyProductDetails->products_manufactured = $row['products_manufactured'];
-             $CompanyProductDetails->product2 = $row['product2'];
-             $CompanyProductDetails->product3 = $row['product3'];
-             $CompanyProductDetails->product4 = $row['product4'];
-             $CompanyProductDetails->scale = $row['scale'];
+            $CompanyProductDetails = new CompanyProductDetails();
+            $CompanyProductDetails->company_id = $company->id;
+            $CompanyProductDetails->products_manufactured = $row['products_manufactured'];
+            $CompanyProductDetails->product2 = $row['product2'];
+            $CompanyProductDetails->product3 = $row['product3'];
+            $CompanyProductDetails->product4 = $row['product4'];
+            $CompanyProductDetails->scale = $row['scale'];
+            $CompanyProductDetails->ssi_info= $row['ssi_info'];
+            $CompanyProductDetails->trademark= $row['trademark']; 
+            $CompanyProductDetails->total_capital= $row['total_capital'];
+            $CompanyProductDetails->net_investment_plant = $row['net_investment_plant']; 
+            $CompanyProductDetails->total_investment_plant = $row['total_investment_plant']; 
+            $CompanyProductDetails->sales_turnover= $row['sales_turnover'];
+            $CompanyProductDetails->s_turn_in= $row['s_turn_in'];
+            $CompanyProductDetails->export_turn_02_03= $row['export_turn_02_03'];
+            $CompanyProductDetails->exports_in_mln= $row['exports_in_mln'];
+            $CompanyProductDetails->number_of_employees= $row['number_of_employees'];
+            $CompanyProductDetails->skilled= $row['skilled'];
+            $CompanyProductDetails->semi_skilled= $row['semi_skilled'];
+            $CompanyProductDetails->un_skilled= $row['un_skilled'];
+            $CompanyProductDetails->contractual= $row['contractual'];
+            $CompanyProductDetails->management_above= $row['management_above'];
+            $CompanyProductDetails->net_excise_duty_paid= $row['net_excise_duty_paid'];
+            $CompanyProductDetails->total_custom_duty_paid= $row['total_custom_duty_paid'];
+            $CompanyProductDetails->list_of_product_exported1= $row['list_of_product_exported1'];
+            $CompanyProductDetails->list_of_product_exported2= $row['list_of_product_exported2'];
+            $CompanyProductDetails->per_share_export_buy= $row['per_share_export_buy'];
+            $CompanyProductDetails->per_share_export_oem= $row['per_share_export_oem'];
+            $CompanyProductDetails->per_share_export_tier1= $row['per_share_export_tier1'];
+            $CompanyProductDetails->per_share_export_afm= $row['per_share_export_afm'];
+            $CompanyProductDetails->per_share_domestic_oem= $row['per_share_domestic_oem'];
+            $CompanyProductDetails->per_share_domestic_tier1= $row['per_share_domestic_tier1'];
+            $CompanyProductDetails->per_share_domestic_afm= $row['per_share_domestic_afm'];
+            $CompanyProductDetails->product_patent= $row['product_patent'];
+            $CompanyProductDetails->share_spent_on_rnd= $row['share_spent_on_rnd'];
+            $CompanyProductDetails->dsir= $row['dsir'];
+            $CompanyProductDetails->expen_rd= $row['expen_rd'];
+            $CompanyProductDetails->employee_rd= $row['employee_rd'];
+            $CompanyProductDetails->person_name= $row['person_name'];
+            $CompanyProductDetails->person_designation= $row['person_designation'];
+            $CompanyProductDetails->person_email= $row['person_email'];
+            $CompanyProductDetails->advertisement= $row['advertisement'];
+            $CompanyProductDetails->field1= $row['field1'];
+            $CompanyProductDetails->field2= $row['field2'];
+            $CompanyProductDetails->other_mark1= $row['other_mark1'];
+            $CompanyProductDetails->other_mark2= $row['other_mark2'];
+            $CompanyProductDetails->domesticoe= $row['domesticoe'];
+            $CompanyProductDetails->domesticoe1= $row['domesticoe1'];
+            $CompanyProductDetails->domesticoe2= $row['domesticoe2'];
+            $CompanyProductDetails->domesticoe3= $row['domesticoe3'];
+            $CompanyProductDetails->domesticoe4= $row['domesticoe4'];
+            $CompanyProductDetails->domestic_tier_oe= $row['domestic_tier_oe'];
+            $CompanyProductDetails->domestic_tier_oe1= $row['domestic_tier_oe1'];
+            $CompanyProductDetails->domestic_tier_oe2= $row['domestic_tier_oe2'];
+            $CompanyProductDetails->domestic_tier_oe3= $row['domestic_tier_oe3'];
+            $CompanyProductDetails->cusint1= $row['cusint1'];
+            $CompanyProductDetails->cusint2= $row['cusint2'];
+            $CompanyProductDetails->cusint3= $row['cusint3'];
+            $CompanyProductDetails->cusint_tier1= $row['cusint_tier1'];
+            $CompanyProductDetails->cusint_tier2= $row['cusint_tier2'];
+            $CompanyProductDetails->cusint_tier3= $row['cusint_tier3'];
+            $CompanyProductDetails->afmkt1= $row['afmkt1'];
+            $CompanyProductDetails->afmkt2= $row['afmkt2'];
+            $CompanyProductDetails->afmkt3= $row['afmkt3'];
 
-                 $CompanyProductDetails->ssi_info= $row['ssi_info'];
-                 $CompanyProductDetails->trademark= $row['trademark']; 
-                 $CompanyProductDetails->total_capital= $row['total_capital'];
-                 $CompanyProductDetails->net_investment_plant = $row['net_investment_plant']; 
-                 $CompanyProductDetails->total_investment_plant = $row['total_investment_plant']; 
-                 $CompanyProductDetails->sales_turnover= $row['sales_turnover'];
-                 $CompanyProductDetails->s_turn_in= $row['s_turn_in'];
-                 $CompanyProductDetails->export_turn_02_03= $row['export_turn_02_03'];
-                 $CompanyProductDetails->exports_in_mln= $row['exports_in_mln'];
-                 $CompanyProductDetails->number_of_employees= $row['number_of_employees'];
-                 $CompanyProductDetails->skilled= $row['skilled'];
-                 $CompanyProductDetails->semi_skilled= $row['semi_skilled'];
-                 $CompanyProductDetails->un_skilled= $row['un_skilled'];
-                 $CompanyProductDetails->contractual= $row['contractual'];
-                 $CompanyProductDetails->management_above= $row['management_above'];
-                 $CompanyProductDetails->net_excise_duty_paid= $row['net_excise_duty_paid'];
-                 $CompanyProductDetails->total_custom_duty_paid= $row['total_custom_duty_paid'];
-                 $CompanyProductDetails->list_of_product_exported1= $row['list_of_product_exported1'];
-                 $CompanyProductDetails->list_of_product_exported2= $row['list_of_product_exported2'];
-                 $CompanyProductDetails->per_share_export_buy= $row['per_share_export_buy'];
-                 $CompanyProductDetails->per_share_export_oem= $row['per_share_export_oem'];
-                 $CompanyProductDetails->per_share_export_tier1= $row['per_share_export_tier1'];
-                 $CompanyProductDetails->per_share_export_afm= $row['per_share_export_afm'];
-                 $CompanyProductDetails->per_share_domestic_oem= $row['per_share_domestic_oem'];
-                 $CompanyProductDetails->per_share_domestic_tier1= $row['per_share_domestic_tier1'];
-                 $CompanyProductDetails->per_share_domestic_afm= $row['per_share_domestic_afm'];
-                 $CompanyProductDetails->product_patent= $row['product_patent'];
-                 $CompanyProductDetails->share_spent_on_rnd= $row['share_spent_on_rnd'];
-                 $CompanyProductDetails->dsir= $row['dsir'];
-                 $CompanyProductDetails->expen_rd= $row['expen_rd'];
-                 $CompanyProductDetails->employee_rd= $row['employee_rd'];
-                 $CompanyProductDetails->person_name= $row['person_name'];
-                 $CompanyProductDetails->person_designation= $row['person_designation'];
-                 $CompanyProductDetails->person_email= $row['person_email'];
-                 $CompanyProductDetails->advertisement= $row['advertisement'];
-                 $CompanyProductDetails->field1= $row['field1'];
-                 $CompanyProductDetails->field2= $row['field2'];
-                 $CompanyProductDetails->other_mark1= $row['other_mark1'];
-                 $CompanyProductDetails->other_mark2= $row['other_mark2'];
-                 $CompanyProductDetails->domesticoe= $row['domesticoe'];
-                 $CompanyProductDetails->domesticoe1= $row['domesticoe1'];
-                 $CompanyProductDetails->domesticoe2= $row['domesticoe2'];
-                 $CompanyProductDetails->domesticoe3= $row['domesticoe3'];
-                 $CompanyProductDetails->domesticoe4= $row['domesticoe4'];
-                 $CompanyProductDetails->domestic_tier_oe= $row['domestic_tier_oe'];
-                 $CompanyProductDetails->domestic_tier_oe1= $row['domestic_tier_oe1'];
-                 $CompanyProductDetails->domestic_tier_oe2= $row['domestic_tier_oe2'];
-                 $CompanyProductDetails->domestic_tier_oe3= $row['domestic_tier_oe3'];
-                 $CompanyProductDetails->cusint1= $row['cusint1'];
-                 $CompanyProductDetails->cusint2= $row['cusint2'];
-                 $CompanyProductDetails->cusint3= $row['cusint3'];
-                 $CompanyProductDetails->cusint_tier1= $row['cusint_tier1'];
-                 $CompanyProductDetails->cusint_tier2= $row['cusint_tier2'];
-                 $CompanyProductDetails->cusint_tier3= $row['cusint_tier3'];
-                 $CompanyProductDetails->afmkt1= $row['afmkt1'];
-                 $CompanyProductDetails->afmkt2= $row['afmkt2'];
-                 $CompanyProductDetails->afmkt3= $row['afmkt3'];
+            $CompanyProductDetails->save();
 
-                 $CompanyProductDetails->save();
+            $CompanyForeignCollaboration =  new CompanyForeignCollaboration();
+            $CompanyForeignCollaboration->company_id = $company->id;
+            $CompanyForeignCollaboration->f_collab1 = $row['f_collab1'];
+            $CompanyForeignCollaboration->f_prod1 = $row['f_prod1'];
+            $CompanyForeignCollaboration->nature1 = $row['nature1'];
+            $CompanyForeignCollaboration->per1 = $row['per1'];
+            $CompanyForeignCollaboration->f_collab2 = $row['f_collab2'];
+            $CompanyForeignCollaboration->f_prod2 = $row['f_prod2'];
+            $CompanyForeignCollaboration->nature2 = $row['nature2'];
+            $CompanyForeignCollaboration->per2 = $row['per2'];
+            $CompanyForeignCollaboration->f_collab3 = $row['f_collab3'];
+            $CompanyForeignCollaboration->f_prod3 = $row['f_prod3'];
+            $CompanyForeignCollaboration->nature3 = $row['nature3'];
+            $CompanyForeignCollaboration->per3 = $row['per3'];
+            $CompanyForeignCollaboration->f_collab4 = $row['f_collab4'];
+            $CompanyForeignCollaboration->f_prod4 = $row['f_prod4'];
+            $CompanyForeignCollaboration->nature4 = $row['nature4'];
+            $CompanyForeignCollaboration->per4 = $row['per4'];
+            $CompanyForeignCollaboration->f_collab5 = $row['f_collab5'];
+            $CompanyForeignCollaboration->f_prod5 = $row['f_prod5'];
+            $CompanyForeignCollaboration->nature5 = $row['nature5'];
+            $CompanyForeignCollaboration->per5 = $row['per5'];
+            $CompanyForeignCollaboration->f_collab6 = $row['f_collab6'];
+            $CompanyForeignCollaboration->f_prod6 = $row['f_prod6'];
+            $CompanyForeignCollaboration->nature6 = $row['nature6'];
+            $CompanyForeignCollaboration->per6 = $row['per6'];
+            $CompanyForeignCollaboration->f_collab7 = $row['f_collab7'];
+            $CompanyForeignCollaboration->f_prod7 = $row['f_prod7'];
+            $CompanyForeignCollaboration->nature7 = $row['nature7'];
+            $CompanyForeignCollaboration->per7 = $row['per7'];
+            $CompanyForeignCollaboration->f_collab8 = $row['f_collab8'];
+            $CompanyForeignCollaboration->f_prod8 = $row['f_prod8'];
+            $CompanyForeignCollaboration->nature8 = $row['nature8'];
+            $CompanyForeignCollaboration->per8 = $row['per8'];
+            $CompanyForeignCollaboration->f_collab9 = $row['f_collab9'];
+            $CompanyForeignCollaboration->f_prod9 = $row['f_prod9'];
+            $CompanyForeignCollaboration->nature9 = $row['nature9'];
+            $CompanyForeignCollaboration->per9 = $row['per9'];
+            $CompanyForeignCollaboration->f_collab10 = $row['f_collab10'];
+            $CompanyForeignCollaboration->f_prod10 = $row['f_prod10'];
+            $CompanyForeignCollaboration->nature10 = $row['nature10'];
+            $CompanyForeignCollaboration->per10 = $row['per10'];
+            
+            $CompanyForeignCollaboration->member = $row['member'];
+            $CompanyForeignCollaboration->iso = $row['iso'];
+            $CompanyForeignCollaboration->isodate = $row['isodate'];
+            $CompanyForeignCollaboration->isoagency = $row['isoagency'];
+            $CompanyForeignCollaboration->qs = $row['qs'];
+            $CompanyForeignCollaboration->qsdate = $row['qsdate'];
+            $CompanyForeignCollaboration->qsagency = $row['qsagency'];
+            $CompanyForeignCollaboration->iso14 = $row['iso14'];
+            $CompanyForeignCollaboration->iso14date = $row['iso14date'];
+            $CompanyForeignCollaboration->iso14agency = $row['iso14agency'];
+            $CompanyForeignCollaboration->ts = $row['ts'];
+            $CompanyForeignCollaboration->tsdate = $row['tsdate'];
+            $CompanyForeignCollaboration->tsagency = $row['tsagency'];
+            $CompanyForeignCollaboration->deming_award = $row['deming_award'];
+            $CompanyForeignCollaboration->japan_quality_medal = $row['japan_quality_medal'];
+            $CompanyForeignCollaboration->emark = $row['emark'];
+            $CompanyForeignCollaboration->bismark = $row['bismark'];
 
-                 $CompanyForeignCollaboration =  new CompanyForeignCollaboration();
-                 $CompanyForeignCollaboration->company_id = $company->id;
-                 $CompanyForeignCollaboration->f_collab1 = $row['f_collab1'];
-                 $CompanyForeignCollaboration->f_prod1 = $row['f_prod1'];
-                 $CompanyForeignCollaboration->nature1 = $row['nature1'];
-                 $CompanyForeignCollaboration->per1 = $row['per1'];
-                 $CompanyForeignCollaboration->f_collab2 = $row['f_collab2'];
-                 $CompanyForeignCollaboration->f_prod2 = $row['f_prod2'];
-                 $CompanyForeignCollaboration->nature2 = $row['nature2'];
-                 $CompanyForeignCollaboration->per2 = $row['per2'];
-                 $CompanyForeignCollaboration->f_collab3 = $row['f_collab3'];
-                 $CompanyForeignCollaboration->f_prod3 = $row['f_prod3'];
-                 $CompanyForeignCollaboration->nature3 = $row['nature3'];
-                 $CompanyForeignCollaboration->per3 = $row['per3'];
-                 $CompanyForeignCollaboration->f_collab4 = $row['f_collab4'];
-                 $CompanyForeignCollaboration->f_prod4 = $row['f_prod4'];
-                 $CompanyForeignCollaboration->nature4 = $row['nature4'];
-                 $CompanyForeignCollaboration->per4 = $row['per4'];
-                 $CompanyForeignCollaboration->f_collab5 = $row['f_collab5'];
-                 $CompanyForeignCollaboration->f_prod5 = $row['f_prod5'];
-                 $CompanyForeignCollaboration->nature5 = $row['nature5'];
-                 $CompanyForeignCollaboration->per5 = $row['per5'];
-                 $CompanyForeignCollaboration->f_collab6 = $row['f_collab6'];
-                 $CompanyForeignCollaboration->f_prod6 = $row['f_prod6'];
-                 $CompanyForeignCollaboration->nature6 = $row['nature6'];
-                 $CompanyForeignCollaboration->per6 = $row['per6'];
-                 $CompanyForeignCollaboration->f_collab7 = $row['f_collab7'];
-                 $CompanyForeignCollaboration->f_prod7 = $row['f_prod7'];
-                 $CompanyForeignCollaboration->nature7 = $row['nature7'];
-                 $CompanyForeignCollaboration->per7 = $row['per7'];
-                 $CompanyForeignCollaboration->f_collab8 = $row['f_collab8'];
-                 $CompanyForeignCollaboration->f_prod8 = $row['f_prod8'];
-                 $CompanyForeignCollaboration->nature8 = $row['nature8'];
-                 $CompanyForeignCollaboration->per8 = $row['per8'];
-                 $CompanyForeignCollaboration->f_collab9 = $row['f_collab9'];
-                 $CompanyForeignCollaboration->f_prod9 = $row['f_prod9'];
-                 $CompanyForeignCollaboration->nature9 = $row['nature9'];
-                 $CompanyForeignCollaboration->per9 = $row['per9'];
-                 $CompanyForeignCollaboration->f_collab10 = $row['f_collab10'];
-                 $CompanyForeignCollaboration->f_prod10 = $row['f_prod10'];
-                 $CompanyForeignCollaboration->nature10 = $row['nature10'];
-                 $CompanyForeignCollaboration->per10 = $row['per10'];
-                 
-                 $CompanyForeignCollaboration->member = $row['member'];
-                 $CompanyForeignCollaboration->iso = $row['iso'];
-                 $CompanyForeignCollaboration->isodate = $row['isodate'];
-                 $CompanyForeignCollaboration->isoagency = $row['isoagency'];
-                 $CompanyForeignCollaboration->qs = $row['qs'];
-                 $CompanyForeignCollaboration->qsdate = $row['qsdate'];
-                 $CompanyForeignCollaboration->qsagency = $row['qsagency'];
-                 $CompanyForeignCollaboration->iso14 = $row['iso14'];
-                 $CompanyForeignCollaboration->iso14date = $row['iso14date'];
-                 $CompanyForeignCollaboration->iso14agency = $row['iso14agency'];
-                 $CompanyForeignCollaboration->ts = $row['ts'];
-                 $CompanyForeignCollaboration->tsdate = $row['tsdate'];
-                 $CompanyForeignCollaboration->tsagency = $row['tsagency'];
-                 $CompanyForeignCollaboration->deming_award = $row['deming_award'];
-                 $CompanyForeignCollaboration->japan_quality_medal = $row['japan_quality_medal'];
-                 $CompanyForeignCollaboration->emark = $row['emark'];
-                 $CompanyForeignCollaboration->bismark = $row['bismark'];
-
-                 $CompanyForeignCollaboration->save();
-                 
+            $CompanyForeignCollaboration->save();
+            
 
         }
     }
@@ -234,7 +223,8 @@ class CompanyImport implements ToCollection
             'pin' => '',
         ];
         foreach($rows as $row){
-                        
+
+            
             $companies_data_format['name'] = $row[0];
             $companies_data_format['email'] = $row[1];
             $companies_data_format['website'] = $row[2];
@@ -246,7 +236,6 @@ class CompanyImport implements ToCollection
             $companies_data_format['address3'] = $row[8];
             $companies_data_format['phone'] = $row[9];
             $companies_data_format['fax'] = $row[10];
-          
             $companies_data_format['mainaddress1'] = $row[11];
             $companies_data_format['mainaddress2'] = $row[12];
             $companies_data_format['maincity'] = $row[13];
@@ -255,7 +244,6 @@ class CompanyImport implements ToCollection
             $companies_data_format['plant_phone'] = $row[16];
             $companies_data_format['plant_fax'] = $row[17];
             $companies_data_format['plant_email'] = $row[18];
-            
             $companies_data_format['overseas_plant_1'] = $row[19];
             $companies_data_format['overseas_plant_2'] = $row[20];
             $companies_data_format['overseas_plant_3'] = $row[21];
@@ -265,15 +253,12 @@ class CompanyImport implements ToCollection
             $companies_data_format['otherplant_address2'] = $row[25];
             $companies_data_format['otherplant_address3'] = $row[26];
             $companies_data_format['year_commencing'] = $row[27];
-            
             $companies_data_format['managing_director'] = $row[28];
-
-
             $companies_data_format['chief_executive'] = $row[29];
-              $companies_data_format['sales_in_charge'] = $row[30];
+            $companies_data_format['sales_in_charge'] = $row[30];
             $companies_data_format['export_in_charge'] = $row[31];
             $companies_data_format['production_in_charge'] = $row[32];
-              $companies_data_format['quality_in_charge'] = $row[33];
+            $companies_data_format['quality_in_charge'] = $row[33];
             $companies_data_format['hrd_incharge'] = $row[34];
             $companies_data_format['rnd_incharge'] = $row[35];
             $companies_data_format['responded'] = $row[36];
@@ -343,7 +328,6 @@ class CompanyImport implements ToCollection
             $companies_data_format['afmkt1'] = $row[100];
             $companies_data_format['afmkt2'] = $row[101];
             $companies_data_format['afmkt3'] = $row[102];
-
             $companies_data_format['f_collab1'] = $row[103];
             $companies_data_format['f_prod1'] = $row[104];
             $companies_data_format['nature1'] = $row[105];

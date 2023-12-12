@@ -255,7 +255,7 @@
                   
                   <div class="row">
                     @foreach ($companies as $company)   
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-3">
                               <div class="card card-border card-data">
                                  <div class="company-title">
                                     <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
@@ -325,8 +325,8 @@
                                                 <i class="fa fa-globe"></i><span>Website</span>
                                              </div>
                                              <div>
-                                                @if($company && $company->website)
-                                                <a href="http://www.acma.in">{{$company->website}}</a>
+                                                @if($company && $company->contact_details)
+                                                <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
                                                 @else 
                                                 <p>NA</P>
                                              @endif
@@ -347,6 +347,8 @@
                   </div>
                   </form>
                </div>
+
+             
             </div>
          </div>
       </div>
@@ -377,12 +379,11 @@
 
       // Add Border Class in card
       $(".check").click(function(){
-         $(".card-border").toggle();
+         $("card-border").toggle();
          console.log("alert")
       });
 
   });
-  
 
 </script>
 @endpush

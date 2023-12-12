@@ -63,18 +63,41 @@
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="pin">Company Pin</label>
-                                <input type="text" id="pin" name="pin" class="form-control" placeholder="121212" value="{{ $company_contact_details->pin }}">
+                                <input type="text" id="pin" name="pin" class="form-control" placeholder="Pin" value="{{ $company_contact_details->pin }}">
                                 </div>
+
+                                <div class="col-md-2">
+                                  <label class="form-label" for="city">City</label>
+                                  <input type="text" id="city" name="city" class="form-control" placeholder="City" value="{{ $company_contact_details->city }}">
+                                  </div>
+
+                                  <div class="col-md-2">
+                                    <label class="form-label" for="state">State</label>
+                                    <input type="text" id="state" name="state" class="form-control" placeholder="State" value="{{ $company_contact_details->state }}">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                      <label class="form-label" for="address2">Address2</label>
+                                      <input type="text" id="address2" name="address2" class="form-control" placeholder="Address2" value="{{ $company_contact_details->address2 }}">
+                                      </div>
+
+                                      <div class="col-md-2">
+                                        <label class="form-label" for="address3">Address3</label>
+                                        <input type="text" id="address3" name="address3" class="form-control" placeholder="Address3" value="{{ $company_contact_details->address3 }}">
+                                        </div>
+
+                                        <div class="col-md-2">
+                                          <label class="form-label" for="phone">Company Phone</label>
+                                          <input type="text" id="phone" name="phone" class="form-control" placeholder="9999999999" value="{{ $company_contact_details->phone }}">
+                                          </div>
+
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="fax">Company Fax</label>
                                 <input type="text" id="fax" name="fax" class="form-control" placeholder="121212" value="{{ $company_contact_details->fax }}">
                                 </div>
 
-                                <div class="col-md-2">
-                                <label class="form-label" for="phone">Company Phone</label>
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="9999999999" value="{{ $company_contact_details->phone }}">
-                                </div>
+                               
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="email">Company Email</label>
@@ -83,23 +106,37 @@
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="website">Company Webiste</label>
-                                <input type="text" id="website" name="website" class="form-control" placeholder="acma.in" value="{{ $company_contact_details->website }}">
+                                <input type="text" id="website" name="website" class="form-control" placeholder="acma.in" value="{{ $company->website }}">
+                                </div>
+
+                               
+
+                                <div class="col-md-2">
+                                <label class="form-label" for="main_address">Main Address</label>
+                                <textarea id="main_address" name="main_address" class="form-control" placeholder="Main Address" rows="1" >{{ $company_contact_details->main_address }}</textarea>
                                 </div>
 
                                 <div class="col-md-2">
-                                <label class="form-label" for="company_address">Website Address (if any)</label>
-                                <textarea id="website_address" name="website_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->website_address }}</textarea>
-                                </div>
+                                  <label class="form-label" for="main_address">Main Address 2</label>
+                                  <textarea id="main_address2" name="main_address2" class="form-control" placeholder="Main Address 2" rows="1" >{{ $company_contact_details->main_address2 }}</textarea>
+                                  </div>
 
-                                <div class="col-md-2">
-                                <label class="form-label" for="main_plant_address">Main Plant Address</label>
-                                <textarea id="main_plant_address" name="main_plant_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->main_plant_address }}</textarea>
-                                </div>
+                                  <div class="col-md-2">
+                                    <label class="form-label" for="plant_pin">Main City</label>
+                                    <input type="text" id="main_city" name="main_city" class="form-control" placeholder="Main City" value="{{ $company_contact_details->main_city }}">
+                                    </div>
+
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="plant_pin">Plant Pin</label>
                                 <input type="text" id="plant_pin" name="plant_pin" class="form-control" placeholder="121212" value="{{ $company_contact_details->plant_pin }}">
                                 </div>
+
+                                <div class="col-md-2">
+                                  <label class="form-label" for="main_state">Main State</label>
+                                  <input type="text" id="mainstate" name="mainstate" class="form-control" placeholder="Main State" value="{{ $company_contact_details->mainstate }}">
+                                  </div>
+
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="plant_phone">Plant Phone</label>
@@ -116,20 +153,59 @@
                                 <input type="text" id="plant_email" name="plant_email" class="form-control" placeholder="plant@acma.in" value="{{ $company_contact_details->plant_email }}">
                                 </div>
 
-                                <div class="col-md-3">
-                                <label class="form-label" for="plant_website">Plant Website</label>
-                                <input type="text" id="plant_website" name="plant_website" class="form-control" placeholder="acma.in" value="{{ $company_contact_details->plant_website }}">
-                                </div>
+                              
 
                                 <div class="col-md-3">
-                                <label class="form-label" for="overseas_plant_address">Overseas Plant Address</label>
-                                <textarea id="overseas_plant_address" name="overseas_plant_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->overseas_plant_address }}</textarea>
+                                <label class="form-label" for="overseas_plant_1">Overseas Plant Address</label>
+                                <textarea id="overseas_plant_1" name="overseas_plant_1" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->overseas_plant_1 }}</textarea>
                                 </div>
+
+                                
+                                <div class="col-md-3">
+                                  <label class="form-label" for="overseas_plant2">Overseas Plant Address2</label>
+                                  <textarea id="overseas_plant_2" name="overseas_plant_2" class="form-control" placeholder="Overseas Plant2" rows="1" >{{ $company_contact_details->overseas_plant_2 }}</textarea>
+                                  </div>
+
+
+                                  <div class="col-md-3">
+                                    <label class="form-label" for="overseas_plant_3">Overseas Plant Address3</label>
+                                    <textarea id="overseas_plant_3" name="overseas_plant_3" class="form-control" placeholder="Overseas Plant3" rows="1" >{{ $company_contact_details->overseas_plant_3 }}</textarea>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                      <label class="form-label" for="otheraddress">Other Address</label>
+                                      <textarea id="otheraddress" name="otheraddress" class="form-control" placeholder="otheraddress" rows="1" >{{ $company_contact_details->otheraddress }}</textarea>
+                                      </div>
+  
+                                      <div class="col-md-3">
+                                        <label class="form-label" for="otheraddress_1">Other Address 1</label>
+                                        <textarea id="otheraddress_1" name="otheraddress_1" class="form-control" placeholder="otheraddress" rows="1" >{{ $company_contact_details->otheraddress_1 }}</textarea>
+                                        </div>
+    
+
+                                    
+
 
                                 <div class="col-md-3">
                                 <label class="form-label" for="other_plant_address">Other Plant Address</label>
-                                <textarea id="other_plant_address" name="other_plant_address" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->other_plant_address }}</textarea>
+                                <textarea id="otherplant_address1" name="otherplant_address1" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->otherplant_address1 }}</textarea>
                                 </div>
+
+                                <div class="col-md-3">
+                                  <label class="form-label" for="other_plant_address">Other Plant Address 2</label>
+                                  <textarea id="otherplant_address2" name="otherplant_address2" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->otherplant_address2 }}</textarea>
+                                  </div>
+
+
+                                  <div class="col-md-3">
+                                    <label class="form-label" for="other_plant_address">Other Plant Address 3</label>
+                                    <textarea id="otherplant_address3" name="otherplant_address3" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->otherplant_address3 }}</textarea>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                      <label class="form-label" for="plant_email">Year Commencing</label>
+                                      <input type="text" id="year_commencing" name="year_commencing" class="form-control" placeholder="plant@acma.in" value="{{ $company_contact_details->year_commencing }}">
+                                      </div>
                                
                               </div>
                             </div>
@@ -142,171 +218,52 @@
                                 <label class="form-label" for="managing_director">Managing Director</label>
                                 <input type="text" id="managing_director" name="managing_director" class="form-control" placeholder="John" value="{{ $company_key_personnels->managing_director }}">
                               </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="managing_director_email">Managing Director Email</label>
-                                <input type="text" id="managing_director_email" name="managing_director_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->managing_director_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="managing_director_contact">Managing Director Contact</label>
-                                <input type="text" id="managing_director_contact" name="managing_director_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->managing_director_contact }}">
-                              </div>
+                             
 
                               <div class="col-md-2">
                                 <label class="form-label" for="chief_executive">Chief Executive</label>
                                 <input type="text" id="chief_executive" name="chief_executive" class="form-control" placeholder="John" value="{{ $company_key_personnels->chief_executive }}">
                               </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="cheif_executive_email">Chief Executive Email</label>
-                                <input type="text" id="chief_executive_email" name="chief_executive_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->chief_executive_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="chief_executive_contact">Chief Executive Contact</label>
-                                <input type="text" id="chief_executive_contact" name="chief_executive_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->chief_executive_contact }}">
-                              </div>
+                              
 
                               <div class="col-md-2">
                                 <label class="form-label" for="sales_in_charge">sales incharge</label>
                                 <input type="text" id="sales_in_charge" name="sales_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->sales_in_charge }}">
                               </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="sales_in_charge_email">sales incharge email</label>
-                                <input type="text" id="sales_in_charge_email" name="sales_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->sales_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="sales_in_charge_contact">sales in charge contact</label>
-                                <input type="text" id="sales_in_charge_contact" name="sales_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->sales_in_charge_contact }}">
-                              </div>
+                             
 
                               <div class="col-md-2">
                                 <label class="form-label" for="export_in_charge">export incharge</label>
                                 <input type="text" id="export_in_charge" name="export_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->export_in_charge }}">
                               </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="export_in_charge_email">export incharge email</label>
-                                <input type="text" id="export_in_charge_email" name="export_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->export_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="export_in_charge_contact">export incharge contact</label>
-                                <input type="text" id="export_in_charge_contact" name="export_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->export_in_charge_contact }}">
-                              </div>
+                              
 
                               <div class="col-md-2">
                                 <label class="form-label" for="production_in_charge">production incharge</label>
                                 <input type="text" id="production_in_charge" name="production_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->production_in_charge }}">
                               </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="production_in_charge_email">production incharge email</label>
-                                <input type="text" id="production_in_charge_email" name="production_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->production_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="production_in_charge_contact">production incharge contact</label>
-                                <input type="text" id="production_in_charge_contact" name="production_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->production_in_charge_contact }}">
-                              </div>
+                             
 
-                              <div class="col-md-2">
-                                <label class="form-label" for="hr_in_charge">Hr incharge</label>
-                                <input type="text" id="hr_in_charge" name="hr_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->hr_in_charge }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="hr_in_charge_email">Hr incharge Email</label>
-                                <input type="text" id="hr_in_charge_email" name="hr_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->hr_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="hr_in_charge_contact">Hr incharge Contact</label>
-                                <input type="text" id="hr_in_charge_contact" name="hr_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->hr_in_charge_contact }}">
-                              </div>
-
-                              <div class="col-md-2">
-                                <label class="form-label" for="it_in_charge">It incharge</label>
-                                <input type="text" id="it_in_charge" name="it_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->it_in_charge }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="it_in_charge_email">It incharge Email</label>
-                                <input type="text" id="it_in_charge_email" name="it_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->it_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="it_in_charge_contact">It incharge Contact</label>
-                                <input type="text" id="it_in_charge_contact" name="it_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->it_in_charge_contact }}">
-                              </div>
+                             
 
                               <div class="col-md-2">
                                 <label class="form-label" for="quality_in_charge"> Quality incharge</label>
                                 <input type="text" id="quality_in_charge" name="quality_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->quality_in_charge }}">
                               </div>
+                             
+
+                            </div>
+
+
                               <div class="col-md-2">
-                                <label class="form-label" for="quality_in_charge_email">Quality incharge Email</label>
-                                <input type="text" id="quality_in_charge_email" name="quality_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->quality_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="quality_in_charge_contact">Quality Incharge Contact</label>
-                                <input type="text" id="quality_in_charge_contact" name="quality_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->quality_in_charge_contact }}">
+                                <label class="form-label" for="rd_in_charge">Hrd incharge</label>
+                                <input type="text" id="hrd_incharge" name="hrd_incharge" class="form-control" placeholder="John" value="{{ $company_key_personnels->hrd_incharge }}">
                               </div>
 
                               <div class="col-md-2">
-                                <label class="form-label" for="rd_in_charge">Rd incharge</label>
-                                <input type="text" id="r_d_in_charge" name="r_d_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->r_d_in_charge }}">
+                                <label class="form-label" for="rnd_incharge">Rnd incharge</label>
+                                <input type="text" id="rnd_incharge" name="rnd_incharge" class="form-control" placeholder="John" value="{{ $company_key_personnels->rnd_incharge }}">
                               </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="rd_in_charge_email">Rd incharge Email</label>
-                                <input type="text" id="r_d_in_charge_email" name="r_d_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->r_d_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="rd_in_charge_contact">Rd incharge Contact</label>
-                                <input type="text" id="r_d_in_charge_contact" name="r_d_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->r_d_in_charge_contact }}">
-                              </div>
-
-                              <div class="col-md-2">
-                                <label class="form-label" for="metallurgy_in_charge">Metallurgy incharge</label>
-                                <input type="text" id="metallurgy_in_charge" name="metallurgy_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->metallurgy_in_charge }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="metallurgy_in_charge_email">Metallurgy incharge Email</label>
-                                <input type="text" id="metallurgy_in_charge_email" name="metallurgy_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->metallurgy_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="metallurgy_in_charge_contact">Metallurgy incharge Contact</label>
-                                <input type="text" id="metallurgy_in_charge_contact" name="metallurgy_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->metallurgy_in_charge_contact }}">
-                              </div>
-
-                              <div class="col-md-2">
-                                <label class="form-label" for="finance_in_charge">Finance incharge</label>
-                                <input type="text" id="finance_in_charge" name="finance_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->finance_in_charge }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="finance_in_charge_email">Finance incharge Email</label>
-                                <input type="text" id="finance_in_charge_email" name="finance_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->finance_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="finance_in_charge_contact">Finance incharge Contact</label>
-                                <input type="text" id="finance_in_charge_contact" name="finance_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->finance_in_charge_contact }}">
-                              </div>
-
-                              <div class="col-md-2">
-                                <label class="form-label" for="scm_in_charge">Scm Incharge</label>
-                                <input type="text" id="scm_in_charge" name="scm_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->scm_in_charge }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="scm_in_charge_email">Scm Incharge Email</label>
-                                <input type="text" id="scm_in_charge_email" name="scm_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->scm_in_charge_email }}">
-                              </div>
-                              <div class="col-md-2">
-                                <label class="form-label" for="scm_in_charge_contact">Scm Incharge Contact</label>
-                                <input type="text" id="scm_in_charge_contact" name="scm_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->scm_in_charge_contact }}">
-                              </div>
-
-                              <div class="col-md-4">
-                                <label class="form-label" for="plant_in_charge">Plant Incharge</label>
-                                <input type="text" id="plant_in_charge" name="plant_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->plant_in_charge }}">
-                              </div>
-                              <div class="col-md-4">
-                                <label class="form-label" for="plant_in_charge_email">Plant Incharge Email</label>
-                                <input type="text" id="plant_in_charge_email" name="plant_in_charge_email" class="form-control" placeholder="enter email" value="{{ $company_key_personnels->plant_in_charge_email }}">
-                              </div>
-                              <div class="col-md-4">
-                                <label class="form-label" for="plant_in_charge_contact">Plant Incharge Contact</label>
-                                <input type="text" id="plant_in_charge_contact" name="plant_in_charge_contact" class="form-control" placeholder="Contact" value="{{ $company_key_personnels->plant_in_charge_contact }}">
-                              </div>
-
                              
                             </div>
                           </div>
@@ -345,81 +302,6 @@
                                 </div>
                                 
                               
-                              <div class="col-md-2">
-                                <label class="form-label" for="OverseasPlant_1">Overseas Plant_1</label>
-                                <input type="text" id="overseas_plant_1" name="overseas_plant_1" class="form-control" placeholder="" value=" {{ $company_contact_details->overseas_plant_1 }}">
-                              </div>
-
-
-                              <div class="col-md-2">
-                                <label class="form-label" for="OverseasPlant_2">Overseas Plant_2</label>
-                                <input type="text" id="overseas_plant_2" name="overseas_plant_2" class="form-control" placeholder="" value="{{ $company_contact_details->overseas_plant_2 }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="OverseasPlant_3">Overseas Plant_3</label>
-                                <input type="text" id="overseas_plant_3" name="overseas_plant_3" class="form-control" placeholder="" value="{{ $company_contact_details->overseas_plant_3 }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="otheraddress">Other Address</label>
-                                <input type="text" id="otheraddress" name="otheraddress" class="form-control" placeholder="" value="{{ $company_contact_details->otheraddress }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="otheraddress_1">Other Address 1</label>
-                                <input type="text" id="otheraddress_1" name="otheraddress_1" class="form-control" placeholder="" value="{{ $company_contact_details->otheraddress_1 }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="Otherplant_Address1">Other Plant Address 1</label>
-                                <input type="text" id="otherplant_address1" name="otherplant_address1" class="form-control" placeholder="" value="{{ $company_contact_details->otherplant_address1 }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="Otherplant_Address2">Other Plant Address 2</label>
-                                <input type="text" id="otherplant_address2" name="otherplant_address2" class="form-control" placeholder="" value="{{ $company_contact_details->otherplant_address2 }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="Otherplant_Address3">Other Plant Address 3</label>
-                                <input type="text" id="otherplant_address3" name="otherplant_address3" class="form-control" placeholder="" value="{{ $company_contact_details->otherplant_address3 }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="salesincharge">Sales Incharge</label>
-                                <input type="text" id="sales_incharge" name="sales_incharge" class="form-control" placeholder="" value="{{ $company_key_personnels->sales_in_charge}}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="ExportIncharge">Export Incharge</label>
-                                <input type="text" id="export_incharge" name="export_incharge" class="form-control" placeholder="" value="{{ $company_key_personnels->export_in_charge }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="ProductionIncharge">Production Incharge</label>
-                                <input type="text" id="production_incharge" name="production_incharge" class="form-control" placeholder="" value="{{ $company_key_personnels->production_in_charge }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="QualityIncharge">Quality Incharge</label>
-                                <input type="text" id="quality_incharge" name="quality_incharge" class="form-control" placeholder="" value="{{ $company_key_personnels->quality_in_charge }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="HRDIncharge">HRD Incharge</label>
-                                <input type="text" id="hrd_incharge" name="hrd_incharge" class="form-control" placeholder="" value="{{ $company_key_personnels->hrd_incharge }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="R&DIncharge">R&D Incharge</label>
-                                <input type="text" id="rnd_incharge" name="rnd_incharge" class="form-control" placeholder="" value="{{ $company_key_personnels->hrd_incharge }}">
-                              </div>
-                              
-                              <div class="col-md-2">
-                                <label class="form-label" for="YearCommencing">Year Commencing</label>
-                                <input type="text" id="year_commencing" name="year_commencing" class="form-control" placeholder="" value="{{ $company_contact_details->year_commencing }}">
-                              </div>
                               
                               <div class="col-md-2">
                                 <label class="form-label" for="ProductsManufactured">Products Manufactured</label>
@@ -1034,16 +916,6 @@
                                 <input type="text" id="field2" name="field2" class="form-control" placeholder="" value="{{$company_product_details->field2 }}">
                               </div>
 
-
-                              <div class="col-md-6">
-                                <label class="form-label" for="net_duty_paid">Net Excise duty paid to govt. in 2018-19</label>
-                                <input type="text" id="net_duty_paid" name="net_duty_paid" class="form-control" placeholder="Net Excise duty paid to govt. in 2018-19" value="{{ $company_product_details->net_duty_paid }}">
-                              </div>
-                              <div class="col-md-6">
-                                <label class="form-label" for="custom_duty">Total Custom Duty paid in 2018-19 </label>
-                                <input type="text" id="custom_duty" name="custom_duty" class="form-control" placeholder="Total Custom Duty paid in 2018-19 " value="{{ $company_product_details->custom_duty }}">
-                              </div>
-                          
                             </div>
                           </div>
                         </div>

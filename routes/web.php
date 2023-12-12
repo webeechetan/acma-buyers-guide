@@ -5,6 +5,8 @@ use App\Http\Middleware\CompanyAuthMiddleware;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\AdminPaymentController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\CompanyContactDetailController;
 use App\Models\Admin\Member;
 use App\Models\User;
 use App\Models\CompanyUpdateRequest;
@@ -16,12 +18,11 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CCAvenueController;
 use App\Http\Controllers\Admin\ProfileApprovalController;
 use App\Ccavenue\Crypto;
+use App\Exports\CompanyExport;
 use App\Imports\CompanyImport;
 use Maatwebsite\Excel\Facades\Excel;
-
-
-
-
+use App\Http\Controllers\ExportController;
+use App\Models\Company;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/edit-details', function () {  
         return view('admin.edit-emailer');
     });
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+   
 });
 
 
@@ -104,20 +109,21 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         Route::get('/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
         Route::post('/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');
 
+
+        Route::get('/view-company/{id}', [CompanyController::class, 'view_company'])->name('company.view_company');
+        
       
         ////////////Emailer template for company detals update for company and admin
 
-        Route::get('/edit-details', function () {
+        Route::get('/myprofile',[CompanyController::class, 'myprofile'])->name('company.profile');
 
-            return view('website.edit-emailer');
-
-        });
-
-        Route::get('/profile', function () {
-            return view('website.profile');
-        });
+     
 
 });
+
+
+Route::get('company/export/', [ExportController::class, 'export_company'])->name('dashboard.company.export');
+
 
 
 Route::post('/register', [CompanyController::class, 'store'])->name('company.store');
@@ -129,10 +135,10 @@ Route::post('company/login', [CompanyController::class, 'authenticate'])->name('
 
   Route::get('/forgot-password', [CompanyController::class, 'forgotpassword_view'])->name('company.forgotpassword.view');
   Route::post('/forgot-password', [CompanyController::class, 'forget_password'])->name('company.forgotpassword');
-  Route::get('/otp-verify-form', [CompanyController::class, 'otp_verify_form'])->name('company.forgotpassword.otpverify');
+  Route::get('/otp-verify', [CompanyController::class, 'otp_verify_form'])->name('company.forgotpassword.otpverify');
   Route::post('/otp-authentication', [CompanyController::class, 'otp_authentication'])->name('company.Otpauthentication');
-  Route::get('/reset-password-form', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');
-  Route::post('/reset-password/update', [CompanyController::class, 'reset_password_update'])->name('company.ResetPassword.update');
+  Route::get('/reset-password', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');
+  Route::post('/reset-password', [CompanyController::class, 'reset_password_update'])->name('company.ResetPassword.update');
 
 
 

@@ -1,20 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Exports\CompaniesExport;
-use App\Models\CompanyContactDetail;
+use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
-class CompanyContactDetailController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        
+        $totalCompanyCount = Company::count();
+        $lastestFiveCompanies = Company::orderBy('created_at', 'desc')->limit(5)->get();
+        return view('admin.dashboard', compact('totalCompanyCount','lastestFiveCompanies'));
     }
 
     /**
@@ -36,7 +38,7 @@ class CompanyContactDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CompanyContactDetail $companyContactDetail)
+    public function show(string $id)
     {
         //
     }
@@ -44,7 +46,7 @@ class CompanyContactDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CompanyContactDetail $companyContactDetail)
+    public function edit(string $id)
     {
         //
     }
@@ -52,7 +54,7 @@ class CompanyContactDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CompanyContactDetail $companyContactDetail)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -60,13 +62,8 @@ class CompanyContactDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompanyContactDetail $companyContactDetail)
+    public function destroy(string $id)
     {
         //
-    }
-
-    public function export()
-    {
-        return Excel::download(new CompaniesExport, 'Companies.xlsx');
     }
 }

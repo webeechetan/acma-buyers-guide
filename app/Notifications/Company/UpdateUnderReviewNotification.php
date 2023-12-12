@@ -47,10 +47,10 @@ class UpdateUnderReviewNotification extends Notification
         
         return (new MailMessage)
             ->subject('Your company update request is under review')
-            ->greeting('Hello ' . $this->company->name . ',')
-            ->line('Your company update request is under review.')
-            ->line('We will notify you once it is approved.');
-            // ->view('website.edit-emailer');
+                    ->markdown('website.emailers.updaterequestreview', [
+                        'company' => $this->company,
+                        
+                    ]);
 
             
     }

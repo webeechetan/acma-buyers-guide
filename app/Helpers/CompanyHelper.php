@@ -74,6 +74,22 @@ class CompanyHelper {
             }
         }
 
+
+          // checkbox filters for Location states
+          if ($request->has('state')) {
+            $selectedRegion = $request->input('state');
+            
+            if (is_array($selectedRegion)) {
+                $companies = $companies->whereHas('contact_details', function ($query) use ($selectedRegion) {
+                    $query->whereIn('state', $selectedRegion);
+                });
+            }
+           
+        }
+
+
+
+
         //checkbox filter for trademarks
 
         if($request->has('trademarks')) {
@@ -101,12 +117,6 @@ class CompanyHelper {
                 $query->whereBetween('sales_turnover', [$min, $max]);
             });
         }
-
-
-
-        
-        
-
 
         if($request->has('name')){
             $companies = $companies->where('name','like','%'.$request->name.'%');

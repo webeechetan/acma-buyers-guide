@@ -40,21 +40,24 @@
           <!-- Register -->
           <div class="subscribe-box-wrapper">
             <div class="subscribe-banner">
-              <div class="signup-logo">
-                <img src="https://www.acma.in/images/logo.png" alt="">
-              </div>
-              <div class="subscribe-content">
-                <h2 class="title">Buyers Guide</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat repellendus minima consequuntur asperiores incidunt modi optio nihil amet excepturi a labore, cumque, velit vero quisquam ipsa nam sequi repellat eos earum dolore autem qui, vitae iusto vel? Amet sapiente, facilis, adipisci, fuga veniam illo consequuntur ad deserunt earum exercitationem aliquam.</p>
-              </div>
-              <div class="subscribe-social">
-                <h4 class="sub-title text-white mb-0"> Follow Us</h4>
-                <div class="subscribe-social-icons">
-                  <a href=""><i class='bx bxl-facebook'></i></a>
-                  <a href=""><i class='bx bxl-linkedin' ></i></a>
-                  <a href=""><i class='bx bxl-instagram' ></i></a>
-                </div>
-              </div>  
+             <div class="subscribe-banner-content">
+                 <div class="signup-logo">
+                    <img src="https://www.acma.in/images/logo.png" alt="">
+                  </div>
+                  <div class="subscribe-content">
+                    <h2 class="title">Buyers Guide</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat repellendus minima consequuntur asperiores incidunt modi optio nihil amet excepturi a labore, cumque, velit vero quisquam ipsa nam sequi repellat eos earum dolore autem qui, vitae iusto vel? Amet sapiente, facilis, adipisci, fuga veniam illo consequuntur ad deserunt earum exercitationem aliquam.</p>
+                  </div>
+                  <div class="subscribe-social">
+                    <h4 class="sub-title text-white mb-0"> Follow Us</h4>
+                    <div class="subscribe-social-icons">
+                      <a href=""><i class='bx bxl-facebook'></i></a>
+                      <a href=""><i class='bx bxl-linkedin' ></i></a>
+                      <a href=""><i class='bx bxl-instagram' ></i></a>
+                    </div>
+                  </div>
+             </div>
+              
               <div class="copyright">
                 <p>© Copyright 2022 ACMA India, All Right Reserved.</p>
               </div>
@@ -64,12 +67,12 @@
                 <div class="subscribe-form-border">
                     <div class="subscribe-btn">
                       <ul class="nav nav-pills nav-fill align-items-center subscribe-form-tab" role="tablist">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                           <a class="nav-link" data-bs-toggle="pill" href="#formRegistration">Sign Up</a>
-                        </li>
-                        <li class="nav-item">or</li>
+                        </li> -->
+                        <!-- <li class="nav-item">or</li> -->
                         <li class="nav-item">
-                          <a class="nav-link active" data-bs-toggle="pill" href="#login">Login</a>
+                          <a class="nav-link active btn btn-primary" data-bs-toggle="pill" href="#login">Login</a>
                         </li>
                       </ul>
                     </div>
@@ -99,7 +102,7 @@
                         
                       </form>
                       <!--- Register ---->
-                        <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
+                        <!-- <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
                          @csrf
                           <div class="mb-3">
                               <label for="name" class="form-label"> Company Name </label>
@@ -124,7 +127,7 @@
                           <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
                           </div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
               </div>

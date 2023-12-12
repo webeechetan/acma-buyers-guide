@@ -17,24 +17,26 @@ return new class extends Migration
             $table->foreign('company_id')
                 ->references('id')->on('companies')
                 ->onDelete('cascade');
-            $table->string('company_name')->nullable();
+            // $table->string('company_name')->nullable();
             $table->longText('company_address')->nullable();
             $table->string('pin')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('address3')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
-            $table->string('email')->nullable();
-            $table->string('website')->nullable();
-            $table->longText('website_address')->nullable();
-            $table->longText('main_plant_address')->nullable();
+            // $table->string('email')->nullable();
+            // $table->string('website')->nullable();
+            
+            $table->longText('mainaddress1')->nullable();
+            $table->longText('mainaddress2')->nullable();
+            $table->longText('maincity')->nullable();
             $table->string('plant_pin')->nullable();
+            $table->string('mainstate')->nullable();
             $table->string('plant_phone')->nullable();
             $table->string('plant_fax')->nullable();
-            $table->string('plant_email')->nullable();
-            $table->string('plant_website')->nullable();
-            $table->longText('overseas_plant_address')->nullable();
-            $table->longText('other_plant_address')->nullable();
-
-           
+            $table->string('plant_email')->nullable();           
             $table->longText('overseas_plant_1')->nullable();
             $table->longText('overseas_plant_2')->nullable();
             $table->longText('overseas_plant_3')->nullable();

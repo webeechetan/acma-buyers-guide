@@ -15,7 +15,7 @@
                   <div class="row">
                      <div class="col-md-8">
                         <div>
-                           <h2 class="title mb-md-0">Highlighted Companies</h2>
+                           <h2 class="title mb-md-0">Buyers Guide Database</h2>
                         </div>
                      </div>
                      <div class="col-md-4">
@@ -79,7 +79,7 @@
                                              <div class="tab-content">
                                                 <div class="tab-pane container active" id="company">
                                                    <div class="row">
-                                                      <h6 class="mb-0 text-justify text-dark">Company Filter</h6>
+                                                      <h6 class="mb-0 text-justify text-dark">Companies Filter</h6>
                                                       @foreach($companies_name as $company)
                                                       <div class="col-md-4">
                                                          <div class="mt-4">
@@ -185,6 +185,28 @@
                                                       
                                                 </div>
 
+                                                <div class="tab-pane container fade" id="location">
+                                                   
+                                                   <div class="row">
+                                                      <h6 class="mb-0 text-justify text-dark">State Filter</h6>
+                                                      @foreach ($states as $state)
+
+                                                      <div class="col-md-4">
+                                                         <div class="mt-4">
+                                                            @if(isset($state['state']) && !empty($state['state']))
+                                                            <div class="form-check form-check-inline mb-2">
+                                                               <input class="form-check-input" type="checkbox" name="state[]" id="states" value="{{ $state['state'] }}" {{ in_array($state['state'], (array)request()->input('state')) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $state['state'] }}</label>
+                                                            </div>
+                                                            @endif
+                                                         </div>
+                                                      </div>
+                                                      
+                                                      @endforeach
+                                                   </div>
+                                                   
+                                             </div>
+
                                              </div>
                                                 <div class="mt-3">
                                                       <button class="btn btn-primary btn-sm">Apply</button>
@@ -230,100 +252,100 @@
             <!--- Company Card --->
             <div class="company-card">
                <div class="row">
+                  <form action="{{ route('dashboard.company.export') }}">
                   @foreach ($companies as $company)                 
                   
-
-                  
                   <div class="col-md-3 mb-2">
-                     <div class="card">
-                        <div class="company-card">
-                           <h4 class="sub-title mb-0 text-secondary"> {{ $company->name }} </h4>
-                        </div>
-                        <div class="card-body">
-                           <div class="information-list">
-                              <ul>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-map-marker" aria-hidden="true"></i>Address
-                                    </div>
+                        <div class="card">
+                           <div class="company-card">
+                              <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }} <input type="checkbox" name="company_ids[]" id="" value="{{ $company->id }}"></h4></a>
+                           </div>
+                           <div class="card-body">
+                              <div class="information-list">
+                                 <ul>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-map-marker" aria-hidden="true"></i>Address
+                                       </div>
 
-                                    <div>
-                                       @if($company && $company->contact_details)
-                                           <span>{{ $company->contact_details->company_address }}</span>
-                                       @else
-                                       <p>NA</P>
-                                       @endif
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-phone"></i>Phone
-                                    </div>
-                                    <div>
+                                       <div>
+                                          @if($company && $company->contact_details)
+                                             <span>{{ $company->contact_details->company_address }}</span>
+                                          @else
+                                          <p>NA</P>
+                                          @endif
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-phone"></i>Phone
+                                       </div>
+                                       <div>
 
-                                       @if($company && $company->contact_details)
-                                       
-                                             <span>{{$company->contact_details->phone}}</span>
-                                       @else 
-                                       <p>NA</p>
-                                       @endif
-                                   
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-fax"></i>Fax
-                                    </div>
+                                          @if($company && $company->contact_details)
+                                          
+                                                <span>{{$company->contact_details->phone}}</span>
+                                          @else 
+                                          <p>NA</p>
+                                          @endif
                                     
-                                     
-                                       @if($company && $company->contact_details)
-                                           <span>{{$company->contact_details->fax}}</span> 
-                                           @else 
-                                           <p>NA</p>
-                                           @endif
-                                   
-                                    </span>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-envelope"></i>E-mail
-                                    </div>
-                                    <div>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-fax"></i>Fax
+                                       </div>
                                        
-                                       @if($company && $company->contact_details)
-                                       <a href={{$company->contact_details}}>  {{$company->contact_details->email}}</a>
-                                       @else 
-                                       <p>NA</p>
+                                       
+                                          @if($company && $company->contact_details)
+                                             <span>{{$company->contact_details->fax}}</span> 
+                                             @else 
+                                             <p>NA</p>
+                                             @endif
+                                    
+                                       </span>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-envelope"></i>E-mail
+                                       </div>
+                                       <div>
+                                          
+                                          @if($company && $company->contact_details)
+                                          <a href={{$company->contact_details}}>  {{$company->contact_details->email}}</a>
+                                          @else 
+                                          <p>NA</p>
+                                          @endif
+                                       
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <i class="fa fa-globe"></i>Website
+                                       </div>
+                                       <div>
+                                          @if($company && $company->contact_details)
+                                          <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
+                                          @else 
+                                          <p>NA</P>
                                        @endif
-                                     
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <i class="fa fa-globe"></i>Website
-                                    </div>
-                                    <div>
-                                       @if($company && $company->contact_details)
-                                       <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
-                                       @else 
-                                       <p>NA</P>
-                                      @endif
-                                    </div>
-                                 </li>
-                              </ul>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </div>
                            </div>
                         </div>
-                     </div>
+                     
                   </div>
                   @endforeach
+                  <div class="row">
+                     <div class="col-md-12 text-center mt-2">
+                        <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
+                     </div>
+                  </div>
+                  </form>
                </div>
             </div>
-            <div class="row">
-               <div class="col-md-12 text-center mt-2">
-                  {{-- <button class="btn btn-primary" class="download-button">Download Pdf</button> --}}
-               </div>
-            </div>
-            <!--- Multiple select --->
          </div>
       </div>
    </div>
@@ -350,9 +372,11 @@
          $(".filter_label_name").html(filter_name);
          $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
       });
-   });
 
-});
+  });
+
+
+
    
 
 </script>

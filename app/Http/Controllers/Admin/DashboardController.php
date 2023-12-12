@@ -1,18 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\CCAvenue;
+use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
-class CCAvenueController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //return View('website.ccavenue.ccavRequestHandler');
+        
+        $totalCompanyCount = Company::count();
+        $lastestFiveCompanies = Company::orderBy('created_at', 'desc')->limit(5)->get();
+        return view('admin.dashboard', compact('totalCompanyCount','lastestFiveCompanies'));
     }
 
     /**
@@ -34,7 +38,7 @@ class CCAvenueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CCAvenue $cCAvenue)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +46,7 @@ class CCAvenueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CCAvenue $cCAvenue)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +54,7 @@ class CCAvenueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CCAvenue $cCAvenue)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +62,7 @@ class CCAvenueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CCAvenue $cCAvenue)
+    public function destroy(string $id)
     {
         //
     }

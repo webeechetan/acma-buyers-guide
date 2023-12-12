@@ -70,16 +70,26 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             
             <li class="nav-item">
-                <a class="nav-link me-4" href="http://127.0.0.1:8000/company/profiles">Profile</a>
+                <a class="nav-link me-4" href="{{route('company.profile')}}">Profile</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <div class="avatar avatar-online">
-                    <img
-                    src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/avatars/1.png"
-                    alt="" class="w-px-40 h-auto rounded-circle">
-                </div>
+                    aria-expanded="false">
+
+                                
+                    <div class="avatar avatar-online">
+
+                        @php
+                        $company = auth()->guard('company')->user();
+                        $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC'; // Default initials if name is empty
+                        @endphp
+
+                    <div class="d-flex align-items-center">
+                    <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                        {{ $companyInitials }}
+                    </div>
+                    </div>
+                    </div>
                 </a>
 
                 @php
@@ -91,9 +101,11 @@
                     <div class="d-flex">
                         <div class="flex-shrink-0 me-4">
                         <div class="avatar avatar-online">
-                            <img
-                            src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/avatars/1.png"
-                            alt="" class="w-px-40 h-auto rounded-circle">
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                                    {{ $companyInitials }}
+                                </div>
+                                </div>
                         </div>
                         </div>
                         <div class="flex-grow-1">
@@ -117,7 +129,7 @@
                 <li>
 
 
-                  <a class="dropdown-item" href="pages-profile-user.html">
+                  <a class="dropdown-item" href="">
                     <i class='bx bx-building-house me-2'></i>
                     <span class="align-middle">{{ $authenticatedCompany->name }}</span>
                     </a>
@@ -126,7 +138,7 @@
                 <li>
 
 
-                    <a class="dropdown-item" href="pages-profile-user.html">
+                    <a class="dropdown-item" href="">
                         <i class='bx bxs-envelope'></i>
                       <span class="align-middle">{{ $authenticatedCompany->email }}</span>
                       </a>

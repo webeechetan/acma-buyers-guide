@@ -84,8 +84,7 @@
                                                          <div class="mt-4">
                                                             @if(isset($company['name']) && !empty($company['name']))
                                                           <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>
-                                                                                                                                                                                                   
+                                                                  <input class="form-check-input" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
                                                                   <label class="form-check-label" for="">{{ $company['name'] }}</label>
                                                                </div>
                                                             @endif
@@ -256,7 +255,7 @@
                   <div class="row">
                     @foreach ($companies as $company)   
                         <div class="col-md-3 mb-3">
-                              <div class="card card-border card-data">
+                              <div class="card card-data">
                                  <div class="company-title">
                                     <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
                                     <input type="checkbox" class="check" name="company_ids[]" id="" value="{{ $company->id }}">
@@ -313,7 +312,7 @@
                                              <div>
                                                 
                                                 @if($company && $company->contact_details)
-                                                <a href={{$company->contact_details}}>  {{$company->contact_details->email}}</a>
+                                                <a href={{$company->email}}>  {{$company->email}}</a>
                                                 @else 
                                                 <p>NA</p>
                                                 @endif
@@ -325,8 +324,8 @@
                                                 <i class="fa fa-globe"></i><span>Website</span>
                                              </div>
                                              <div>
-                                                @if($company && $company->contact_details)
-                                                <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
+                                                @if($company && $company->website)
+                                                <a href="http://www.acma.in">{{$company->website}}</a>
                                                 @else 
                                                 <p>NA</P>
                                              @endif
@@ -340,6 +339,8 @@
                         </div>
                      @endforeach
                   </div>
+
+                  {{-- {{ $companies->links }} --}}
                   <div class="row">
                      <div class="col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
@@ -377,17 +378,13 @@
          $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
       });
 
-      // Add Border Class in card
-      $(".check").click(function(){
-         $("card-border").toggle();
-         console.log("alert")
-      });
+      $(".check").click(function() {
+        // Find the closest ancestor with the class 'card' and toggle the class 'card-border'
+        $(this).closest('.card').toggleClass('card-border');
+    });
 
   });
-<<<<<<< HEAD
-=======
   
->>>>>>> 82c98dc350d0e427484f45ea8938637912c7638e
 
 </script>
 @endpush

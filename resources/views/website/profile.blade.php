@@ -41,14 +41,14 @@
         <small class="text-muted text-uppercase">About</small>
         <ul class="list-unstyled mb-4 mt-3">
           <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Company Name:</span> <span>{{$company->name}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-medium mx-2">Location:</span> <span>{{$company_contact_details->state}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-medium mx-2">Location:</span> <span>{{$company_contact_details->company_address}}</span></li>
         </ul>
         <small class="text-muted text-uppercase">Contacts</small>
         <ul class="list-unstyled mb-4 mt-3">
           <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span class="fw-medium mx-2">Contact:</span> <span>{{$company_contact_details->phone }}</span></li>
           <li class="d-flex align-items-center mb-3"><i class="bx bx-chat"></i><span class="fw-medium mx-2">Fax:</span> <span>{{$company_contact_details->fax}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span> <span>{{$company_contact_details->email}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-globe"></i><span class="fw-medium mx-2">Website:</span> <span><a href="" class="text-primary">{{$company_contact_details->website}}</a></span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span> <span>{{$company->email}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-globe"></i><span class="fw-medium mx-2">Website:</span> <span><a href="" class="text-primary">{{$company->website}}</a></span></li>
         </ul>
         
       </div>

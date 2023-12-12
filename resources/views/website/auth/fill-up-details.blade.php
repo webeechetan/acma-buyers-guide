@@ -28,10 +28,10 @@
                             saving...
                           </span>
                         </span>
-                        <span class="auto_save_icon_upload">
+                        {{-- <span class="auto_save_icon_upload">
                           <i class="bx bx-cloud-upload me-2"></i>
                           <span class="auto_save_uploaded_msg mt-2">saved</span>
-                        </span>
+                        </span> --}}
                       </span>
                     </div>
                     <form action="{{route('company.fillUpDetailsStore')}}" id="Multi-Steps-form" method="post" class="multi-steps-form">

@@ -79,7 +79,7 @@
                                              <div class="tab-content">
                                                 <div class="tab-pane container active" id="company">
                                                    <div class="row">
-                                                      <h6 class="mb-0 text-justify text-dark">Company Filter</h6>
+                                                      <h6 class="mb-0 text-justify text-dark">Companies Filter</h6>
                                                       @foreach($companies_name as $company)
                                                       <div class="col-md-4">
                                                          <div class="mt-4">
@@ -431,9 +431,11 @@
          $(".filter_label_name").html(filter_name);
          $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
       });
-   });
 
-});
+  });
+
+
+
    
 
 </script>

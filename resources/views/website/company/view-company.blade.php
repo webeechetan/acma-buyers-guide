@@ -1,5 +1,5 @@
 @extends('website.layouts.app')
-@section('title','Profile')
+@section('title','View Company')
 @push('styles')
 
 @endpush
@@ -42,90 +42,64 @@
         <small class="text-muted text-uppercase">About</small>
         <ul class="list-unstyled mb-4 mt-3">
           <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Company Name:</span> <span>{{$company->name}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-medium mx-2">Location:</span> <span>{{$company_contact_details->state}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-medium mx-2">Address:</span> <span>{{$company_contact_details->company_address}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-map-pin"></i><span class="fw-medium mx-2">Pin:</span> <span>{{$company_contact_details->pin}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-buildings"></i><span class="fw-medium mx-2">City:</span> <span>{{$company_contact_details->city}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-map"></i><span class="fw-medium mx-2">State:</span> <span>{{$company_contact_details->state}}</span></li>
         </ul>
         <small class="text-muted text-uppercase">Contacts</small>
         <ul class="list-unstyled mb-4 mt-3">
           <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span class="fw-medium mx-2">Contact:</span> <span>{{$company_contact_details->phone }}</span></li>
           <li class="d-flex align-items-center mb-3"><i class="bx bx-chat"></i><span class="fw-medium mx-2">Fax:</span> <span>{{$company_contact_details->fax}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span> <span>{{$company_contact_details->email}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span> <span>{{$company->email}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-world"></i><span class="fw-medium mx-2">Website:</span> <span>{{$company->website}}</span></li>
         </ul>
         
       </div>
     </div>
-    <!--/ About User -->
-    <!-- Profile Overview -->
    
-    <!--/ Profile Overview -->
   </div>
-  <div class="col-xl-8 col-lg-7 col-md-7">
-    <!-- Activity Timeline -->
-    <div class="card card-action mb-4">
-      <div class="card-header align-items-center">
-        <h5 class="card-action-title mb-0"><i class="bx bx-list-ul me-2"></i>Company Key Personnels</h5>
+
+  <div class="col-xl-4 col-lg-5 col-md-5">
+    <!-- About User -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <small class="text-muted text-uppercase">Key Personnels</small>
+        <ul class="list-unstyled mb-4 mt-3">
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Managing Director:</span> <span>{{$company_key_personnels->managing_director}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Chief Executive:</span> <span>{{$company_key_personnels->chief_executive}}</span></li>
+        {{-- </ul>
+        <small class="text-muted text-uppercase">Contacts</small>
+        <ul class="list-unstyled mb-4 mt-3"> --}}
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Sales Inchrage:</span> <span>{{$company_key_personnels->sales_in_charge}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Export Incharge:</span> <span>{{$company_key_personnels->export_in_charge}}</span></li>
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Production Incharge:</span> <span>{{$company_key_personnels->production_in_charge}}</span></li>
+        </ul>
         
       </div>
-      <div class="card-body p-4">
-        <ul class="timeline ms-2">
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-warning"></span></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Managing Director</h6>
-              </div>
-              <p class="mb-2">{{$company_key_personnels->managing_director}}</p>
-              <div class="d-flex flex-wrap">
-                <div>
-                  <span>MD of {{$company->name}}</span>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-info"></span></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Chief Executive</h6>
-              
-              </div>
-              <p class="mb-0">{{$company_key_personnels->chief_executive}}</p>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-primary"></span></span>
-            <div class="timeline-event">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Sales Incharge</h6>
-              </div>
-              <p class="mb-2">{{$company_key_personnels->sales_in_charge}}</p>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-success"></span></span>
-            <div class="timeline-event pb-0">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Export Incharge</h6>
-              </div>
-              <p class="mb-0">{{$company_key_personnels->export_in_charge}}</p>
-            </div>
-          </li>
-          <li class="timeline-item timeline-item-transparent">
-            <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-info"></span></span>
-            <div class="timeline-event pb-0">
-              <div class="timeline-header mb-1">
-                <h6 class="mb-0">Production Incharge</h6>
-              </div>
-              <p class="mb-0">{{$company_key_personnels->production_in_charge}}</p>
-            </div>
-          </li>
-          <li class="timeline-end-indicator">
-            <i class="bx bx-check-circle"></i>
-          </li>
-        </ul>
+    </div>
+   
+  </div>
+
+
+  <div class="col-xl-4 col-lg-5 col-md-5">
+    <!-- About User -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <small class="text-muted text-uppercase">Products Manufactured</small>
+        <ul class="list-unstyled mb-4 mt-3">
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-package"></i><span class="fw-medium mx-2">Products:</span> <span>{{$company_product_details->products_manufactured}}</span></li>
+       
+
+          <li class="d-flex align-items-center mb-3"><i class="bx bx-package"></i><span class="fw-medium mx-2">Product 2:</span> <span>{{$company_product_details->product2}}</span></li>
+        </ul>        
       </div>
     </div>
-    <!--/ Activity Timeline -->
+   
   </div>
+
 </div>
+
+
 @endsection
 @push('scripts')

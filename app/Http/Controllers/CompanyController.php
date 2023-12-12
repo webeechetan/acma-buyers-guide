@@ -17,6 +17,10 @@ use App\Notifications\Company\ForgotPasswordOtpNotification;
 use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Pagination\Paginator;
+
+
+
 
 //use Illuminate\Support\Facades\Cookie;
 
@@ -173,7 +177,12 @@ class CompanyController extends Controller
     }
 
     public function dashboard(Request $request) {
-        $companies = CompanyHelper::filter($request);
+         $companies = CompanyHelper::filter($request);
+       
+        
+        //  $companies = CompanyHelper::filter($request)->paginate(10);
+
+        
         
         $companies_name = Company::select('name')->groupBy('name')->get();
         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();
@@ -299,12 +308,12 @@ class CompanyController extends Controller
     }
 
 
-    public function admin_dashboard()
-    {
-        $totalCompanyCount = Company::count();
+    // public function admin_dashboard()
+    // {
+    //     $totalCompanyCount = Company::count();
 
-        dd($totalCompanyCount);
-    }
+    //     dd($totalCompanyCount);
+    // }
 
     
     public function myprofile()

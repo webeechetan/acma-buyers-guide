@@ -313,7 +313,7 @@
                                              <div>
                                                 
                                                 @if($company && $company->contact_details)
-                                                <a href={{$company->contact_details}}>  {{$company->contact_details->email}}</a>
+                                                <a href={{$company->email}}>  {{$company->email}}</a>
                                                 @else 
                                                 <p>NA</p>
                                                 @endif
@@ -325,8 +325,8 @@
                                                 <i class="fa fa-globe"></i><span>Website</span>
                                              </div>
                                              <div>
-                                                @if($company && $company->contact_details)
-                                                <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
+                                                @if($company && $company->website)
+                                                <a href="http://www.acma.in">{{$company->website}}</a>
                                                 @else 
                                                 <p>NA</P>
                                              @endif
@@ -384,10 +384,7 @@
       });
 
   });
-<<<<<<< HEAD
-=======
   
->>>>>>> 82c98dc350d0e427484f45ea8938637912c7638e
 
 </script>
 @endpush

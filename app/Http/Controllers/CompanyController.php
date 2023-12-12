@@ -180,7 +180,7 @@ class CompanyController extends Controller
          $companies = CompanyHelper::filter($request);
        
         
-        //  $companies = CompanyHelper::filter($request)->paginate(10);
+          //$companies = CompanyHelper::filter($request)->paginate(10);
 
         
         

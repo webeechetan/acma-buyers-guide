@@ -43,7 +43,7 @@
 
        <li class="menu-item">
         <a href="{{route('admin.profile.approval')}}" class="menu-link ">
-          <i class="menu-icon tf-icons bx bx-dollar"></i>
+          <i class="menu-icon menu-icon bx bx-user"></i>
           <div class="text-truncate" data-i18n="Approve Profile">Approve Profile</div>
         </a>
       </li>

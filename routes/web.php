@@ -45,9 +45,13 @@ use App\Models\Company;
 
 // import excel file 
 
+// Route::get('/import', function () {
+//     return view('website.test');
+// });
+
 Route::get('/import', function () {
     return view('website.test');
-});
+})->name('import'); // Yo
 
 Route::post('/import', function (Request $request) {
     // return $request->abg;

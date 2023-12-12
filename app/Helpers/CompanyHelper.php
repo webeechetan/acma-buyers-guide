@@ -4,6 +4,7 @@ use App\Models\  {Company , CompanyContactDetail , CompanyKeyPersonnel , Company
 use Illuminate\Support\Facades\Auth;
 
 
+
 class CompanyHelper { 
 
     public static function generateCompanyDataAsNull($company_id){

@@ -17,7 +17,7 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">Companies</div>
+            <div class="card-header">Companies</div> <h4><a class="btn btn-primary" href="{{route('import')}}">Import Companies</a></h4>
             <div class="card-body">
                 {{ $dataTable->table() }}
             </div>

@@ -35,9 +35,15 @@ class CompanyExport implements FromCollection, WithMapping, WithHeadings
     public function map($company): array
     {
         return [
-            $company->id,
+            
             $company->name,
             $company->contact_details->company_address,
+            $company->contact_details->city,
+            $company->contact_details->state,
+            $company->contact_details->phone,
+            $company->key_personnels->managing_director,
+            $company->key_personnels->chief_executive,
+            $company->key_personnels->export_in_charge,
             $company->foreign_collaboration->f_collab1,
             $company->key_personnels->managing_director,
             $company->product_details->products_manufactured,
@@ -47,9 +53,15 @@ class CompanyExport implements FromCollection, WithMapping, WithHeadings
     public function headings(): array
     {
         return [
-            'ID',
+           
             'Name',
             'Address',
+            'City',
+            'State',
+            'Phone',
+            'Managing Director',
+            'Chief Executive',
+            'Export Incharge',
             'Foreign Collaboration',
             'Managing Director',
             'Products Manufactured',

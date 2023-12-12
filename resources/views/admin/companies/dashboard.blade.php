@@ -312,8 +312,8 @@
                                              </div>
                                              <div>
                                                 
-                                                @if($company && $company->contact_details)
-                                                <a href={{$company->contact_details}}>  {{$company->contact_details->email}}</a>
+                                                @if($company && $company->email)
+                                                <a href="{{$company->email}}">  {{$company->email}}</a>
                                                 @else 
                                                 <p>NA</p>
                                                 @endif
@@ -325,8 +325,8 @@
                                                 <i class="fa fa-globe"></i><span>Website</span>
                                              </div>
                                              <div>
-                                                @if($company && $company->contact_details)
-                                                <a href="http://www.acma.in">{{$company->contact_details->website}}</a>
+                                                @if($company && $company->website)
+                                                <a href="http://www.acma.in">{{$company->website}}</a>
                                                 @else 
                                                 <p>NA</P>
                                              @endif
@@ -377,7 +377,7 @@
 
       // Add Border Class in card
       $(".check").click(function(){
-         $("card-border").toggle();
+         $(".card-border").toggle();
          console.log("alert")
       });
 

@@ -53,12 +53,12 @@
         <div class="card-body">
           <!-- Logo -->
           <div class="app-brand justify-content-center">
-            <a href="index.html" class="app-brand-link gap-2">
+            <a href="#" class="app-brand-link gap-2">
               <span class="app-brand-text demo text-body text-uppercase fw-bold">Acma</span>
             </a>
           </div>
           <!-- /Logo -->
-          <h4 class="mb-2">Welcome to Acma! 👋</h4>
+          <h4 class="mb-2 text-primary text-center">Welcome to Acma! 👋</h4>
           
           <form id="formAuthentication" class="mb-3" action="{{ route('admin.authenticate') }}" method="POST">
             @csrf

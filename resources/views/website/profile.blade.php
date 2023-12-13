@@ -34,23 +34,75 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xl-4 col-lg-5 col-md-5">
+  <div class="col-md-4">
     <!-- About User -->
-    <div class="card mb-4">
+    <div class="card inner-profile-card">
       <div class="card-body">
-        <small class="text-muted text-uppercase">About</small>
-        <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Company Name:</span> <span>{{$company->name}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-medium mx-2">Location:</span> <span>{{$company_contact_details->company_address}}</span></li>
-        </ul>
-        <small class="text-muted text-uppercase">Contacts</small>
-        <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span class="fw-medium mx-2">Contact:</span> <span>{{$company_contact_details->phone }}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-chat"></i><span class="fw-medium mx-2">Fax:</span> <span>{{$company_contact_details->fax}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span> <span>{{$company->email}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-globe"></i><span class="fw-medium mx-2">Website:</span> <span><a href="" class="text-primary">{{$company->website}}</a></span></li>
-        </ul>
-        
+        <p>About</p>
+        <div class="information-list profile-list mb-3">
+          <ul>
+              <li>
+                <div>
+                    <i class="bx bx-user"></i><span>Company Name:</span>
+                </div>
+
+                <div>
+                    <span>{{$company->name}}</span>
+                </div>
+              </li>
+          </ul>
+        </div>
+          <p>Contacts</p>
+          <div class="information-list profile-list">
+            <ul>
+                <li>
+                  <div>
+                      <i class="bx bx-user"></i><span>Contact</span>
+                  </div>
+
+                  <div>
+                      <span>{{$company_contact_details->phone }}</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-chat"></i><span>Fax</span> 
+                  </div>
+                  <div>
+
+
+                      <span>{{$company_contact_details->fax}}</span>
+
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-map-pin"></i><span>Pin</span>
+                  </div>
+                  <div>
+
+                      <span>{{$company->email}}</span>
+
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-envelope"></i><span>Email</span>
+                  </div>
+                  <div>
+                      <span>{{$company->email}}</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-globe"></i><span>Website</span>
+                  </div>
+                  <div>
+                      <span>{{$company->website}}</span>
+                  </div>
+                </li>
+            </ul>
+          </div>
       </div>
     </div>
     <!--/ About User -->

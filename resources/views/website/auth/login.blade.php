@@ -72,7 +72,7 @@
                         </li> -->
                         <!-- <li class="nav-item">or</li> -->
                         <li class="nav-item">
-                          <a class="nav-link active btn btn-primary" data-bs-toggle="pill" href="#login">Login</a>
+                          <a class="nav-link fw-24 border-none" data-bs-toggle="pill" href="#login">Login</a>
                         </li>
                       </ul>
                     </div>

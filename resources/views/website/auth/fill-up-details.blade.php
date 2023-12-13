@@ -197,12 +197,12 @@
                                   </div>
 
 
-                                  <div class="col-md-3">
+                                  <div class="col-md-6">
                                     <label class="form-label" for="other_plant_address">Other Plant Address 3</label>
                                     <textarea id="otherplant_address3" name="otherplant_address3" class="form-control" placeholder="ACMA" rows="1" >{{ $company_contact_details->otherplant_address3 }}</textarea>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                       <label class="form-label" for="plant_email">Year Commencing</label>
                                       <input type="text" id="year_commencing" name="year_commencing" class="form-control" placeholder="plant@acma.in" value="{{ $company_contact_details->year_commencing }}">
                                       </div>
@@ -214,56 +214,48 @@
                         <div class="form-step">
                           <div id="contact_details_of_key_personnel" class="form-card content">
                             <div class="row g-3">
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="managing_director">Managing Director</label>
                                 <input type="text" id="managing_director" name="managing_director" class="form-control" placeholder="John" value="{{ $company_key_personnels->managing_director }}">
                               </div>
                              
 
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="chief_executive">Chief Executive</label>
                                 <input type="text" id="chief_executive" name="chief_executive" class="form-control" placeholder="John" value="{{ $company_key_personnels->chief_executive }}">
                               </div>
                               
 
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="sales_in_charge">sales incharge</label>
                                 <input type="text" id="sales_in_charge" name="sales_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->sales_in_charge }}">
                               </div>
                              
 
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="export_in_charge">export incharge</label>
                                 <input type="text" id="export_in_charge" name="export_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->export_in_charge }}">
                               </div>
-                              
-
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="production_in_charge">production incharge</label>
                                 <input type="text" id="production_in_charge" name="production_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->production_in_charge }}">
                               </div>
-                             
-
-                             
-
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="quality_in_charge"> Quality incharge</label>
                                 <input type="text" id="quality_in_charge" name="quality_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->quality_in_charge }}">
                               </div>
-                             
-
-                            </div>
-
-
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="rd_in_charge">Hrd incharge</label>
                                 <input type="text" id="hrd_incharge" name="hrd_incharge" class="form-control" placeholder="John" value="{{ $company_key_personnels->hrd_incharge }}">
                               </div>
 
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="rnd_incharge">Rnd incharge</label>
                                 <input type="text" id="rnd_incharge" name="rnd_incharge" class="form-control" placeholder="John" value="{{ $company_key_personnels->rnd_incharge }}">
                               </div>
+                             
+
+                            </div>
                              
                             </div>
                           </div>
@@ -640,22 +632,22 @@
                                 <input type="text" id="qsagency" name="qsagency" class="form-control" placeholder="" value="{{ $company_foreign_collaboration->qsagency }}">
                               </div>
                               
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="iso14">ISO 14</label>
                                 <input type="text" id="iso14" name="iso14" class="form-control" placeholder="" value="{{ $company_foreign_collaboration->iso14 }}">
                               </div>
                               
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="iso14date">ISO 14 Date</label>
                                 <input type="text" id="iso14date" name="iso14date" class="form-control" placeholder="" value="{{$company_foreign_collaboration->iso14date }}">
                               </div>
                               
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <label class="form-label" for="iso14agency">ISO 14 Agency</label>
                                 <input type="text" id="iso14agency" name="iso14agency" class="form-control" placeholder="" value="{{$company_foreign_collaboration->iso14agency }}">
                               </div>
                               
-                              <div class="col-md-12">
+                              <div class="col-md-3">
                                 <label class="form-label" for="ts">TS</label>
                                 <input type="text" id="ts" name="ts" class="form-control" placeholder="" value="{{$company_foreign_collaboration->ts}}">
                               </div>

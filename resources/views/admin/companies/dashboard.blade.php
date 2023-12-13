@@ -77,14 +77,15 @@
                                             <form action="" class="advance-filter">
                                              <div class="tab-content">
                                                 <div class="tab-pane container active" id="company">
-                                                   <div class="row">
-                                                      <h6 class="mb-0 text-justify text-dark">Companies Filter</h6>
+                                                  <h6 class="mb-2 text-justify text-dark">Companies Filter</h6>
+                                                   <div class="row scroll-content">
+                                                     
                                                       @foreach($companies_name as $company)
                                                       <div class="col-md-4">
-                                                         <div class="mt-4">
+                                                         <div class="mt-2">
                                                             @if(isset($company['name']) && !empty($company['name']))
                                                           <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
+                                                                  <input class="form-check-input"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
                                                                   <label class="form-check-label" for="">{{ $company['name'] }}</label>
                                                                </div>
                                                             @endif
@@ -94,15 +95,14 @@
                                                    </div>
                                                 </div>
                                                 <div class="tab-pane container fade" id="region">
-                                                      <div class="row">
-                                                         <h6 class="mb-0 text-justify text-dark">Region Filter</h6>
+                                                      <h6 class="mb-2 text-justify text-dark">Region Filter</h6>
+                                                      <div class="row scroll-content">
                                                          @foreach ($regions as $region)
-                                                      
-                                                         <div class="col-md-3">
-                                                            <div class="mt-4">
+                                                         <div class="col-md-2">
+                                                            <div class="mt-2">
                                                                @if(isset($region['region']) && !empty($region['region']))
                                                                   <div class="form-check form-check-inline mb-2">
-                                                                     <input class="form-check-input" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
+                                                                     <input class="form-check-input"  class="active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
                                                                      <label class="form-check-label" for="inlineCheckbox1">{{ $region['region'] }}</label>
                                                                   </div>
                                                                @endif
@@ -113,17 +113,14 @@
                                                       
                                                 </div>
                                                 <div class="tab-pane container fade" id="product">
-                                                   
-                                                      <div class="row">
-                                                         <h6 class="mb-0 text-justify text-dark">Product Filter</h6>
+                                                     <h6 class="mb-2 text-justify text-dark">Product Filter</h6>
+                                                      <div class="row scroll-content">
                                                          @foreach ($products as $product)
-
-
-                                                         <div class="col-md-4">
-                                                            <div class="mt-4">
+                                                         <div class="col-md-6">
+                                                            <div class="mt-2">
                                                                @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
                                                                <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
+                                                                  <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
                                                                   <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
                                                                </div>
                                                                @endif
@@ -135,16 +132,14 @@
                                                       
                                                 </div>
                                                 <div class="tab-pane container fade" id="trademark">
-                                                   
-                                                      <div class="row">
-                                                        <h6 class="mb-0 text-justify text-dark">Trademark Filter</h6>
+                                                      <h6 class="mb-2 text-justify text-dark">Trademark Filter</h6>
+                                                      <div class="row scroll-content">
                                                          @foreach ($trademarks as $trademark)
-
                                                          <div class="col-md-4">
-                                                            <div class="mt-4">
+                                                            <div class="mt-2">
                                                                @if(isset($trademark['trademark']) && !empty($trademark['trademark']))
                                                                <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
+                                                                  <input class="form-check-input"  class="active-check" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
                                                                   <label class="form-check-label" for="inlineCheckbox1">{{$trademark['trademark']}}</label>
                                                                </div>
                                                                @endif
@@ -156,43 +151,48 @@
                                                       
                                                 </div>
                                                 <div class="tab-pane container fade" id="salesTurnover">
-                                                    <h6 class="mb-0 text-justify text-dark">Sales Turnover Filter</h6>
-                                                      <div class="row mt-4">
-                                                      <div class="form-check form-check-inline form-check-flex">
-                                                         <input class="form-check-input" type="checkbox" name="range" value="0-5000" {{ request('range') == '0-5000' ? 'checked' : '' }}id="checkbox-one">
-                                                         <label class="form-check-label" for="checkbox-one">
-                                                            0 - 5000
-                                                         </label>
-                                                      </div>
-                                                      <div class="form-check form-check-inline form-check-flex">
-                                                         <input class="form-check-input" type="checkbox" name="range" value="5000-10000" {{ request('range') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
-                                                         <label class="form-check-label" for="checkbox-one">
-                                                            5000-10000
-                                                         </label>
-                                                      </div>
-                                                      
-                                                      <div class="form-check form-check-inline form-check-flex">
-                                                         <input class="form-check-input" type="checkbox" name="range" value="5000-15000" {{ request('range') == '5000-15000' ? 'checked' : '' }}id="checkbox-one">
-                                                         <label class="form-check-label" for="checkbox-one">
-                                                             5000-15000
-                                                         </label>
-                                                      </div>
+                                                    <h6 class="mb-2 text-justify text-dark">Sales Turnover Filter</h6>
+                                                      <div class="row scroll-content mt-2">
+                                                         <div class="col-md-4">
+                                                            <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="0-5000" {{ request('range') == '0-5000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  0 - 5000
+                                                               </label>
+                                                            </div>
+                                                         </div>
+                                                         <div class="col-md-4">
+                                                            <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5000-10000" {{ request('range') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  5000-10000
+                                                               </label>
+                                                            </div>
+                                                         </div>
+                                                         <div class="col-md-4">
+                                                            <div class="form-check form-check-inline form-check-flex">
+                                                                  <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5000-15000" {{ request('range') == '5000-15000' ? 'checked' : '' }}id="checkbox-one">
+                                                                  <label class="form-check-label" for="checkbox-one">
+                                                                     5000-15000
+                                                                  </label>
+                                                               </div>
+                                                         </div>
                                                       
                                                       </div>
                                                       
                                                 </div>
 
                                                 <div class="tab-pane container fade" id="location">
-                                                   
-                                                   <div class="row">
-                                                      <h6 class="mb-0 text-justify text-dark">State Filter</h6>
+                                                   <h6 class="mb-2 text-justify text-dark">State Filter</h6>
+                                                   <div class="row scroll-content">
+                                                    
                                                       @foreach ($states as $state)
 
                                                       <div class="col-md-4">
-                                                         <div class="mt-4">
+                                                         <div class="mt-2">
                                                             @if(isset($state['state']) && !empty($state['state']))
                                                             <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input" type="checkbox" name="state[]" id="states" value="{{ $state['state'] }}" {{ in_array($state['state'], (array)request()->input('state')) ? 'checked' : '' }}>
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="state[]" id="states" value="{{ $state['state'] }}" {{ in_array($state['state'], (array)request()->input('state')) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="inlineCheckbox1">{{ $state['state'] }}</label>
                                                             </div>
                                                             @endif
@@ -310,8 +310,8 @@
                                              </div>
                                              <div>
                                                 
-                                                @if($company && $company->email)
-                                                <a href={{$company->email}}>  {{$company->email}}</a>
+                                                @if($company && $company->contact_details)
+                                                <a href={{$company->email}}>{{$company->email}}</a>
                                                 @else 
                                                 <p>NA</p>
                                                 @endif
@@ -334,14 +334,12 @@
                                     </div>
                                  </div>
                               </div>
-                                {{-- {{ $companies->links }} --}}
                            
                         </div>
                      @endforeach
                   </div>
 
-                  {{ $companies->links() }}
-                  
+                  {{-- {{ $companies->links }} --}}
                   <div class="row">
                      <div class="col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
@@ -349,6 +347,8 @@
                   </div>
                   </form>
                </div>
+
+             
             </div>
          </div>
       </div>
@@ -381,9 +381,61 @@
         // Find the closest ancestor with the class 'card' and toggle the class 'card-border'
         $(this).closest('.card').toggleClass('card-border');
     });
-
   });
-  
+ 
+
 
 </script>
+
+<!-- Include this script in your HTML file -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var checkboxes = document.querySelectorAll('.form-check-inline input[type="checkbox"]');
+        var tabs = document.querySelectorAll('.nav-pills .nav-link');
+
+        checkboxes.forEach(function (checkbox, index) {
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    updateClass(tabs[index]);
+                }
+            });
+        });
+
+        function updateClass(activeTab) {
+            var anyChecked = Array.from(checkboxes).some(function (cb) {
+                return cb.checked;
+            });
+            var currentTab= $(activeTab).attr('href');
+            console.log(currentTab);
+//             var currentTabCheckboxes = $(activeTab).find('input[type="checkbox"]');
+
+//             console.log(currentTabCheckboxes);
+// console.log(activeTab);
+            var navLink = activeTab; 
+            if (anyChecked) {
+                navLink.classList.add('tab-active'); 
+            } else {
+                navLink.classList.remove('tab-active');
+            }
+        }
+
+        // Add event listeners for tab changes
+        tabs.forEach(function (tab) {
+            tab.addEventListener('shown.bs.tab', function () {
+                updateClass(tab);
+            });
+        });
+
+        var activeTab = document.querySelector('.form-check-inline .form-check-input');
+        if (activeTab) {
+            updateClass(activeTab);
+        }
+    });
+</script>
+
+
+
+
+
+
 @endpush

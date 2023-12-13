@@ -35,64 +35,201 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xl-4 col-lg-5 col-md-5">
+  <div class="col-md-4">
     <!-- About User -->
-    <div class="card mb-4">
+    <div class="card inner-profile-card">
       <div class="card-body">
-        <small class="text-muted text-uppercase">About</small>
-        <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Company Name:</span> <span>{{$company->name}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span class="fw-medium mx-2">Address:</span> <span>{{$company_contact_details->company_address}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-map-pin"></i><span class="fw-medium mx-2">Pin:</span> <span>{{$company_contact_details->pin}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-buildings"></i><span class="fw-medium mx-2">City:</span> <span>{{$company_contact_details->city}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-map"></i><span class="fw-medium mx-2">State:</span> <span>{{$company_contact_details->state}}</span></li>
-        </ul>
-        <small class="text-muted text-uppercase">Contacts</small>
-        <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span class="fw-medium mx-2">Contact:</span> <span>{{$company_contact_details->phone }}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-chat"></i><span class="fw-medium mx-2">Fax:</span> <span>{{$company_contact_details->fax}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span> <span>{{$company->email}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-world"></i><span class="fw-medium mx-2">Website:</span> <span>{{$company->website}}</span></li>
-        </ul>
-        
+        <p>About</p>
+        <div class="information-list profile-list mb-3">
+          <ul>
+              <li>
+                <div>
+                    <i class="bx bx-user"></i><span>Company Name:</span>
+                </div>
+
+                <div>
+                    <span>{{$company->name}}</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-map"></i><span>Address</span>
+                </div>
+                <div>
+
+
+                    <span>{{$company_contact_details->company_address}}</span>
+
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-map-pin"></i><span>Pin</span>
+                </div>
+                <div>
+
+                    <span>{{$company_contact_details->pin}}</span>
+
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-buildings"></i><span>City</span>
+                </div>
+                <div>
+                    <span>{{$company_contact_details->city}}</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-map"></i><span>State</span>
+                </div>
+                <div>
+                    <span>{{$company_contact_details->state}}</span>
+                </div>
+              </li>
+          </ul>
+        </div>
+          <p>Contacts</p>
+          <div class="information-list profile-list">
+            <ul>
+                <li>
+                  <div>
+                      <i class="bx bx-user"></i><span>Contact</span>
+                  </div>
+
+                  <div>
+                      <span>{{$company_contact_details->phone }}</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-chat"></i><span>Fax</span> 
+                  </div>
+                  <div>
+
+
+                      <span>{{$company_contact_details->fax}}</span>
+
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-map-pin"></i><span>Pin</span>
+                  </div>
+                  <div>
+
+                      <span>{{$company->email}}</span>
+
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-envelope"></i><span>Email</span>
+                  </div>
+                  <div>
+                      <span>{{$company->email}}</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                      <i class="bx bx-globe"></i><span>Website</span>
+                  </div>
+                  <div>
+                      <span>{{$company->website}}</span>
+                  </div>
+                </li>
+            </ul>
+          </div>
       </div>
     </div>
    
   </div>
 
-  <div class="col-xl-4 col-lg-5 col-md-5">
+  <div class="col-md-4">
     <!-- About User -->
-    <div class="card mb-4">
+    <div class="card inner-profile-card">
       <div class="card-body">
-        <small class="text-muted text-uppercase">Key Personnels</small>
-        <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Managing Director:</span> <span>{{$company_key_personnels->managing_director}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Chief Executive:</span> <span>{{$company_key_personnels->chief_executive}}</span></li>
-        {{-- </ul>
-        <small class="text-muted text-uppercase">Contacts</small>
-        <ul class="list-unstyled mb-4 mt-3"> --}}
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Sales Inchrage:</span> <span>{{$company_key_personnels->sales_in_charge}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Export Incharge:</span> <span>{{$company_key_personnels->export_in_charge}}</span></li>
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span class="fw-medium mx-2">Production Incharge:</span> <span>{{$company_key_personnels->production_in_charge}}</span></li>
-        </ul>
-        
+        <p>Key Personnels</p>
+        <div class="information-list profile-list">
+          <ul>
+              <li>
+                <div>
+                    <i class="bx bx-user"></i><span>Managing Director</span>
+                </div>
+
+                <div>
+                    <span>{{$company_key_personnels->managing_director}}</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-user"></i><span>Chief Executive</span>
+                </div>
+                <div>
+
+
+                    <span>{{$company_key_personnels->chief_executive}}</span>
+
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-user"></i><span>Sales Inchrage</span>
+                </div>
+                <div>
+                    <span>{{$company_key_personnels->sales_in_charge}}</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-user"></i><span>Export Incharge</span>
+                </div>
+                <div>
+                    <span>{{$company_key_personnels->export_in_charge}}</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-user"></i><span>Production Incharge</span>
+                </div>
+                <div>
+                    <span>{{$company_key_personnels->production_in_charge}}</span>
+                </div>
+              </li>
+          </ul>
+        </div>
       </div>
     </div>
    
   </div>
 
 
-  <div class="col-xl-4 col-lg-5 col-md-5">
+  <div class="col-md-4">
     <!-- About User -->
-    <div class="card mb-4">
+    <div class="card inner-profile-card">
       <div class="card-body">
-        <small class="text-muted text-uppercase">Products Manufactured</small>
-        <ul class="list-unstyled mb-4 mt-3">
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-package"></i><span class="fw-medium mx-2">Products:</span> <span>{{$company_product_details->products_manufactured}}</span></li>
-       
-
-          <li class="d-flex align-items-center mb-3"><i class="bx bx-package"></i><span class="fw-medium mx-2">Product 2:</span> <span>{{$company_product_details->product2}}</span></li>
-        </ul>        
+        <p>Products Manufactured</p>
+        <div class="information-list profile-list ">
+          <ul>
+              <li>
+                <div>
+                    <i class="bx bx-package"></i><span>Products</span>
+                </div>
+                <div>
+                    <span>{{$company_product_details->products_manufactured}}</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <i class="bx bx-package"></i><span>Product 2</span>
+                </div>
+                <div>
+                    <span>{{$company_product_details->product2}}</span>
+                </div>
+              </li>
+          </ul>
+        </div>        
       </div>
     </div>
    

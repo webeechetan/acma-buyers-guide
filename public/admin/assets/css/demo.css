@@ -227,13 +227,23 @@ ul {
 .navbar-expand-lg .navbar-nav {
   align-items: center;
 }
-
+.subscribe-btn .nav-pills .fw-24{
+  color: var(--primary) !important;
+  font-size: 24px;
+  font-weight: 600;
+}
+.subscribe-btn .nav-pills .fw-24:hover{
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--primary) !important;
+  pointer-events: none !important;
+}
 .dropdown-toggle::after {
   display: none;
 }
 
 .dropdown-menu {
-  transform: translate(-150px, 13px) !important;
+  transform: translate(-253px, 13px) !important;
 }
 
 .dropdown-menu::before {
@@ -785,7 +795,7 @@ footer {
 
 /*--- Company Card ---*/
 .card-border{
-  border: 2px solid var(--primary);
+  border: 1px solid var(--primary);
 
 }
 .card-data{
@@ -795,6 +805,7 @@ footer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  align-items: center;
 }
 .information-list ul {
   display: grid;
@@ -805,7 +816,12 @@ footer {
   display: inline-flex;
   align-items: flex-start;
 }
-
+.information-list li div:last-child{
+  width: 170px;
+}
+.information-list li div:last-child a{
+  color: #000 !important;
+}
 .information-list li:not(:last-child) {
   margin-bottom: 5px;
 }
@@ -816,7 +832,10 @@ footer {
   margin-right: 5px;
   padding-right: 10px;
   font-size: 13px;
+  white-space: nowrap;
+
 }
+
 .information-list li>div:nth-child(2) span{
    font-size: smaller;
 }
@@ -837,9 +856,6 @@ footer {
   font-size: 13px;
 }
 
-#payments {
-  display: none;
-}
 
 /*----- Dropdown for Advance Filter ----*/
 
@@ -900,12 +916,25 @@ footer {
 .filter-content .tab-pane {
   padding-top: 30px;
 }
-.advance-filter .tab-content{
+.advance-filter .scroll-content{
  height: 300px;
- overflow: hidden;
- overflow-y: scroll;
+ overflow-y: auto;
 }
-
+.scroll-content::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: var(--bg-card);
+}
+.scroll-content::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: var(--light_purple);
+    border-radius: 7px;
+}
+.scroll-content::-webkit-scrollbar-thumb
+{
+	background-color: var(--primary);
+}
 .modal-body .nav-pills li .nav-link {
   border: 1px solid var(--primary);
   border-radius: 0.375rem;
@@ -929,6 +958,19 @@ footer {
 .form-check-flex{
   display: flex;
   column-gap: 10px;
+}
+.form-check-inline{
+  display: grid;
+  grid-template-columns: min-content 1fr;
+}
+.form-check-inline input[type="checkbox"] {
+  min-width: 20px; 
+}
+.tab-active{
+  background-color: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+  color: #fff !important;
+
 }
 
 /*---- Modal ---*/
@@ -1056,7 +1098,8 @@ footer {
   }
 
   .dropdown-menu {
-    transform: translate(19px, 13px) !important;
+    transform: translate(-260px, 13px) !important;
+    width: fit-content;
   }
 
   /*--- Filter List ---*/
@@ -1095,7 +1138,8 @@ footer {
   border: 1px solid var(--primary);
   color: #fff;
   border-radius: .375rem;
-  padding: 0.35rem;
+  padding: 0.25rem  0.35rem;
+  font-size: .75rem;
 }
 
 .dataTable thead {
@@ -1127,6 +1171,21 @@ footer {
 .profile-approve .table thead{
  background-color: var(--primary);
 }
+#company-table_wrapper .dataTable tbody tr td:first-child{
+  color: #696cff;
+}
+#company-table_wrapper .dataTable tbody tr:nth-child(odd) td:nth-child(2){
+  color: #1448ad;
+}
+#company-table_wrapper .dataTable tbody tr:nth-child(even) td:nth-child(3){
+  color: #2a2e3f;
+}
+#company-table_wrapper .dataTable tbody tr:nth-child(odd) td:nth-child(4){
+  color:#8DE45E;
+}
+#company-table_wrapper .dataTable tbody tr:nth-child(even) td:nth-child(4){
+  color: #FFAE08;
+}
 
 /*---- Profile Page ----*/
 .user-profile-header-banner img {
@@ -1134,7 +1193,22 @@ footer {
   object-fit: cover;
   height: 250px;
 }
+.inner-profile-card{
+  min-height: 100%;
+}
+.inner-profile-card .card-body small{
+ padding-bottom: 15px;;
+}
 
+.profile-list li div:nth-child(2) span{
+  font-size: small;
+}
+.profile-list li div:nth-child(1){
+  font-size: 15px;
+}
+.profile-list li div:last-child{
+  width: fit-content !important;
+}
 .user-profile-header {
   margin-top: -2rem
 }

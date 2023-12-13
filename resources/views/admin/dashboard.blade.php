@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-    <div class="col-md-6 col-xl-4 mb-4">
+    <div class="col-md-12">
         <div class="card h-100">
           <div class="card-header d-flex align-items-center justify-content-between">
             <h5 class="card-title m-0 me-2">Recently Added Company </h5>
@@ -44,7 +44,7 @@
                     <div>
                         <h6 class="mb-0">{{$latestCompany->name}}</h6>
                         <small class="text-muted"> Joined on - {{$latestCompany->created_at->format('d- M - Y') }}</small>
-                        <p> Email - {{$latestCompany->email}} </p>
+                        <p> Email : <span> {{$latestCompany->email}}</span> </p>
                     </div>
                   </div>
                 <div class="resize-triggers"><div class="expand-trigger"><div style="width: 284px; height: 40px;"></div></div><div class="contract-trigger"></div></div></div>

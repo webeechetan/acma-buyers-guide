@@ -8,58 +8,72 @@
         </a>
         <div class="top-header-right">
             <div class="nav-item navbar-dropdown dropdown-user dropdown">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                <div class="avatar avatar-online">
-                <img src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/avatars/1.png"
-                    alt="" class="w-px-40 h-auto rounded-circle">
-                </div>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                <a class="dropdown-item" href="pages-account-settings-account.html">
-                    <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                        <div class="avatar avatar-online">
-                        <img
-                            src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/avatars/1.png"
-                            alt="" class="w-px-40 h-auto rounded-circle">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                   <div class="avatar avatar-online">
+                        @php
+                        $company = auth()->guard('company')->user();
+                        $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC'; // Default initials if name is empty
+                        @endphp
+
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                                {{ $companyInitials }}
+                            </div>
                         </div>
                     </div>
-                    <div class="flex-grow-1">
-                        <span class="fw-medium d-block">John Doe</span>
-                        <small class="text-muted">Admin</small>
-                    </div>
-                    </div>
                 </a>
-                </li>
+                
+                @php
+                $authenticatedCompany = Auth::guard('company')->user();
+                @endphp
+                <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                <div class="dropdown-divider"></div>
-                </li>
-                <li>
-                <a class="dropdown-item" href="">
-                    <i class='bx bx-user-plus me-2'></i>
-                    <span class="align-middle">Account Details List</span>
-                </a>
-                </li>
-                <li>
-                <a class="dropdown-item" href="pages-profile-user.html">
-                    <i class='bx bx-building-house me-2'></i>
-                    <span class="align-middle">Company Name</span>
-                </a>
-                </li>
-                <li>
-                <a class="dropdown-item" href="pages-profile-user.html">
-                    <i class='bx bx-envelope me-2'></i>
-                    <span class="align-middle">Email</span>
-                </a>
-                </li>
-                <li>
-                <a class="dropdown-item" href="pages-profile-user.html">
-                    <i class='bx bx-map me-2'></i>
-                    <span class="align-middle">Address</span>
-                </a>
-                </li>
-            </ul>
+                        <a class="dropdown-item" href="/">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-4">
+                            <div class="avatar avatar-online">
+                                <div class="d-flex align-items-center">
+                                    <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                                        {{ $companyInitials }}
+                                    </div>
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="flex-grow-1">
+                            <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
+                            </div>
+                        </div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('company.fillUpDetails') }}">
+                        <i class='bx bx-user-plus me-2'></i>
+                        <span class="align-middle">Account Details</span>
+                        </a>
+                    </li>
+                    <li>
+
+
+                    <a class="dropdown-item" href="">
+                        <i class='bx bx-building-house me-2'></i>
+                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
+                        </a>
+                    </li>
+                    <li>
+
+
+                        <a class="dropdown-item" href="">
+                            <i class='bx bxs-envelope me-2'></i>
+                        <span class="align-middle">{{ $authenticatedCompany->email }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('company.logout') }}"><i class='bx bx-power-off me-2'></i> <span class="align-middle">Logout</span></a>
+                    </li>
+                </ul>
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -84,11 +98,11 @@
                         $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC'; // Default initials if name is empty
                         @endphp
 
-                    <div class="d-flex align-items-center">
-                    <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
-                        {{ $companyInitials }}
-                    </div>
-                    </div>
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                                {{ $companyInitials }}
+                            </div>
+                        </div>
                     </div>
                 </a>
 
@@ -96,58 +110,52 @@
                 $authenticatedCompany = Auth::guard('company')->user();
                 @endphp
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                    <a class="dropdown-item" href="/">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0 me-4">
-                        <div class="avatar avatar-online">
-                            <div class="d-flex align-items-center">
-                                <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
-                                    {{ $companyInitials }}
-                                </div>
-                                </div>
+                    <li>
+                        <a class="dropdown-item" href="/">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-4">
+                            <div class="avatar avatar-online">
+                                <div class="d-flex align-items-center">
+                                    <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                                        {{ $companyInitials }}
+                                    </div>
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="flex-grow-1">
+                            <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
+                            </div>
                         </div>
-                        </div>
-                        <div class="flex-grow-1">
-                        <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
-                        </div>
-                    </div>
-                    </a>
-                </li>
-                <li>
-                    <div class="dropdown-divider"></div>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="{{ route('company.fillUpDetails') }}">
-                    <i class='bx bx-user-plus me-2'></i>
-                    <span class="align-middle">Account Details</span>
-                    </a>
-                </li>
-
-
- 
-                <li>
-
-
-                  <a class="dropdown-item" href="">
-                    <i class='bx bx-building-house me-2'></i>
-                    <span class="align-middle">{{ $authenticatedCompany->name }}</span>
-                    </a>
-                </li>
-
-                <li>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('company.fillUpDetails') }}">
+                        <i class='bx bx-user-plus me-2'></i>
+                        <span class="align-middle">Account Details</span>
+                        </a>
+                    </li>
+                    <li>
 
 
                     <a class="dropdown-item" href="">
-                        <i class='bx bxs-envelope'></i>
-                      <span class="align-middle">{{ $authenticatedCompany->email }}</span>
-                      </a>
-                  </li>
+                        <i class='bx bx-building-house me-2'></i>
+                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
+                        </a>
+                    </li>
+                    <li>
 
 
-                <li>
-                     <a class="dropdown-item" href="{{ route('company.logout') }}"><i class='bx bx-power-off me-2'></i> <span class="align-middle">Logout</span></a>
-                </li>
+                        <a class="dropdown-item" href="">
+                            <i class='bx bxs-envelope me-2'></i>
+                        <span class="align-middle">{{ $authenticatedCompany->email }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('company.logout') }}"><i class='bx bx-power-off me-2'></i> <span class="align-middle">Logout</span></a>
+                    </li>
                 </ul>
             </li>
             </ul>

@@ -341,26 +341,6 @@
                   </div>
 
                   {{ $companies->links() }}
-
-                  <!-- Displaying $companies_name pagination links -->
-{{-- {{ $companies_name->links() }}
-
-<!-- Displaying $regions pagination links -->
-{{ $regions->links() }}
-
-<!-- Displaying $products pagination links -->
-{{ $products->links() }}
-
-<!-- Displaying $trademarks pagination links -->
-{{ $trademarks->links() }}
-
-<!-- Displaying $salesTurnovers pagination links -->
-{{ $salesTurnovers->links() }}
-
-<!-- Displaying $states pagination links -->
-{{ $states->links() }} --}}
-
-
                   
                   <div class="row">
                      <div class="col-md-12 text-center mt-2">

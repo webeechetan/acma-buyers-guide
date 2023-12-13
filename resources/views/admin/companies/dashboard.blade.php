@@ -97,9 +97,6 @@
                                                       <div class="row">
                                                          <h6 class="mb-0 text-justify text-dark">Region Filter</h6>
                                                          @foreach ($regions as $region)
-
-                                                         {{-- {{$region['region']}} --}}
-
                                                       
                                                          <div class="col-md-3">
                                                             <div class="mt-4">

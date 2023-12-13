@@ -208,7 +208,7 @@ class CompanyHelper {
         }
         
         
-         return $companies->get();
+         return $companies->paginate(10);
 
         
     }

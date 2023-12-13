@@ -98,6 +98,8 @@
                                                          <h6 class="mb-0 text-justify text-dark">Region Filter</h6>
                                                          @foreach ($regions as $region)
 
+                                                         {{-- {{$region['region']}} --}}
+
                                                       
                                                          <div class="col-md-3">
                                                             <div class="mt-4">
@@ -311,7 +313,7 @@
                                              </div>
                                              <div>
                                                 
-                                                @if($company && $company->contact_details)
+                                                @if($company && $company->email)
                                                 <a href={{$company->email}}>  {{$company->email}}</a>
                                                 @else 
                                                 <p>NA</p>
@@ -335,12 +337,34 @@
                                     </div>
                                  </div>
                               </div>
+                                {{-- {{ $companies->links }} --}}
                            
                         </div>
                      @endforeach
                   </div>
 
-                  {{-- {{ $companies->links }} --}}
+                  {{ $companies->links() }}
+
+                  <!-- Displaying $companies_name pagination links -->
+{{-- {{ $companies_name->links() }}
+
+<!-- Displaying $regions pagination links -->
+{{ $regions->links() }}
+
+<!-- Displaying $products pagination links -->
+{{ $products->links() }}
+
+<!-- Displaying $trademarks pagination links -->
+{{ $trademarks->links() }}
+
+<!-- Displaying $salesTurnovers pagination links -->
+{{ $salesTurnovers->links() }}
+
+<!-- Displaying $states pagination links -->
+{{ $states->links() }} --}}
+
+
+                  
                   <div class="row">
                      <div class="col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>

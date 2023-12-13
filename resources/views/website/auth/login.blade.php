@@ -46,7 +46,7 @@
                   </div>
                   <div class="subscribe-content">
                     <h2 class="title">Buyers Guide</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat repellendus minima consequuntur asperiores incidunt modi optio nihil amet excepturi a labore, cumque, velit vero quisquam ipsa nam sequi repellat eos earum dolore autem qui, vitae iusto vel? Amet sapiente, facilis, adipisci, fuga veniam illo consequuntur ad deserunt earum exercitationem aliquam.</p>
+                    <p>List of ACMA member Companies and. automobile manufacturers with Contact Details.</p>
                   </div>
                   <div class="subscribe-social">
                     <h4 class="sub-title text-white mb-0"> Follow Us</h4>

@@ -18,6 +18,8 @@ use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Benchmark;
+
 
 
 
@@ -177,19 +179,30 @@ class CompanyController extends Controller
     }
 
     public function dashboard(Request $request) {
-         $companies = CompanyHelper::filter($request);
-       
-        
-          //$companies = CompanyHelper::filter($request)->paginate(10);
 
+         $companies = CompanyHelper::filter($request);       
         
-        
-        $companies_name = Company::select('name')->groupBy('name')->get();
-        $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();
+        // $response = Benchmark::measure([
+        //     fn() => Company::all(),
+        //     fn() =>  Company::select('name')->groupBy('name')->get(),
+        //   ]);
+
+        //   dd($response);
+        //$companies_name = Company::select('name')->groupBy('name')->get();
+        // $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();
+        // $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
+        // $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
+        // $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
+        // $states = CompanyContactDetail::select('state')->groupBy('state')->get();
+        // $companies_name = Company::select('name')->groupBy('name')->paginate(10); // Adjust the number per page as needed
+       
+         $companies_name = Company::all(); // Adjust the number per page as needed
+         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();       
         $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
         $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
         $states = CompanyContactDetail::select('state')->groupBy('state')->get();
+
 
         return view('admin.companies.dashboard', compact('states','companies','regions','companies_name','trademarks','products','salesTurnovers'));
     

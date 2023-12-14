@@ -94,8 +94,8 @@
                             </div>
                           </div>
                           <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
-                            <div><input type="checkbox" name="remember" @if(isset($_COOKIE['email'])) checked="" @endif > <span>Remember me</span></div>
-                             <a href="{{route('company.forgotpassword.view')}}" class="forgot-password">Forgot your password?</a>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="remember" @if(isset($_COOKIE['email'])) checked="" @endif > <label class="form-check-label">Remember me</label></div>
+                             <a href="{{route('company.forgotpassword.view')}}" class="forgot-password">Forgot password?</a>
                           </div>
                           <button class="btn btn-primary d-grid w-100" type="submit">Sign In</button>
                             

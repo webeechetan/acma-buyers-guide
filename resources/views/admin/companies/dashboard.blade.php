@@ -98,6 +98,8 @@
                                                       <h6 class="mb-2 text-justify text-dark">Region Filter</h6>
                                                       <div class="row scroll-content">
                                                          @foreach ($regions as $region)
+
+                                                        
                                                          <div class="col-md-2">
                                                             <div class="mt-2">
                                                                @if(isset($region['region']) && !empty($region['region']))
@@ -337,9 +339,11 @@
                            
                         </div>
                      @endforeach
+
+                   
                   </div>
 
-                  {{-- {{ $companies->links }} --}}
+                  {{ $companies->links() }}
                   <div class="row">
                      <div class="col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>

@@ -41,6 +41,12 @@ class NewUpdateRequestNotification extends Notification
         $data = $this->company_update_request->data;
         $data = json_decode($data , true);
         $updating_data = '';
+
+
+        // $imagePath = $data['image_path'] ?? null;
+        // $imageHtml = $imagePath ? '<img src="' . asset('storage/' . $imagePath) . '" alt="Company Logo">' : '';
+    
+
        
         return (new MailMessage)
             ->subject('New Update Request')

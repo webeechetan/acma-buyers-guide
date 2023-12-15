@@ -12,7 +12,13 @@
       </div>
       <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
         <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-          <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+          
+          @if ($company_contact_details->image)
+            <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+          @else
+            <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+          @endif
+
         </div>
         <div class="flex-grow-1 mt-3 mt-sm-5">
           <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
@@ -34,7 +40,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
+   <div class="col-md-4">
     <!-- About User -->
     <div class="card inner-profile-card">
       <div class="card-body">
@@ -109,7 +115,7 @@
     <!-- Profile Overview -->
    
     <!--/ Profile Overview -->
-  </div>
+  </div> 
   <div class="col-xl-8 col-lg-7 col-md-7">
     <!-- Activity Timeline -->
     <div class="card card-action mb-4">
@@ -117,8 +123,11 @@
         <h5 class="card-action-title mb-0"><i class="bx bx-list-ul me-2"></i>Company Profile Update Request Status</h5> 
       </div>
       
+
+   
       @foreach ($CompanyUpdateRequests as $CompanyUpdateRequest)
 
+    
       <div class="card-body p-4">
         <ul class="timeline ms-2">
           <li class="timeline-item timeline-item-transparent">
@@ -146,10 +155,10 @@
         </ul>
 
         <div class="view-btn mt-5">
-          <button class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#exampleModal">View Details</button>
+          <button class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#exampleModal_{{$CompanyUpdateRequest->id}}">View Details</button>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal_{{ $CompanyUpdateRequest->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -164,6 +173,8 @@
 
                 $CompanyUpdateRequest = $CompanyUpdateRequest->data;
                 $data=json_decode($CompanyUpdateRequest, true);
+
+                // dd($data);
 
                     if (is_array($data)) {
                         $updating_data = '';

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('pin')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
+            $table->string('image')->nullable();
             $table->string('address2')->nullable();
             $table->string('address3')->nullable();
             $table->string('phone')->nullable();

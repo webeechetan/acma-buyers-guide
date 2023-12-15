@@ -44,7 +44,7 @@ class UpdateApprovedNotification extends Notification
         
         return (new MailMessage)
                     ->subject('Your Profile update request is approved successfully')
-                    ->markdown('website.emailers.updaterequestreview', [
+                    ->markdown('website.emailers.approvedprofile', [
                         'company' => $this->company,
                     ]);
     }

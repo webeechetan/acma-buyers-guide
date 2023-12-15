@@ -40,7 +40,7 @@
             <td><p style="margin-bottom: 0;"><b>Hello  {{ $company->name }} , <b><br> </p></td>
           </tr>
           <tr>
-            <td><p style="margin-bottom: 0;">Your Profile update request is approved successfully.</p></td>
+            <td><p style="margin-bottom: 0;">Your Profile update request is under process. we will notify you once approved.</p></td>
           </tr>
           <tr>
             <td>

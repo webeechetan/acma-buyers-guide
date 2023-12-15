@@ -102,7 +102,7 @@
                         
                       </form>
                       <!--- Register ---->
-                        <!-- <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
+                         {{-- <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
                          @csrf
                           <div class="mb-3">
                               <label for="name" class="form-label"> Company Name </label>
@@ -127,7 +127,7 @@
                           <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
                           </div>
-                        </form> -->
+                        </form>  --}}
                     </div>
                 </div>
               </div>

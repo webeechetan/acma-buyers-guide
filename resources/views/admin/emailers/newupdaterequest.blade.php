@@ -41,16 +41,35 @@
           </tr>
 
           <tr>
-            <td><p style="margin-bottom: 0;">We recieved a request from {{ $company->name }}  to approve the profile changes</p></td>
+            <td><p style="margin-bottom: 0;">We recieved a request from {{ $company->name }}  to approve the profile changes.</p></td>
           </tr>
 
           @php 
+
+
           foreach ($data as $key => $value) {
             if(!$value['old']){
                 $value['old'] = 'NULL';
             }
-            $updating_data .= $key . ' From ' . $value['old'] . ' to ' . $value['new'] . '<br>';
+            // $updating_data .= $key . ' From ' . $value['old'] . ' to ' . $value['new'] . '<br>';
+            $updating_data .= $key . ' From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
+
         }
+
+//         foreach ($data as $key => $value) {
+//     if (!$value['old']) {
+//         $value['old'] = 'NULL';
+//     }
+
+    
+//     // Assume 'old' and 'new' represent image URLs or file paths
+// $oldImageHtml = $value['old'] !== 'NULL' ? '<img src="' . asset('storage/' . $value['old']) . '" alt="Old Image">' : 'Null';
+// $newImageHtml = $value['new'] !== 'NULL' ? '<img src="' . asset('storage/' . $value['new']) . '" alt="New Image">' : 'Null';
+
+
+//     $updating_data .= $key . ' From ' . $oldImageHtml . ' to ' . $newImageHtml . '<br>';
+// }
+
         @endphp
           <tr>
             <td><p style="margin-bottom: 0;">Updating Data : ' . {!! $updating_data !!} </b></p></td>

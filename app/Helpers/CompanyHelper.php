@@ -207,10 +207,8 @@ class CompanyHelper {
             });
         }
         
-        
-         return $companies->paginate(10);
+         return $companies->paginate(15);
 
-        
     }
 
 

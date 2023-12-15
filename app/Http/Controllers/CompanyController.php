@@ -164,7 +164,13 @@ class CompanyController extends Controller
         $company_id = Auth::guard('company')->user()->id;
         $data = $request->all();
 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('img_company_logo', 'public'); // Adjust storage path as needed
+            $data['image'] = $imagePath;
+        }
+
         $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
+
         $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
@@ -187,17 +193,9 @@ class CompanyController extends Controller
         //     fn() =>  Company::select('name')->groupBy('name')->get(),
         //   ]);
 
-        //   dd($response);
-        //$companies_name = Company::select('name')->groupBy('name')->get();
-        // $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();
-        // $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
-        // $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
-        // $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
-        // $states = CompanyContactDetail::select('state')->groupBy('state')->get();
-        // $companies_name = Company::select('name')->groupBy('name')->paginate(10); // Adjust the number per page as needed
-       
          $companies_name = Company::all(); // Adjust the number per page as needed
-         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();       
+         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();   
+         
         $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
         $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();

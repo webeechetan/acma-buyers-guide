@@ -40,11 +40,11 @@
             <td><p style="margin-bottom: 0;"><b>Hello  {{ $company->name }} , <b><br> </p></td>
           </tr>
           <tr>
-            <td><p style="margin-bottom: 0;">Your company update request is under review.</p></td>
+            <td><p style="margin-bottom: 0;">Your company update request is approved Successfully</p></td>
           </tr>
 
           <tr>
-            <td><p style="margin-bottom: 0;">We will notify you once it is approved. </b></p></td>
+            <td><p style="margin-bottom: 0;">Thanks for using our Application.</b></p></td>
           </tr>
           <tr>
             <td>

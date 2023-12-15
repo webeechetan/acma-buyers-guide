@@ -23,9 +23,7 @@
                 <li class="list-inline-item fw-medium">
                   <i class="bx bx-map"></i> {{$company_contact_details->state}}
                 </li>
-                <li class="list-inline-item fw-medium">
-                  <i class="bx bx-calendar-alt"></i> Joined {{$company->created_at->format('d- M-y') }}
-                </li>
+                
               </ul>
             </div>
           </div>

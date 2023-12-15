@@ -34,7 +34,7 @@
                         </span> --}}
                       </span>
                     </div>
-                    <form action="{{route('company.fillUpDetailsStore')}}" id="Multi-Steps-form" method="post" class="multi-steps-form">
+                    <form action="{{route('company.fillUpDetailsStore')}}" id="Multi-Steps-form" method="post" class="multi-steps-form" enctype="multipart/form-data">
                       @csrf
                         <div class="progress-bar">
                           <div class="progress" id="progress"></div>
@@ -75,6 +75,19 @@
                                     <label class="form-label" for="state">State</label>
                                     <input type="text" id="state" name="state" class="form-control" placeholder="State" value="{{ $company_contact_details->state }}">
                                     </div>
+
+                                    <div class="col-md-2">
+                                      <label class="form-label" for="image"> Company Logo</label>
+                                      <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ $company_contact_details->image }}" onchange="previewImage()">
+                                      <div id="imagePreview" style="margin-top: 10px; width: 100px; height: 100px; overflow: hidden;">
+                                      
+                                        @if($company_contact_details->image)
+                                        <img src="{{ asset('storage/' . $company_contact_details->image) }}" alt="Company Logo" style="width: 100%; height: 100%;">
+                                    @endif
+                                      </div>
+                                  
+                                    </div>
+                                  
 
                                     <div class="col-md-2">
                                       <label class="form-label" for="address2">Address2</label>
@@ -1055,7 +1068,23 @@
       });
 
       showStep(currentStep);
+
+      
    });
+
+
+   function previewImage() {
+            var input = document.getElementById('image');
+            var preview = document.getElementById('imagePreview');
+            var image = new Image();
+
+            image.src = URL.createObjectURL(input.files[0]);
+
+            image.onload = function () {
+                preview.innerHTML = '';
+                preview.appendChild(image);
+            };
+        }
    
 </script>
 

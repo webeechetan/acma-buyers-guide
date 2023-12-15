@@ -40,6 +40,28 @@
                                     <td>{{ $values['new'] }}</td>
                                 </tr>
                             @endforeach
+                            {{-- @foreach ($profile as $key => $values)
+                            <tr>
+                                <td>{{ $key }}</td>
+                                <td>
+                                    @if ($key === 'image' && $values['old'] !== 'NULL' && isImage($values['old']))
+                                        <img src="{{ asset('storage/' . $values['old']) }}" alt="Old Image" style="max-width: 100px; max-height: 100px;">
+                                    @else
+                                        {{ $values['old'] }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($key === 'image' && $values['new'] !== 'NULL' && isImage($values['new']))
+                                        <img src="{{ asset('storage/' . $values['new']) }}" alt="New Image" style="max-width: 100px; max-height: 100px;">
+                                    @else
+                                        {{ $values['new'] }}
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                         --}}
+                        
+                        
                         </tbody>
                     </table>
                     

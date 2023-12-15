@@ -15,11 +15,11 @@
                   <div class="row">
                      <div class="col-md-8">
                         <div>
-                           <h2 class="title mb-md-0">Buyers Guide Database</h2>
+                           <h2 class="title mb-md-0 text-center text-md-start">Buyers Guide Database</h2>
                         </div>
                      </div>
                      <div class="col-md-4">
-                        <div class="custom_search_filter text-end">
+                        <div class="custom_search_filter text-md-end text-center">
                            <!-- <form action="/" method="GET">
                               <input type="text" data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="form-control"
                                  id="filter_category" name="filter_category" placeholder="Filter By Category" value="">
@@ -255,7 +255,7 @@
                   
                   <div class="row">
                     @foreach ($companies as $company)   
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-3">
                               <div class="card card-data">
                                  <div class="company-title">
                                     <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
@@ -393,48 +393,40 @@
 
 <!-- Include this script in your HTML file -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var checkboxes = document.querySelectorAll('.form-check-inline input[type="checkbox"]');
-        var tabs = document.querySelectorAll('.nav-pills .nav-link');
+ document.addEventListener("DOMContentLoaded", function () {
+    var checkboxes = document.querySelectorAll('.form-check-inline input[type="checkbox"]');
+    var tabs = document.querySelectorAll('.nav-pills .nav-link');
 
-        checkboxes.forEach(function (checkbox, index) {
-            checkbox.addEventListener('change', function () {
-                if (checkbox.checked) {
-                    updateClass(tabs[index]);
-                }
-            });
+    checkboxes.forEach(function (checkbox, index) {
+        checkbox.addEventListener('change', function () {
+            updateTabs();
         });
+    });
 
-        function updateClass(activeTab) {
-            var anyChecked = Array.from(checkboxes).some(function (cb) {
+    function updateTabs() {
+        tabs.forEach(function (tab, tabIndex) {
+            var tabCheckboxes = document.querySelectorAll(tab.getAttribute('href') + ' input[type="checkbox"]');
+            var anyChecked = Array.from(tabCheckboxes).some(function (cb) {
                 return cb.checked;
             });
-            var currentTab= $(activeTab).attr('href');
-            console.log(currentTab);
-//             var currentTabCheckboxes = $(activeTab).find('input[type="checkbox"]');
 
-//             console.log(currentTabCheckboxes);
-// console.log(activeTab);
-            var navLink = activeTab; 
             if (anyChecked) {
-                navLink.classList.add('tab-active'); 
+                tab.classList.add('tab-active');
             } else {
-                navLink.classList.remove('tab-active');
+                tab.classList.remove('tab-active');
             }
-        }
-
-        // Add event listeners for tab changes
-        tabs.forEach(function (tab) {
-            tab.addEventListener('shown.bs.tab', function () {
-                updateClass(tab);
-            });
         });
+    }
 
-        var activeTab = document.querySelector('.form-check-inline .form-check-input');
-        if (activeTab) {
-            updateClass(activeTab);
-        }
+    tabs.forEach(function (tab) {
+        tab.addEventListener('shown.bs.tab', function () {
+            updateTabs();
+        });
     });
+    updateTabs();
+});
+
+
 </script>
 
 

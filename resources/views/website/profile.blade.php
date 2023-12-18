@@ -25,9 +25,12 @@
             <div class="user-profile-info">
               <h4>{{$company->name}}</h4>
               <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+                
+                @if($company_contact_details->state)
                 <li class="list-inline-item fw-medium">
                   <i class="bx bx-map"></i> {{$company_contact_details->state}}
                 </li>
+                @endif
                 <li class="list-inline-item fw-medium">
                   <i class="bx bx-calendar-alt"></i> {{$company->created_at->format('d M-y')}}
                 </li>
@@ -52,9 +55,13 @@
                     <i class="bx bx-user"></i><span>Company Name:</span>
                 </div>
 
+                @if($company->name)
                 <div>
                     <span>{{$company->name}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
           </ul>
         </div>
@@ -66,46 +73,62 @@
                       <i class="bx bx-user"></i><span>Contact</span>
                   </div>
 
+                  @if($company_contact_details->phone)
                   <div>
                       <span>{{$company_contact_details->phone }}</span>
                   </div>
+                  @else  
+                  <p>NA</p>
+                  @endif
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-chat"></i><span>Fax</span> 
                   </div>
+
+                  @if($company_contact_details->fax)
                   <div>
-
-
                       <span>{{$company_contact_details->fax}}</span>
-
                   </div>
+                  @else 
+                  <p>NA</p>
+                  @endif
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-map-pin"></i><span>Pin</span>
                   </div>
+                  @if($company_contact_details->pin)
                   <div>
-
-                      <span>{{$company->email}}</span>
-
+                      <span>{{$company_contact_details->pin}}</span>
                   </div>
+                  @else 
+                  <p>NA</p>
+                  @endif
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-envelope"></i><span>Email</span>
                   </div>
+                  @if($company->email)
                   <div>
                       <span>{{$company->email}}</span>
                   </div>
+                  @else 
+                  <p>NA</p> 
+                  @endif
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-globe"></i><span>Website</span>
                   </div>
+                  @if($company->website)
                   <div>
                       <span>{{$company->website}}</span>
                   </div>
+                  @else 
+                  <p>NA</p>
+                  @endif
                 </li>
             </ul>
           </div>
@@ -122,8 +145,6 @@
       <div class="card-header align-items-center">
         <h5 class="card-action-title mb-0"><i class="bx bx-list-ul me-2"></i>Company Profile Update Request Status</h5> 
       </div>
-      
-
    
       @foreach ($CompanyUpdateRequests as $CompanyUpdateRequest)
 

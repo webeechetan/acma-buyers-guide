@@ -195,17 +195,17 @@
                 $CompanyUpdateRequest = $CompanyUpdateRequest->data;
                 $data=json_decode($CompanyUpdateRequest, true);
 
-                // dd($data);
-
                     if (is_array($data)) {
                         $updating_data = '';
 
                         foreach ($data as $key => $value) {
-                            $oldValue = isset($value['old']) ? $value['old'] : 'NULL';
-                            $newValue = isset($value['new']) ? $value['new'] : 'NULL';
+                            $oldValue = isset($value['old']) ? $value['old'] : 'N/A';
+                            $newValue = isset($value['new']) ? $value['new'] : 'N/A';
 
-                            $updating_data .= $key . ' From ' . $value['old'] . ' to ' . $value['new'] . '<br>';
-                            // $updating_data .= "<li class='d-flex align-items-center mb-3'><i class='bx bx-phone'></i><span class='fw-medium mx-2'>{$key}:</span> From {$oldValue} to {$newValue}</li>";
+                            // $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . $value['old'] . ' to ' . $value['new'] . '<br>';
+
+                            $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . $oldValue . ' to ' .$newValue. '<br>';
+
                         }
                     } else {
                         // Handle the case where $CompanyUpdateRequest is not a valid JSON string

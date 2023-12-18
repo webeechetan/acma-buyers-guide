@@ -36,7 +36,7 @@
                         <tbody>
                             @foreach ($profile as $key => $values)
                                 <tr>
-                                    <td>{{ $key }}</td>
+                                    <td>{{ ucfirst(str_replace('_', ' ', $key)) }}</td>
                                     <td>{{ $values['old'] }}</td>
                                     <td>{{ $values['new'] }}</td>
                                 </tr>
@@ -69,8 +69,6 @@
                    
                         <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>
 
-                        {{-- <a href=""><button type="submit" class="btn btn-danger btn-sm">Deny</button></a> --}}
-                   
 
                     {{-- <form method="post" action="{{route('admin.profileUpdateRequest.destroy' , $request->id )}}">
                         @csrf

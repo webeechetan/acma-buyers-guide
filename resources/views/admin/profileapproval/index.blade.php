@@ -16,6 +16,7 @@
             <div class="card">
                 <div>
                    <h5 class="text-primary"> {{ $request->company->name  }}</h5>
+                   {{-- <h5 class="text-primary"> {{ optional($request->company)->name ?? 'No Company Name' }}</h5> --}}
                 </div>
                 <div class="profile-approve">
                     <!-- Decode JSON data and loop through it -->
@@ -68,7 +69,7 @@
                    
                         <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>
 
-                        <a href=""><button type="submit" class="btn btn-danger btn-sm">Deny</button></a>
+                        {{-- <a href=""><button type="submit" class="btn btn-danger btn-sm">Deny</button></a> --}}
                    
 
                     {{-- <form method="post" action="{{route('admin.profileUpdateRequest.destroy' , $request->id )}}">

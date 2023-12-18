@@ -51,9 +51,9 @@
                   <div class="subscribe-social">
                     <h4 class="sub-title text-white mb-0"> Follow Us</h4>
                     <div class="subscribe-social-icons">
-                      <a href=""><i class='bx bxl-facebook'></i></a>
-                      <a href=""><i class='bx bxl-linkedin' ></i></a>
-                      <a href=""><i class='bx bxl-instagram' ></i></a>
+                      <a href="https://www.facebook.com/india.acma/"><i class='bx bxl-facebook'></i></a>
+                      <a href="https://twitter.com/acmaindia"><i class='bx bxl-linkedin' ></i></a>
+                      <a href="https://www.linkedin.com/company/acma-india/"><i class='bx bxl-instagram' ></i></a>
                     </div>
                   </div>
              </div>

@@ -22,6 +22,7 @@
             </div>
             <div class="card-body">
                 {{ $dataTable->table() }}
+               
             </div>
         </div>
 @endsection

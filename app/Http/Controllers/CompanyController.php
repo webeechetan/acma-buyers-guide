@@ -197,11 +197,16 @@ class CompanyController extends Controller
          $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get(); 
          
         $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
+        $products2 = CompanyProductDetails::select('product2')->groupBy('product2')->get();
+        $products3 = CompanyProductDetails::select('product3')->groupBy('product3')->get();
+        $products4 = CompanyProductDetails::select('product4')->groupBy('product4')->get();
+
+        // Combine all above arrays into a single array
+         $combinedProducts = array_merge($products->pluck('products_manufactured')->toArray(), $products2->pluck('product2')->toArray(),$products3->pluck('product3')->toArray(),$products4->pluck('product4')->toArray());
+        
         $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
 
-
-      //  $states = CompanyContactDetail::select('state')->groupBy('state')->get();
 
         $states = CompanyContactDetail::select('state')->groupBy('state')->get();
         $cities = CompanyContactDetail::select('city')->groupBy('city')->get();
@@ -209,11 +214,7 @@ class CompanyController extends Controller
         // Combine states and cities into a single array
         $combinedLocations = array_merge($states->pluck('state')->toArray(), $cities->pluck('city')->toArray());
 
-
-
-
-
-        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','products','salesTurnovers','combinedLocations'));
+        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','products','salesTurnovers','combinedLocations','combinedProducts'));
     
     }
 
@@ -328,14 +329,6 @@ class CompanyController extends Controller
         return view('website.company.view-company', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
 
     }
-
-
-    // public function admin_dashboard()
-    // {
-    //     $totalCompanyCount = Company::count();
-
-    //     dd($totalCompanyCount);
-    // }
 
     
     public function myprofile()

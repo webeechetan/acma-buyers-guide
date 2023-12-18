@@ -44,47 +44,61 @@
                 <div>
                     <i class="bx bx-user"></i><span>Company Name:</span>
                 </div>
-
-                <div>
-                    <span>{{$company->name}}</span>
-                </div>
+                  @if($company && $company->name)
+                  <div>
+                      <span>{{$company->name}}</span>
+                  </div>
+                  @else
+                  <p>NA</p>
+                  @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-map"></i><span>Address</span>
                 </div>
+                @if($company_contact_details->company_address)
                 <div>
-
-
                     <span>{{$company_contact_details->company_address}}</span>
-
                 </div>
+                @else
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-map-pin"></i><span>Pin</span>
                 </div>
+                @if($company_contact_details->pin)
                 <div>
-
                     <span>{{$company_contact_details->pin}}</span>
-
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-buildings"></i><span>City</span>
                 </div>
+                @if($company_contact_details->city)
                 <div>
                     <span>{{$company_contact_details->city}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-map"></i><span>State</span>
                 </div>
+                @if($company_contact_details->state)
                 <div>
                     <span>{{$company_contact_details->state}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif 
               </li>
           </ul>
         </div>
@@ -96,46 +110,67 @@
                       <i class="bx bx-user"></i><span>Contact</span>
                   </div>
 
+                  @if($company_contact_details->phone)
                   <div>
                       <span>{{$company_contact_details->phone }}</span>
                   </div>
+                  @else 
+                  <p>NA</p>
+                  @endif 
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-chat"></i><span>Fax</span> 
                   </div>
+                  @if($company_contact_details->fax)
                   <div>
 
 
                       <span>{{$company_contact_details->fax}}</span>
 
                   </div>
+                  @else 
+                  <p>NA</p>
+                  @endif 
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-map-pin"></i><span>Pin</span>
                   </div>
+                  @if($company_contact_details->pin)
                   <div>
 
-                      <span>{{$company->email}}</span>
+                      <span>{{$company_contact_details->pin}}</span>
 
                   </div>
+                  @else 
+                  <p>NA</p>
+                  @endif
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-envelope"></i><span>Email</span>
                   </div>
+                  @if($company->email)
                   <div>
                       <span>{{$company->email}}</span>
                   </div>
+                  @else 
+                  <p>NA</p>
+                  
+                  @endif
                 </li>
                 <li>
                   <div>
                       <i class="bx bx-globe"></i><span>Website</span>
                   </div>
+                  @if($company->website)
                   <div>
                       <span>{{$company->website}}</span>
                   </div>
+                  @else
+                  <p>NA</p>
+                  @endif
                 </li>
             </ul>
           </div>
@@ -155,53 +190,68 @@
                 <div>
                     <i class="bx bx-user"></i><span>Managing Director</span>
                 </div>
-
+                @if($company_key_personnels->managing_director)
                 <div>
                     <span>{{$company_key_personnels->managing_director}}</span>
                 </div>
+                @else
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-user"></i><span>Chief Executive</span>
                 </div>
+                @if($company_key_personnels->chief_executive)
                 <div>
-
-
                     <span>{{$company_key_personnels->chief_executive}}</span>
-
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-user"></i><span>Sales Inchrage</span>
                 </div>
+                @if($company_key_personnels->sales_in_charge)
                 <div>
                     <span>{{$company_key_personnels->sales_in_charge}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-user"></i><span>Export Incharge</span>
                 </div>
+                @if($company_key_personnels->export_in_charge)
                 <div>
                     <span>{{$company_key_personnels->export_in_charge}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-user"></i><span>Production Incharge</span>
                 </div>
+
+                @if($company_key_personnels->production_in_charge)
                 <div>
                     <span>{{$company_key_personnels->production_in_charge}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
           </ul>
         </div>
       </div>
     </div>
-   
   </div>
-
 
   <div class="col-md-4">
     <!-- About User -->
@@ -214,18 +264,50 @@
                 <div>
                     <i class="bx bx-package"></i><span>Products</span>
                 </div>
+                @if($company_product_details->products_manufactured)
                 <div>
                     <span>{{$company_product_details->products_manufactured}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
               <li>
                 <div>
                     <i class="bx bx-package"></i><span>Product 2</span>
                 </div>
+                @if($company_product_details->product2)
                 <div>
                     <span>{{$company_product_details->product2}}</span>
                 </div>
+                @else 
+                <p>NA</p>
+                @endif
               </li>
+              <li>
+                <div>
+                    <i class="bx bx-package"></i><span>Product 3</span>
+                </div>
+                @if($company_product_details->product3)
+                <div>
+                    <span>{{$company_product_details->product3}}</span>
+                </div>
+                @else
+                <p>NA</p> 
+                @endif
+              </li> 
+              <li>
+                <div>
+                    <i class="bx bx-package"></i><span>Product 4</span>
+                </div>
+                @if($company_product_details->product4)
+                <div>
+                    <span>{{$company_product_details->product4}}</span>
+                </div>
+                @else
+                <p>NA</p> 
+                @endif
+              </li> 
           </ul>
         </div>        
       </div>
@@ -234,7 +316,6 @@
   </div>
 
 </div>
-
 
 @endsection
 @push('scripts')

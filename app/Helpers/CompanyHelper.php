@@ -137,11 +137,29 @@ class CompanyHelper {
             });
         }
 
+        // if ($request->has('location')) {
+
+         
+        //     $companies = $companies->whereHas('contact_details', function ($query) use ($request) {
+        //         $query->where('company_address', 'like', '%' . $request->location . '%');
+        //     });
+        // }
+
         if ($request->has('location')) {
-            $companies = $companies->whereHas('contact_details', function ($query) use ($request) {
-                $query->where('company_address', 'like', '%' . $request->location . '%');
+            $location = $request->location;
+        
+            $companies = $companies->whereHas('contact_details', function ($query) use ($location) {
+                if (is_array($location)) {
+                    $query->whereIn('state', $location)
+                          ->orWhereIn('city', $location);
+                } else {
+                    $query->where('state', 'like', '%' . $location . '%')
+                          ->orWhere('city', 'like', '%' . $location . '%');
+                }
             });
         }
+        
+        
 
         if ($request->has('region')) {
             $companies = $companies->whereHas('key_personnels', function ($query) use ($request) {

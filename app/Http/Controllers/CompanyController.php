@@ -194,15 +194,26 @@ class CompanyController extends Controller
         //   ]);
 
          $companies_name = Company::all(); // Adjust the number per page as needed
-         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get();   
+         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get(); 
          
         $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
         $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
+
+
+      //  $states = CompanyContactDetail::select('state')->groupBy('state')->get();
+
         $states = CompanyContactDetail::select('state')->groupBy('state')->get();
+        $cities = CompanyContactDetail::select('city')->groupBy('city')->get();
+
+        // Combine states and cities into a single array
+        $combinedLocations = array_merge($states->pluck('state')->toArray(), $cities->pluck('city')->toArray());
 
 
-        return view('admin.companies.dashboard', compact('states','companies','regions','companies_name','trademarks','products','salesTurnovers'));
+
+
+
+        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','products','salesTurnovers','combinedLocations'));
     
     }
 

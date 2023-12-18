@@ -71,6 +71,9 @@ class CompanyHelper {
             if(is_array($selectedProducts)) {
                 $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {       
                     $query->whereIn('products_manufactured', $selectedProducts);
+                    $query->orWhereIn('product2', $selectedProducts);
+                    $query->orWhereIn('product3', $selectedProducts);
+                    $query->orWhereIn('product4', $selectedProducts);
                 });
             }
         }

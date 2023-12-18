@@ -140,13 +140,13 @@
                                                       </div>
                                                   </div>
                                                    <div class="row scroll-content">
-                                                      @foreach ($products as $product)
+                                                      @foreach ($combinedProducts as $combinedProduct)
                                                       <div class="col-md-6 product-item">
                                                          <div class="mt-2">
-                                                            @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
+                                                            @if(isset($combinedProduct) && !empty($combinedProduct))
                                                             <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
-                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                               <input class="form-check-input" class="active-check" type="checkbox" name="products[]" value="{{ $combinedProduct}}" {{ in_array($combinedProduct, (array)request()->input('products')) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $combinedProduct }}</label>
                                                             </div>
                                                             @endif
                                                          </div>
@@ -341,96 +341,85 @@
                   <form action="{{ route('dashboard.company.export') }}">                 
                   
                      <div class="row">
-                     @foreach ($companies as $company)   
+                        @foreach ($companies as $company)   
                            <div class="col-md-4 mb-3">
-                                 <div class="card card-data">
-                                    <div class="company-title">
-                                       <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
-                                       <input type="checkbox" class="check" name="company_ids[]" id="" value="{{ $company->id }}">
-                                    </div>
-                                    <div class="card-body">
-                                       <div class="information-list">
-                                          <ul>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-map-marker" aria-hidden="true"></i><span>Address</span>
-                                                </div>
-
-                                                <div>
-                                                   @if($company && $company->contact_details)
-                                                      <span>{{ $company->contact_details->company_address }}</span>
-                                                   @else
-                                                   <p>NA</P>
-                                                   @endif
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-phone"></i><span>Phone</span>
-                                                </div>
-                                                <div>
-
-                                                   @if($company && $company->contact_details)
-                                                   
-                                                         <span>{{$company->contact_details->phone}}</span>
-                                                   @else 
-                                                   <p>NA</p>
-                                                   @endif
-                                             
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-fax"></i><span>Fax</span>
-                                                </div>
-                                                <div>
-                                                
-                                                   @if($company && $company->contact_details)
-                                                      <span>{{$company->contact_details->fax}}</span> 
-                                                      @else 
-                                                      <p>NA</p>
-                                                      @endif
-                                             
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-envelope"></i><span>E-mail</span>
-                                                </div>
-                                                <div>
-                                                   
-                                                   @if($company && $company->contact_details)
-                                                   <a href={{$company->email}}>{{$company->email}}</a>
-                                                   @else 
-                                                   <p>NA</p>
-                                                   @endif
-                                                
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-globe"></i><span>Website</span>
-                                                </div>
-                                                <div>
-                                                   @if($company && $company->website)
-                                                   <a href="http://www.acma.in">{{$company->website}}</a>
-                                                   @else 
-                                                   <p>NA</P>
+                              <div class="card card-data">
+                                 <div class="company-title">
+                                    <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
+                                    <input type="checkbox" class="check" name="company_ids[]" id="" value="{{ $company->id }}">
+                                 </div>
+                                 <div class="card-body">
+                                    <div class="information-list">
+                                       <ul>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i><span>City</span>
+                                             </div>
+                                             <div>
+                                                @if($company && $company->contact_details->city)
+                                                   <span>{{ $company->contact_details->city }}</span>
+                                                @else
+                                                <p>NA</P>
                                                 @endif
-                                                </div>
-                                             </li>
-                                          </ul>
-                                       </div>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-phone"></i><span>Phone</span>
+                                             </div>
+                                             <div>
+                                                @if($company && $company->contact_details->phone)  
+                                                      <span>{{$company->contact_details->phone}}</span>
+                                                @else 
+                                                <p>NA</p>
+                                                @endif
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-fax"></i><span>Fax</span>
+                                             </div>
+                                             <div>
+                                                @if($company && $company->contact_details->fax)
+                                                   <span>{{$company->contact_details->fax}}</span> 
+                                                   @else 
+                                                   <p>NA</p>
+                                                   @endif
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-envelope"></i><span>E-mail</span>
+                                             </div>
+                                             <div>                                          
+                                                @if($company && $company->email)
+                                                <a href={{$company->email}}>{{$company->email}}</a>
+                                                @else 
+                                                <p>NA</p>
+                                                @endif                               
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-globe"></i><span>Website</span>
+                                             </div>
+                                             <div>
+                                                @if($company && $company->website)
+                                                <a href="">{{$company->website}}</a>
+                                                @else 
+                                                <p>NA</P>
+                                                @endif
+                                             </div>
+                                          </li>
+                                       </ul>
                                     </div>
                                  </div>
-                              
+                              </div>
                            </div>
                         @endforeach
-
-                     
                      </div>
-
-                     {{ $companies->links() }}
+                     
+                     {{ $companies->withQueryString()->links() }}
                      <div class="row">
                         <div class="col-md-12 text-center mt-2">
                            <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
@@ -530,6 +519,7 @@
 
    // Add event listener to the search input
    document.getElementById('searchCompanies').addEventListener('input', function() {
+
        filterCompanies('all'); // Show all items
        var searchTerm = this.value.toLowerCase();
 

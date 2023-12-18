@@ -1,28 +1,21 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Middleware\CompanyAuthMiddleware;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\AdminPaymentController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\CompanyContactDetailController;
-use App\Models\Admin\Member;
-use App\Models\User;
-use App\Models\CompanyUpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
-use OpenSpout\Common\Entity\Row;
-use App\Http\Controllers\PaymentsPlanController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\CCAvenueController;
 use App\Http\Controllers\Admin\ProfileApprovalController;
-use App\Ccavenue\Crypto;
-use App\Exports\CompanyExport;
 use App\Imports\CompanyImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\ExportController;
 use App\Models\Company;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\Style\Font;
+use App\Exports\CompanyExportWord;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +27,12 @@ use App\Models\Company;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/export-word',function(){
+    $company_export = new CompanyExportWord();
+
+    $company_export->export();
+});
 
 // Route::get('/update-request', function () {
 //     $company_update_request = CompanyUpdateRequest::find(31);

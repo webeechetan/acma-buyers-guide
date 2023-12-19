@@ -189,7 +189,7 @@
                                                             <ul class="pagination d-flex flex-column">
                                                                @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                                   <li class="page-item mb-1">
-                                                                        <a class="page-link" href="#" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                        <a class="page-link" href="javascript:void(0);" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
                                                                   </li>
                                                                @endfor
                                                             </ul>
@@ -321,7 +321,7 @@
                                                       <ul class="pagination">
                                                           @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                               <li class="page-item">
-                                                                  <a class="page-link" href="#" onclick="filterLocations('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                  <a class="page-link" href="javascript:void(0);" onclick="filterLocations('{{ chr($i) }}')">{{ chr($i) }}</a>
                                                               </li>
                                                           @endfor
                                                       </ul>

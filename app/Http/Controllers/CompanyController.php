@@ -165,22 +165,28 @@ class CompanyController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('img_company_logo', 'public'); // Adjust storage path as needed
+            $imagePath = $request->file('image')->store('img_company_logo', 'public'); 
             $data['image'] = $imagePath;
         }
 
-        $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
 
+        
+        $company = Company::where('id',$company_id)->first();
+
+       
+        $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
         $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
+
+        $company->update($data);
         $company_contact_detail->update($data);
         $company_key_personnel->update($data);
         $company_product_detail->update($data);
         $company_foreign_collaboration->update($data);
 
-        $this->alert('Success', 'Details under review. we will notify you once opproved. ' , 'success');
+        $this->alert('Success', 'Details sent to review. we will notify you once approved. ' , 'success');
         return redirect()->route('company.dashboard');
     }
 

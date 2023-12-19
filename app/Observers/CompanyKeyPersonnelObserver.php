@@ -16,9 +16,9 @@ class CompanyKeyPersonnelObserver
     public function updating(CompanyKeyPersonnel $CompanyKeyPersonnel)
     {
 
-        $updated_models = session('updated_models');
-        $updated_models['CompanyKeyPersonnel'] = true;
-        session(['updated_models' => $updated_models]);
+        // $updated_models = session('updated_models');
+        // $updated_models['CompanyKeyPersonnel'] = true;
+        // session(['updated_models' => $updated_models]);
 
         // get the original data
         $original = $CompanyKeyPersonnel->getOriginal();

@@ -3,9 +3,9 @@ function clear_checked() {
     $(".checked_companies").html("Selected Companies: 0");
     $(".company_checkbox").prop('checked', false);
     $(".checked_company_info").hide();
-    $(".company_checkbox").parent().parent().removeClass('card-border');
+    $(".company_checkbox").parent().parent().parent().removeClass('card-border');
     $(".company_checkbox_in_modal").prop('checked', false);
-    $(".company_checkbox_in_modal").parent().parent().removeClass('card-border');
+    $(".company_checkbox_in_modal").parent().parent().parent().removeClass('card-border');
 
 }
 

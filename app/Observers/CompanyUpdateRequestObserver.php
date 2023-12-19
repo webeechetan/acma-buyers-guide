@@ -35,9 +35,6 @@ class CompanyUpdateRequestObserver
 
         Log::info($current_model . ' -> '.$current_model_status);
 
-
-
-
         $CompanyUpdateRequest->notify(new UpdateUnderReviewNotification($CompanyUpdateRequest, $CompanyUpdateRequest->company));
         $admin = User::find(1);
         $admin->notify(new NewUpdateRequestNotification($CompanyUpdateRequest, $CompanyUpdateRequest->company));

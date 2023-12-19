@@ -98,12 +98,6 @@
                                                      </div>
                                                     
                                                   </div>
-                                                 <!-- Add a text box next to the heading -->
-                                                   <div class="row mb-3">
-                                                      <div class="col-md-6">
-                                                         <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
-                                                      </div>
-                                                   </div>
                                                   <div class="row  scroll-content">
                                                    <div class="col-md-11">
                                                       <div class="row">
@@ -126,7 +120,7 @@
                                                          <ul class="pagination d-flex flex-column align-items-center">
                                                             @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                                <li class="page-item mb-1">
-                                                                     <a class="page-link" href="#" onclick="filterCompanies('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                     <a class="page-link" href="javascript:void(0);" onclick="filterCompanies('{{ chr($i) }}')">{{ chr($i) }}</a>
                                                                </li>
                                                             @endfor
                                                          </ul>

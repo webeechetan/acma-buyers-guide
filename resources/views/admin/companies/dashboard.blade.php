@@ -102,16 +102,16 @@
                                                    <div class="col-md-11">
                                                       <div class="row">
                                                          @foreach($companies_name as $company)
-                                                         <div class="col-md-4 company-item">
-                                                            <div class="mt-2">
-                                                               @if(isset($company['name']) && !empty($company['name']))
-                                                            <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
-                                                                     <label class="form-check-label" for="">{{ $company['name'] }}</label>
-                                                                  </div>
-                                                               @endif
+                                                            <div class="col-md-4">
+                                                               <div class="mt-2">
+                                                                  @if(isset($company['name']) && !empty($company['name']))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
+                                                                        <label class="form-check-label company-item" data-name="{{ $company['name'] }}" for="">{{ $company['name'] }}</label>
+                                                                     </div>
+                                                                  @endif
+                                                               </div>
                                                             </div>
-                                                         </div>
                                                          @endforeach
                                                       </div>
                                                    </div>
@@ -497,203 +497,188 @@
 <script src="{{ asset('website/') }}/checkbox-recheck.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
-   $(document).ready(function () {
 
-      $(".filter-name").click(function(e) {
-         e.preventDefault();
-         let filter_name = $(this).data('filter');
-         $(".active-filter-name").html(filter_name);
-         // hide modal with data-dismiss
-         $("#basicModal").hide();
-         $(".modal-backdrop").hide();
-         // show advance filter modal
-         $("#advance-filter-modal").modal('show');
-         $(".advance-filter-input").attr('name', filter_name);
-         $(".filter_label_name").html(filter_name);
-         $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
-      });
+$(document).ready(function () {
 
-      $(".check").click(function() {
-        // Find the closest ancestor with the class 'card' and toggle the class 'card-border'
-        $(this).closest('.card').toggleClass('card-border');
-    });
-  });
-</script>
+   $(".filter-name").click(function (e) {
+      e.preventDefault();
+      let filter_name = $(this).data('filter');
+      $(".active-filter-name").html(filter_name);
+      // hide modal with data-dismiss
+      $("#basicModal").hide();
+      $(".modal-backdrop").hide();
+      // show advance filter modal
+      $("#advance-filter-modal").modal('show');
+      $(".advance-filter-input").attr('name', filter_name);
+      $(".filter_label_name").html(filter_name);
+      $(".advance-filter-input").attr('placeholder', 'Search By ' + filter_name);
+   });
 
-<!-- Include this script in your HTML file -->
-<script>
- document.addEventListener("DOMContentLoaded", function () {
-    var checkboxes = document.querySelectorAll('.form-check-inline input[type="checkbox"]');
-    var tabs = document.querySelectorAll('.nav-pills .nav-link');
-
-    checkboxes.forEach(function (checkbox, index) {
-        checkbox.addEventListener('change', function () {
-            updateTabs();
-        });
-    });
-
-    function updateTabs() {
-        tabs.forEach(function (tab, tabIndex) {
-            var tabCheckboxes = document.querySelectorAll(tab.getAttribute('href') + ' input[type="checkbox"]');
-            var anyChecked = Array.from(tabCheckboxes).some(function (cb) {
-                return cb.checked;
-            });
-
-            if (anyChecked) {
-                tab.classList.add('tab-active');
-            } else {
-                tab.classList.remove('tab-active');
-            }
-        });
-    }
-
-    tabs.forEach(function (tab) {
-        tab.addEventListener('shown.bs.tab', function () {
-            updateTabs();
-        });
-    });
-    updateTabs();
+   $(".check").click(function () {
+      // Find the closest ancestor with the class 'card' and toggle the class 'card-border'
+      $(this).closest('.card').toggleClass('card-border');
+   });
 });
 
 
-   function filterCompanies(letter) {
-       // Get all company items
-       var companyItems = document.querySelectorAll('.company-item');
+   var companyItems = '';
+   document.addEventListener("DOMContentLoaded", function () {
+      var checkboxes = document.querySelectorAll('.form-check-inline input[type="checkbox"]');
+      var tabs = document.querySelectorAll('.nav-pills .nav-link');
+      companyItems = document.querySelectorAll('.company-item');
 
-       // Iterate through each company item and show/hide based on the selected letter
-       companyItems.forEach(function(item) {
-           var companyName = item.querySelector('.form-check-label').innerText;
+      checkboxes.forEach(function (checkbox, index) {
+         checkbox.addEventListener('change', function () {
+            updateTabs();
+         });
+   });
 
-           if (letter === 'all' || companyName.charAt(0).toUpperCase() === letter) {
-               item.style.display = 'block';
-           } else {
-               item.style.display = 'none';
-           }
-       });
+   function updateTabs() {
+      tabs.forEach(function (tab, tabIndex) {
+         var tabCheckboxes = document.querySelectorAll(tab.getAttribute('href') + ' input[type="checkbox"]');
+         var anyChecked = Array.from(tabCheckboxes).some(function (cb) {
+               return cb.checked;
+         });
+
+         if (anyChecked) {
+               tab.classList.add('tab-active');
+         } else {
+               tab.classList.remove('tab-active');
+         }
+      });
    }
 
-   // Add event listener to the search input
-   document.getElementById('searchCompanies').addEventListener('input', function() {
-       filterCompanies('all'); // Show all items
-       var searchTerm = this.value.toLowerCase();
-
-       // Get all company items
-       var companyItems = document.querySelectorAll('.company-item');
-
-       // Iterate through each company item and show/hide based on the search term
-       companyItems.forEach(function(item) {
-           var companyName = item.querySelector('.form-check-label').innerText.toLowerCase();
-           if (companyName.includes(searchTerm)) {
-               item.style.display = 'block';
-           } else {
-               item.style.display = 'none';
-           }
-       });
+   tabs.forEach(function (tab) {
+      tab.addEventListener('shown.bs.tab', function () {
+         updateTabs();
+      });
+   });
+   updateTabs();
    });
 
 
-   function filterProducts(letter) {
-       // Get all product items
-       var productItems = document.querySelectorAll('.product-item');
-       // Iterate through each product item and show/hide based on the selected letter
-       productItems.forEach(function(item) {
-           var labelElement = item.querySelector('.form-check-label');
+   function filterCompanies(letter) {
+   companyItems.forEach(function (item) {
+      var companyName = item.dataset.name;
 
-           // Check if label element exists
-           if (labelElement) {
-               var productName = labelElement.innerText;
-
-               if (letter === 'all' || productName.charAt(0).toUpperCase() === letter) {
-                   item.style.display = 'block';
-               } else {
-                   item.style.display = 'none';
-               }
-           }
-       });
+      if (letter === 'all' || companyName.charAt(0).toUpperCase() === letter) {
+         $(item).parent().parent().css('display', 'block');
+      } else {
+         $(item).parent().parent().css('display', 'none');
+      }
+   });
    }
 
-   // Add event listener to the search input
-   document.getElementById('searchProducts').addEventListener('input', function() {
-       filterProducts('all'); // Show all items
-       var searchTerm = this.value.toLowerCase();
+   document.getElementById('searchCompanies').addEventListener('input', function () {
+   filterCompanies('all');
+   var searchTerm = this.value.toLowerCase();
+      companyItems.forEach(function (item) {
+         var companyName = item.dataset.name;
+         companyName = companyName.toLowerCase();
 
-       // Get all product items
-       var productItems = document.querySelectorAll('.product-item');
+         if (companyName.includes(searchTerm)) {
+            $(item).parent().parent().css('display', 'block');
+         } else {
+            $(item).parent().parent().css('display', 'none');
+         }
+      });
+   });
 
-       // Iterate through each product item and show/hide based on the search term
-       productItems.forEach(function(item) {
-           var labelElement = item.querySelector('.form-check-label');
+   function filterProducts(letter) {
+   // Get all product items
+      var productItems = document.querySelectorAll('.product-item');
+      // Iterate through each product item and show/hide based on the selected letter
+      productItems.forEach(function (item) {
+         var labelElement = item.querySelector('.form-check-label');
 
-           // Check if label element exists
-           if (labelElement) {
-               var productName = labelElement.innerText.toLowerCase();
-               if (productName.includes(searchTerm)) {
-                   item.style.display = 'block';
-               } else {
-                   item.style.display = 'none';
-               }
-           }
-       });
+         // Check if label element exists
+         if (labelElement) {
+            var productName = labelElement.innerText;
+
+            if (letter === 'all' || productName.charAt(0).toUpperCase() === letter) {
+                  item.style.display = 'block';
+            } else {
+                  item.style.display = 'none';
+            }
+         }
+      });
+   }
+
+
+   // // Add event listener to the search input
+   document.getElementById('searchProducts').addEventListener('input', function () {
+      filterProducts('all'); // Show all items
+      var searchTerm = this.value.toLowerCase();
+
+      // Get all product items
+      var productItems = document.querySelectorAll('.product-item');
+
+      // Iterate through each product item and show/hide based on the search term
+      productItems.forEach(function (item) {
+         var labelElement = item.querySelector('.form-check-label');
+
+         // Check if label element exists
+         if (labelElement) {
+            var productName = labelElement.innerText.toLowerCase();
+            if (productName.includes(searchTerm)) {
+                  item.style.display = 'block';
+            } else {
+                  item.style.display = 'none';
+            }
+         }
+      });
    });
 
 
    function filterLocations(letter) {
-       // Get all product items
-       var states_city = document.querySelectorAll('.location-items');
-       // Iterate through each product item and show/hide based on the selected letter
-       states_city.forEach(function(item) {
-           var labelElement = item.querySelector('.form-check-label');
+      // Get all product items
+      var states_city = document.querySelectorAll('.location-items');
+      // Iterate through each product item and show/hide based on the selected letter
+      states_city.forEach(function (item) {
+         var labelElement = item.querySelector('.form-check-label');
 
-           // Check if label element exists
-           if (labelElement) {
-               var states_city = labelElement.innerText;
+         // Check if label element exists
+         if (labelElement) {
+            var states_city = labelElement.innerText;
 
-               if (letter === 'all' || states_city.charAt(0).toUpperCase() === letter) {
-                   item.style.display = 'block';
-               } else {
-                   item.style.display = 'none';
-               }
-           }
-       });
+            if (letter === 'all' || states_city.charAt(0).toUpperCase() === letter) {
+                  item.style.display = 'block';
+            } else {
+                  item.style.display = 'none';
+            }
+         }
+      });
    }
 
    // Add event listener to the search input
-   document.getElementById('searchLocations').addEventListener('input', function() {
+   document.getElementById('searchLocations').addEventListener('input', function () {
       filterLocations('all'); // Show all items
-       var searchTerm = this.value.toLowerCase();
+      var searchTerm = this.value.toLowerCase();
 
-       // Get all product items
-       var location_items = document.querySelectorAll('.location-items');
+      // Get all product items
+      var location_items = document.querySelectorAll('.location-items');
 
-       // Iterate through each product item and show/hide based on the search term
-       location_items.forEach(function(item) {
-           var labelElement = item.querySelector('.form-check-label');
+      // Iterate through each product item and show/hide based on the search term
+      location_items.forEach(function (item) {
+         var labelElement = item.querySelector('.form-check-label');
 
-           // Check if label element exists
-           if (labelElement) {
-               var location_items = labelElement.innerText.toLowerCase();
-               if (location_items.includes(searchTerm)) {
-                   item.style.display = 'block';
-               } else {
-                   item.style.display = 'none';
-               }
-           }
-       });
+         // Check if label element exists
+         if (labelElement) {
+            var location_items = labelElement.innerText.toLowerCase();
+            if (location_items.includes(searchTerm)) {
+                  item.style.display = 'block';
+            } else {
+                  item.style.display = 'none';
+            }
+         }
+      });
    });
 
-
- 
+   $(document).ready(function () {
+      $('.tab-content .pagination .page-link').click(function () {
+         $('.page-link').removeClass('active');
+         $(this).toggleClass('active');
+      });
+   });
 </script>
-
-
-<script>
-   // Add active class in  page link in advance filter
-   $(document).ready(function(){
-    $('.tab-content .pagination .page-link').click(function(){
-      $('.page-link').removeClass('active');
-      $(this).toggleClass('active');
-    });
-   })
-</script>
-
 @endpush

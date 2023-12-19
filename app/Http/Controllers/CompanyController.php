@@ -179,8 +179,8 @@ class CompanyController extends Controller
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
-
-        $company->update($data);
+        $updated_models = ['CompanyContactDetail' => false , 'CompanyKeyPersonnel' => false , 'CompanyProductDetails' => false , 'CompanyForeignCollaboration' => false];
+        session('updated_models', $updated_models);
         $company_contact_detail->update($data);
         $company_key_personnel->update($data);
         $company_product_detail->update($data);

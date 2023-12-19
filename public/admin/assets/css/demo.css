@@ -249,7 +249,7 @@ ul {
 }
 
 .dropdown-menu {
-  transform: translate(-253px, 13px) !important;
+  transform: translate(-260px, 13px) !important;
 }
 
 .dropdown-menu::before {
@@ -819,7 +819,21 @@ footer {
   margin-bottom: 15px;
   align-items: center;
 }
-
+.company-title .check{
+  opacity: 0;
+  border: none;
+  width: 30px;
+  height: 30px;
+}
+.check-icon{
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+  opacity: 0.1;
+}
+.card-border .check-icon{
+  opacity: 1;
+}
 .information-list ul {
   display: grid;
 }
@@ -901,6 +915,20 @@ footer {
   border-top: 1px solid #eee;
 }
 
+/*-- Search Filter for Header ---*/
+.tab-pane-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.tab-pane-header .form-control{
+  border: 1px solid #566a7f;
+  color: #000;
+}
+.tab-pane-header .form-control::placeholder{
+  color: #000;
+}
 .custom_search_filter .category-dropdown .category-dropdown ul li {
   padding: 5px;
   list-style: none;
@@ -923,7 +951,9 @@ footer {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
 }
-
+li.filter-name{
+  width: 110px;
+}
 .filter-content {
   border-top: 1px solid #eee;
   margin-top: 40px;
@@ -937,20 +967,35 @@ footer {
 .advance-filter .scroll-content {
   height: 300px;
   overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
 }
 
-.scroll-content::-webkit-scrollbar-track {
+
+.tab-content .pagination .page-link{
+   color: #fff;
+   background-color: #9ca6ec;
+   border: 1px solid #9ca6ec;
+   border-radius: 50%;
+}
+
+.tab-content .pagination .page-link:hover, .tab-content .pagination .page-link.active{
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+.scroll-content::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--bg-card);
 }
 
-.scroll-content::-webkit-scrollbar {
+.scroll-content::-webkit-scrollbar{
   width: 4px;
-  background-color: var(--light_purple);
+  background-color: #eee;
   border-radius: 7px;
+  height: 4px;
 }
 
-.scroll-content::-webkit-scrollbar-thumb {
+.scroll-content::-webkit-scrollbar-thumb{
   background-color: var(--primary);
 }
 
@@ -971,7 +1016,9 @@ footer {
 .form-check-inline:last-child {
   margin-right: 0 !important;
 }
-
+.form-check-input {
+  border: 1px solid #566a7f;
+}
 .form-check-label {
   text-align: left !important;
   font-size: small;

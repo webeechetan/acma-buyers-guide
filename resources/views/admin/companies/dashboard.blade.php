@@ -2,6 +2,10 @@
 @section('title','Dashboard')
 @push('styles')
 <link rel="stylesheet" href=" {{ asset('admin/') }}/assets/vendor/libs/select2/select2.css " />
+  <!-- Add Slick Carousel CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add Slick Carousel theme CSS (optional) -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 @endpush
 @section('content')
 <!-- Content -->
@@ -28,41 +32,46 @@
                               </div>
                            </form> -->
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"id="filter_category" name="filter_category">Filter By Category</button>
+                           <div class="checked_company_info"> 
+                              <span class="total_companies"></span>
+                              <br>
+                              <span class="checked_companies"></span>
+                              <br>
+                              <span class="clear_checked" onclick="clear_checked()">Clear</span>
+                           </div>
                            <!-- Modal -->
                            <div class="modal fade" id="static"  data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog modal-lg" role="document">
                                  <div class="modal-content">
                                     <div class="modal-header">
-                                       <h2 class="modal-title title text-center" id="exampleModalLabel1">Advance Filter</h2>
                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                        <div class="row">
-                                       
-                                          <div class="col-md-3">
-                                             <ul class="nav nav-pills flex-column">
+                                          <div class="col-md-2">
+                                             <ul class="nav nav-pills justify-content-between mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
-                                                   <a class="nav-link active" data-bs-toggle="pill" href="#company">Company</a>
+                                                   <a class="nav-link badge text-capitalize active" data-bs-toggle="pill" href="#company">Company</a>
                                                 </li>
                                                
                                                 <li  class="filter-name mb-2" data-filter="region">
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#region">Region</a>
+                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#region">Region</a>
                                                 </li>
                                                 <li  class="filter-name mb-2" data-filter="product">
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#product">Product</a>
+                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#product">Product</a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="trademark" >
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#trademark">Trademark</a>
+                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#trademark">Trademark</a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="salesTurnover" >
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#salesTurnover">Sales Turnover</a>
+                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#salesTurnover">Sales Turnover</a>
                                                 </li>
                                                 {{-- <li class="filter-name mb-2" data-filter="exportTurnover" >
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
+                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
                                                 </li> --}}
 
                                                 <li  class="filter-name mb-2" data-filter="location">
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#location">States & City</a>
+                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#location">States & City</a>
                                                 </li>
 
                                               
@@ -75,40 +84,50 @@
                                                 <!-- Add more options here -->
                                              </ul>
                                           </div>
-                                          <div class="col-md-9">
+                                          <div class="col-md-10">
                                             <form action="" class="advance-filter">
                                              <div class="tab-content">
                                                 <div class="tab-pane container active" id="company">
-                                                  <h6 class="mb-2 text-justify text-dark">Company Filter</h6>
-                                                 <!-- Add a text box next to the heading -->
-                                                   <div class="row mb-3">
-                                                      <div class="col-md-6">
-                                                         <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
-                                                      </div>
-                                                   </div>
-                                                   <div class="row scroll-content">
-                                                      @foreach($companies_name as $company)
-                                                      <div class="col-md-4 company-item">
-                                                         <div class="mt-2">
-                                                            @if(isset($company['name']) && !empty($company['name']))
-                                                          <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
-                                                                  <label class="form-check-label" for="">{{ $company['name'] }}</label>
-                                                               </div>
-                                                            @endif
-                                                         </div>
-                                                      </div>
-                                                      @endforeach
-                                                   </div>
-                                                   <div class="pagination">
-                                                      <ul class="pagination">
-                                                          @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
-                                                              <li class="page-item">
-                                                                  <a class="page-link" href="#" onclick="filterCompanies('{{ chr($i) }}')">{{ chr($i) }}</a>
-                                                              </li>
-                                                          @endfor
-                                                      </ul>
+                                                  <div class="tab-pane-header">
+                                                     <h6 class=" mb-0 text-justify text-dark">Company Filter</h6>
+                                                     <div class="custom_search_filter">
+                                                       <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
+                                                       <div class="custom_search_filter_inputMask">
+                                                        <i class="bx bx-search"></i>
+                                                       </div>
+                                                     </div>
+                                                    
                                                   </div>
+                                                  <div class="row  scroll-content">
+                                                   <div class="col-md-11">
+                                                      <div class="row">
+                                                         @foreach($companies_name as $company)
+                                                         <div class="col-md-4 company-item">
+                                                            <div class="mt-2">
+                                                               @if(isset($company['name']) && !empty($company['name']))
+                                                            <div class="form-check form-check-inline mb-2">
+                                                               <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
+                                                                     <label class="form-check-label" for="">{{ $company['name'] }}</label>
+                                                                  </div>
+                                                               @endif
+                                                            </div>
+                                                         </div>
+                                                         @endforeach
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-md-1">
+                                                      <div class="pagination-slider">
+                                                         <ul class="pagination d-flex flex-column align-items-center">
+                                                            @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
+                                                               <li class="page-item mb-1">
+                                                                     <a class="page-link" href="javascript:void(0);" onclick="filterCompanies('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                               </li>
+                                                            @endfor
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                  </div>
+                                                 
                                                    
                                                 </div>
                           
@@ -133,50 +152,65 @@
                                                    </div>
                                                 </div>
                                                 <div class="tab-pane container fade" id="product">
-                                                   <h6 class="mb-2 text-justify text-dark">Product Filter</h6>
-                                                   <div class="row mb-3">
+                                                  <div class="tab-pane-header">
+                                                    <h6 class="mb-0 text-justify text-dark">Product Filter</h6>
+                                                    <div class="custom_search_filter">
+                                                       <input type="text" class="form-control" id="searchProducts" placeholder="Search products...">
+                                                       <div class="custom_search_filter_inputMask">
+                                                        <i class="bx bx-search"></i>
+                                                       </div>
+                                                    </div>
+                                                  </div>
+                                                   <!-- <div class="row mb-3">
                                                       <div class="col-md-6">
                                                           <input type="text" class="form-control" id="searchProducts" placeholder="Search products...">
                                                       </div>
-                                                  </div>
+                                                  </div> -->
                                                    <div class="row scroll-content">
-                                                      @foreach ($combinedProducts as $combinedProduct)
-                                                      <div class="col-md-6 product-item">
-                                                         <div class="mt-2">
-                                                            @if(isset($combinedProduct) && !empty($combinedProduct))
-                                                            <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input" class="active-check" type="checkbox" name="products[]" value="{{ $combinedProduct}}" {{ in_array($combinedProduct, (array)request()->input('products')) ? 'checked' : '' }}>
-                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $combinedProduct }}</label>
-                                                            </div>
-                                                            @endif
+                                                      <div class="col-md-11">
+                                                         <div class="row">
+                                                            @foreach ($products as $product)
+                                                               <div class="col-md-6 product-item">
+                                                                  <div class="mt-2">
+                                                                     @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
+                                                                     <div class="form-check form-check-inline mb-2">
+                                                                        <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
+                                                                        <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                                     </div>
+                                                                     @endif
+                                                                  </div>
+                                                               </div>
+                                                            @endforeach
                                                          </div>
+
                                                       </div>
-                                                      @endforeach
+                                                      <div class="col-md-1">
+                                                         <div class="pagination-slider">
+                                                            <ul class="pagination d-flex flex-column">
+                                                               @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
+                                                                  <li class="page-item mb-1">
+                                                                        <a class="page-link" href="#" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                  </li>
+                                                               @endfor
+                                                            </ul>
+                                                        </div>
+                                                      </div>
                                                    </div>
-                                                   <div class="pagination">
-                                                      <ul class="pagination">
-                                                          @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
-                                                              <li class="page-item">
-                                                                  <a class="page-link" href="#" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
-                                                              </li>
-                                                          @endfor
-                                                      </ul>
-                                                  </div>
                                                 </div>
                                                 <div class="tab-pane container fade" id="trademark">
                                                    <h6 class="mb-2 text-justify text-dark">Trademark Filter</h6>
                                                    <div class="row scroll-content">
                                                       @foreach ($trademarks as $trademark)
-                                                      <div class="col-md-4">
-                                                         <div class="mt-2">
-                                                            @if(isset($trademark['trademark']) && !empty($trademark['trademark']))
-                                                            <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
-                                                               <label class="form-check-label" for="inlineCheckbox1">{{$trademark['trademark']}}</label>
+                                                         <div class="col-md-4">
+                                                            <div class="mt-2">
+                                                               @if(isset($trademark['trademark']) && !empty($trademark['trademark']))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input"  class="active-check" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{$trademark['trademark']}}</label>
+                                                               </div>
+                                                               @endif
                                                             </div>
-                                                            @endif
                                                          </div>
-                                                      </div>
                                                       @endforeach
                                                    </div>
                                                 </div>
@@ -251,30 +285,35 @@
 
 
                                                 <div class="tab-pane container fade" id="location">
-                                                   <h6 class="mb-2 text-justify text-dark">States & City</h6>
+                                                   <div class="tab-pane-header">
+                                                    <h6 class="mb-0 text-justify text-dark">States & City</h6>
+                                                    <div class="custom_search_filter">
+                                                      <input type="text"  id="searchLocations" class="form-control" placeholder="Search States & City">
+                                                      <div class="custom_search_filter_inputMask">
+                                                        <i class="bx bx-search"></i>
+                                                       </div>
+                                                    </div>
+                                                   </div>
 
                                                    <!-- Add a text box next to the heading -->
-                                                   <div class="row mb-3">
+                                                   <!-- <div class="row mb-3">
                                                       <div class="col-md-6">
                                                          <input type="text"  id="searchLocations" class="form-control" placeholder="Search States & City">
                                                       </div>
-                                                   </div>
+                                                   </div> -->
                                                    <div class="row scroll-content">
                                                     
                                                       @foreach ($combinedLocations as $combinedLocation)
-
-                                                     
-
-                                                      <div class="col-md-4 location-items">
-                                                         <div class="mt-2">
-                                                            @if(isset($combinedLocation) && !empty($combinedLocation))
-                                                            <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="location[]" id="locations" value="{{ $combinedLocation }}">
-                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $combinedLocation }}</label>
+                                                         <div class="col-md-4 location-items">
+                                                            <div class="mt-2">
+                                                               @if(isset($combinedLocation) && !empty($combinedLocation))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input"  class="active-check" type="checkbox" name="location[]" id="locations" value="{{ $combinedLocation }}">
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $combinedLocation }}</label>
+                                                               </div>
+                                                               @endif
                                                             </div>
-                                                            @endif
                                                          </div>
-                                                      </div>
                                                       @endforeach
                                                    </div>         
 
@@ -296,12 +335,12 @@
                                              </div>
                                                 <div class="mt-3">
                                                       <button class="btn btn-primary btn-sm">Apply</button>
-                                                      <a href="{{ url()->current() }}" class="btn btn-primary btn-sm">Reset</a>
+                                                      <a href="{{ url()->current() }}" class="btn btn-primary btn-sm btn_reset">Reset</a>
                                                 </div>
                                             </form>
                                           </div>
-                                       
                                        </div>
+                                       
                                     </div>
                                  </div>
                               </div>
@@ -342,88 +381,104 @@
                   <form action="{{ route('dashboard.company.export') }}">                 
                   
                      <div class="row">
-                        @foreach ($companies as $company)   
+                     @foreach ($companies as $company)   
                            <div class="col-md-4 mb-3">
-                              <div class="card card-data">
-                                 <div class="company-title">
-                                    <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
-                                    <input type="checkbox" class="check" name="company_ids[]" id="" value="{{ $company->id }}">
-                                 </div>
-                                 <div class="card-body">
-                                    <div class="information-list">
-                                       <ul>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-map-marker" aria-hidden="true"></i><span>City</span>
-                                             </div>
-                                             <div>
-                                                @if($company && $company->contact_details->city)
-                                                   <span>{{ $company->contact_details->city }}</span>
-                                                @else
-                                                <p>NA</P>
-                                                @endif
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-phone"></i><span>Phone</span>
-                                             </div>
-                                             <div>
-                                                @if($company && $company->contact_details->phone)  
-                                                      <span>{{$company->contact_details->phone}}</span>
-                                                @else 
-                                                <p>NA</p>
-                                                @endif
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-fax"></i><span>Fax</span>
-                                             </div>
-                                             <div>
-                                                @if($company && $company->contact_details->fax)
-                                                   <span>{{$company->contact_details->fax}}</span> 
+                                 <div class="card card-data">
+                                    <div class="company-title">
+                                       <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
+                                       <span> <i class='bx bx-check-circle check-icon'></i> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"></span>
+                                    </div>
+                                    <div class="card-body">
+                                       <div class="information-list">
+                                          <ul>
+                                             <li>
+                                                <div>
+                                                   <i class="fa fa-map-marker" aria-hidden="true"></i><span>Address</span>
+                                                </div>
+
+                                                <div>
+                                                   @if($company && $company->contact_details)
+                                                      <span>{{ $company->contact_details->company_address }}</span>
+                                                   @else
+                                                   <p>NA</P>
+                                                   @endif
+                                                </div>
+                                             </li>
+                                             <li>
+                                                <div>
+                                                   <i class="fa fa-phone"></i><span>Phone</span>
+                                                </div>
+                                                <div>
+
+                                                   @if($company && $company->contact_details)
+                                                   
+                                                         <span>{{$company->contact_details->phone}}</span>
                                                    @else 
                                                    <p>NA</p>
                                                    @endif
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-envelope"></i><span>E-mail</span>
-                                             </div>
-                                             <div>                                          
-                                                @if($company && $company->email)
-                                                <a href={{$company->email}}>{{$company->email}}</a>
-                                                @else 
-                                                <p>NA</p>
-                                                @endif                               
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-globe"></i><span>Website</span>
-                                             </div>
-                                             <div>
-                                                @if($company && $company->website)
-                                                <a href="">{{$company->website}}</a>
-                                                @else 
-                                                <p>NA</P>
+                                             
+                                                </div>
+                                             </li>
+                                             <li>
+                                                <div>
+                                                   <i class="fa fa-fax"></i><span>Fax</span>
+                                                </div>
+                                                <div>
+                                                
+                                                   @if($company && $company->contact_details)
+                                                      <span>{{$company->contact_details->fax}}</span> 
+                                                      @else 
+                                                      <p>NA</p>
+                                                      @endif
+                                             
+                                                </div>
+                                             </li>
+                                             <li>
+                                                <div>
+                                                   <i class="fa fa-envelope"></i><span>E-mail</span>
+                                                </div>
+                                                <div>
+                                                   
+                                                   @if($company && $company->contact_details)
+                                                   <a href={{$company->email}}>{{$company->email}}</a>
+                                                   @else 
+                                                   <p>NA</p>
+                                                   @endif
+                                                
+                                                </div>
+                                             </li>
+                                             <li>
+                                                <div>
+                                                   <i class="fa fa-globe"></i><span>Website</span>
+                                                </div>
+                                                <div>
+                                                   @if($company && $company->website)
+                                                   <a href="http://www.acma.in">{{$company->website}}</a>
+                                                   @else 
+                                                   <p>NA</P>
                                                 @endif
-                                             </div>
-                                          </li>
-                                       </ul>
+                                                </div>
+                                             </li>
+                                          </ul>
+                                       </div>
                                     </div>
                                  </div>
-                              </div>
+                              
                            </div>
                         @endforeach
-                     </div>
+
                      
                      {{ $companies->withQueryString()->links() }}
+                     <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
                      <div class="row">
                         <div class="col-md-12 text-center mt-2">
                            <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
+                           <div class="checked_company_info">
+                              <span class="total_companies"></span>
+                              <span class="checked_companies"></span>
+                              <br>
+                              <span class="clear_checked" onclick="clear_checked()">Clear</span>
+                           </div>
                         </div>
                      </div>
                   </form>
@@ -439,6 +494,8 @@
 
 <script src="{{ asset('admin/') }}/assets/vendor/libs/select2/select2.js"></script>
 <script src="{{ asset('admin/') }}/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="{{ asset('website/') }}/checkbox-recheck.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
    $(document).ready(function () {
 
@@ -499,9 +556,6 @@
 });
 
 
-</script>
-
-<script>
    function filterCompanies(letter) {
        // Get all company items
        var companyItems = document.querySelectorAll('.company-item');
@@ -520,7 +574,6 @@
 
    // Add event listener to the search input
    document.getElementById('searchCompanies').addEventListener('input', function() {
-
        filterCompanies('all'); // Show all items
        var searchTerm = this.value.toLowerCase();
 
@@ -538,11 +591,6 @@
        });
    });
 
-
-
-</script>
-
-<script>
 
    function filterProducts(letter) {
        // Get all product items
@@ -588,13 +636,6 @@
        });
    });
 
-
- 
-</script>
-
-
-
-<script>
 
    function filterLocations(letter) {
        // Get all product items
@@ -644,5 +685,15 @@
  
 </script>
 
+
+<script>
+   // Add active class in  page link in advance filter
+   $(document).ready(function(){
+    $('.tab-content .pagination .page-link').click(function(){
+      $('.page-link').removeClass('active');
+      $(this).toggleClass('active');
+    });
+   })
+</script>
 
 @endpush

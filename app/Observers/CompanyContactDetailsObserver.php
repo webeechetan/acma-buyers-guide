@@ -37,7 +37,13 @@ class CompanyContactDetailsObserver
     public function updating(CompanyContactDetail $companyContactDetail)
     {
 
-       
+        // set current model as updated
+
+        $updated_models = session('updated_models');
+        $updated_models['CompanyContactDetail'] = true;
+        session(['updated_models' => $updated_models]);
+
+
         // get the original data
         $original = $companyContactDetail->getOriginal();
         // get the updated data
@@ -59,7 +65,6 @@ class CompanyContactDetailsObserver
         $company_update_request->company_id = $companyContactDetail->company_id;
         $company_update_request->data = json_encode($update_request);
         $company_update_request->modal = 'CompanyContactDetail';
-        $company_update_request->save();
 
         // stop the update
         return false;

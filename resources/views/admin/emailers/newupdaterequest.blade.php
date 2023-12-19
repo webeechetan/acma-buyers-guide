@@ -49,10 +49,10 @@
 
           foreach ($data as $key => $value) {
             if(!$value['old']){
-                $value['old'] = 'NULL';
+                $value['old'] = 'N/A';
             }
-            // $updating_data .= $key . ' From ' . $value['old'] . ' to ' . $value['new'] . '<br>';
-            $updating_data .= $key . ' From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
+           
+            $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
 
         }
 

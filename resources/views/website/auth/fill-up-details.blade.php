@@ -52,8 +52,9 @@
                               <div class="row g-3">
                                 <div class="col-md-2">
                                 <label class="form-label" for="company_name">Company Name</label>
-                                {{-- <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company_contact_details->company_name }}"> --}}
-                                <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company->name }}">
+                                
+                                {{-- <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company->name }}"> --}}
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Acma" value="{{ $company->name }}">
                                 </div>
 
                                 <div class="col-md-2">
@@ -126,17 +127,21 @@
 
                                 <div class="col-md-2">
                                 <label class="form-label" for="main_address">Main Address</label>
-                                <textarea id="main_address" name="main_address" class="form-control" placeholder="Main Address" rows="1" >{{ $company_contact_details->main_address }}</textarea>
+                                {{-- <textarea id="main_address" name="main_address" class="form-control" placeholder="Main Address" rows="1" >{{ $company_contact_details->main_address }}</textarea>
+                                 --}}
+
+                                 <textarea id="mainaddress1" name="mainaddress1" class="form-control" placeholder="Main Address" rows="1" >{{ $company_contact_details->mainaddress1 }}</textarea>
                                 </div>
 
                                 <div class="col-md-2">
                                   <label class="form-label" for="main_address">Main Address 2</label>
-                                  <textarea id="main_address2" name="main_address2" class="form-control" placeholder="Main Address 2" rows="1" >{{ $company_contact_details->main_address2 }}</textarea>
+                                  {{-- <textarea id="main_address2" name="main_address2" class="form-control" placeholder="Main Address 2" rows="1" >{{ $company_contact_details->main_address2 }}</textarea> --}}
+                                  <textarea id="mainaddress2" name="mainaddress2" class="form-control" placeholder="Main Address 2" rows="1" >{{ $company_contact_details->mainaddress2 }}</textarea>
                                   </div>
 
                                   <div class="col-md-2">
                                     <label class="form-label" for="plant_pin">Main City</label>
-                                    <input type="text" id="main_city" name="main_city" class="form-control" placeholder="Main City" value="{{ $company_contact_details->main_city }}">
+                                    <input type="text" id="maincity" name="maincity" class="form-control" placeholder="Main City" value="{{ $company_contact_details->maincity }}">
                                     </div>
 
 

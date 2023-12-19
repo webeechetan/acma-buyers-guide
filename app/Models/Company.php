@@ -20,6 +20,12 @@ class Company extends Authenticatable
     ];
 
 
+    protected $fillable = [
+    
+        'token', 
+    ];
+
+
     public function key_personnels(){
         return $this->hasOne(CompanyKeyPersonnel::class);
     }

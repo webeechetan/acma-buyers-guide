@@ -14,7 +14,7 @@
       <div class="row">
          <div class="col-md-12">
             <!--- Search Filter ---->
-            <div class="card mb-3">
+            <div class="card dashboard-header mb-3">
                <div class="card-body">
                   <div class="row">
                      <div class="col-md-8">
@@ -31,7 +31,7 @@
                                  <i class="bx bx-search"></i>
                               </div>
                            </form> -->
-                           <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"id="filter_category" name="filter_category">Filter By Category</button>
+                           <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary btn-sm"id="filter_category" name="filter_category">Filter<span class='bx bx-filter ms-2'></span></button>
                            <div class="checked_company_info"> 
                               <span class="total_companies"></span>
                               <br>
@@ -48,30 +48,30 @@
                                     </div>
                                     <div class="modal-body">
                                        <div class="row">
-                                          <div class="col-md-2">
-                                             <ul class="nav nav-pills justify-content-between mb-4">
+                                          <div class="col-md-3">
+                                             <ul class="nav nav-pills custom-tab  d-block mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
-                                                   <a class="nav-link badge text-capitalize active" data-bs-toggle="pill" href="#company">Company</a>
+                                                  <span><i class='bx bx-building-house' ></i></span> <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company">Company</a>
                                                 </li>
                                                
                                                 <li  class="filter-name mb-2" data-filter="region">
-                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#region">Region</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#region">Region</a>
                                                 </li>
                                                 <li  class="filter-name mb-2" data-filter="product">
-                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#product">Product</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#product">Product</a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="trademark" >
-                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#trademark">Trademark</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#trademark">Trademark</a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="salesTurnover" >
-                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#salesTurnover">Sales Turnover</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover">Sales Turnover</a>
                                                 </li>
                                                 {{-- <li class="filter-name mb-2" data-filter="exportTurnover" >
-                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
                                                 </li> --}}
 
-                                                <li  class="filter-name mb-2" data-filter="location">
-                                                   <a class="nav-link badge text-capitalize" data-bs-toggle="pill" href="#location">States & City</a>
+                                                <li  class="filter-name" data-filter="location">
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location">States & City</a>
                                                 </li>
 
                                               
@@ -84,12 +84,12 @@
                                                 <!-- Add more options here -->
                                              </ul>
                                           </div>
-                                          <div class="col-md-10">
+                                          <div class="col-md-9">
                                             <form action="" class="advance-filter">
                                              <div class="tab-content">
                                                 <div class="tab-pane container active" id="company">
                                                   <div class="tab-pane-header">
-                                                     <h6 class=" mb-0 text-justify text-dark">Company Filter</h6>
+                                                     <h5 class=" mb-0 text-justify fw-semibold text-dark">Company Filter</h5>
                                                      <div class="custom_search_filter">
                                                        <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
                                                        <div class="custom_search_filter_inputMask">
@@ -127,8 +127,6 @@
                                                       </div>
                                                    </div>
                                                   </div>
-                                                 
-                                                   
                                                 </div>
                           
                                                 
@@ -189,7 +187,7 @@
                                                             <ul class="pagination d-flex flex-column">
                                                                @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                                   <li class="page-item mb-1">
-                                                                        <a class="page-link" href="#" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                        <a class="page-link" href="javascript:void(0);" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
                                                                   </li>
                                                                @endfor
                                                             </ul>
@@ -321,7 +319,7 @@
                                                       <ul class="pagination">
                                                           @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                               <li class="page-item">
-                                                                  <a class="page-link" href="#" onclick="filterLocations('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                  <a class="page-link" href="javascript:void(0);" onclick="filterLocations('{{ chr($i) }}')">{{ chr($i) }}</a>
                                                               </li>
                                                           @endfor
                                                       </ul>
@@ -376,7 +374,7 @@
             </div>
             <!--- Company Card --->
             <div class="company-card">
-               
+
                <div>
                   <form action="{{ route('dashboard.company.export') }}">                 
                   
@@ -385,7 +383,7 @@
                            <div class="col-md-4 mb-3">
                                  <div class="card card-data">
                                     <div class="company-title">
-                                       <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
+                                       <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-dark"> {{ $company->name }}</h4></a>
                                        <span> <i class='bx bx-check-circle check-icon'></i> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"></span>
                                     </div>
                                     <div class="card-body">
@@ -400,7 +398,7 @@
                                                    @if($company && $company->contact_details)
                                                       <span>{{ $company->contact_details->company_address }}</span>
                                                    @else
-                                                   <p>NA</P>
+                                                   <span>NA</span>
                                                    @endif
                                                 </div>
                                              </li>
@@ -414,7 +412,7 @@
                                                    
                                                          <span>{{$company->contact_details->phone}}</span>
                                                    @else 
-                                                   <p>NA</p>
+                                                   <span>NA</span>
                                                    @endif
                                              
                                                 </div>
@@ -428,7 +426,7 @@
                                                    @if($company && $company->contact_details)
                                                       <span>{{$company->contact_details->fax}}</span> 
                                                       @else 
-                                                      <p>NA</p>
+                                                      <span>NA</span>
                                                       @endif
                                              
                                                 </div>
@@ -440,9 +438,9 @@
                                                 <div>
                                                    
                                                    @if($company && $company->contact_details)
-                                                   <a href={{$company->email}}>{{$company->email}}</a>
+                                                   <a href="{{$company->email}}">{{$company->email}}</a>
                                                    @else 
-                                                   <p>NA</p>
+                                                   <span>NA</span>
                                                    @endif
                                                 
                                                 </div>
@@ -455,7 +453,7 @@
                                                    @if($company && $company->website)
                                                    <a href="http://www.acma.in">{{$company->website}}</a>
                                                    @else 
-                                                   <p>NA</P>
+                                                   <span>NA</span>
                                                 @endif
                                                 </div>
                                              </li>

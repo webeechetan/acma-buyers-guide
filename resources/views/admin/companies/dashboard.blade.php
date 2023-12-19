@@ -32,6 +32,13 @@
                               </div>
                            </form> -->
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"id="filter_category" name="filter_category">Filter By Category</button>
+                           <div class="checked_company_info"> 
+                              <span class="total_companies"></span>
+                              <br>
+                              <span class="checked_companies"></span>
+                              <br>
+                              <span class="clear_checked" onclick="clear_checked()">Clear</span>
+                           </div>
                            <!-- Modal -->
                            <div class="modal fade" id="static"  data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog modal-lg" role="document">
@@ -96,6 +103,17 @@
                                                       <div class="col-md-6">
                                                          <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
                                                       </div>
+                                                   </div>
+                                                   <div class="row scroll-content">
+                                                      @foreach($companies_name as $company)
+                                                      <div class="col-md-4 company-item">
+                                                         <div class="mt-2">
+                                                            @if(isset($company['name']) && !empty($company['name']))
+                                                          <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
+                                                                  <label class="form-check-label" for="">{{ $company['name'] }}</label>
+                                                               </div>
+                                                            @endif
                                                    </div> -->
                                                   <div class="row  scroll-content">
                                                    <div class="col-md-11">
@@ -338,7 +356,7 @@
                                              </div>
                                                 <div class="mt-3">
                                                       <button class="btn btn-primary btn-sm">Apply</button>
-                                                      <a href="{{ url()->current() }}" class="btn btn-primary btn-sm">Reset</a>
+                                                      <a href="{{ url()->current() }}" class="btn btn-primary btn-sm btn_reset">Reset</a>
                                                 </div>
                                             </form>
                                           </div>
@@ -471,12 +489,17 @@
                         @endforeach
 
                      
-                     </div>
-
-                     {{ $companies->links() }}
+                     {{ $companies->withQueryString()->links() }}
+                     <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
                      <div class="row">
                         <div class="col-md-12 text-center mt-2">
                            <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
+                           <div class="checked_company_info">
+                              <span class="total_companies"></span>
+                              <span class="checked_companies"></span>
+                              <br>
+                              <span class="clear_checked" onclick="clear_checked()">Clear</span>
+                           </div>
                         </div>
                      </div>
                   </form>
@@ -492,6 +515,7 @@
 
 <script src="{{ asset('admin/') }}/assets/vendor/libs/select2/select2.js"></script>
 <script src="{{ asset('admin/') }}/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="{{ asset('website/') }}/checkbox-recheck.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
    $(document).ready(function () {
@@ -553,9 +577,6 @@
 });
 
 
-</script>
-
-<script>
    function filterCompanies(letter) {
        // Get all company items
        var companyItems = document.querySelectorAll('.company-item');
@@ -591,9 +612,6 @@
        });
    });
 
-</script>
-
-<script>
 
    function filterProducts(letter) {
        // Get all product items
@@ -639,13 +657,6 @@
        });
    });
 
-
- 
-</script>
-
-
-
-<script>
 
    function filterLocations(letter) {
        // Get all product items

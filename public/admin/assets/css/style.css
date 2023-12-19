@@ -9,6 +9,7 @@
   --copy-color: #2a2e3f;
   --light_green: #ebf9ff;
   --light_purple: #9ca6ec;
+  --title-bg:  #f0f1f7;
 }
 
 .menu .app-brand.demo {
@@ -147,6 +148,7 @@ body {
   background-color: #fff;
   color: #000;
   min-height: 100vh;
+  font-family: 'Jost', sans-serif;
 }
 
 .main-wrapper {
@@ -805,32 +807,60 @@ footer {
 /*--- Company Card ---*/
 
 .card-border {
-  border: 1px solid var(--primary);
-
+  border: 1px solid #2f34387d;
 }
-
+.dashboard-header{
+  box-shadow: none;
+  border: none;
+}
 .card-data {
   min-height: 100%;
 }
-
+.company-card .row .col-md-4:nth-child(2) .card-data .company-title{
+  background-color: #FBEEE6;
+  ;
+}
+.company-card .row .col-md-4:nth-child(3) .card-data .company-title{
+background-color: #C7F6C7;
+}
 .company-title {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
   align-items: center;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: var(--title-bg);
+}
+.company-card .row .col-md-4:nth-child(2) .card-border{
+  border: 1px solid #FBEEE6 ;
+}
+.company-card .row .col-md-4:nth-child(3) .card-border{
+  border: 1px solid #C7F6C7;
 }
 .company-title .check{
-  opacity: 0;
   border: none;
-  width: 30px;
-  height: 30px;
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 34px;
+  top: 26px;
+
 }
+
 .check-icon{
   position: absolute;
-  right: 20px;
-  font-size: 30px;
-  opacity: 0.1;
+  font-size: 16px;
+  opacity: 0.3;
+  top: 26px;
+  right: 35px;
+  color: var(--primary);
 }
+
+/* .check-icon{
+  display: none;
+} */
 .card-border .check-icon{
   opacity: 1;
 }
@@ -863,6 +893,7 @@ footer {
   padding-right: 10px;
   font-size: 13px;
   white-space: nowrap;
+  min-width: 85px;
 
 }
 
@@ -914,7 +945,29 @@ footer {
   border-left: 1px solid #eee;
   border-top: 1px solid #eee;
 }
-
+.custom-tab{
+  border-left: 2px solid var(--primary);
+  background-color: var(--light_purple);
+  padding: 15px 0;
+}
+.modal .modal-body ul.custom-tab li a{
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  color: #000;
+  justify-content: start;
+  white-space: nowrap;
+}
+.modal .modal-body ul.custom-tab li a.nav-link.active{
+ color: #fff !important;
+ border-radius: 0;
+}
+.modal .modal-body ul.custom-tab li a.nav-link:hover{
+  color: #fff !important;
+  border-radius: 0;
+  background-color: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+}
 /*-- Search Filter for Header ---*/
 .tab-pane-header{
   display: flex;
@@ -951,9 +1004,7 @@ footer {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
 }
-li.filter-name{
-  width: 110px;
-}
+
 .filter-content {
   border-top: 1px solid #eee;
   margin-top: 40px;

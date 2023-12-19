@@ -1,11 +1,13 @@
 <?php
+
 namespace App\Exports;
 
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
 use App\Models\Company;
 
-class CompanyExportWord {
+class CompanyExportWord
+{
     public $company_ids = [];
 
     public function __construct($company_ids = null)
@@ -13,33 +15,56 @@ class CompanyExportWord {
         $this->company_ids = $company_ids;
     }
 
-    public function export($foramt = 'Word2007'){
+    public function export($format = 'Word2007')
+    {
         $companies = Company::all();
-
-        // design a card for each company and add it to the word document
-        $phpWord = new PhpWord();
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
-        $fontStyle = new Font();
-        $fontStyle->setBold(true);
-        $fontStyle->setName('Arial');
-        $fontStyle->setSize(12);
+        $header = ['size' => 16, 'bold' => true];
 
-        foreach($companies as $company){
-            $section->addText($company->name, $fontStyle);
-            $section->addText($company->contact_details->company_address, $fontStyle);
-            $section->addText($company->contact_details->city, $fontStyle);
-            $section->addText($company->contact_details->state, $fontStyle);
-            $section->addText($company->contact_details->phone, $fontStyle);
-            $section->addText($company->key_personnels->managing_director, $fontStyle);
-            $section->addText($company->key_personnels->chief_executive, $fontStyle);
-            $section->addText($company->key_personnels->export_in_charge, $fontStyle);
-            $section->addText($company->foreign_collaboration->f_collab1, $fontStyle);
-            $section->addText($company->key_personnels->managing_director, $fontStyle);
-            $section->addText($company->product_details->products_manufactured, $fontStyle);
-        }
+        $filler = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+            . 'Nulla fermentum, tortor id adipiscing adipiscing, tortor turpis commodo. '
+            . 'Donec vulputate iaculis metus, vel luctus dolor hendrerit ac. '
+            . 'Suspendisse congue congue leo sed pellentesque.';
 
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $foramt);
-        $objWriter->save(storage_path('helloWorld.docx'));
+        // Normal
+        $section = $phpWord->addSection();
+        $section->addText("Normal paragraph. {$filler}");
+
+        // Two columns
+        $section = $phpWord->addSection(
+            [
+                'colsNum' => 2,
+                'colsSpace' => 1440,
+                'breakType' => 'continuous',
+            ]
+        );
+        $section->addText("Two columns, one inch (1440 twips) spacing. {$filler}");
+
+        // Normal
+        $section = $phpWord->addSection(['breakType' => 'continuous']);
+        $section->addText("Normal paragraph again. {$filler}");
+
+        // Three columns
+        $section = $phpWord->addSection(
+            [
+                'colsNum' => 3,
+                'colsSpace' => 720,
+                'breakType' => 'continuous',
+            ]
+        );
+        $section->addText("Three columns, half inch (720 twips) spacing. {$filler}");
+
+        // Normal
+        $section = $phpWord->addSection(['breakType' => 'continuous']);
+        $section->addText("Normal paragraph again. {$filler}");
+
+        // Save the Word document
+        $filename = 'exported_document.docx';
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
+        $objWriter->save(storage_path($filename));
+
+        // Provide the download link for the user
+        return response()->download(storage_path($filename));
     }
 }
-?>

@@ -16,6 +16,8 @@ use App\Observers\CompanyProductDetailsObserver;
 use App\Models\CompanyForeignCollaboration;
 use App\Observers\CompanyForeignCollaborationObserver;
 use App\Observers\CompanyUpdateRequestObserver;
+use App\Models\Company;
+use App\Observers\CompanyObserver;
 
 
 class EventServiceProvider extends ServiceProvider
@@ -36,6 +38,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Company::observe(CompanyObserver::class);
         CompanyContactDetail::observe(CompanyContactDetailsObserver::class);
         CompanyKeyPersonnel::observe(CompanyKeyPersonnelObserver::class);
         CompanyProductDetails::observe(CompanyProductDetailsObserver::class);

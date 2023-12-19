@@ -31,7 +31,13 @@ class CompanyUpdateRequest extends Model
             return false;
         }
         $data = json_decode($this->data, true);
+
+       
         $company = Company::find($this->company_id);
+
+
+        $company = Company::where('id', $this->company_id)->first();
+
         $company_contact_detail = CompanyContactDetail::where('company_id', $this->company_id)->first();
         $company_key_personnel = CompanyKeyPersonnel::where('company_id', $this->company_id)->first();
         $company_product_detail = CompanyProductDetails::where('company_id', $this->company_id)->first();
@@ -93,6 +99,22 @@ class CompanyUpdateRequest extends Model
                 return false;
             }
         }
+
+        
+        if($this->modal == 'Company'){
+            foreach ($data as $key => $value) {
+                $company->$key = $value['new'];
+            }
+            try{
+                $company->saveQuietly();
+                $this->status = 'approved';
+                $this->save();
+                return true;
+            }catch(\Exception $e){
+                return false;
+            }
+        }
+      
 
         
         return false;

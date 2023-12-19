@@ -99,22 +99,11 @@
                                                     
                                                   </div>
                                                  <!-- Add a text box next to the heading -->
-                                                   <!-- <div class="row mb-3">
+                                                   <div class="row mb-3">
                                                       <div class="col-md-6">
                                                          <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
                                                       </div>
                                                    </div>
-                                                   <div class="row scroll-content">
-                                                      @foreach($companies_name as $company)
-                                                      <div class="col-md-4 company-item">
-                                                         <div class="mt-2">
-                                                            @if(isset($company['name']) && !empty($company['name']))
-                                                          <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
-                                                                  <label class="form-check-label" for="">{{ $company['name'] }}</label>
-                                                               </div>
-                                                            @endif
-                                                   </div> -->
                                                   <div class="row  scroll-content">
                                                    <div class="col-md-11">
                                                       <div class="row">
@@ -123,14 +112,13 @@
                                                             <div class="mt-2">
                                                                @if(isset($company['name']) && !empty($company['name']))
                                                             <div class="form-check form-check-inline mb-2">
-                                                                     <input class="form-check-input"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
+                                                               <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
                                                                      <label class="form-check-label" for="">{{ $company['name'] }}</label>
                                                                   </div>
                                                                @endif
                                                             </div>
                                                          </div>
                                                          @endforeach
-                                                      
                                                       </div>
                                                    </div>
                                                    <div class="col-md-1">
@@ -188,16 +176,16 @@
                                                       <div class="col-md-11">
                                                          <div class="row">
                                                             @foreach ($products as $product)
-                                                            <div class="col-md-6 product-item">
-                                                               <div class="mt-2">
-                                                                  @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
-                                                                  <div class="form-check form-check-inline mb-2">
-                                                                     <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
-                                                                     <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                               <div class="col-md-6 product-item">
+                                                                  <div class="mt-2">
+                                                                     @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
+                                                                     <div class="form-check form-check-inline mb-2">
+                                                                        <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
+                                                                        <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                                     </div>
+                                                                     @endif
                                                                   </div>
-                                                                  @endif
                                                                </div>
-                                                            </div>
                                                             @endforeach
                                                          </div>
 
@@ -219,16 +207,16 @@
                                                    <h6 class="mb-2 text-justify text-dark">Trademark Filter</h6>
                                                    <div class="row scroll-content">
                                                       @foreach ($trademarks as $trademark)
-                                                      <div class="col-md-4">
-                                                         <div class="mt-2">
-                                                            @if(isset($trademark['trademark']) && !empty($trademark['trademark']))
-                                                            <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
-                                                               <label class="form-check-label" for="inlineCheckbox1">{{$trademark['trademark']}}</label>
+                                                         <div class="col-md-4">
+                                                            <div class="mt-2">
+                                                               @if(isset($trademark['trademark']) && !empty($trademark['trademark']))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input"  class="active-check" type="checkbox" name="trademarks[]" id="trademarks" value="{{$trademark['trademark']}}" {{ in_array($trademark['trademark'], (array)request()->input('trademarks')) ? 'checked' : '' }}>
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{$trademark['trademark']}}</label>
+                                                               </div>
+                                                               @endif
                                                             </div>
-                                                            @endif
                                                          </div>
-                                                      </div>
                                                       @endforeach
                                                    </div>
                                                 </div>
@@ -322,19 +310,16 @@
                                                    <div class="row scroll-content">
                                                     
                                                       @foreach ($combinedLocations as $combinedLocation)
-
-                                                     
-
-                                                      <div class="col-md-4 location-items">
-                                                         <div class="mt-2">
-                                                            @if(isset($combinedLocation) && !empty($combinedLocation))
-                                                            <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="location[]" id="locations" value="{{ $combinedLocation }}">
-                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $combinedLocation }}</label>
+                                                         <div class="col-md-4 location-items">
+                                                            <div class="mt-2">
+                                                               @if(isset($combinedLocation) && !empty($combinedLocation))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input"  class="active-check" type="checkbox" name="location[]" id="locations" value="{{ $combinedLocation }}">
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $combinedLocation }}</label>
+                                                               </div>
+                                                               @endif
                                                             </div>
-                                                            @endif
                                                          </div>
-                                                      </div>
                                                       @endforeach
                                                    </div>         
 
@@ -407,7 +392,7 @@
                                  <div class="card card-data">
                                     <div class="company-title">
                                        <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-secondary"> {{ $company->name }}</h4></a>
-                                       <span> <i class='bx bx-check-circle check-icon'></i> <input type="checkbox" class="check" name="company_ids[]" id="" value="{{ $company->id }}"></span>
+                                       <span> <i class='bx bx-check-circle check-icon'></i> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"></span>
                                     </div>
                                     <div class="card-body">
                                        <div class="information-list">

@@ -37,11 +37,15 @@ class CompanyContactDetailsObserver
     public function updating(CompanyContactDetail $companyContactDetail)
     {
 
+
+        
+
+        // dd($companyContactDetail);
         // set current model as updated
 
-        $updated_models = session('updated_models');
-        $updated_models['CompanyContactDetail'] = true;
-        session(['updated_models' => $updated_models]);
+        // $updated_models = session('updated_models');
+        // $updated_models['CompanyContactDetail'] = true;
+        // session(['updated_models' => $updated_models]);
 
 
         // get the original data
@@ -49,6 +53,7 @@ class CompanyContactDetailsObserver
         // get the updated data
         $updated = $companyContactDetail->getAttributes();
 
+        // dd($original, $updated);
         // get the keys that were updated and are different from the original
         $updatedKeys = array_keys(array_diff_assoc($updated, $original));
 
@@ -60,12 +65,14 @@ class CompanyContactDetailsObserver
             ];
         }
 
+        
         $company_update_request = new CompanyUpdateRequest();
 
         $company_update_request->company_id = $companyContactDetail->company_id;
         $company_update_request->data = json_encode($update_request);
         $company_update_request->modal = 'CompanyContactDetail';
 
+        $company_update_request->save();
         // stop the update
         return false;
 

@@ -46,14 +46,12 @@
 
           @php 
 
-
           foreach ($data as $key => $value) {
             if(!$value['old']){
                 $value['old'] = 'N/A';
             }
            
             $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
-
         }
 
 //         foreach ($data as $key => $value) {

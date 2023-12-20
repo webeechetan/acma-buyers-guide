@@ -303,12 +303,12 @@
                                 
                                 <div class="col-md-2">
                                   <label class="form-label" for="Update_Date">Update Date</label>
-                                  <input type="text" id="update_date" name="update_date" class="form-control" placeholder="" value=" {{ $company_key_personnels->update_date }}">
+                                  <input type="text" id="update_date" name="update_date" class="form-control" placeholder="" value="{{ $company_key_personnels->update_date }}">
                                 </div>
                                 
                                 <div class="col-md-2">
                                   <label class="form-label" for="REGION">Region</label>
-                                  <input type="text" id="region" name="region" class="form-control" placeholder="" value=" {{ $company_key_personnels->region }}">
+                                  <input type="text" id="region" name="region" class="form-control" placeholder="Enter Region" value="{{ $company_key_personnels->region }}">
                                 </div>
                                 
                               
@@ -375,7 +375,7 @@
                               
                               <div class="col-md-2">
                                 <label class="form-label" for="export_turn-02-03">Export Turn-02-03</label>
-                                <input type="text" id="export_turn_02_03" name="export_turn_02_03" class="form-control" placeholder="" value="{{  $company_product_details->export_turn_02_03 }}">
+                                <input type="text" id="export_turn_02_03" name="export_turn_02_03" class="form-control" placeholder="" value="{{ $company_product_details->export_turn_02_03 }}">
                               </div>
                               
                               <div class="col-md-2">
@@ -385,7 +385,7 @@
                               
                               <div class="col-md-2">
                                 <label class="form-label" for="no_of_emps">Number of Employees</label>
-                                <input type="text" id="number_of_employees" name="number_of_employees" class="form-control" placeholder="" value=" {{ $company_product_details->number_of_employees }}">
+                                <input type="text" id="number_of_employees" name="number_of_employees" class="form-control" placeholder="" value="{{ $company_product_details->number_of_employees }}">
                               </div>
                               
                               <div class="col-md-2">

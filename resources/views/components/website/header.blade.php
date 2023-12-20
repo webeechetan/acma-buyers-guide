@@ -54,14 +54,7 @@
                         <span class="align-middle">Account Details</span>
                         </a>
                     </li>
-                    <li>
-
-
-                    <a class="dropdown-item" href="">
-                        <i class='bx bx-building-house me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
-                        </a>
-                    </li>
+                   
                     <li>
 
 
@@ -135,14 +128,6 @@
                         <a class="dropdown-item" href="{{ route('company.fillUpDetails') }}">
                         <i class='bx bx-user-plus me-2'></i>
                         <span class="align-middle">Account Details</span>
-                        </a>
-                    </li>
-                    <li>
-
-
-                    <a class="dropdown-item" href="">
-                        <i class='bx bx-building-house me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
                         </a>
                     </li>
                     <li>

@@ -175,7 +175,7 @@
         </ul>
 
         <div class="view-btn mt-5">
-          <button class="btn btn-primary btn-sm" id="view_details_{{$CompanyUpdateRequest->id}}"  data-bs-toggle="modal" data-bs-target="#exampleModal_{{$CompanyUpdateRequest->id}}">View Details</button>
+          <button class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#exampleModal_{{$CompanyUpdateRequest->id}}">View Details</button>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal_{{ $CompanyUpdateRequest->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -216,8 +216,10 @@
                     {!! $updating_data !!}
                   </ul>
 
+
               </ul>
               </div>
+              
             </div>
           </div>
         </div>
@@ -230,31 +232,4 @@
   </div>
 </div>
 @endsection
-
-
-
-
 @push('scripts')
-
-{{-- 
-<script>
-
-  function Viewbtn_Click(buttonId) {
-      
-    var button = document.getElementById('view_details_' + buttonId);
-
-  // Access the data-bs-target attribute value using dataset
-      var dataBsTarget = button.dataset.bsTarget;
-    var modal = document.getElementById('MexampleModal_' + buttonId);
-
-    console.log(modal);
-            modal.dataset.bsTarget = dataBsTarget;
-            var modalInstance = new bootstrap.Modal(modal);
-            modalInstance.show();
-
-
-    }  
-  
-  </script> --}}
-
-  @endpush

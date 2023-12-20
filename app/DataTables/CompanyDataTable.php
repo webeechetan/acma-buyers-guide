@@ -11,6 +11,10 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Carbon\Carbon;
+
+
+
 
 class CompanyDataTable extends DataTable
 {
@@ -53,12 +57,18 @@ class CompanyDataTable extends DataTable
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
-                        Button::make('csv'),
+                        
                         Button::make('pdf'),
                         Button::make('print'),
-
+                      
+                    Button::make('Download All')->extend('csv')->filename($this->filename())->exportOptions(['page' => 'all']),
+                      
+                    ])->parameters([
+                        'paging' => false, // Disable pagination for export
                     ]);
     }
+
+   
 
     /**
      * Get the dataTable columns definition.
@@ -70,9 +80,9 @@ class CompanyDataTable extends DataTable
             Column::make('name')
             ->data('name', 'name'),
             Column::make('email'),
-            Column::make('created_at'),
+            Column::make('website'),
             Column::make('updated_at'),
-           
+
         ];
     }
 

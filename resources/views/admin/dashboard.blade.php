@@ -21,10 +21,43 @@
                   </div>
                   <hr class="d-none d-sm-block d-lg-none me-4">
                 </div>
+
+                {{-- Pending Request --}}
+                <div class="col-sm-6 col-lg-3">
+                  <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
+                    <div>
+                      <h3 class="mb-1">{{ $ProfilependingCount }}</h3>
+                      <p class="mb-0">Pending Request </p>
+                    </div>
+                    <span class="badge bg-label-secondary rounded p-2 me-sm-4">
+                      <i class='bx bx-chart bx-sm'></i>
+                    </span>
+                  </div>
+                  <hr class="d-none d-sm-block d-lg-none me-4">
+                </div>
+
+                {{-- Approved Request --}}
+                <div class="col-sm-6 col-lg-3">
+                  <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
+                    <div>
+                      <h3 class="mb-1">{{ $ProfileapprovedCount }}</h3>
+                      <p class="mb-0">Approved Request</p>
+                    </div>
+                    <span class="badge bg-label-secondary rounded p-2 me-sm-4">
+                      <i class='bx bx-chart bx-sm'></i>
+                    </span>
+                  </div>
+                  <hr class="d-none d-sm-block d-lg-none me-4">
+                </div>
+
+
+
               </div>
             </div>
           </div>
         </div>
+
+        
       </div>
     <div class="col-md-12">
         <div class="card h-100">

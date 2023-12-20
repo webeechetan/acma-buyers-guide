@@ -10,7 +10,7 @@
 @section('content')
 <!-- Content -->
 <section class="sec-space">
-   <div class="container-xxl">
+   <div>
       <!--- Search Filter ---->
       <div class="card dashboard-header">
                <div class="card-body">
@@ -363,7 +363,7 @@
                   <div class="checked_company_info mb-3"> 
                      <span class="total_companies badge bg-primary text-capitalize"></span>
                      <span class="checked_companies badge bg-secondary text-capitalize"></span>
-                     <span class="clear_checked badge bg-danger text-capitalize" onclick="clear_checked()">Clear</span>
+                     <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear</span>
                   </div>
                </div>
             </div>
@@ -470,7 +470,7 @@
                               <span class="total_companies badge bg-primary text-capitalize"></span>
 
                               <span class="checked_companies badge bg-secondary text-capitalize"></span>
-                              <span class="clear_checked badge bg-danger text-capitalize" onclick="clear_checked()">Clear</span>
+                              <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear</span>
                            </div>
                            <button type="submit" class="btn btn-primary btn-lg" class="download-button">Download Data</button>
                           <p class="mb-0 pt-2 text-success">Download the data in csv format</p>

@@ -29,7 +29,7 @@
                 <ul class="dropdown-menu dropdown-menu-end">
                 <li>
                         <a class="dropdown-item pe-none" href="javascript:void(0);">
-                        <div class="d-flex">
+                        <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 me-4">
                             <div class="avatar avatar-online">
                                 <div class="d-flex align-items-center">
@@ -40,7 +40,7 @@
                             </div>
                             </div>
                             <div class="flex-grow-1">
-                            <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
+                            <span class="fw-medium d-flex flex-wrap">{{ $authenticatedCompany->name }}</span>
                             </div>
                         </div>
                         </a>
@@ -112,7 +112,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item pe-none" href="javascript:void(0);">
-                        <div class="d-flex">
+                        <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 me-4">
                             <div class="avatar avatar-online">
                                 <div class="d-flex align-items-center">
@@ -123,7 +123,7 @@
                             </div>
                             </div>
                             <div class="flex-grow-1">
-                            <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
+                            <span class="fw-medium d-flex flex-wrap text-wrap">{{ $authenticatedCompany->name }}</span>
                             </div>
                         </div>
                         </a>

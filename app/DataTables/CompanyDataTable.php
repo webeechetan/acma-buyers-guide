@@ -25,14 +25,10 @@ class CompanyDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        // return (new EloquentDataTable($query))->setRowId('id')
-        //     ->editColumn('name', function ($data) {
-        //         return strtolower($data->name);
-        //     });
-
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'posts.action')
-            ->setRowId('id');
+            ->editColumn('updated_at', function ($data) {
+                return carbon::parse($data->updated_at)->format('Y-m-d');
+            });
     }
 
     /**
@@ -82,6 +78,7 @@ class CompanyDataTable extends DataTable
             Column::make('email'),
             Column::make('website'),
             Column::make('updated_at'),
+            
 
         ];
     }

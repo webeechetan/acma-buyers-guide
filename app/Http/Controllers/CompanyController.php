@@ -164,11 +164,11 @@ class CompanyController extends Controller
         $company_id = Auth::guard('company')->user()->id;
         $data = $request->all();
 
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('img_company_logo', 'public'); 
             $data['image'] = $imagePath;
         }
-
 
         
         $company = Company::where('id',$company_id)->first();
@@ -179,8 +179,8 @@ class CompanyController extends Controller
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
         
-        $updated_models = ['CompanyContactDetail' => false , 'CompanyKeyPersonnel' => false , 'CompanyProductDetails' => false , 'CompanyForeignCollaboration' => false];
-        session('updated_models', $updated_models);
+        // $updated_models = ['CompanyContactDetail' => false , 'CompanyKeyPersonnel' => false , 'CompanyProductDetails' => false , 'CompanyForeignCollaboration' => false];
+        // session('updated_models', $updated_models);
         $company_contact_detail->update($data);
         $company_key_personnel->update($data);
         $company_product_detail->update($data);
@@ -256,7 +256,7 @@ class CompanyController extends Controller
             $otp = rand(000000,999999);
 
             $user->otp = $otp;
-            $user->save();
+            $user->saveQuietly();
             $user->notify(new ForgotPasswordOtpNotification($user, $otp));
 
             $this->alert('Success', 'Otp sent to your registered email address sucessfully' , 'success');
@@ -314,7 +314,7 @@ class CompanyController extends Controller
             $hashedPassword  = Hash::make($password);
             $user->password = $hashedPassword;
 
-            $user->save();
+            $user->saveQuietly();
 
             $this->alert('success', 'Password Updated Successfully' , 'success');
             return redirect()->route('company.login');

@@ -24,6 +24,8 @@ class CompanyImport implements ToCollection
         $formatted_rows = $this->format_in_assoc_array($rows);
 
         foreach($formatted_rows as $row){
+
+            // check if company
             
             
             $company = new Company();
@@ -223,8 +225,13 @@ class CompanyImport implements ToCollection
             'company_address' => '',
             'pin' => '',
         ];
-        foreach($rows as $row){
 
+        foreach($rows as $row){
+            // continue for first row
+
+            if($loop->index == 0){
+                continue;
+            }
             
             $companies_data_format['name'] = $row[0];
             $companies_data_format['email'] = $row[1];

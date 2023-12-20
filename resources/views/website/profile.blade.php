@@ -151,7 +151,6 @@
                 <h6 class="mb-0 text-warning">Request Sent</h6>
                 <small class="text-muted text-warning">{{$CompanyUpdateRequest->created_at->format('d M-y')}}</small>
               </div>
-              <p class="mb-2">List</span>
             </div>
           </li>
          

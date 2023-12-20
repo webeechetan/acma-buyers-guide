@@ -169,20 +169,25 @@ ul {
 .text-primary {
   color: var(--primary) !important;
 }
-
+.border-bottom{
+  border-bottom: 1px solid #eee !important;
+}
+.border-end{
+  border-right:  1px solid #eee;
+}
 .text-secondary {
   color: var(--secondary) !important;
 }
 
 .btn-primary:hover {
-  background-color: var(--secondary) !important;
-  border-color: var(--secondary) !important;
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
   transform: none !important;
 }
 
 .btn-primary {
-  background-color: var(--primary);
-  border: 1px solid var(--primary);
+  background-color: var(--secondary);
+  border: 1px solid var(--secondary);
   box-shadow: none !important;
 }
 
@@ -250,10 +255,13 @@ ul {
   display: none;
 }
 
-.dropdown-menu {
-  transform: translate(-260px, 13px) !important;
+.dropdown-menu[data-bs-popper] {
+  right: 0 !important;
+  left: auto !important;
 }
-
+i{
+  color: var(--light_purple);
+}
 .dropdown-menu::before {
   content: "";
   position: absolute;
@@ -325,14 +333,18 @@ ul {
 .form-label {
   color: var(--text-color);
   text-transform: capitalize;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .form-control:focus,
 .form-select:focus {
   border-color: var(--primary) !important;
 }
-
+.form-control::placeholder{
+  color: var(--copy-color);
+  font-size: 14px;
+  text-transform: capitalize;
+}
 /*---- Company Details ---*/
 .bs-stepper.vertical .bs-stepper-header {
   min-width: 20rem !important;
@@ -632,7 +644,7 @@ div.subscribe-box {
 /*--- Multiple Step Form ----*/
 
 .card {
-  padding: 15px 20px;
+  padding: 15px;
   border: 1px solid #eee;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.07);
 }
@@ -654,7 +666,9 @@ div.subscribe-box {
   transform-origin: top;
   animation: animate 0.5s;
 }
-
+.preview-image{
+  display: none;
+}
 /* Progress bar */
 
 .progress-bar {
@@ -689,7 +703,7 @@ div.subscribe-box {
 .progress-step {
   width: 35px;
   height: 35px;
-  background-color: #dcdcdc;
+  background-color: var(--light_purple);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -711,7 +725,7 @@ div.subscribe-box {
   content: attr(data-title);
   position: absolute;
   top: calc(100% + 0.2rem);
-  left: 50%;
+  left: 63%;
   transform: translateX(-50%);
   font-size: 0.85rem;
   color: #000 !important;
@@ -805,22 +819,25 @@ footer {
 }
 
 /*--- Company Card ---*/
-
 .card-border {
   border: 1px solid #2f34387d;
 }
 .dashboard-header{
   box-shadow: none;
   border: none;
+  padding: 10px 0 !important;
 }
 .card-data {
   min-height: 100%;
 }
-.company-card .row .col-md-4:nth-child(2) .card-data .company-title{
+.company-card .row .col-md-4:nth-child(odd) .card-data, .company-card .row .col-md-4:nth-child(even) .card-data{
+  border:  4px solid transparent;
+}
+.company-card .row .col-md-4:nth-child(odd) .card-data .company-title{
   background-color: #FBEEE6;
   ;
 }
-.company-card .row .col-md-4:nth-child(3) .card-data .company-title{
+.company-card .row .col-md-4:nth-child(even) .card-data .company-title{
 background-color: #C7F6C7;
 }
 .company-title {
@@ -832,38 +849,61 @@ background-color: #C7F6C7;
   border-radius: 4px;
   background-color: var(--title-bg);
 }
-.company-card .row .col-md-4:nth-child(2) .card-border{
-  border: 1px solid #FBEEE6 ;
+
+.company-card .row .col-md-4:nth-child(odd) .card-border{
+  border: 4px solid  #FBEEE6;
 }
-.company-card .row .col-md-4:nth-child(3) .card-border{
-  border: 1px solid #C7F6C7;
+.company-card .row .col-md-4:nth-child(even) .card-border{
+  border: 4px solid #C7F6C7;
 }
 .company-title .check{
   border: none;
   opacity: 0;
-  width: 16px;
-  height: 16px;
+  width: 28px;
+  height: 28px;
   position: absolute;
   right: 34px;
   top: 26px;
+  cursor: pointer;
 
 }
-
-.check-icon{
-  position: absolute;
-  font-size: 16px;
-  opacity: 0.3;
-  top: 26px;
-  right: 35px;
+.company-title span{
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--light_purple);
+  border: 1px solid var(--light_purple);
+}
+.company-title span:hover{
+  border: 1px solid var(--secondary);
+}
+.company-title span:hover i{
   color: var(--primary);
 }
-
+.card-border .company-title span:hover i{
+  color: #fff;
+}
+.card-border .company-title i{
+  color: #fff;
+}
+.card-border .company-title span{
+  background-color: #38AB70;
+  border: 1px solid #38AB70;
+}
+.check-icon{
+  color: #ddd;
+}
+.company-title h4 a:hover{
+ text-decoration: underline;
+}
 /* .check-icon{
   display: none;
 } */
-.card-border .check-icon{
-  opacity: 1;
-}
+
 .information-list ul {
   display: grid;
 }
@@ -886,7 +926,7 @@ background-color: #C7F6C7;
   margin-bottom: 5px;
 }
 
-.information-list li>div:nth-child(1) {
+.information-list li>div:nth-child(1){
   display: flex;
   position: relative;
   margin-right: 5px;
@@ -904,6 +944,7 @@ background-color: #C7F6C7;
 .information-list li i {
   margin-right: 10px;
   color: var(--light_purple);
+  transform: translateY(3px);
 }
 
 .information-list li>div:nth-child(1):after {
@@ -946,42 +987,44 @@ background-color: #C7F6C7;
   border-top: 1px solid #eee;
 }
 .custom-tab{
-  border-left: 2px solid var(--primary);
-  background-color: var(--light_purple);
-  padding: 15px 0;
+  border-right: 1px solid #eee;
 }
 .modal .modal-body ul.custom-tab li a{
   border: none;
   text-align: left;
   font-size: 14px;
   color: #000;
+  border-bottom: 1px solid #eee;
   justify-content: start;
   white-space: nowrap;
 }
 .modal .modal-body ul.custom-tab li a.nav-link.active{
  color: #fff !important;
- border-radius: 0;
+ border-radius: 0.375rem;
 }
 .modal .modal-body ul.custom-tab li a.nav-link:hover{
   color: #fff !important;
-  border-radius: 0;
+  border-radius: 0.375rem;
+  padding: 8px !important;
   background-color: var(--primary) !important;
-  border: 1px solid var(--primary) !important;
+  border: none !important;
 }
 /*-- Search Filter for Header ---*/
 .tab-pane-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 20px;
+  background-color: #eee;
+  padding: 10px 12px;
+  border-radius: 5px;
 }
 .tab-pane-header .form-control{
   border: 1px solid #566a7f;
   color: #000;
 }
-.tab-pane-header .form-control::placeholder{
-  color: #000;
-}
+
 .custom_search_filter .category-dropdown .category-dropdown ul li {
   padding: 5px;
   list-style: none;
@@ -1022,18 +1065,34 @@ background-color: #C7F6C7;
   padding-right: 10px;
 }
 
+.pagination .page-item .page-link{
+  border-radius: 50%;
+}
+.alphabet-filter{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding:  10px 5px;
+  border: 1px solid #eee;
+}
+.advance-filter li{
+  padding: 0;
+  width: 14px;
 
-.tab-content .pagination .page-link{
-   color: #fff;
-   background-color: #9ca6ec;
-   border: 1px solid #9ca6ec;
-   border-radius: 50%;
+}
+.alphabet-filter li a{
+  background: transparent;
+  padding: 0;
+  color: #000;
+  font-size: 14px;
+  min-width: 14px;
+}
+.alphabet-filter li a:hover, .alphabet-filter li a.page-link.active{
+  background: transparent !important;
+  padding: 0;
+  color: var(--primary);
 }
 
-.tab-content .pagination .page-link:hover, .tab-content .pagination .page-link.active{
-  background-color: var(--primary);
-  border: 1px solid var(--primary);
-}
 .scroll-content::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--bg-card);
@@ -1061,7 +1120,7 @@ background-color: #C7F6C7;
 
 .nav-pills .nav-link.active {
   background-color: var(--primary) !important;
-  border: 1px solid var(--primary) !important;
+ 
 }
 
 .form-check-inline:last-child {
@@ -1091,7 +1150,6 @@ background-color: #C7F6C7;
 
 .tab-active {
   background-color: var(--primary) !important;
-  border: 1px solid var(--primary) !important;
   color: #fff !important;
 
 }
@@ -1209,7 +1267,30 @@ background-color: #C7F6C7;
   .terms {
     font-size: 12px;
   }
-
+  /*--- Dashboard ---*/
+  .checked_company_info{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .tab-pane-header{
+    justify-content: center;
+  }
+  .modal-open{
+    padding-right: 0 !important;
+  }
+  .contact-list li{
+    padding-bottom: 10px;
+  }
+  footer{
+    height: auto;
+  }
+.footer-sec{
+  height: 240px;
+}
   /*--- Navbar ----*/
   .top-header-right {
     display: block;
@@ -1341,6 +1422,10 @@ background-color: #C7F6C7;
 
 .profile-list li div:nth-child(1) {
   font-size: 15px;
+  min-width: 105px;
+}
+.profile-list li:not(:last-child){
+  margin-bottom: 10px !important;
 }
 
 .profile-list li div:last-child {

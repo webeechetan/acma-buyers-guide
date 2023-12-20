@@ -4,23 +4,19 @@
 
 @endpush
 @section('content')
-<div class="row">
+<div class="row mt-5 mb-4 border-bottom pb-3">
   <div class="col-12">
-    <div class="card mb-4 p-0">
-      <div class="user-profile-header-banner">
-        <img src="{{ asset('admin/') }}/assets/img/pages/bg_banner.jpg" alt="Banner image" class="rounded-top">
-      </div>
-      <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
-        <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
+     <div class="d-flex justify-content-between align-items-center">
+        <div>
           
           @if ($company_contact_details->image)
-            <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+            <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
           @else
-            <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+            <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
           @endif
 
         </div>
-        <div class="flex-grow-1 mt-3 mt-sm-5">
+        <div>
           <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
             <div class="user-profile-info">
               <h4>{{$company->name}}</h4>
@@ -32,27 +28,25 @@
                 </li>
                 @endif
                 <li class="list-inline-item fw-medium">
-                  <i class="bx bx-calendar-alt"></i> {{$company->created_at->format('d M-y')}}
+                  <i class="bx bx-calendar-alt"></i> <span class="text-primary">{{$company->created_at->format('d M-y')}}</span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 <div class="row">
-   <div class="col-md-4">
+   <div class="col-md-5 border-end">
     <!-- About User -->
-    <div class="card inner-profile-card">
-      <div class="card-body">
-        <p>About</p>
-        <div class="information-list profile-list mb-3">
+    <div class="inner-profile-card">
+        <div class="information-list profile-list mb-4">
+          <h5 class="text-primary fw-medium">About</h5>
           <ul>
               <li>
                 <div>
-                    <i class="bx bx-user"></i><span>Company Name:</span>
+                  <i class='bx bx-buildings'></i><span>Company</span>
                 </div>
 
                 @if($company->name)
@@ -60,17 +54,17 @@
                     <span>{{$company->name}}</span>
                 </div>
                 @else 
-                <p>NA</p>
+                <span>NA</span>
                 @endif
               </li>
           </ul>
         </div>
-          <p>Contacts</p>
           <div class="information-list profile-list">
+             <h5 class="text-primary fw-medium">Contact</h5>
             <ul>
                 <li>
                   <div>
-                      <i class="bx bx-user"></i><span>Contact</span>
+                  <i class='bx bxs-contact'></i><span>Contact</span>
                   </div>
 
                   @if($company_contact_details->phone)
@@ -78,7 +72,7 @@
                       <span>{{$company_contact_details->phone }}</span>
                   </div>
                   @else  
-                  <p>NA</p>
+                  <span>NA</span>
                   @endif
                 </li>
                 <li>
@@ -91,7 +85,7 @@
                       <span>{{$company_contact_details->fax}}</span>
                   </div>
                   @else 
-                  <p>NA</p>
+                  <span>NA</span>
                   @endif
                 </li>
                 <li>
@@ -103,7 +97,7 @@
                       <span>{{$company_contact_details->pin}}</span>
                   </div>
                   @else 
-                  <p>NA</p>
+                  <span>NA</span>
                   @endif
                 </li>
                 <li>
@@ -115,7 +109,7 @@
                       <span>{{$company->email}}</span>
                   </div>
                   @else 
-                  <p>NA</p> 
+                  <span>NA</span> 
                   @endif
                 </li>
                 <li>
@@ -127,38 +121,36 @@
                       <span>{{$company->website}}</span>
                   </div>
                   @else 
-                  <p>NA</p>
+                  <span>NA</span>
                   @endif
                 </li>
             </ul>
           </div>
-      </div>
     </div>
     <!--/ About User -->
     <!-- Profile Overview -->
    
     <!--/ Profile Overview -->
   </div> 
-  <div class="col-xl-8 col-lg-7 col-md-7">
+  <div class="col-md-7">
     <!-- Activity Timeline -->
-    <div class="card card-action mb-4">
-      <div class="card-header align-items-center">
-        <h5 class="card-action-title mb-0"><i class="bx bx-list-ul me-2"></i>Company Profile Update Request Status</h5> 
+    <div class="card-action mb-4">
+      <div class="align-items-center">
+        <h5 class="card-action-title mb-0 text-primary fw-semibold"><i class="bx bx-list-ul me-2 text-primary"></i>Company Profile Update Request Status</h5> 
       </div>
    
       @foreach ($CompanyUpdateRequests as $CompanyUpdateRequest)
 
     
-      <div class="card-body p-4">
+      <div class="p-4">
         <ul class="timeline ms-2">
           <li class="timeline-item timeline-item-transparent">
             <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-warning"></span></span>
             <div class="timeline-event">
               <div class="timeline-header mb-1">
                 <h6 class="mb-0 text-warning">Request Sent</h6>
-                <small class="text-muted">{{$CompanyUpdateRequest->created_at->format('d M-y')}}</small>
+                <small class="text-muted text-warning">{{$CompanyUpdateRequest->created_at->format('d M-y')}}</small>
               </div>
-              <p class="mb-2">List</p>
             </div>
           </li>
          
@@ -169,7 +161,7 @@
                 <h6 class="mb-0 text-primary">Request Status</h6>
                 <small class="text-muted">{{ucfirst($CompanyUpdateRequest->status)}}</small>
               </div>
-              <p class="mb-2">{{ucfirst($CompanyUpdateRequest->status)}}</p>
+              <p class="mb-2">{{ucfirst($CompanyUpdateRequest->status)}}</span>
             </div>
           </li>
         
@@ -183,7 +175,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="text-primary mb-0" id="exampleModalLabel">Updates Companies Details</h4>
+                <h4 class="text-primary mb-0" id="exampleModalLabel">Update Companies Detail</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   </button>
               </div>
@@ -213,9 +205,9 @@
                     }
                   @endphp
 
-                  <ul>
-                    {!! $updating_data !!}
-                  </ul>
+                  <ol>
+                   <li> {!! $updating_data !!}</li>
+                  </ol>
 
 
               </ul>

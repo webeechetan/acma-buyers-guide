@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\CompanyUpdateRequest;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,9 +15,12 @@ class DashboardController extends Controller
     public function index()
     {
         
+        $ProfileapprovedCount = CompanyUpdateRequest::where('status', 'approved')->count();
+        $ProfilependingCount = CompanyUpdateRequest::where('status', 'pending')->count();
+
         $totalCompanyCount = Company::count();
         $lastestFiveCompanies = Company::orderBy('created_at', 'desc')->limit(5)->get();
-        return view('admin.dashboard', compact('totalCompanyCount','lastestFiveCompanies'));
+        return view('admin.dashboard', compact('totalCompanyCount','lastestFiveCompanies','ProfilependingCount','ProfileapprovedCount'));
     }
 
     /**

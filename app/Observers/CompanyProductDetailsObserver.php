@@ -26,9 +26,9 @@ class CompanyProductDetailsObserver
 
     public function updating(CompanyProductDetails $companyProductDetails)
     {
-        $updated_models = session('updated_models');
-        $updated_models['CompanyProductDetail'] = true;
-        session(['updated_models' => $updated_models]);
+        // $updated_models = session('updated_models');
+        // $updated_models['CompanyProductDetail'] = true;
+        // session(['updated_models' => $updated_models]);
 
         $original = $companyProductDetails->getOriginal();
 

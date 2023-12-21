@@ -28,12 +28,12 @@ class CompanyUpdateRequestObserver
     {
         // send only one email when last created update request is created
         
-        $updated_models = session('updated_models');
+        // $updated_models = session('updated_models');
 
-        $current_model = $CompanyUpdateRequest->modal;
-        $current_model_status = session('updated_models')[$current_model];
+        // $current_model = $CompanyUpdateRequest->modal;
+        // $current_model_status = session('updated_models')[$current_model];
 
-        Log::info($current_model . ' -> '.$current_model_status);
+        // Log::info($current_model . ' -> '.$current_model_status);
 
         $CompanyUpdateRequest->notify(new UpdateUnderReviewNotification($CompanyUpdateRequest, $CompanyUpdateRequest->company));
         $admin = User::find(1);

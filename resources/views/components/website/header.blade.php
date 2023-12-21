@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="navbar navbar-expand-lg">
         <div class="container-xxl">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <div class="logo">
             <img src="https://www.acma.in/images/logo.png" alt="">
             </div>
@@ -28,8 +28,8 @@
                 @endphp
                 <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                        <a class="dropdown-item" href="/">
-                        <div class="d-flex">
+                        <a class="dropdown-item pe-none" href="javascript:void(0);">
+                        <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 me-4">
                             <div class="avatar avatar-online">
                                 <div class="d-flex align-items-center">
@@ -40,7 +40,7 @@
                             </div>
                             </div>
                             <div class="flex-grow-1">
-                            <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
+                            <span class="fw-medium d-flex flex-wrap">{{ $authenticatedCompany->name }}</span>
                             </div>
                         </div>
                         </a>
@@ -54,18 +54,11 @@
                         <span class="align-middle">Account Details</span>
                         </a>
                     </li>
+                   
                     <li>
 
 
-                    <a class="dropdown-item" href="">
-                        <i class='bx bx-building-house me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
-                        </a>
-                    </li>
-                    <li>
-
-
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item pe-none" href="javascript:void(0);">
                             <i class='bx bxs-envelope me-2'></i>
                         <span class="align-middle">{{ $authenticatedCompany->email }}</span>
                         </a>
@@ -84,10 +77,10 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             
             <li class="nav-item">
-                <a class="nav-link me-4" href="{{route('company.profile')}}">Profile</a>
+                <a class="nav-link me-4" href="{{route('company.profile')}}"><i class='bx bx-user'></i> Profile</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
 
                                 
@@ -111,8 +104,8 @@
                 @endphp
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li>
-                        <a class="dropdown-item" href="/">
-                        <div class="d-flex">
+                        <a class="dropdown-item pe-none" href="javascript:void(0);">
+                        <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 me-4">
                             <div class="avatar avatar-online">
                                 <div class="d-flex align-items-center">
@@ -123,7 +116,7 @@
                             </div>
                             </div>
                             <div class="flex-grow-1">
-                            <span class="fw-medium d-block">{{ $authenticatedCompany->name }}</span>
+                            <span class="fw-medium d-flex flex-wrap text-wrap">{{ $authenticatedCompany->name }}</span>
                             </div>
                         </div>
                         </a>
@@ -135,14 +128,6 @@
                         <a class="dropdown-item" href="{{ route('company.fillUpDetails') }}">
                         <i class='bx bx-user-plus me-2'></i>
                         <span class="align-middle">Account Details</span>
-                        </a>
-                    </li>
-                    <li>
-
-
-                    <a class="dropdown-item" href="">
-                        <i class='bx bx-building-house me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
                         </a>
                     </li>
                     <li>

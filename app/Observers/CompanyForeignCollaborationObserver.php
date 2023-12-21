@@ -28,9 +28,9 @@ class CompanyForeignCollaborationObserver
  public function updating(CompanyForeignCollaboration $companyForeignCollaboration)
  {
 
-    $updated_models = session('updated_models');
-    $updated_models['CompanyForeignCollaboration'] = true;
-    session(['updated_models' => $updated_models]);
+    // $updated_models = session('updated_models');
+    // $updated_models['CompanyForeignCollaboration'] = true;
+    // session(['updated_models' => $updated_models]);
 
      $original = $companyForeignCollaboration->getOriginal();
      $updated = $companyForeignCollaboration->getAttributes();

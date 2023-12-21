@@ -6,7 +6,7 @@
 @section('content')
 <div class="row mt-5 mb-4 border-bottom pb-3">
   <div class="col-12">
-     <div class="d-flex justify-content-between align-items-center">
+     <div class="d-flex align-items-center profile-card">
         <div>
           
           @if ($company_contact_details->image)
@@ -19,7 +19,7 @@
         <div>
           <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
             <div class="user-profile-info">
-              <h4>{{$company->name}}</h4>
+              <h4 class="text-dark">{{$company->name}}</h4>
               <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                 
                 @if($company_contact_details->state)
@@ -142,7 +142,7 @@
       @foreach ($CompanyUpdateRequests as $CompanyUpdateRequest)
 
     
-      <div class="p-4">
+      <div class="py-4">
         <ul class="timeline ms-2">
           <li class="timeline-item timeline-item-transparent">
             <span class="timeline-point-wrapper"><span class="timeline-point timeline-point-warning"></span></span>

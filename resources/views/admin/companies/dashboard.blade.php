@@ -118,13 +118,10 @@
                                                             @endfor
                                                          </ul>
                                                       </div>
-                                                   
                                                 </div>
                           
-                                                
-                                               
                           
-                                             <div class="tab-pane container fade" id="region">
+                                                 <div class="tab-pane container fade" id="region">
                                                    <div class="tab-pane-header">
                                                        <h5 class="mb-0 fw-semibold text-justify text-dark">Region Filter</h5>
                                                    </div>
@@ -132,7 +129,8 @@
                                                       @foreach ($regions as $region)
                                                       <div class="col-md-2">
                                                          <div class="mt-2">
-                                                            @if(isset($region['region']) && !empty($region['region']))
+                                                            {{-- @if(isset($region['region']) && !empty($region['region'])) --}}
+                                                            @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
                                                                <div class="form-check form-check-inline mb-2">
                                                                   <input class="form-check-input"  class="active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
                                                                   <label class="form-check-label" for="inlineCheckbox1">{{ $region['region'] }}</label>
@@ -153,30 +151,31 @@
                                                        </div>
                                                     </div>
                                                   </div>
-                                                   <!-- <div class="row mb-3">
-                                                      <div class="col-md-6">
-                                                          <input type="text" class="form-control" id="searchProducts" placeholder="Search products...">
-                                                      </div>
-                                                  </div> -->
+                                                   
                                                 <div class="row scroll-content">
                                                   @foreach ($products as $product)
-                                                      <div class="col-md-12 product-item">
+                                                      <div class="col-md-12">
                                                          <div class="mt-2">
-                                                            @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
+                                                             @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
                                                             <div class="form-check form-check-inline mb-2">
                                                                <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
-                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                               <label class="form-check-label product-item" data-name= "{{ $product['products_manufactured'] }}" for="">{{ $product['products_manufactured'] }}</label>
                                                             </div>
                                                             @endif
                                                          </div>
                                                       </div>
                                                    @endforeach
+                                                   <div class="col-md-12">
+                                                      <div class="mt-2">
+                                                         <div class="no-results-found text-danger">No Results found</div>
+                                                      </div>
+                                                   </div>
                                                 </div>
                                                    <div class="pagination-container">
                                                       <ul class="pagination alphabet-filter">
                                                          @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                             <li class="page-item mb-1">
-                                                                  <a class="page-link" href="#" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                  <a class="page-link" href="javascript:void(0);" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
                                                             </li>
                                                          @endfor
                                                       </ul>
@@ -293,17 +292,22 @@
                                                    <div class="row scroll-content">
                                                     
                                                       @foreach ($combinedLocations as $combinedLocation)
-                                                         <div class="col-md-4 location-items">
+                                                         <div class="col-md-4">
                                                             <div class="mt-2">
                                                                @if(isset($combinedLocation) && !empty($combinedLocation))
                                                                <div class="form-check form-check-inline mb-2">
                                                                   <input class="form-check-input"  class="active-check" type="checkbox" name="location[]" id="locations" value="{{ $combinedLocation }}">
-                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $combinedLocation }}</label>
+                                                                  <label class="form-check-label location-items" data-name="{{ $combinedLocation }}" for="">{{ $combinedLocation }}</label>
                                                                </div>
                                                                @endif
                                                             </div>
                                                          </div>
                                                       @endforeach
+                                                      <div class="col-md-12">
+                                                         <div class="mt-2">
+                                                            <div class="no-results-found text-danger">No Results found</div>
+                                                         </div>
+                                                      </div>
                                                    </div>         
 
                                                    <div class="pagination-container">
@@ -315,11 +319,7 @@
                                                           @endfor
                                                       </ul>
                                                   </div>
-                                                   
-                                                   
-                                                  
                                                 </div>
-                                                
 
                                              </div>
                                                 <div class="mt-3 text-end">
@@ -379,7 +379,8 @@
                   <form action="{{ route('dashboard.company.export') }}">                 
                   
                      <div class="row">
-                     @foreach ($companies as $company)   
+                     @foreach ($companies as $company)
+
                            <div class="col-md-4 mb-3">
                                  <div class="card card-data">
                                     <div class="company-title">
@@ -391,12 +392,11 @@
                                           <ul>
                                              <li>
                                                 <div>
-                                                   <i class="fa fa-map-marker" aria-hidden="true"></i><span>Address</span>
+                                                   <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
                                                 </div>
-
                                                 <div>
-                                                   @if($company && $company->contact_details)
-                                                      <span>{{ $company->contact_details->company_address }}</span>
+                                                   @if($company && $company->contact_details->state)
+                                                      <span>{{ucfirst($company->contact_details->state)}}</span>
                                                    @else
                                                    <span>NA</span>
                                                    @endif
@@ -408,7 +408,7 @@
                                                 </div>
                                                 <div>
 
-                                                   @if($company && $company->contact_details)
+                                                   @if($company && $company->contact_details->phone)
                                                    
                                                          <span>{{$company->contact_details->phone}}</span>
                                                    @else 
@@ -423,7 +423,7 @@
                                                 </div>
                                                 <div>
                                                 
-                                                   @if($company && $company->contact_details)
+                                                   @if($company && $company->contact_details->fax)
                                                       <span>{{$company->contact_details->fax}}</span> 
                                                       @else 
                                                       <span>NA</span>
@@ -437,8 +437,8 @@
                                                 </div>
                                                 <div>
                                                    
-                                                   @if($company && $company->contact_details)
-                                                   <a href="{{$company->email}}">{{$company->email}}</a>
+                                                   @if($company && $company->email)
+                                                   <a href="">{{ucfirst($company->email)}}</a>
                                                    @else 
                                                    <span>NA</span>
                                                    @endif
@@ -451,7 +451,7 @@
                                                 </div>
                                                 <div>
                                                    @if($company && $company->website)
-                                                   <a href="http://www.acma.in">{{$company->website}}</a>
+                                                   <a href="">{{ucfirst($company->website)}}</a>
                                                    @else 
                                                    <span>NA</span>
                                                 @endif
@@ -527,10 +527,14 @@ $(document).ready(function () {
 
 
    var companyItems = '';
+   var productItems = '';
+   var states_city = '';
    document.addEventListener("DOMContentLoaded", function () {
       var checkboxes = document.querySelectorAll('.form-check-inline input[type="checkbox"]');
       var tabs = document.querySelectorAll('.nav-pills .nav-link');
       companyItems = document.querySelectorAll('.company-item');
+      productItems = document.querySelectorAll('.product-item');
+      states_city  = document.querySelectorAll('.location-items');
 
       checkboxes.forEach(function (checkbox, index) {
          checkbox.addEventListener('change', function () {
@@ -613,94 +617,116 @@ $(document).ready(function () {
    });
 
    function filterProducts(letter) {
-   // Get all product items
-      var productItems = document.querySelectorAll('.product-item');
-      // Iterate through each product item and show/hide based on the selected letter
+
       productItems.forEach(function (item) {
-         var labelElement = item.querySelector('.form-check-label');
 
-         // Check if label element exists
-         if (labelElement) {
-            var productName = labelElement.innerText;
+         var productName = item.dataset.name;
 
-            if (letter === 'all' || productName.charAt(0).toUpperCase() === letter) {
-                  item.style.display = 'block';
+         if (letter === 'all' || productName.charAt(0).toUpperCase() === letter) {
+            $(item).parent().parent().parent().css('display', 'block');
             } else {
-                  item.style.display = 'none';
+               $(item).parent().parent().parent().css('display', 'none');
             }
-         }
       });
-   }
 
+   }
 
    // // Add event listener to the search input
    document.getElementById('searchProducts').addEventListener('input', function () {
       filterProducts('all'); // Show all items
       var searchTerm = this.value.toLowerCase();
 
-      // Get all product items
-      var productItems = document.querySelectorAll('.product-item');
+      if(searchTerm.length  <= 1){
+      $(".highlighted_text").removeClass('text-warning');
+   }
 
-      // Iterate through each product item and show/hide based on the search term
-      productItems.forEach(function (item) {
-         var labelElement = item.querySelector('.form-check-label');
+   if(searchTerm.length < 2){
+      return false;
+   }
 
-         // Check if label element exists
-         if (labelElement) {
-            var productName = labelElement.innerText.toLowerCase();
-            if (productName.includes(searchTerm)) {
-                  item.style.display = 'block';
-            } else {
-                  item.style.display = 'none';
-            }
-         }
-      });
+
+   var no_results_found = false;
+   productItems.forEach(function(item) {
+      var productName = item.dataset.name;
+       productName = productName.toLowerCase();
+
+      if (productName.includes(searchTerm)) {
+         no_results_found = true;
+         $(item).parent().parent().parent().css('display', 'block');
+         var regex = new RegExp(searchTerm, 'gi');
+         var highlighted = productName.replace(regex, function (str) {
+
+            return '<span class = "text-warning highligted_text">' + str + '</span>';
+         });
+         item.innerHTML = highlighted; 
+      }else {
+         $(item).parent().parent().parent().css('display', 'none');
+      }
    });
 
 
+   if (no_results_found) {
+         $('.no-results-found').css('display', 'none');
+      } else {
+         $('.no-results-found').css('display', 'block');
+      }
+          
+   });
+
    function filterLocations(letter) {
-      // Get all product items
-      var states_city = document.querySelectorAll('.location-items');
-      // Iterate through each product item and show/hide based on the selected letter
+
       states_city.forEach(function (item) {
-         var labelElement = item.querySelector('.form-check-label');
+        
+       var  state_city =  item.dataset.name;
 
-         // Check if label element exists
-         if (labelElement) {
-            var states_city = labelElement.innerText;
-
-            if (letter === 'all' || states_city.charAt(0).toUpperCase() === letter) {
-                  item.style.display = 'block';
+            if (letter === 'all' || state_city.charAt(0).toUpperCase() === letter) {
+                  $(item).parent().parent().parent().css('display', 'block');
             } else {
-                  item.style.display = 'none';
+               $(item).parent().parent().parent().css('display', 'none');
             }
-         }
-      });
-   }
+         });
+      }
+      
 
    // Add event listener to the search input
    document.getElementById('searchLocations').addEventListener('input', function () {
-      filterLocations('all'); // Show all items
+      filterLocations('all'); 
       var searchTerm = this.value.toLowerCase();
 
-      // Get all product items
-      var location_items = document.querySelectorAll('.location-items');
+      if(searchTerm.length  <= 1){
+      $(".highlighted_text").removeClass('text-warning');
+   }
+   if(searchTerm.length < 2){
+      return false;
+   }
+   var no_results_found = false;
 
-      // Iterate through each product item and show/hide based on the search term
-      location_items.forEach(function (item) {
-         var labelElement = item.querySelector('.form-check-label');
+   states_city.forEach(function (item) {
+         var state_city  = item.dataset.name;
+         state_city = state_city.toLowerCase();
 
-         // Check if label element exists
-         if (labelElement) {
-            var location_items = labelElement.innerText.toLowerCase();
-            if (location_items.includes(searchTerm)) {
-                  item.style.display = 'block';
-            } else {
-                  item.style.display = 'none';
-            }
+         if (state_city.includes(searchTerm)) {
+            no_results_found = true;
+            $(item).parent().parent().parent().css('display', 'block');
+            // highlight search term
+            var regex = new RegExp(searchTerm, 'gi');
+            var highlighted = state_city.replace(regex, function (str) {
+               return '<span class="text-warning highlighted_text">' + str + '</span>';
+            });
+            item.innerHTML = highlighted;
+         } else {
+            $(item).parent().parent().parent().css('display', 'none');
          }
       });
+
+      if (no_results_found) {
+         $('.no-results-found').css('display', 'none');
+      } else {
+         $('.no-results-found').css('display', 'block');
+      }
+
    });
+
 
    $(document).ready(function () {
       $('.tab-content .pagination .page-link').click(function () {

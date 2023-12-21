@@ -71,9 +71,10 @@ Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admi
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    // Route::get('/dashboard', function () {
+    //     dd('hello1');
+    //     return view('admin.dashboard');
+    // })->name('admin.dashboard');
 
     Route::get('/members', [MemberController::class, 'index'])->name('admin.members');
     Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');

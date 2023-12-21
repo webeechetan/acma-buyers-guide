@@ -83,7 +83,7 @@
                                                   <div class="tab-pane-header">
                                                      <h5 class=" mb-md-0 text-justify fw-semibold text-dark">Company Filter</h5>
                                                      <div class="custom_search_filter">
-                                                       <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
+                                                       <input type="text"  id="searchCompanies" class="form-control" placeholder="Type 2 characters to search companies...">
                                                        <div class="custom_search_filter_inputMask">
                                                         <i class="bx bx-search"></i>
                                                        </div>
@@ -103,6 +103,11 @@
                                                             </div>
                                                          </div>
                                                        @endforeach
+                                                       <div class="col-md-12">
+                                                         <div class="mt-2">
+                                                            <div class="no-results-found text-danger">No Results found</div>
+                                                         </div>
+                                                      </div>
                                                   </div>
                                                      <div class="pagination-container">
                                                          <ul class="pagination alphabet-filter">
@@ -319,7 +324,7 @@
                                              </div>
                                                 <div class="mt-3 text-end">
                                                       <button class="btn btn-success border-success">Apply</button>
-                                                      <a href="{{ url()->current() }}" class="btn btn-danger border-danger">Reset</a>
+                                                      <a href="{{ url()->current() }}" class="btn btn-danger border-danger btn_reset">Reset</a>
                                                 </div>
                                             </form>
                                           </div>
@@ -461,7 +466,7 @@
                         @endforeach
 
                      
-                     {{ $companies->withQueryString()->links() }}
+                     {{ $companies->onEachSide(1)->withQueryString()->links() }}
                      <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
                      <div class="row">
                         <div class="col-md-12 text-center">
@@ -573,18 +578,38 @@ $(document).ready(function () {
    document.getElementById('searchCompanies').addEventListener('input', function () {
    filterCompanies('all');
    var searchTerm = this.value.toLowerCase();
+   if(searchTerm.length  <= 1){
+      $(".highlighted_text").removeClass('text-warning');
+   }
+   if(searchTerm.length < 2){
+      return false;
+   }
+   
+   var no_results_found = false;
       companyItems.forEach(function (item) {
          var companyName = item.dataset.name;
          companyName = companyName.toLowerCase();
 
          if (companyName.includes(searchTerm)) {
-            
+            no_results_found = true;
             $(item).parent().parent().parent().css('display', 'block');
+            // highlight search term
+            var regex = new RegExp(searchTerm, 'gi');
+            var highlighted = companyName.replace(regex, function (str) {
+               return '<span class="text-warning highlighted_text">' + str + '</span>';
+            });
+            item.innerHTML = highlighted;
          } else {
-            
             $(item).parent().parent().parent().css('display', 'none');
          }
       });
+
+      if (no_results_found) {
+         $('.no-results-found').css('display', 'none');
+      } else {
+         $('.no-results-found').css('display', 'block');
+      }
+
    });
 
    function filterProducts(letter) {

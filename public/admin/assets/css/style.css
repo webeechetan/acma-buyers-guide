@@ -160,7 +160,7 @@ body {
   padding-bottom: 39px;
 }
 .pe-auto{
-  cursor: pointer;
+  cursor: pointer !important;
 }
 ul {
   margin: 0;
@@ -1438,9 +1438,9 @@ background-color: #C7F6C7;
   margin-top: -2rem
 }
 
-.user-profile-header .user-profile-img , .user-profile-img img{
+.user-profile-header .user-profile-img , .user-profile-img{
   border: 5px solid;
-  width: 120px
+  width: 200px;
 }
 
 .light-style .user-profile-header .user-profile-img {

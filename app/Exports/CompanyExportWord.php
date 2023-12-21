@@ -16,55 +16,58 @@ class CompanyExportWord
     }
 
     public function export($format = 'Word2007')
-    {
-        $companies = Company::all();
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+{
+    $companies = Company::all();
+    $phpWord = new \PhpOffice\PhpWord\PhpWord();
+
+    foreach ($companies as $company) {
         $section = $phpWord->addSection();
+        
         $header = ['size' => 16, 'bold' => true];
 
-        $filler = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-            . 'Nulla fermentum, tortor id adipiscing adipiscing, tortor turpis commodo. '
-            . 'Donec vulputate iaculis metus, vel luctus dolor hendrerit ac. '
-            . 'Suspendisse congue congue leo sed pellentesque.';
+        // Title for each company
+        $section->addTextBreak(1);
+        $section->addText("Company: {$company->name}", $header);
 
-        // Normal
-        $section = $phpWord->addSection();
-        $section->addText("Normal paragraph. {$filler}");
+        // Table for each company
+        $fancyTableStyleName = 'Fancy Table';
+        $fancyTableStyle = [
+            'borderSize' => 2,
+            'borderColor' => '006699',
+            'cellMargin' => 80,
+            'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,
+            'cellSpacing' => 50,
+        ];
+        $fancyTableFirstRowStyle = [
+            'borderBottomSize' => 18,
+            'borderBottomColor' => '0000FF',
+            'bgColor' => '66BBFF',
+        ];
+        $fancyTableCellStyle = ['valign' => 'center'];
+        $fancyTableFontStyle = ['bold' => true];
 
-        // Two columns
-        $section = $phpWord->addSection(
-            [
-                'colsNum' => 2,
-                'colsSpace' => 1440,
-                'breakType' => 'continuous',
-            ]
-        );
-        $section->addText("Two columns, one inch (1440 twips) spacing. {$filler}");
+        $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
+        $table = $section->addTable($fancyTableStyleName);
 
-        // Normal
-        $section = $phpWord->addSection(['breakType' => 'continuous']);
-        $section->addText("Normal paragraph again. {$filler}");
+        // Header row
+        $table->addRow(900);
+        $table->addCell(4000, $fancyTableCellStyle)->addText('Company Details', $fancyTableFontStyle);
+        $table->addCell(4000, $fancyTableCellStyle)->addText('Company Contact Details', $fancyTableFontStyle);
 
-        // Three columns
-        $section = $phpWord->addSection(
-            [
-                'colsNum' => 3,
-                'colsSpace' => 720,
-                'breakType' => 'continuous',
-            ]
-        );
-        $section->addText("Three columns, half inch (720 twips) spacing. {$filler}");
-
-        // Normal
-        $section = $phpWord->addSection(['breakType' => 'continuous']);
-        $section->addText("Normal paragraph again. {$filler}");
-
-        // Save the Word document
-        $filename = 'exported_document.docx';
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
-        $objWriter->save(storage_path($filename));
-
-        // Provide the download link for the user
-        return response()->download(storage_path($filename));
+        // Data rows
+        // there should be a card in each cell of the table with the company details
+        $table->addRow();
+        $table->addCell(4000)->addText($company->name);
+        $table->addCell(4000)->addText($company->contact_details->company_address);
     }
+
+    // Save the Word document
+    $filename = 'exported_document1.docx';
+    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
+    $objWriter->save(storage_path($filename));
+
+    // Provide the download link for the user
+    return response()->download(storage_path($filename));
+}
+
 }

@@ -12,7 +12,7 @@
 <h4>Pending Profile Approve Requests</h4>
 <div class="row">
     @foreach ($pendingRequests as $request)
-        <div class="col-md-6 mb-4">
+        <div class="col-md-12 mb-4">
             <div class="card">
                 <div>
                    <h5 class="text-primary"> {{ $request->company->name  }}</h5>

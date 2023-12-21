@@ -46,7 +46,7 @@
                   </div>
                   <div class="subscribe-content">
                     <h2 class="title">Buyers Guide</h2>
-                    <p>List of ACMA member Companies and. automobile manufacturers with Contact Details.</p>
+                    <p>List of ACMA member Companies and automobile manufacturers with Contact Details.</p>
                   </div>
                   <div class="subscribe-social">
                     <h4 class="sub-title text-white mb-0"> Follow Us</h4>
@@ -72,7 +72,7 @@
                         </li> -->
                         <!-- <li class="nav-item">or</li> -->
                         <li class="nav-item">
-                          <a class="nav-link fw-24 border-none" data-bs-toggle="pill" href="#login">Login</a>
+                          <a class="nav-link fw-24 border-none p-0 text-start" data-bs-toggle="pill" href="#login">Sign in to your account</a>
                         </li>
                       </ul>
                     </div>

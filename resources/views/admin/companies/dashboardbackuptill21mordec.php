@@ -10,20 +10,18 @@
 @section('content')
 <!-- Content -->
 <section class="sec-space">
-   <div class="container-xxl">
-      <div class="row">
-         <div class="col-md-12">
-            <!--- Search Filter ---->
-            <div class="card dashboard-header mb-3">
+   <div>
+      <!--- Search Filter ---->
+      <div class="card dashboard-header">
                <div class="card-body">
                   <div class="row">
-                     <div class="col-md-8">
+                     <div class="col-md-6">
                         <div>
                            <h2 class="title mb-md-0 text-center text-md-start">Buyers Guide Database</h2>
                         </div>
                      </div>
-                     <div class="col-md-4">
-                        <div class="custom_search_filter text-md-end text-center">
+                     <div class="col-md-6">
+                        <div class="custom_search_filter text-center text-md-end">
                            <!-- <form action="/" method="GET">
                               <input type="text" data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="form-control"
                                  id="filter_category" name="filter_category" placeholder="Filter By Category" value="">
@@ -32,13 +30,7 @@
                               </div>
                            </form> -->
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary btn-sm"id="filter_category" name="filter_category">Filter<span class='bx bx-filter ms-2'></span></button>
-                           <div class="checked_company_info"> 
-                              <span class="total_companies"></span>
-                              <br>
-                              <span class="checked_companies"></span>
-                              <br>
-                              <span class="clear_checked" onclick="clear_checked()">Clear</span>
-                           </div>
+                           
                            <!-- Modal -->
                            <div class="modal fade" id="static"  data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog modal-lg" role="document">
@@ -51,27 +43,27 @@
                                           <div class="col-md-3">
                                              <ul class="nav nav-pills custom-tab  d-block mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
-                                                  <span><i class='bx bx-building-house' ></i></span> <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company">Company</a>
+                                                   <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"> <i class='bx bx-building-house me-2' ></i> Company</a>
                                                 </li>
                                                
                                                 <li  class="filter-name mb-2" data-filter="region">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#region">Region</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#region"><i class='bx bx-globe me-2'></i> Region</a>
                                                 </li>
                                                 <li  class="filter-name mb-2" data-filter="product">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#product">Product</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#product"> <i class='bx bx-cart-alt me-2' ></i> Product</a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="trademark" >
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#trademark">Trademark</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#trademark"><i class='bx bx-store-alt me-2' ></i> Trademark</a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="salesTurnover" >
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover">Sales Turnover</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover"><i class='bx bx-money-withdraw me-2' ></i> Sales Turnover</a>
                                                 </li>
                                                 {{-- <li class="filter-name mb-2" data-filter="exportTurnover" >
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
                                                 </li> --}}
 
                                                 <li  class="filter-name" data-filter="location">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location">States & City</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location"><i class='bx bx-world me-2'></i> States & City</a>
                                                 </li>
 
                                               
@@ -89,35 +81,36 @@
                                              <div class="tab-content">
                                                 <div class="tab-pane container active" id="company">
                                                   <div class="tab-pane-header">
-                                                     <h5 class=" mb-0 text-justify fw-semibold text-dark">Company Filter</h5>
+                                                     <h5 class=" mb-md-0 text-justify fw-semibold text-dark">Company Filter</h5>
                                                      <div class="custom_search_filter">
-                                                       <input type="text"  id="searchCompanies" class="form-control" placeholder="Search companies...">
+                                                       <input type="text"  id="searchCompanies" class="form-control" placeholder="Type 2 characters to search companies...">
                                                        <div class="custom_search_filter_inputMask">
                                                         <i class="bx bx-search"></i>
                                                        </div>
                                                      </div>
                                                     
                                                   </div>
-                                                  <div class="row  scroll-content">
-                                                   <div class="col-md-11">
-                                                      <div class="row">
-                                                         @foreach($companies_name as $company)
-                                                            <div class="col-md-4">
-                                                               <div class="mt-2">
-                                                                  @if(isset($company['name']) && !empty($company['name']))
-                                                               <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>                                                                         
-                                                                        <label class="form-check-label company-item" data-name="{{ $company['name'] }}" for="">{{ $company['name'] }}</label>
-                                                                     </div>
-                                                                  @endif
-                                                               </div>
+                                                  <div class="row scroll-content">
+                                                     @foreach($companies_name as $company)
+                                                         <div class="col-md-6">
+                                                            <div class="mt-2">
+                                                               @if(isset($company['name']) && !empty($company['name']))
+                                                            <div class="form-check form-check-inline mb-2">
+                                                               <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>    
+                                                               <label class="form-check-label company-item" data-name="{{ $company['name'] }}" for="">{{ $company['name'] }}</label>
+                                                                  </div>
+                                                               @endif
                                                             </div>
-                                                         @endforeach
+                                                         </div>
+                                                       @endforeach
+                                                       <div class="col-md-12">
+                                                         <div class="mt-2">
+                                                            <div class="no-results-found text-danger">No Results found</div>
+                                                         </div>
                                                       </div>
-                                                   </div>
-                                                   <div class="col-md-1">
-                                                      <div class="pagination-slider">
-                                                         <ul class="pagination d-flex flex-column align-items-center">
+                                                  </div>
+                                                     <div class="pagination-container">
+                                                         <ul class="pagination alphabet-filter">
                                                             @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                                <li class="page-item mb-1">
                                                                      <a class="page-link" href="javascript:void(0);" onclick="filterCompanies('{{ chr($i) }}')">{{ chr($i) }}</a>
@@ -125,20 +118,19 @@
                                                             @endfor
                                                          </ul>
                                                       </div>
-                                                   </div>
-                                                  </div>
                                                 </div>
                           
-                                                
-                                               
                           
-                                             <div class="tab-pane container fade" id="region">
-                                                   <h6 class="mb-2 text-justify text-dark">Region Filter</h6>
+                                                 <div class="tab-pane container fade" id="region">
+                                                   <div class="tab-pane-header">
+                                                       <h5 class="mb-0 fw-semibold text-justify text-dark">Region Filter</h5>
+                                                   </div>
                                                    <div class="row scroll-content">
                                                       @foreach ($regions as $region)
                                                       <div class="col-md-2">
                                                          <div class="mt-2">
-                                                            @if(isset($region['region']) && !empty($region['region']))
+                                                            {{-- @if(isset($region['region']) && !empty($region['region'])) --}}
+                                                            @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
                                                                <div class="form-check form-check-inline mb-2">
                                                                   <input class="form-check-input"  class="active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
                                                                   <label class="form-check-label" for="inlineCheckbox1">{{ $region['region'] }}</label>
@@ -151,7 +143,7 @@
                                                 </div>
                                                 <div class="tab-pane container fade" id="product">
                                                   <div class="tab-pane-header">
-                                                    <h6 class="mb-0 text-justify text-dark">Product Filter</h6>
+                                                    <h5 class="mb-md-0 text-justify fw-semibold  text-dark">Product Filter</h5>
                                                     <div class="custom_search_filter">
                                                        <input type="text" class="form-control" id="searchProducts" placeholder="Search products...">
                                                        <div class="custom_search_filter_inputMask">
@@ -164,39 +156,34 @@
                                                           <input type="text" class="form-control" id="searchProducts" placeholder="Search products...">
                                                       </div>
                                                   </div> -->
-                                                   <div class="row scroll-content">
-                                                      <div class="col-md-11">
-                                                         <div class="row">
-                                                            @foreach ($products as $product)
-                                                               <div class="col-md-6 product-item">
-                                                                  <div class="mt-2">
-                                                                     @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
-                                                                     <div class="form-check form-check-inline mb-2">
-                                                                        <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
-                                                                        <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
-                                                                     </div>
-                                                                     @endif
-                                                                  </div>
-                                                               </div>
-                                                            @endforeach
+                                                <div class="row scroll-content">
+                                                  @foreach ($products as $product)
+                                                      <div class="col-md-12 product-item">
+                                                         <div class="mt-2">
+                                                             @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
+                                                            <div class="form-check form-check-inline mb-2">
+                                                               <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                            </div>
+                                                            @endif
                                                          </div>
-
                                                       </div>
-                                                      <div class="col-md-1">
-                                                         <div class="pagination-slider">
-                                                            <ul class="pagination d-flex flex-column">
-                                                               @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
-                                                                  <li class="page-item mb-1">
-                                                                        <a class="page-link" href="javascript:void(0);" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
-                                                                  </li>
-                                                               @endfor
-                                                            </ul>
-                                                        </div>
-                                                      </div>
+                                                   @endforeach
+                                                </div>
+                                                   <div class="pagination-container">
+                                                      <ul class="pagination alphabet-filter">
+                                                         @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
+                                                            <li class="page-item mb-1">
+                                                                  <a class="page-link" href="#" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                            </li>
+                                                         @endfor
+                                                      </ul>
                                                    </div>
                                                 </div>
                                                 <div class="tab-pane container fade" id="trademark">
-                                                   <h6 class="mb-2 text-justify text-dark">Trademark Filter</h6>
+                                                   <div class="tab-pane-header">
+                                                     <h5 class="mb-0 text-justify fw-semibold text-dark">Trademark Filter</h5>
+                                                   </div>
                                                    <div class="row scroll-content">
                                                       @foreach ($trademarks as $trademark)
                                                          <div class="col-md-4">
@@ -213,7 +200,9 @@
                                                    </div>
                                                 </div>
                                                 <div class="tab-pane container fade" id="salesTurnover">
-                                                   <h6 class="mb-2 text-justify text-dark">Sales Turnover Filter</h6>
+                                                  <div class="tab-pane-header">
+                                                    <h5 class="mb-0 text-justify fw-semibold  text-dark">Sales Turnover Filter</h5>
+                                                   </div>
                                                    <div class="row scroll-content mt-2">
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
@@ -284,7 +273,7 @@
 
                                                 <div class="tab-pane container fade" id="location">
                                                    <div class="tab-pane-header">
-                                                    <h6 class="mb-0 text-justify text-dark">States & City</h6>
+                                                    <h5 class="mb-md-0 text-justify fw-semibold  text-dark">States & City</h5>
                                                     <div class="custom_search_filter">
                                                       <input type="text"  id="searchLocations" class="form-control" placeholder="Search States & City">
                                                       <div class="custom_search_filter_inputMask">
@@ -315,8 +304,8 @@
                                                       @endforeach
                                                    </div>         
 
-                                                   <div class="pagination">
-                                                      <ul class="pagination">
+                                                   <div class="pagination-container">
+                                                      <ul class="pagination alphabet-filter">
                                                           @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                               <li class="page-item">
                                                                   <a class="page-link" href="javascript:void(0);" onclick="filterLocations('{{ chr($i) }}')">{{ chr($i) }}</a>
@@ -331,9 +320,9 @@
                                                 
 
                                              </div>
-                                                <div class="mt-3">
-                                                      <button class="btn btn-primary btn-sm">Apply</button>
-                                                      <a href="{{ url()->current() }}" class="btn btn-primary btn-sm btn_reset">Reset</a>
+                                                <div class="mt-3 text-end">
+                                                      <button class="btn btn-success border-success">Apply</button>
+                                                      <a href="{{ url()->current() }}" class="btn btn-danger border-danger btn_reset">Reset</a>
                                                 </div>
                                             </form>
                                           </div>
@@ -372,6 +361,15 @@
                   </div>
                </div>
             </div>
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="checked_company_info mb-3"> 
+                     <span class="total_companies badge bg-primary text-capitalize"></span>
+                     <span class="checked_companies badge bg-secondary text-capitalize"></span>
+                     <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear</span>
+                  </div>
+               </div>
+            </div>
             <!--- Company Card --->
             <div class="company-card">
 
@@ -383,8 +381,8 @@
                            <div class="col-md-4 mb-3">
                                  <div class="card card-data">
                                     <div class="company-title">
-                                       <a target="_blank" href="{{ route('company.view_company',$company->id) }}"><h4 class="sub-title mb-0 text-dark"> {{ $company->name }}</h4></a>
-                                       <span> <i class='bx bx-check-circle check-icon'></i> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"></span>
+                                    <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
+                                       <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"> <i class='bx bx-check check-icon' ></i> </span>
                                     </div>
                                     <div class="card-body">
                                        <div class="information-list">
@@ -466,24 +464,30 @@
                         @endforeach
 
                      
-                     {{ $companies->withQueryString()->links() }}
+                     {{ $companies->onEachSide(1)->withQueryString()->links() }}
                      <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
                      <div class="row">
-                        <div class="col-md-12 text-center mt-2">
-                           <button type="submit" class="btn btn-primary" class="download-button">Download CSV</button>
-                           <div class="checked_company_info">
+                        <div class="col-md-12 text-center">
+                           <div class="border-bottom pb-4 mb-3"></div>
+                          <div class="checked_company_info mb-3"> 
+                              <span class="total_companies badge bg-primary text-capitalize"></span>
+
+                              <span class="checked_companies badge bg-secondary text-capitalize"></span>
+                              <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear</span>
+                           </div>
+                           <button type="submit" class="btn btn-primary btn-lg" class="download-button">Download Data</button>
+                          <p class="mb-0 pt-2 text-success">Download the data in csv format</p>
+                           <!-- <div class="checked_company_info">
                               <span class="total_companies"></span>
                               <span class="checked_companies"></span>
                               <br>
                               <span class="clear_checked" onclick="clear_checked()">Clear</span>
-                           </div>
+                           </div> -->
                         </div>
                      </div>
                   </form>
                </div>
             </div>
-         </div>
-      </div>
    </div>
 </section>
 @endsection
@@ -497,6 +501,7 @@
 <script>
 
 $(document).ready(function () {
+
 
    $(".filter-name").click(function (e) {
       e.preventDefault();
@@ -571,18 +576,38 @@ $(document).ready(function () {
    document.getElementById('searchCompanies').addEventListener('input', function () {
    filterCompanies('all');
    var searchTerm = this.value.toLowerCase();
+   if(searchTerm.length  <= 1){
+      $(".highlighted_text").removeClass('text-warning');
+   }
+   if(searchTerm.length < 2){
+      return false;
+   }
+   
+   var no_results_found = false;
       companyItems.forEach(function (item) {
          var companyName = item.dataset.name;
          companyName = companyName.toLowerCase();
 
          if (companyName.includes(searchTerm)) {
-            
+            no_results_found = true;
             $(item).parent().parent().parent().css('display', 'block');
+            // highlight search term
+            var regex = new RegExp(searchTerm, 'gi');
+            var highlighted = companyName.replace(regex, function (str) {
+               return '<span class="text-warning highlighted_text">' + str + '</span>';
+            });
+            item.innerHTML = highlighted;
          } else {
-            
             $(item).parent().parent().parent().css('display', 'none');
          }
       });
+
+      if (no_results_found) {
+         $('.no-results-found').css('display', 'none');
+      } else {
+         $('.no-results-found').css('display', 'block');
+      }
+
    });
 
    function filterProducts(letter) {

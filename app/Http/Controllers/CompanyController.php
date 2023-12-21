@@ -191,6 +191,10 @@ class CompanyController extends Controller
     }
 
     public function dashboard(Request $request) {
+     
+       
+        $auth_id = auth()->guard('company')->user()->id;
+
 
          $companies = CompanyHelper::filter($request);       
         
@@ -199,8 +203,11 @@ class CompanyController extends Controller
         //     fn() =>  Company::select('name')->groupBy('name')->get(),
         //   ]);
 
+       
          $companies_name = Company::all(); // Adjust the number per page as needed
-         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get(); 
+        
+        $regions = CompanyKeyPersonnel::select('region')
+        ->whereNotNull('region')->where('region', '<>', '')->groupBy('region')->get();
          
         $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
         $products2 = CompanyProductDetails::select('product2')->groupBy('product2')->get();
@@ -210,9 +217,9 @@ class CompanyController extends Controller
         // Combine all above arrays into a single array
          $combinedProducts = array_merge($products->pluck('products_manufactured')->toArray(), $products2->pluck('product2')->toArray(),$products3->pluck('product3')->toArray(),$products4->pluck('product4')->toArray());
         
-        $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
+        $trademarks = CompanyProductDetails::select('trademark')
+        ->whereNotNull('trademark')->where('trademark', '<>', '')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
-
 
         $states = CompanyContactDetail::select('state')->groupBy('state')->get();
         $cities = CompanyContactDetail::select('city')->groupBy('city')->get();

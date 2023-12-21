@@ -6,19 +6,31 @@
 @section('content')
 <div class="row mt-5 mb-4">
   <div class="col-12 border-bottom pb-3">
+<<<<<<< HEAD
+     <div class="d-flex justify-content-between align-items-center">
+      @if ($company_contact_details->image)
+      <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
+    @else
+      <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
+    @endif
+        
+=======
      <div class="d-flex align-items-center profile-card">
         <div>
           <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
         </div>
+>>>>>>> 7f2bc0874e6da1e1f69aef1ae6c821847aeebaec
         <div>
           <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
             <div class="user-profile-info">
               <h4 class="text-dark">{{$company->name}}</h4>
               <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                 
+                @if($company_contact_details->state)
                 <li class="list-inline-item fw-medium">
                   <i class="bx bx-map"></i> {{$company_contact_details->state}}
                 </li>
+                @endif
                 
               </ul>
             </div>
@@ -151,7 +163,7 @@
                   </div>
                   @if($company->email)
                   <div>
-                      <span>{{$company->email}}</span>
+                      <span>{{ucfirst($company->email)}}</span>
                   </div>
                   @else 
                   <span>NA</span>
@@ -164,7 +176,7 @@
                   </div>
                   @if($company->website)
                   <div>
-                      <span>{{$company->website}}</span>
+                      <span>{{ucfirst($company->website)}}</span>
                   </div>
                   @else
                   <span>NA</span>
@@ -188,7 +200,7 @@
                       </div>
                       @if($company_key_personnels->managing_director)
                       <div>
-                          <span>{{$company_key_personnels->managing_director}}</span>
+                          <span>{{ucfirst($company_key_personnels->managing_director)}}</span>
                       </div>
                       @else
                       <span>NA</span>
@@ -200,7 +212,7 @@
                       </div>
                       @if($company_key_personnels->chief_executive)
                       <div>
-                          <span>{{$company_key_personnels->chief_executive}}</span>
+                          <span>{{ucfirst($company_key_personnels->chief_executive)}}</span>
                       </div>
                       @else 
                       <span>NA</span>
@@ -212,7 +224,7 @@
                       </div>
                       @if($company_key_personnels->sales_in_charge)
                       <div>
-                          <span>{{$company_key_personnels->sales_in_charge}}</span>
+                          <span>{{ucfirst($company_key_personnels->sales_in_charge)}}</span>
                       </div>
                       @else 
                       <span>NA</span>
@@ -224,7 +236,7 @@
                       </div>
                       @if($company_key_personnels->export_in_charge)
                       <div>
-                          <span>{{$company_key_personnels->export_in_charge}}</span>
+                          <span>{{ucfirst($company_key_personnels->export_in_charge)}}</span>
                       </div>
                       @else 
                       <span>NA</span>
@@ -237,7 +249,7 @@
 
                       @if($company_key_personnels->production_in_charge)
                       <div>
-                          <span>{{$company_key_personnels->production_in_charge}}</span>
+                          <span>{{ucfirst($company_key_personnels->production_in_charge)}}</span>
                       </div>
                       @else 
                       <span>NA</span>
@@ -258,7 +270,7 @@
                   </div>
                   @if($company_product_details->products_manufactured)
                   <div>
-                      <span>{{$company_product_details->products_manufactured}}</span>
+                      <span>{{ucfirst($company_product_details->products_manufactured)}}</span>
                   </div>
                   @else 
                   <span>NA</span>
@@ -270,7 +282,7 @@
                   </div>
                   @if($company_product_details->product2)
                   <div>
-                      <span>{{$company_product_details->product2}}</span>
+                      <span>{{ucfirst($company_product_details->product2)}}</span>
                   </div>
                   @else 
                   <span>NA</span>
@@ -282,7 +294,7 @@
                   </div>
                   @if($company_product_details->product3)
                   <div>
-                      <span>{{$company_product_details->product3}}</span>
+                      <span>{{ucfirst($company_product_details->product3)}}</span>
                   </div>
                   @else
                   <span>NA</span> 
@@ -294,7 +306,7 @@
                   </div>
                   @if($company_product_details->product4)
                   <div>
-                      <span>{{$company_product_details->product4}}</span>
+                      <span>{{ucfirst($company_product_details->product4)}}</span>
                   </div>
                   @else
                   <span>NA</span> 

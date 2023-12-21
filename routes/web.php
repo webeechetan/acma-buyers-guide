@@ -49,7 +49,7 @@ Route::get('/export-word',function(){
 // });
 
 Route::get('/import', function () {
-    return view('website.test');
+    return view('website.importcompany');
 })->name('import'); // Yo
 
 Route::post('/import', function (Request $request) {

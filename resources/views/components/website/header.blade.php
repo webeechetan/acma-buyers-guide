@@ -54,14 +54,7 @@
                         <span class="align-middle">Account Details</span>
                         </a>
                     </li>
-                    <li>
-
-
-                    <a class="dropdown-item pe-none" href="javascript:void(0);">
-                        <i class='bx bx-building-house me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
-                        </a>
-                    </li>
+                   
                     <li>
 
 
@@ -140,13 +133,7 @@
                     <li>
 
 
-                    <a class="dropdown-item pe-none" href="javascript:void(0);">
-                        <i class='bx bx-building-house me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany->name }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item pe-none" href="javascript:void(0);">
+                        <a class="dropdown-item" href="">
                             <i class='bx bxs-envelope me-2'></i>
                         <span class="align-middle">{{ $authenticatedCompany->email }}</span>
                         </a>

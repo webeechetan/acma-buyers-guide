@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="navbar navbar-expand-lg">
         <div class="container-xxl">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{{route('company.dashboard')}}">
             <div class="logo">
             <img src="https://www.acma.in/images/logo.png" alt="">
             </div>

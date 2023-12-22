@@ -95,19 +95,22 @@
                                                          <div class="col-md-6">
                                                             <div class="mt-2">
                                                                @if(isset($company['name']) && !empty($company['name']))
-                                                            <div class="form-check form-check-inline mb-2">
-                                                               <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>    
-                                                               <label class="form-check-label company-item" data-name="{{ $company['name'] }}" for="">{{ $company['name'] }}</label>
+                                                                  <div class="form-check form-check-inline mb-2">
+                                                                     <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>    
+                                                                     <label class="form-check-label company-item" data-name="{{ $company['name'] }}" for="">{{ $company['name'] }}</label>
                                                                   </div>
                                                                @endif
                                                             </div>
                                                          </div>
                                                        @endforeach
+
+                                                      
                                                        <div class="col-md-12">
                                                          <div class="mt-2">
                                                             <div class="no-results-found text-danger">No Results found</div>
                                                          </div>
                                                       </div>
+                                                      
                                                   </div>
                                                      <div class="pagination-container">
                                                          <ul class="pagination alphabet-filter">
@@ -149,30 +152,31 @@
                                                          </div>
                                                       </div>
                                                    </div>
-                                                   <!-- <div class="row mb-3">
-                                                      <div class="col-md-6">
-                                                            <input type="text" class="form-control" id="searchProducts" placeholder="Search products...">
-                                                      </div>
-                                                   </div> -->
+                                                   
                                                       <div class="row scroll-content">
                                                          @foreach ($products as $product)
-                                                            <div class="col-md-12 product-item">
+                                                            <div class="col-md-12">
                                                                <div class="mt-2">
                                                                   @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
                                                                   <div class="form-check form-check-inline mb-2">
-                                                                     <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="products" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
-                                                                     <label class="form-check-label" for="inlineCheckbox1">{{ $product['products_manufactured'] }}</label>
+                                                                     <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
+                                                                     <label class="form-check-label product-item" data-name={{ $product['products_manufactured']}} for="">{{ $product['products_manufactured'] }}</label>
                                                                   </div>
                                                                   @endif
                                                                </div>
                                                             </div>
                                                          @endforeach
+                                                         <div class="col-md-12">
+                                                            <div class="mt-2">
+                                                               <div class="no-results-found text-danger">No Results found</div>
+                                                            </div>
+                                                         </div>
                                                       </div>
                                                       <div class="pagination-container">
                                                          <ul class="pagination alphabet-filter">
                                                             @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
                                                                <li class="page-item mb-1">
-                                                                     <a class="page-link" href="#" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
+                                                                     <a class="page-link" href="javascript:void(0);" onclick="filterProducts('{{ chr($i) }}')">{{ chr($i) }}</a>
                                                                </li>
                                                             @endfor
                                                          </ul>
@@ -536,6 +540,7 @@ $(document).ready(function () {
       var tabs = document.querySelectorAll('.nav-pills .nav-link');
       companyItems = document.querySelectorAll('.company-item');
       productItems = document.querySelectorAll('.product-item');
+
       states_city  = document.querySelectorAll('.location-items');
 
       checkboxes.forEach(function (checkbox, index) {
@@ -584,12 +589,12 @@ $(document).ready(function () {
    document.getElementById('searchCompanies').addEventListener('input', function () {
    filterCompanies('all');
    var searchTerm = this.value.toLowerCase();
-   if(searchTerm.length  <= 1){
-      $(".highlighted_text").removeClass('text-warning');
-   }
-   if(searchTerm.length < 2){
-      return false;
-   }
+      if(searchTerm.length  <= 1){
+         $(".highlighted_text").removeClass('text-warning');
+      }
+      if(searchTerm.length < 2){
+         return false;
+      }
    
    var no_results_found = false;
       companyItems.forEach(function (item) {
@@ -623,6 +628,8 @@ $(document).ready(function () {
       productItems.forEach(function (item) {
 
          var productName = item.dataset.name;
+
+         console.log(productName);
 
          if (letter === 'all' || productName.charAt(0).toUpperCase() === letter) {
             $(item).parent().parent().parent().css('display', 'block');

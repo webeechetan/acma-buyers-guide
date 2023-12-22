@@ -6,7 +6,6 @@
 @section('content')
 <div class="row mt-5 mb-4">
   <div class="col-12 border-bottom pb-3">
-<<<<<<< HEAD
      <div class="d-flex justify-content-between align-items-center">
       @if ($company_contact_details->image)
       <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
@@ -14,12 +13,6 @@
       <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
     @endif
         
-=======
-     <div class="d-flex align-items-center profile-card">
-        <div>
-          <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
-        </div>
->>>>>>> 7f2bc0874e6da1e1f69aef1ae6c821847aeebaec
         <div>
           <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
             <div class="user-profile-info">

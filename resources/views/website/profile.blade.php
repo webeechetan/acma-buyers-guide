@@ -19,7 +19,7 @@
         <div>
           <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
             <div class="user-profile-info">
-              <h4 class="text-dark">{{$company->name}}</h4>
+              <h4 class="text-dark mb-2">{{$company->name}}</h4>
               <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                 
                 @if($company_contact_details->state)
@@ -41,7 +41,7 @@
    <div class="col-md-5 border-end">
     <!-- About User -->
     <div class="inner-profile-card">
-        <div class="information-list profile-list mb-4">
+        <!-- <div class="information-list profile-list mb-4">
           <h5 class="text-primary fw-medium">About</h5>
           <ul>
               <li>
@@ -58,9 +58,12 @@
                 @endif
               </li>
           </ul>
-        </div>
+        </div> -->
           <div class="information-list profile-list">
-             <h5 class="text-primary fw-medium">Contact</h5>
+             <div class="d-flex justify-content-between mb-2">
+                <h5 class="text-primary fw-medium mb-0">Contact</h5>
+                <a href="{{ route('company.fillUpDetails') }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Edit"><i class='bx bxs-edit'></i></a>
+             </div>
             <ul>
                 <li>
                   <div>
@@ -161,13 +164,13 @@
                 <h6 class="mb-0 text-primary">Request Status</h6>
                 <small class="text-muted">{{ucfirst($CompanyUpdateRequest->status)}}</small>
               </div>
-              <p class="mb-2">{{ucfirst($CompanyUpdateRequest->status)}}</span>
+              <p class="mb-0">{{ucfirst($CompanyUpdateRequest->status)}}</span>
             </div>
           </li>
         
         </ul>
 
-        <div class="view-btn mt-5">
+        <div class="view-btn mt-1">
           <button class="btn btn-primary btn-sm" id="view_details_{{$CompanyUpdateRequest->id}}"  data-bs-toggle="modal" data-bs-target="#exampleModal_{{$CompanyUpdateRequest->id}}">View Details</button>
         </div>
         <!-- Modal -->
@@ -226,6 +229,12 @@
 
 
 @push('scripts')
+<script>
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+  return new Tooltip(tooltipTriggerEl);
+});
+</script>
 
 {{-- 
 <script>

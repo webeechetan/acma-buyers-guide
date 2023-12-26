@@ -1096,19 +1096,19 @@ background-color: #C7F6C7;
   
 }
 
-.scroll-content::-webkit-scrollbar-track{
+.card-action::-webkit-scrollbar-track, .scroll-content::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--bg-card);
 }
 
-.scroll-content::-webkit-scrollbar{
+.card-action::-webkit-scrollbar, .scroll-content::-webkit-scrollbar{
   width: 4px;
   background-color: #eee;
   border-radius: 7px;
   height: 4px;
 }
 
-.scroll-content::-webkit-scrollbar-thumb{
+.card-action::-webkit-scrollbar-thumb, .scroll-content::-webkit-scrollbar-thumb{
   background-color: var(--primary);
 }
 
@@ -1418,7 +1418,7 @@ background-color: #C7F6C7;
 }
 .inner-profile-card .card-body small {
   padding-bottom: 15px;
-  ;
+  
 }
 
 .profile-list li div:nth-child(2) span {
@@ -1442,7 +1442,8 @@ background-color: #C7F6C7;
 }
 
 .user-profile-img{
-  width: 180px;
+  width: 50px;
+  padding: 10px 0;
 }
 
 .light-style .user-profile-header .user-profile-img {
@@ -1457,7 +1458,18 @@ background-color: #C7F6C7;
   justify-content: center;
 
 }
-
+.card-action{
+  height: 420px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+div .timeline .timeline-item .timeline-event{
+  min-height: 0;
+  padding: 0.75rem 0 0 -34px;
+}
+div .timeline .timeline-item{
+  padding-left: 2rem;
+}
 /*--- toast ---*/
 .top-0 {
   top: 85px !important;

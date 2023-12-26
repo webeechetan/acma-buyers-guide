@@ -1442,7 +1442,7 @@ background-color: #C7F6C7;
 }
 
 .user-profile-img{
-  width: 50px;
+  height: 60px !important;
   padding: 10px 0;
 }
 

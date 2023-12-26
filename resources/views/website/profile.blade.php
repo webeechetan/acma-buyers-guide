@@ -9,7 +9,7 @@
      <div class="d-flex align-items-center profile-card">
         <div>
           
-          @if ($company_contact_details->image)
+          @if($company_contact_details->image)
             <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
           @else
             <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
@@ -206,9 +206,7 @@
                     }
                   @endphp
 
-                  <ol>
-                   <li> {!! $updating_data !!}</li>
-                  </ol>
+                  {!! $updating_data !!}
 
               </ul>
               </div>
@@ -225,36 +223,12 @@
 </div>
 @endsection
 
-
-
-
 @push('scripts')
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-  return new Tooltip(tooltipTriggerEl);
-});
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
 </script>
 
-{{-- 
-<script>
-
-  function Viewbtn_Click(buttonId) {
-      
-    var button = document.getElementById('view_details_' + buttonId);
-
-  // Access the data-bs-target attribute value using dataset
-      var dataBsTarget = button.dataset.bsTarget;
-    var modal = document.getElementById('MexampleModal_' + buttonId);
-
-    console.log(modal);
-            modal.dataset.bsTarget = dataBsTarget;
-            var modalInstance = new bootstrap.Modal(modal);
-            modalInstance.show();
-
-
-    }  
-  
-  </script> --}}
-
-  @endpush
+@endpush

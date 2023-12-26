@@ -16,7 +16,7 @@
             <div class="col-md-12 mb-3 mb-md-0">
               <div class="card">
                 <div class="tab-pane-header">
-                  <h2 id="heading" class="text-center title mb-md-0">Company Details</h2>
+                  <h2 id="heading" class="title mb-md-0">Company Details</h2>
                   <p class="text-center mb-0">Fill all form field to go to next step</p>  
                 </div>
                   <div class="text-center">

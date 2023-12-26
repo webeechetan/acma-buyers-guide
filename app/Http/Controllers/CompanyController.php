@@ -365,7 +365,11 @@ class CompanyController extends Controller
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
-        $CompanyUpdateRequests = CompanyUpdateRequest::where('company_id', auth()->guard('company')->user()->id)->get();
+        // $CompanyUpdateRequests = CompanyUpdateRequest::where('company_id', auth()->guard('company')->user()->id)->get();
+
+        $CompanyUpdateRequests = CompanyUpdateRequest::where('company_id', auth()->guard('company')->user()->id)
+    ->orderBy('created_at', 'desc') 
+    ->get();
 
         return view('website.profile', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration','CompanyUpdateRequests'));
 

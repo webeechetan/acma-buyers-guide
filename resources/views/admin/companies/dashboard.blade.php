@@ -83,7 +83,7 @@
                                                   <div class="tab-pane-header">
                                                      <h5 class=" mb-md-0 text-justify fw-semibold text-dark">Company Filter</h5>
                                                      <div class="custom_search_filter">
-                                                       <input type="text"  id="searchCompanies" class="form-control" placeholder="Type 2 characters to search companies...">
+                                                       <input type="text"  id="searchCompanies" class="form-control" placeholder="Type 2 characters to search...">
                                                        <div class="custom_search_filter_inputMask">
                                                         <i class="bx bx-search"></i>
                                                        </div>
@@ -130,7 +130,6 @@
                                                       @foreach ($regions as $region)
                                                       <div class="col-md-2">
                                                          <div class="mt-2">
-                                                            {{-- @if(isset($region['region']) && !empty($region['region'])) --}}
                                                             @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
                                                                <div class="form-check form-check-inline mb-2">
                                                                   <input class="form-check-input"  class="active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
@@ -155,12 +154,13 @@
                                                    
                                                       <div class="row scroll-content">
                                                          @foreach ($products as $product)
+
                                                             <div class="col-md-12">
                                                                <div class="mt-2">
                                                                   @if(isset($product['products_manufactured']) && !empty($product['products_manufactured']))
                                                                   <div class="form-check form-check-inline mb-2">
                                                                      <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="" value="{{ $product['products_manufactured'] }}" {{ in_array($product['products_manufactured'], (array)request()->input('products')) ? 'checked' : '' }}>
-                                                                     <label class="form-check-label product-item" data-name={{ $product['products_manufactured']}} for="">{{ $product['products_manufactured'] }}</label>
+                                                                     <label class="form-check-label product-item" data-name="{{str_replace('"','',$product['products_manufactured'])}}" for="">{{ $product['products_manufactured'] }}</label>
                                                                   </div>
                                                                   @endif
                                                                </div>
@@ -288,8 +288,7 @@
                                                          <input type="text"  id="searchLocations" class="form-control" placeholder="Search States & City">
                                                       </div>
                                                    </div> -->
-                                                   <div class="row scroll-content">
-                                                      
+                                                   <div class="row scroll-content">                                                   
                                                       @foreach ($combinedLocations as $combinedLocation)
                                                          <div class="col-md-4">
                                                             <div class="mt-2">
@@ -308,7 +307,6 @@
                                                          </div>
                                                       </div>
                                                    </div>         
-
                                                    <div class="pagination-container">
                                                       <ul class="pagination alphabet-filter">
                                                             @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
@@ -317,10 +315,7 @@
                                                                </li>
                                                             @endfor
                                                       </ul>
-                                                   </div>
-                                                   
-                                                   
-                                                   
+                                                   </div>                                               
                                                 </div>
                                              </div>
                                                 <div class="mt-3 d-flex align-items-center justify-content-between">
@@ -380,10 +375,8 @@
             </div>
             <!--- Company Card --->
             <div class="company-card">
-
                <div>
-                  <form action="{{ route('dashboard.company.export') }}">                 
-                  
+                  <form action="{{ route('dashboard.company.export') }}">                   
                      <div class="row">
                      @foreach ($companies as $company)
 
@@ -493,7 +486,7 @@
                            </div> -->
                         </div>
                      </div>
-            </form>
+                  </form>
                </div>
             </div>
    </div>
@@ -665,9 +658,11 @@ $(document).ready(function () {
          var regex = new RegExp(searchTerm, 'gi');
          var highlighted = productName.replace(regex, function (str) {
 
+            console.log(productName);
             return '<span class = "text-warning highligted_text">' + str + '</span>';
          });
          item.innerHTML = highlighted; 
+         // console.log(highlighted);
       }else {
          $(item).parent().parent().parent().css('display', 'none');
       }

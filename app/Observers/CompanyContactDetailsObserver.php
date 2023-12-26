@@ -37,10 +37,8 @@ class CompanyContactDetailsObserver
     public function updating(CompanyContactDetail $companyContactDetail)
     {
 
-
+       
         
-
-        // dd($companyContactDetail);
         // set current model as updated
 
         // $updated_models = session('updated_models');
@@ -53,7 +51,6 @@ class CompanyContactDetailsObserver
         // get the updated data
         $updated = $companyContactDetail->getAttributes();
 
-        // dd($original, $updated);
         // get the keys that were updated and are different from the original
         $updatedKeys = array_keys(array_diff_assoc($updated, $original));
 

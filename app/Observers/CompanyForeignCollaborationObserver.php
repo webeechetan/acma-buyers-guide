@@ -35,6 +35,7 @@ class CompanyForeignCollaborationObserver
      $original = $companyForeignCollaboration->getOriginal();
      $updated = $companyForeignCollaboration->getAttributes();
 
+
      $updatedKeys = array_keys(array_diff_assoc($updated, $original));
 
      $update_request = [];

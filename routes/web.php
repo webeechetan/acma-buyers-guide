@@ -28,7 +28,10 @@ use App\Exports\CompanyExportWord;
 |
 */
 
+
+
 Route::get('/export-word',function(){
+   
     $company_export = new CompanyExportWord();
 
     $company_export->export();
@@ -71,9 +74,10 @@ Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admi
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    // Route::get('/dashboard', function () {
+    //     dd('hello1');
+    //     return view('admin.dashboard');
+    // })->name('admin.dashboard');
 
     Route::get('/members', [MemberController::class, 'index'])->name('admin.members');
     Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');
@@ -100,10 +104,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 Route::middleware(['company.auth'])->prefix('company')->group(function () {
 
 
-        Route::get('/dashboard/{filter?}', [CompanyController::class, 'dashboard'])->name('company.dashboard');
-  
-      
-      
+        Route::get('/dashboard/{filter?}', [CompanyController::class, 'dashboard'])->name('company.dashboard');     
         Route::get('/fill-up-details', [CompanyController::class, 'fillUpDetails'])->name('company.fillUpDetails');
         Route::post('/fill-up-details', [CompanyController::class, 'fillUpDetailsStore'])->name('company.fillUpDetailsStore');
         Route::get('/logout', [CompanyController::class, 'logout'])->name('company.logout');
@@ -111,17 +112,10 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         /************* payments Routes ****************/
         Route::get('/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
         Route::post('/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');
-
-
         Route::get('/view-company/{id}', [CompanyController::class, 'view_company'])->name('company.view_company');
         
-      
         ////////////Emailer template for company detals update for company and admin
-
         Route::get('/myprofile',[CompanyController::class, 'myprofile'])->name('company.profile');
-
-     
-
 });
 
 
@@ -142,8 +136,3 @@ Route::post('company/login', [CompanyController::class, 'authenticate'])->name('
   Route::post('/otp-authentication', [CompanyController::class, 'otp_authentication'])->name('company.Otpauthentication');
   Route::get('/reset-password', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');
   Route::post('/reset-password', [CompanyController::class, 'reset_password_update'])->name('company.ResetPassword.update');
-
-
-
-
-//Route::post('/payment-success', [PaymentController::class, 'payment_success'])->name('payment.success');

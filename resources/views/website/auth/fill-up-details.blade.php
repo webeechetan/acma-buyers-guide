@@ -50,10 +50,8 @@
                         <div id="company_contact_details" class="form-card content">
                             <div class="row g-3">
                               <div class="col-md-3">
-                              <label class="form-label" for="company_name">Company Name</label>
-                              
-                              {{-- <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company->name }}"> --}}
-                              <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Company Name" value="{{ $company->name }}">
+                                <label class="form-label" for="company_name">Company Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Company Name" value="{{ $company->name }}">
                               </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="phone">Company Phone</label>
@@ -292,7 +290,7 @@
                               
                               <div class="col-md-4">
                                 <label class="form-label" for="Update_Date">Update Date</label>
-                                <input type="date" id="update_date" name="update_date" class="form-control" placeholder="Enter Update Date" value=" {{ $company_key_personnels->update_date }}">
+                                <input type="text" id="update_date" name="update_date" class="form-control" placeholder="Enter Update Date" value="{{ $company_key_personnels->update_date }}">
                               </div>
                               
                               <div class="col-md-4">
@@ -371,7 +369,7 @@
                             
                             <div class="col-md-4">
                               <label class="form-label" for="no_of_emps">Number of Employees</label>
-                              <input type="number" id="number_of_employees" name="number_of_employees" class="form-control" placeholder="Enter Number of Employees" value=" {{ $company_product_details->number_of_employees }}">
+                              <input type="number" id="number_of_employees" name="number_of_employees" class="form-control" placeholder="Enter Number of Employees" value="{{ $company_product_details->number_of_employees }}">
                             </div>
                             
                             <div class="col-md-4">

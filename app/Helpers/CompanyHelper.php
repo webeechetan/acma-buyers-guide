@@ -81,6 +81,7 @@ class CompanyHelper {
 
           // checkbox filters for Location states
           if ($request->has('state')) {
+
             $selectedRegion = $request->input('state');
             
             if (is_array($selectedRegion)) {
@@ -90,9 +91,6 @@ class CompanyHelper {
             }
            
         }
-
-
-
 
         //checkbox filter for trademarks
 
@@ -105,7 +103,6 @@ class CompanyHelper {
                 });
             }
         }
-
 
         //checkbox filter for sales turnover
         if ($request->has('range')) {
@@ -140,15 +137,9 @@ class CompanyHelper {
             });
         }
 
-        // if ($request->has('location')) {
-
-         
-        //     $companies = $companies->whereHas('contact_details', function ($query) use ($request) {
-        //         $query->where('company_address', 'like', '%' . $request->location . '%');
-        //     });
-        // }
 
         if ($request->has('location')) {
+
             $location = $request->location;
         
             $companies = $companies->whereHas('contact_details', function ($query) use ($location) {
@@ -161,8 +152,7 @@ class CompanyHelper {
                 }
             });
         }
-        
-        
+          
 
         if ($request->has('region')) {
             $companies = $companies->whereHas('key_personnels', function ($query) use ($request) {
@@ -228,6 +218,7 @@ class CompanyHelper {
             });
         }
         
+       
          return $companies->paginate(15);
 
     }

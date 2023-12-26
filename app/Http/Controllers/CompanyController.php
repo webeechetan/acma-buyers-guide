@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\DataTables\CompanyDataTable;
 use Illuminate\Cache\RateLimiter;
+use App\Models\Company;
 use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
@@ -164,6 +164,7 @@ class CompanyController extends Controller
         $company_id = Auth::guard('company')->user()->id;
         $data = $request->all();
 
+       
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('img_company_logo', 'public'); 
@@ -172,15 +173,15 @@ class CompanyController extends Controller
 
         
         $company = Company::where('id',$company_id)->first();
-
-       
         $company_contact_detail = CompanyContactDetail::where('company_id',$company_id)->first();
         $company_key_personnel = CompanyKeyPersonnel::where('company_id',$company_id)->first();
         $company_product_detail = CompanyProductDetails::where('company_id',$company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',$company_id)->first();
-        
+
         // $updated_models = ['CompanyContactDetail' => false , 'CompanyKeyPersonnel' => false , 'CompanyProductDetails' => false , 'CompanyForeignCollaboration' => false];
         // session('updated_models', $updated_models);
+        
+        $company->update($data);
         $company_contact_detail->update($data);
         $company_key_personnel->update($data);
         $company_product_detail->update($data);
@@ -191,6 +192,10 @@ class CompanyController extends Controller
     }
 
     public function dashboard(Request $request) {
+     
+       
+        $auth_id = auth()->guard('company')->user()->id;
+
 
          $companies = CompanyHelper::filter($request);       
         
@@ -199,8 +204,11 @@ class CompanyController extends Controller
         //     fn() =>  Company::select('name')->groupBy('name')->get(),
         //   ]);
 
+       
          $companies_name = Company::all(); // Adjust the number per page as needed
-         $regions = CompanyKeyPersonnel::select('region')->groupBy('region')->get(); 
+        
+        $regions = CompanyKeyPersonnel::select('region')
+        ->whereNotNull('region')->where('region', '<>', '')->groupBy('region')->get();
          
         $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
         $products2 = CompanyProductDetails::select('product2')->groupBy('product2')->get();
@@ -210,16 +218,24 @@ class CompanyController extends Controller
         // Combine all above arrays into a single array
          $combinedProducts = array_merge($products->pluck('products_manufactured')->toArray(), $products2->pluck('product2')->toArray(),$products3->pluck('product3')->toArray(),$products4->pluck('product4')->toArray());
         
-        $trademarks = CompanyProductDetails::select('trademark')->groupBy('trademark')->get();
+        $trademarks = CompanyProductDetails::select('trademark')
+        ->whereNotNull('trademark')->where('trademark', '<>', '')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
+        
+        $states = CompanyContactDetail::select('state')->whereNotNull('state')->where('state', '<>', '')->groupBy('state')->get();
+        $cities = CompanyContactDetail::select('city')->whereNotNull('city')->where('city', '<>', '')->groupBy('city')->get();
 
+        // Extract state and city values from collections
+        $stateArray = $states->pluck('state')->toArray();
+        $cityArray = $cities->pluck('city')->toArray();
 
-        $states = CompanyContactDetail::select('state')->groupBy('state')->get();
-        $cities = CompanyContactDetail::select('city')->groupBy('city')->get();
+        $merged_array = array_merge($stateArray, $cityArray);
+        $uniqueLocations = array_unique($merged_array);
 
-        // Combine states and cities into a single array
-        $combinedLocations = array_merge($states->pluck('state')->toArray(), $cities->pluck('city')->toArray());
+        // // If you want to re-index the array after removing duplicates
+         $combinedLocations = array_values($uniqueLocations);
 
+        // dd(count($uniqueLocations));
         return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','products','salesTurnovers','combinedLocations','combinedProducts'));
     
     }

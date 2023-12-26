@@ -14,6 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         
         $ProfileapprovedCount = CompanyUpdateRequest::where('status', 'approved')->count();
         $ProfilependingCount = CompanyUpdateRequest::where('status', 'pending')->count();

@@ -58,7 +58,7 @@ class CompanyDataTable extends DataTable
                         Button::make('print'),
                       
                     Button::make('Download All')->extend('csv')->filename($this->filename())->exportOptions(['page' => 'all']),
-                      
+                       
                     ])->parameters([
                         'paging' => false, // Disable pagination for export
                     ]);

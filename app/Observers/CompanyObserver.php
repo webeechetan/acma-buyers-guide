@@ -9,9 +9,16 @@ class CompanyObserver
     /**
      * Handle the Company "created" event.
      */
+
+     public function deleting(Company $company){
+        dd('alert');
+
+
+     }
+
     public function created(Company $company): void
     {
-        
+        // dd('created');
     }
 
     /**
@@ -19,12 +26,13 @@ class CompanyObserver
      */
     public function updated(Company $company): void
     {
-        //
+        dd('updated');
     }
 
     public function updating(Company $company)
     {
 
+        dd('hello');
        
         // get the original data
         $original = $company->getOriginal();

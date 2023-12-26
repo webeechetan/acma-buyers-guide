@@ -32,16 +32,32 @@ class CompanyUpdateRequest extends Model
         }
         $data = json_decode($this->data, true);
 
-       
-        $company = Company::find($this->company_id);
 
+        //  dd($data);
+       // $company = Company::find($this->company_id);
+
+        // dd($company);
 
         $company = Company::where('id', $this->company_id)->first();
-
         $company_contact_detail = CompanyContactDetail::where('company_id', $this->company_id)->first();
         $company_key_personnel = CompanyKeyPersonnel::where('company_id', $this->company_id)->first();
         $company_product_detail = CompanyProductDetails::where('company_id', $this->company_id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id', $this->company_id)->first();
+
+
+        if($this->modal == 'Company'){
+            foreach ($data as $key => $value) {
+                $company->$key = $value['new'];
+            }
+            try{
+                $company->saveQuietly();
+                $this->status = 'approved';
+                $this->save();
+                return true;
+            }catch(\Exception $e){
+                return false;
+            }
+        }
 
         if($this->modal == 'CompanyContactDetail'){
             foreach ($data as $key => $value) {
@@ -99,23 +115,6 @@ class CompanyUpdateRequest extends Model
                 return false;
             }
         }
-
-        
-        if($this->modal == 'Company'){
-            foreach ($data as $key => $value) {
-                $company->$key = $value['new'];
-            }
-            try{
-                $company->saveQuietly();
-                $this->status = 'approved';
-                $this->save();
-                return true;
-            }catch(\Exception $e){
-                return false;
-            }
-        }
-      
-
         
         return false;
 

@@ -450,7 +450,7 @@
                                                 </div>
                                                 <div>
                                                    @if($company && $company->website)
-                                                   <a href="">{{ucfirst($company->website)}}</a>
+                                                   <a href="">{{$company->website}}</a>
                                                    @else 
                                                    <span>NA</span>
                                                 @endif

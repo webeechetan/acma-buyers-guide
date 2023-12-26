@@ -44,6 +44,11 @@ class CompanyProductDetailsObserver
             ];
         }
 
+        
+        if(count($update_request) == 0)  {
+            return false;
+        }
+
         $company_update_request = new CompanyUpdateRequest();
 
         $company_update_request->company_id = $companyProductDetails->company_id;

@@ -26,13 +26,11 @@ class CompanyObserver
      */
     public function updated(Company $company): void
     {
-        dd('updated');
+       // dd('updated');
     }
 
     public function updating(Company $company)
     {
-
-        dd('hello');
        
         // get the original data
         $original = $company->getOriginal();
@@ -49,6 +47,13 @@ class CompanyObserver
                 'new' => $updated[$key]
             ];
         }
+
+        
+        if(count($update_request) == 0)  {
+            return false;
+        }
+
+
 
         $company_update_request = new CompanyUpdateRequest();
 

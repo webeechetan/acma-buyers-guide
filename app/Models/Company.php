@@ -15,15 +15,12 @@ class Company extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
     protected $hidden = [
         'password'
     ];
 
-
-    protected $fillable = [
-    
-        'token', 
-    ];
 
 
     public function key_personnels(){

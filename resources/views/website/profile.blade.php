@@ -121,7 +121,7 @@
                   </div>
                   @if($company->website)
                   <div>
-                      <span>{{ucfirst($company->website)}}</span>
+                      <span>{{$company->website}}</span>
                   </div>
                   @else 
                   <span>NA</span>
@@ -194,10 +194,8 @@
                         $updating_data = '';
 
                         foreach ($data as $key => $value) {
-                            $oldValue = isset($value['old']) ? $value['old'] : 'N/A';
-                            $newValue = isset($value['new']) ? $value['new'] : 'N/A';
-
-                            // $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . $value['old'] . ' to ' . $value['new'] . '<br>';
+                            $oldValue = isset($value['old']) ? $value['old'] : '-Blank-';
+                            $newValue = isset($value['new']) ? $value['new'] : '-Blank-';
 
                             $updating_data .= '<strong>' .ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '<br>';
 

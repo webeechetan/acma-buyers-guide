@@ -164,8 +164,8 @@ class CompanyController extends Controller
         $company_id = Auth::guard('company')->user()->id;
         $data = $request->all();
 
+        $is_updated = false;
        
-
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('img_company_logo', 'public'); 
             $data['image'] = $imagePath;
@@ -180,14 +180,18 @@ class CompanyController extends Controller
 
         // $updated_models = ['CompanyContactDetail' => false , 'CompanyKeyPersonnel' => false , 'CompanyProductDetails' => false , 'CompanyForeignCollaboration' => false];
         // session('updated_models', $updated_models);
-        
+
+
         $company->update($data);
         $company_contact_detail->update($data);
         $company_key_personnel->update($data);
         $company_product_detail->update($data);
         $company_foreign_collaboration->update($data);
 
+        
         $this->alert('Success', 'Details sent to review. we will notify you once approved. ' , 'success');
+
+       
         return redirect()->route('company.dashboard');
     }
 

@@ -51,9 +51,11 @@ class CompanyContactDetailsObserver
         // get the updated data
         $updated = $companyContactDetail->getAttributes();
 
+        
         // get the keys that were updated and are different from the original
         $updatedKeys = array_keys(array_diff_assoc($updated, $original));
-
+        
+       
         $update_request = [];
         foreach ($updatedKeys as $key) {
             $update_request[$key] = [
@@ -62,6 +64,9 @@ class CompanyContactDetailsObserver
             ];
         }
 
+        if(count($update_request) == 0)  {
+            return false;
+        }
         
         $company_update_request = new CompanyUpdateRequest();
 

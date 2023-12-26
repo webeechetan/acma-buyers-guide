@@ -229,9 +229,9 @@ class CompanyImport implements ToCollection
         foreach($rows as $row){
             // continue for first row
 
-            if($loop->index == 0){
-                continue;
-            }
+            // if($loop->index == 0){
+            //     continue;
+            // }
             
             $companies_data_format['name'] = $row[0];
             $companies_data_format['email'] = $row[1];

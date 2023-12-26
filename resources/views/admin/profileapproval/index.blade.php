@@ -11,6 +11,8 @@
 
 <h4>Pending Profile Approve Requests</h4>
 <div class="row">
+
+    @if($pendingRequests->count() > 0)
     @foreach ($pendingRequests as $request)
         <div class="col-md-12 mb-4">
             <div class="card">
@@ -79,6 +81,9 @@
             </div>
         </div>
     @endforeach
+    @else
+            <span class="text text-danger"> No Pending Request</span>
+    @endif
 </div>
 
 

@@ -50,10 +50,8 @@
                         <div id="company_contact_details" class="form-card content">
                             <div class="row g-3">
                               <div class="col-md-3">
-                              <label class="form-label" for="company_name">Company Name</label>
-                              
-                              {{-- <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Acma" value="{{ $company->name }}"> --}}
-                              <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Company Name" value="{{ $company->name }}">
+                                <label class="form-label" for="company_name">Company Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Company Name" value="{{ $company->name }}">
                               </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="phone">Company Phone</label>

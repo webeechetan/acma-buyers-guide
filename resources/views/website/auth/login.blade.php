@@ -59,7 +59,7 @@
              </div>
               
               <div class="copyright">
-                <p>© Copyright 2022 ACMA India, All Right Reserved.</p>
+                <p>© Copyright 2024 ACMA India, All Right Reserved.</p>
               </div>
             </div>
             <div class="subscribe-form">

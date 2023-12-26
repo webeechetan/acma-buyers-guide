@@ -60,7 +60,7 @@
 
                               <div class="col-md-3">
                                 <label class="form-label" for="fax">Company Fax</label>
-                                <input type="number" id="fax" name="fax" class="form-control" placeholder="Enter Your Fax Number" value="{{ $company_contact_details->fax }}">
+                                <input type="text" id="fax" name="fax" class="form-control" placeholder="Enter Your Fax Number" value="{{ $company_contact_details->fax }}">
                               </div>
 
                               <div class="col-md-3">
@@ -155,7 +155,7 @@
 
                               <div class="col-md-3">
                               <label class="form-label" for="plant_fax">Plant Fax</label>
-                              <input type="number" id="plant_fax" name="plant_fax" class="form-control" placeholder="Enter Your Plant Fax Number" value="{{ $company_contact_details->plant_fax }}">
+                              <input type="text" id="plant_fax" name="plant_fax" class="form-control" placeholder="Enter Your Plant Fax Number" value="{{ $company_contact_details->plant_fax }}">
                               </div>
 
                               <div class="col-md-3">

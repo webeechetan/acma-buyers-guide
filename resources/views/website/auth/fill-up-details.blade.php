@@ -916,9 +916,9 @@
                   
                   
                     <div class="form-navigation mt-3">
-                      <button type="button" class="btn btn-primary" id="prev">Previous</button>
+                      <button type="button" class="btn btn-primary" id="prev">Back</button>
                       <button type="button" class="btn btn-primary ms-auto" id="next">Next</button>
-                      <button type="submit" class="btn btn-success" id="submit" style="display: none;">Submit</button>
+                      <button type="submit" class="btn btn-success" id="submit" style="display: none;">Update</button>
                     </div>
                 </form>
               </div>

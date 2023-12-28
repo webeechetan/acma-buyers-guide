@@ -12,75 +12,78 @@
 <h4>Pending Profile Approve Requests</h4>
 <div class="row">
 
-    @if($pendingRequests->count() > 0)
-    @foreach ($pendingRequests as $request)
-        <div class="col-md-12 mb-4">
-            <div class="card">
-                <div>
-                   <h5 class="text-primary"> {{ $request->company->name  }}</h5>
-                   {{-- <h5 class="text-primary"> {{ optional($request->company)->name ?? 'No Company Name' }}</h5> --}}
-                </div>
-                <div class="profile-approve">
-                    <!-- Decode JSON data and loop through it -->
-                    @php
-                        $profile = json_decode($request->data, true);
-                    @endphp
-                    
+    @if(isset($pendingRequests) && $pendingRequests->count() > 0)
+        @foreach ($pendingRequests as $request)
 
-                    <table class="table mb-3" id="profile">
-                        <thead>
-                            <tr style="color: rgb(38, 5, 5);">
-                                <th>Field</th>
-                                <th>Old Value</th>
-                                <th>New Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($profile as $key => $values)
+
+
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div>
+                    <h5 class="text-primary"> {{ $request->company->name }}</h5>
+                    {{-- <h5 class="text-primary"> {{ optional($request->company)->name ?? 'No Company Name' }}</h5> --}}
+                    </div>
+                    <div class="profile-approve">
+                        <!-- Decode JSON data and loop through it -->
+                        @php
+                            $profile = json_decode($request->data, true);
+                        @endphp
+                        
+
+                        <table class="table mb-3" id="profile">
+                            <thead>
+                                <tr style="color: rgb(38, 5, 5);">
+                                    <th>Field</th>
+                                    <th>Old Value</th>
+                                    <th>New Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($profile as $key => $values)
+                                    <tr>
+                                        <td>{{ ucfirst(str_replace('_', ' ', $key)) }}</td>
+                                        <td>{{ $values['old'] }}</td>
+                                        <td>{{ $values['new'] }}</td>
+                                    </tr>
+                                @endforeach
+                                {{-- @foreach ($profile as $key => $values)
                                 <tr>
-                                    <td>{{ ucfirst(str_replace('_', ' ', $key)) }}</td>
-                                    <td>{{ $values['old'] }}</td>
-                                    <td>{{ $values['new'] }}</td>
+                                    <td>{{ $key }}</td>
+                                    <td>
+                                        @if ($key === 'image' && $values['old'] !== 'NULL' && isImage($values['old']))
+                                            <img src="{{ asset('storage/' . $values['old']) }}" alt="Old Image" style="max-width: 100px; max-height: 100px;">
+                                        @else
+                                            {{ $values['old'] }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($key === 'image' && $values['new'] !== 'NULL' && isImage($values['new']))
+                                            <img src="{{ asset('storage/' . $values['new']) }}" alt="New Image" style="max-width: 100px; max-height: 100px;">
+                                        @else
+                                            {{ $values['new'] }}
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
-                            {{-- @foreach ($profile as $key => $values)
-                            <tr>
-                                <td>{{ $key }}</td>
-                                <td>
-                                    @if ($key === 'image' && $values['old'] !== 'NULL' && isImage($values['old']))
-                                        <img src="{{ asset('storage/' . $values['old']) }}" alt="Old Image" style="max-width: 100px; max-height: 100px;">
-                                    @else
-                                        {{ $values['old'] }}
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($key === 'image' && $values['new'] !== 'NULL' && isImage($values['new']))
-                                        <img src="{{ asset('storage/' . $values['new']) }}" alt="New Image" style="max-width: 100px; max-height: 100px;">
-                                    @else
-                                        {{ $values['new'] }}
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                         --}}
+                            --}}
+                            
+                            
+                            </tbody>
+                        </table>
                         
-                        
-                        </tbody>
-                    </table>
                     
-                   
-                        <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>
+                            <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>
 
-
-                    {{-- <form method="post" action="{{route('admin.profileUpdateRequest.destroy' , $request->id )}}">
-                        @csrf
-                        @method('put')
-                        <button type="submit" class="btn btn-danger sm">Disapprove</button>
-                    </form> --}}
+                        
+                        <form method="post" action="{{route('admin.profile.disapprove' , $request->id )}}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Deny</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
     @else
             <span class="text text-danger"> No Pending Request</span>
     @endif
@@ -93,7 +96,6 @@
 @push('scripts')
 <script src="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
 <script>
-   new DataTable('#profile');
-   
+   new DataTable('#profile');   
 </script>
 @endpush

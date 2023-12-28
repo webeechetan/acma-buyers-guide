@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CompanyUpdateRequest;
 use App\Models\Company;
 use App\Notifications\Company\UpdateApprovedNotification;
+use App\Notifications\Company\ProfileRejectNotification;
 use Illuminate\Http\Request;
 
 class ProfileApprovalController extends Controller
@@ -16,6 +17,7 @@ class ProfileApprovalController extends Controller
     public function index()
     {
         $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->get();
+
         return view('admin.profileapproval.index', compact('pendingRequests'));
     }
 
@@ -82,10 +84,19 @@ class ProfileApprovalController extends Controller
      */
     public function destroy(string $id)
     {
-        $request = CompanyUpdateRequest::findOrFail($id);
-        $request->status = 'disapproved';
-        $request->save();
-        $this->alert('Success', 'Profile Update Request Rejected' , 'success');
+
+        $company_update_request = CompanyUpdateRequest::find($id);
+
+        $company_id = $company_update_request->company_id;
+        $company = Company::find($company_id);
+
+
+
+        $company_update_request->status = 'rejected';
+        $company_update_request->save();
+        $this->alert('Success', 'Request Rejected successfully' , 'success');
+
+        $company_update_request->notify(new ProfileRejectNotification($company_update_request, $company));
         return view('admin.profileapproval.index');
     }
 }

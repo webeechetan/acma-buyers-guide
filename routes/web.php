@@ -88,6 +88,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     Route::get('/profile', [ProfileApprovalController::class, 'index'])->name('admin.profile.approval');
     Route::get('/profile/approve/{id}', [ProfileApprovalController::class, 'update'])->name('admin.profile.approve');
+    Route::delete('/profile/disapprove/{id}', [ProfileApprovalController::class, 'desTroy'])->name('admin.profile.disapprove');
     Route::get('/edit-details', function () {  
         return view('admin.edit-emailer');
     });

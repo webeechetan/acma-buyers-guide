@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>Admin Login</title>
+    <title>Company Login</title>
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- Favicon -->
@@ -93,10 +93,10 @@
                               </span>
                             </div>
                           </div>
-                          <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
+                          {{-- <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
                             <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="remember" @if(isset($_COOKIE['email'])) checked="" @endif > <label class="form-check-label">Remember me</label></div>
                              <a href="{{route('company.forgotpassword.view')}}" class="forgot-password">Forgot password?</a>
-                          </div>
+                          </div> --}}
                           <button class="btn btn-primary d-grid w-100" type="submit">Sign In</button>
                             
                         

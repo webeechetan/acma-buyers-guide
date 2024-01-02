@@ -33,9 +33,9 @@ return new class extends Migration
             $table->string('rnd_incharge')->nullable();
            
 
-            $table->string('responded')->nullable();
-            $table->string('serial_no')->nullable();
-            $table->string('update')->nullable();
+            // $table->string('responded')->nullable();
+            // $table->string('serial_no')->nullable();
+            // $table->string('update')->nullable();
             $table->string('update_date')->nullable();
             $table->string('region')->nullable();
 

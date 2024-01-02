@@ -48,35 +48,45 @@
                       <!-- Company Contact Details --->
                       <div class="form-step active">
                         <div id="company_contact_details" class="form-card content">
-                            <div class="row g-3">
-                              <div class="col-md-3">
-                                <label class="form-label" for="company_name">Company Name</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Company Name" value="{{ $company->name }}">
-                              </div>
+                          <div class="row g-3">
+                            <div class="col-md-3">
+                              <label class="form-label" for="company_name">Company Name</label>
+                              <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Company Name" value="{{ $company->name }}">
+                            </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="phone">Company Phone</label>
                                 <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter Your Phone Number" value="{{ $company_contact_details->phone }}">
                               </div>
-
+                              
                               <div class="col-md-3">
                                 <label class="form-label" for="fax">Company Fax</label>
                                 <input type="text" id="fax" name="fax" class="form-control" placeholder="Enter Your Fax Number" value="{{ $company_contact_details->fax }}">
                               </div>
-
+                              
                               <div class="col-md-3">
                                 <label class="form-label" for="email">Company Email</label>
                                 <input type="email" id="email" name="email" class="form-control" placeholder="Enter Your Email Address" value="{{ $company->email }}">
                               </div>
-
+                              
                               <div class="col-md-3">
                                 <label class="form-label" for="website">Company Webiste</label>
                                 <input type="text" id="website" name="website" class="form-control" placeholder="Enter Your Website Link" value="{{ $company->website }}">
                               </div>
                               <div class="col-md-3">
-                              <label class="form-label" for="pin">Company Pin Code</label>
-                              <input type="text" id="pin" name="pin" class="form-control" placeholder="Enter Your Pin Code" value="{{ $company_contact_details->pin }}">
+                                <label class="form-label" for="image"> Company Logo</label>
+                                <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ $company_contact_details->image }}" onchange="previewImage()">
+                                <div id="imagePreview" class="preview-image">
+                                
+                                  @if($company_contact_details->image)
+                                  <img src="{{ asset('storage/' . $company_contact_details->image) }}" alt="Company Logo">
+                              @endif
+                                </div>
+                            
                               </div>
-
+                              <div class="col-md-3">
+                                 <label class="form-label" for="company_address">Company Address</label>
+                                 <textarea id="company_address" name="company_address" class="form-control" placeholder="Enter Your Company Address" rows="1" >{{ $company_contact_details->company_address }}</textarea>
+                              </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="city">City</label>
                                 <input type="text" id="city" name="city" class="form-control" placeholder="Enter Your City" value="{{ $company_contact_details->city }}">
@@ -86,23 +96,13 @@
                                   <label class="form-label" for="state">State</label>
                                   <input type="text" id="state" name="state" class="form-control" placeholder="Enter Your State" value="{{ $company_contact_details->state }}">
                                   </div>
+                              <div class="col-md-3">
+                              <label class="form-label" for="pin">Company Pin Code</label>
+                              <input type="text" id="pin" name="pin" class="form-control" placeholder="Enter Your Pin Code" value="{{ $company_contact_details->pin }}">
+                              </div>
 
-                                  <div class="col-md-3">
-                                    <label class="form-label" for="image"> Company Logo</label>
-                                    <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ $company_contact_details->image }}" onchange="previewImage()">
-                                    <div id="imagePreview" class="preview-image">
-                                    
-                                      @if($company_contact_details->image)
-                                      <img src="{{ asset('storage/' . $company_contact_details->image) }}" alt="Company Logo">
-                                  @endif
-                                    </div>
+
                                 
-                                  </div>
-                                
-                                   <div class="col-md-3">
-                                      <label class="form-label" for="company_address">Company Address</label>
-                                      <textarea id="company_address" name="company_address" class="form-control" placeholder="Enter Your Company Address" rows="1" >{{ $company_contact_details->company_address }}</textarea>
-                                   </div>
                                   <div class="col-md-3">
                                     <label class="form-label" for="address2">Address2</label>
                                     <input type="text" id="address2" name="address2" class="form-control" placeholder=" Enter Your Address2" value="{{ $company_contact_details->address2 }}">
@@ -137,17 +137,17 @@
                                   </div>
 
 
-                              <div class="col-md-3">
-                              <label class="form-label" for="plant_pin">Plant Pin</label>
-                              <input type="text" id="plant_pin" name="plant_pin" class="form-control" placeholder="Enter Your Plant Pin" value="{{ $company_contact_details->plant_pin }}">
-                              </div>
-
-                              <div class="col-md-3">
-                                <label class="form-label" for="main_state">Main State</label>
-                                <input type="text" id="mainstate" name="mainstate" class="form-control" placeholder="Enter Your Original State" value="{{ $company_contact_details->mainstate }}">
-                                </div>
-
-
+                                  
+                                  <div class="col-md-3">
+                                    <label class="form-label" for="main_state">Main State</label>
+                                    <input type="text" id="mainstate" name="mainstate" class="form-control" placeholder="Enter Your Original State" value="{{ $company_contact_details->mainstate }}">
+                                  </div>
+                                  
+                                  <div class="col-md-3">
+                                  <label class="form-label" for="plant_pin">Plant Pin</label>
+                                  <input type="text" id="plant_pin" name="plant_pin" class="form-control" placeholder="Enter Your Plant Pin" value="{{ $company_contact_details->plant_pin }}">
+                                  </div>
+                                  
                               <div class="col-md-3">
                               <label class="form-label" for="plant_phone">Plant Phone</label>
                               <input type="number" id="plant_phone" name="plant_phone" class="form-control" placeholder="Enter Your Plant Phone Number" value="{{ $company_contact_details->plant_phone }}">
@@ -273,7 +273,7 @@
                               
                               {{-- ////////////New Excel fields added by AJ on 18 oct -2023////////////// --}}
 
-                              <div class="col-md-4">
+                              {{-- <div class="col-md-4">
                                 <label class="form-label" for="Responded">Responded</label>
                                 <input type="text" id="responded" name="responded" class="form-control" placeholder="Enter Respond" value="{{ $company_key_personnels->responded}}">
                               </div>
@@ -287,10 +287,10 @@
                                 <label class="form-label" for="Update">Update</label>
                                 <input type="text" id="update" name="update" class="form-control" placeholder="Enter Update" value="{{ $company_key_personnels->update }}">
                               </div>
-                              
+                               --}}
                               <div class="col-md-4">
-                                <label class="form-label" for="Update_Date">Update Date</label>
-                                <input type="text" id="update_date" name="update_date" class="form-control" placeholder="Enter Update Date" value="{{ $company_key_personnels->update_date }}">
+                                <label class="form-label" for="Update_Date">Update Year</label>
+                                <input type="text" id="update_date" name="update_date" class="form-control" placeholder="Update Year" value="{{ $company_key_personnels->update_date }}">
                               </div>
                               
                               <div class="col-md-4">
@@ -398,202 +398,202 @@
                             </div>
                              
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB1">F_COLLAB1</label>
-                              <input type="text" id="f_collab1" name="f_collab1" class="form-control" placeholder="Enter F_COLLAB1" value="{{$company_foreign_collaboration->f_collab1 }}">
+                              <label class="form-label" for="F_COLLAB1">Foreign Collaboration 1</label>
+                              <input type="text" id="f_collab1" name="f_collab1" class="form-control" placeholder="Foregin Collaboration 1" value="{{$company_foreign_collaboration->f_collab1 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD1">F_PROD1</label>
-                              <input type="text" id="f_prod1" name="f_prod1" class="form-control" placeholder="Enter F_PROD1" value="{{ $company_foreign_collaboration->f_prod1 }}">
+                              <label class="form-label" for="F_PROD1">Foregin Product 1</label>
+                              <input type="text" id="f_prod1" name="f_prod1" class="form-control" placeholder="Foregin Product 1" value="{{ $company_foreign_collaboration->f_prod1 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE1">NATURE1</label>
+                              <label class="form-label" for="NATURE1">Nature 1</label>
                               <input type="text" id="nature1" name="nature1" class="form-control" placeholder="Enter NATURE1" value="{{ $company_foreign_collaboration->nature1 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per1">Per1</label>
-                              <input type="text" id="per1" name="per1" class="form-control" placeholder="Enter Perl" value="{{$company_foreign_collaboration->per1 }}">
+                              <label class="form-label" for="per1">Percentage % 1</label>
+                              <input type="text" id="per1" name="per1" class="form-control" placeholder="Enter Per" value="{{$company_foreign_collaboration->per1 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB2">F_COLLAB2</label>
-                              <input type="text" id="f_collab2" name="f_collab2" class="form-control" placeholder="Enter F_COLLAB2" value="{{ $company_foreign_collaboration->f_collab2 }}">
+                              <label class="form-label" for="F_COLLAB2">Foreign Collaboration 2</label>
+                              <input type="text" id="f_collab2" name="f_collab2" class="form-control" placeholder="Foregin Collaboration 2" value="{{ $company_foreign_collaboration->f_collab2 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD2">F_PROD2</label>
-                              <input type="text" id="f_prod2" name="f_prod2" class="form-control" placeholder=" Enter F_PROD2" value="{{$company_foreign_collaboration->f_prod2 }}">
+                              <label class="form-label" for="F_PROD2">Foregin Product 2</label>
+                              <input type="text" id="f_prod2" name="f_prod2" class="form-control" placeholder="Foregin Product 2" value="{{$company_foreign_collaboration->f_prod2 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE2">NATURE2</label>
+                              <label class="form-label" for="NATURE2">Nature 2</label>
                               <input type="text" id="nature2" name="nature2" class="form-control" placeholder=" Enter Nature2" value="{{$company_foreign_collaboration->nature2}}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per2">Per2</label>
+                              <label class="form-label" for="per2">Percentage % 2</label>
                               <input type="text" id="per2" name="per2" class="form-control" placeholder="Enter Per2" value="{{$company_foreign_collaboration->per2 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB3">F_COLLAB3</label>
-                              <input type="text" id="f_collab3" name="f_collab3" class="form-control" placeholder="Enter F_COLLAB3" value="{{$company_foreign_collaboration->f_collab3 }}">
+                              <label class="form-label" for="F_COLLAB3">Foreign Collaboration 3</label>
+                              <input type="text" id="f_collab3" name="f_collab3" class="form-control" placeholder="Foregin Collaboration 3" value="{{$company_foreign_collaboration->f_collab3 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD3">F_PROD3</label>
-                              <input type="text" id="f_prod3" name="f_prod3" class="form-control" placeholder="Enter F_PROD3" value="{{$company_foreign_collaboration->f_prod3 }}">
+                              <label class="form-label" for="F_PROD3">Foregin Product 3</label>
+                              <input type="text" id="f_prod3" name="f_prod3" class="form-control" placeholder="Foregin Product 3" value="{{$company_foreign_collaboration->f_prod3 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE3">NATURE3</label>
+                              <label class="form-label" for="NATURE3">Nature 3</label>
                               <input type="text" id="nature3" name="nature3" class="form-control" placeholder="Enter NATURE3" value="{{$company_foreign_collaboration->nature3 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per3">Per3</label>
+                              <label class="form-label" for="per3">Percentage % 3</label>
                               <input type="text" id="per3" name="per3" class="form-control" placeholder="Enter Per3" value="{{$company_foreign_collaboration->per3 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB4">F_COLLAB4</label>
-                              <input type="text" id="f_collab4" name="f_collab4" class="form-control" placeholder="Enter F_Collab4" value="{{$company_foreign_collaboration->f_collab4 }}">
+                              <label class="form-label" for="F_COLLAB4">Foreign Collaboration 4</label>
+                              <input type="text" id="f_collab4" name="f_collab4" class="form-control" placeholder="Foregin Collaboration 4" value="{{$company_foreign_collaboration->f_collab4 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD4">F_PROD4</label>
-                              <input type="text" id="f_prod4" name="f_prod4" class="form-control" placeholder="Enter F_PROD4" value="{{$company_foreign_collaboration->f_prod4 }}">
+                              <label class="form-label" for="F_PROD4">Foregin Product 4</label>
+                              <input type="text" id="f_prod4" name="f_prod4" class="form-control" placeholder="Foregin Product 4" value="{{$company_foreign_collaboration->f_prod4 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE4">NATURE4</label>
+                              <label class="form-label" for="NATURE4">Nature 4</label>
                               <input type="text" id="nature4" name="nature4" class="form-control" placeholder="Enter NATURE4" value="{{$company_foreign_collaboration->nature4 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per4">Per4</label>
+                              <label class="form-label" for="per4">Percentage % 4</label>
                               <input type="text" id="per4" name="per4" class="form-control" placeholder="Enter Per4" value="{{$company_foreign_collaboration->per4}}">
                             </div>
 
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB5">F_COLLAB5</label>
-                              <input type="text" id="f_collab5" name="f_collab5" class="form-control" placeholder="Enter Per4" value="{{$company_foreign_collaboration->f_collab5}}">
+                              <label class="form-label" for="F_COLLAB5">Foreign Collaboration 5</label>
+                              <input type="text" id="f_collab5" name="f_collab5" class="form-control" placeholder="Foregin Collaboration 5" value="{{$company_foreign_collaboration->f_collab5}}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD5">F_PROD5</label>
-                              <input type="text" id="f_prod5" name="f_prod5" class="form-control" placeholder=" Enter F_PROD5" value="{{$company_foreign_collaboration->f_prod5 }}">
+                              <label class="form-label" for="F_PROD5">Foregin Product 5</label>
+                              <input type="text" id="f_prod5" name="f_prod5" class="form-control" placeholder="Foregin Product 5" value="{{$company_foreign_collaboration->f_prod5 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE5">NATURE5</label>
+                              <label class="form-label" for="NATURE5">Nature 5</label>
                               <input type="text" id="nature5" name="nature5" class="form-control" placeholder="Enter NATURE5" value="{{$company_foreign_collaboration->nature5 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per5">Per5</label>
+                              <label class="form-label" for="per5">Percentage % 5</label>
                               <input type="text" id="per5" name="per5" class="form-control" placeholder="Enter Per5" value="{{$company_foreign_collaboration->per5 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB6">F_COLLAB6</label>
-                              <input type="text" id="f_collab6" name="f_collab6" class="form-control" placeholder="Enter F_COLLAB6" value="{{$company_foreign_collaboration->f_collab6 }}">
+                              <label class="form-label" for="F_COLLAB6">Foreign Collaboration 6</label>
+                              <input type="text" id="f_collab6" name="f_collab6" class="form-control" placeholder="Foregin Collaboration 6" value="{{$company_foreign_collaboration->f_collab6 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD6">F_PROD6</label>
-                              <input type="text" id="f_prod6" name="f_prod6" class="form-control" placeholder=" Enter F_PROD6" value="{{$company_foreign_collaboration->f_prod6 }}">
+                              <label class="form-label" for="F_PROD6">Foregin Product 6</label>
+                              <input type="text" id="f_prod6" name="f_prod6" class="form-control" placeholder="Foregin Product 6" value="{{$company_foreign_collaboration->f_prod6 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE6">NATURE6</label>
+                              <label class="form-label" for="NATURE6">Nature 6</label>
                               <input type="text" id="nature6" name="nature6" class="form-control" placeholder="Enter NATURE6" value="{{$company_foreign_collaboration->nature6 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per6">Per6</label>
+                              <label class="form-label" for="per6">Percentage % 6</label>
                               <input type="text" id="per6" name="per6" class="form-control" placeholder="Enter Per6" value="{{$company_foreign_collaboration->per6 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB7">F_COLLAB7</label>
-                              <input type="text" id="f_collab7" name="f_collab7" class="form-control" placeholder="Enter F_COLLAB7" value="{{$company_foreign_collaboration->f_collab7 }}">
+                              <label class="form-label" for="F_COLLAB7">Foreign Collaboration 7</label>
+                              <input type="text" id="f_collab7" name="f_collab7" class="form-control" placeholder="Foregin Collaboration 7" value="{{$company_foreign_collaboration->f_collab7 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD7">F_PROD7</label>
-                              <input type="text" id="f_prod7" name="f_prod7" class="form-control" placeholder=" Enter F_PROD7" value="{{$company_foreign_collaboration->f_prod7 }}">
+                              <label class="form-label" for="F_PROD7">Foregin Product 7</label>
+                              <input type="text" id="f_prod7" name="f_prod7" class="form-control" placeholder="Foregin Product 7" value="{{$company_foreign_collaboration->f_prod7 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE7">NATURE7</label>
+                              <label class="form-label" for="NATURE7">Nature 7</label>
                               <input type="text" id="nature7" name="nature7" class="form-control" placeholder=" Enter NATURE7" value="{{$company_foreign_collaboration->nature7 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per7">Per7</label>
+                              <label class="form-label" for="per7">Percentage % 7</label>
                               <input type="text" id="per7" name="per7" class="form-control" placeholder="Enter Per7" value="{{$company_foreign_collaboration->per7 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB8">F_COLLAB8</label>
-                              <input type="text" id="f_collab8" name="f_collab8" class="form-control" placeholder="Enter F_COLLAB8" value="{{$company_foreign_collaboration->f_collab8 }}">
+                              <label class="form-label" for="F_COLLAB8">Foreign Collaboration 8</label>
+                              <input type="text" id="f_collab8" name="f_collab8" class="form-control" placeholder="Foregin Collaboration 8" value="{{$company_foreign_collaboration->f_collab8 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD8">F_PROD8</label>
-                              <input type="text" id="f_prod8" name="f_prod8" class="form-control" placeholder=" Enter F_PROD8" value="{{$company_foreign_collaboration->f_prod8 }}">
+                              <label class="form-label" for="F_PROD8">Foregin Product 8</label>
+                              <input type="text" id="f_prod8" name="f_prod8" class="form-control" placeholder="Foregin Product 8" value="{{$company_foreign_collaboration->f_prod8 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE8">NATURE8</label>
+                              <label class="form-label" for="NATURE8">Nature 8</label>
                               <input type="text" id="nature8" name="nature8" class="form-control" placeholder=" Enter NATURE8" value="{{$company_foreign_collaboration->nature8 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per8">Per8</label>
+                              <label class="form-label" for="per8">Percentage % 8</label>
                               <input type="text" id="per8" name="per8" class="form-control" placeholder="Enter Per8" value="{{$company_foreign_collaboration->per8 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB9">F_COLLAB9</label>
-                              <input type="text" id="f_collab9" name="f_collab9" class="form-control" placeholder="Enter F_COLLAB9" value="{{$company_foreign_collaboration->f_collab9}}">
+                              <label class="form-label" for="F_COLLAB9">Foreign Collaboration 9</label>
+                              <input type="text" id="f_collab9" name="f_collab9" class="form-control" placeholder="Foregin Collaboration 9" value="{{$company_foreign_collaboration->f_collab9}}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD9">F_PROD9</label>
-                              <input type="text" id="f_prod9" name="f_prod9" class="form-control" placeholder="Enter F_PROD9" value="{{$company_foreign_collaboration->f_prod9 }}">
+                              <label class="form-label" for="F_PROD9">Foregin Product 9</label>
+                              <input type="text" id="f_prod9" name="f_prod9" class="form-control" placeholder="Foregin Product 9" value="{{$company_foreign_collaboration->f_prod9 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE9">NATURE9</label>
+                              <label class="form-label" for="NATURE9">Nature 9</label>
                               <input type="text" id="nature9" name="nature9" class="form-control" placeholder=" Enter NATURE9" value="{{$company_foreign_collaboration->nature9 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per9">Per9</label>
+                              <label class="form-label" for="per9">Percentage % 9</label>
                               <input type="text" id="per9" name="per9" class="form-control" placeholder=" Enter Per9" value="{{$company_foreign_collaboration->per9 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB10">F_COLLAB10</label>
-                              <input type="text" id="f_collab10" name="f_collab10" class="form-control" placeholder="Rnter F_COLLAB10" value="{{$company_foreign_collaboration->f_collab10 }}">
+                              <label class="form-label" for="F_COLLAB10">Foreign Collaboration 10</label>
+                              <input type="text" id="f_collab10" name="f_collab10" class="form-control" placeholder="Foregin Collaboration 10" value="{{$company_foreign_collaboration->f_collab10 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_PROD10">F_PROD10</label>
-                              <input type="text" id="f_prod10" name="f_prod10" class="form-control" placeholder="Enter F_PROD10" value="{{$company_foreign_collaboration->f_prod10 }}">
+                              <label class="form-label" for="F_PROD10">Foregin Product 10</label>
+                              <input type="text" id="f_prod10" name="f_prod10" class="form-control" placeholder="Foregin Product 10" value="{{$company_foreign_collaboration->f_prod10 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="NATURE10">NATURE10</label>
+                              <label class="form-label" for="NATURE10">Nature 10</label>
                               <input type="text" id="nature10" name="nature10" class="form-control" placeholder=" Enter Nature10" value="{{$company_foreign_collaboration->nature10 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="per10">Per10</label>
+                              <label class="form-label" for="per10">Percentage % 10</label>
                               <input type="text" id="per10" name="per10" class="form-control" placeholder="Enter Per10" value="{{$company_foreign_collaboration->per10 }}">
                             </div>
                             

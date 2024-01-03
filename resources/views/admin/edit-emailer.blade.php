@@ -63,7 +63,7 @@
         </table>
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px; background-color: #07395C;">
         <tr>
-            <td><p style="text-align: center; color: #fff;">Have any Question check out here</p></td>
+            <td><p style="text-align: center; color: #fff; margin-bottom: 0;">Have any Question check out here</p></td>
           </tr>
         </table>
       </td>

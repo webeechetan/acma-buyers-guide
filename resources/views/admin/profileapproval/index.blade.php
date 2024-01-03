@@ -9,7 +9,7 @@
 @endpush
 @section('content')
 
-<h4 class="text-primary">Pending Profile Approve Requests</h4>
+<h4 class="text-primary"><b>Pending Profile Approve Requests</b></h4>
 <div class="row">
 
     @if(isset($pendingRequests) && $pendingRequests->count() > 0)

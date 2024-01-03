@@ -3,47 +3,46 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="row mb-3">
+<div class="row">
+  <div class="region col-md-12">
+    <h3 class="text-primary"><b>Region</b></h3>
+    <div class="row">
+    @foreach ($regionsCount as $region)
+        <?php
+            $regionName = $region->region;
+            $count = $region->count;
+        ?>
 
-
-    <div class="region col-md-12">
-      <div class="row">
-      @foreach ($regionsCount as $region)
-          <?php
-              $regionName = $region->region;
-              $count = $region->count;
-          ?>
-
-              <div class="col-md-3">
-                <div class="card">
-                  <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
-                    <div>
-                      <h3 class="mb-1">{{ $regionName }}</h3>
+            <div class="col-md-3 mb-3">
+              <div class="card">
+                <div>
+                  <div class=" d-flex justify-content-between align-items-center">
+                    <span class="mb-1 badge bg-primary">{{ $regionName }}</span>
                       <p class="mb-0">{{$count}} </p>
-                    </div>
-                    
                   </div>
+                  
                 </div>
-                <hr class="d-none d-sm-block d-lg-none me-4">
               </div>
+              <hr class="d-none d-sm-block d-lg-none me-4">
+            </div>
 
-          
-      @endforeach
-      </div>
-    
+        
+    @endforeach
     </div>
+  
+  </div>
   </div>
 
-<div class="row mb-4">
-     <div class="col-md-4">
+<div class="row">
+     <div class="col-md-4 mb-3">
       <div class="card">
-          <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
+          <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>
-              <h3 class="mb-1">{{ $totalCompanyCount }}</h3>
-              <p class="mb-0">Total Companies</p>
+              <h3 class="mb-1 text-primary"><b>{{ $totalCompanyCount }}</b></h3>
+              <h5 class="mb-0">Total Companies</h5>
             </div>
             <span class="badge bg-label-secondary rounded p-2 me-sm-4">
-              <i class='bx bx-chart bx-sm'></i>
+              <i class='bx bx-chart bx-sm text-primary'></i>
             </span>
           </div>
           <hr class="d-none d-sm-block d-lg-none me-4">
@@ -54,8 +53,8 @@
         <div class="card">
           <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>
-              <h3 class="mb-1 text-secondary">{{ $ProfilependingCount }}</h3>
-              <p class="mb-0">Pending Request </p>
+              <h3 class="mb-1 text-secondary"><b>{{ $ProfilependingCount }}</b></h3>
+              <h5 class="mb-0">Pending Request </h5>
             </div>
             <span class="badge bg-label-secondary rounded p-2 me-sm-4">
               <i class='bx bx-chart bx-sm text-secondary'></i>
@@ -70,8 +69,8 @@
         <div class="card">
           <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>
-              <h3 class="mb-1 text-success">{{ $ProfileapprovedCount }}</h3>
-              <p class="mb-0">Approved Request</p>
+              <h3 class="mb-1 text-success"><b>{{ $ProfileapprovedCount }}</b></h3>
+              <h5 class="mb-0">Approved Request</h5>
             </div>
             <span class="badge bg-label-secondary rounded p-2 me-sm-4">
             <i class='bx bx-git-pull-request text-success'></i>
@@ -86,7 +85,7 @@
 <div class="col-md-12">
         <div class="card h-100">
           <div class="card-header d-flex align-items-center justify-content-between">
-            <h4 class="card-title m-0 me-2 text-primary">Recently Added Company </h4>
+            <h3 class="card-title m-0 me-2 text-primary"><b>Recently Added Company</b> </h3>
           </div>
 
           @foreach($lastestFiveCompanies as $latestCompany)

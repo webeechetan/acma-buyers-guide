@@ -1178,7 +1178,7 @@ background-color: #C7F6C7;
 
 }
 .companies-table{
-  overflow-x: hidden;
+  overflow: hidden;
 }
 /*---- Modal ---*/
 .modal.show .modal-dialog {
@@ -1234,6 +1234,9 @@ background-color: #C7F6C7;
 
   .copyright p {
     margin-bottom: 0;
+  }
+  .companies-table{
+    overflow: scroll;
   }
 }
 
@@ -1379,9 +1382,6 @@ background-color: #C7F6C7;
   .filter-list {
     grid-template-columns: repeat(3, 1fr);
   }
-  .companies-table{
-    overflow-x: scroll;
-  }
 }
 
 .select2-results__options {
@@ -1431,9 +1431,7 @@ div .dt-buttons{
 .dataTable thead {
   background-color: var(--primary);
 }
-.companies-table table{
-  overflow-x: scroll;
-}
+
 table.dataTable thead tr th:last-child {
   width: 130px !important;
 }table.dataTable thead tr th:nth-child(3) {

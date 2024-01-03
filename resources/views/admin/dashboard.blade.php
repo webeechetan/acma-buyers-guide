@@ -4,6 +4,34 @@
 
 @section('content')
 <div class="row">
+
+
+  <div class="region col-md-4">
+    @foreach ($regionsCount as $region)
+        <?php
+            $regionName = $region->region;
+            $count = $region->count;
+        ?>
+
+            <div class="col-sm-6 col-lg-3">
+              <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
+                <div>
+                  <h3 class="mb-1">{{ $regionName }}</h3>
+                  <p class="mb-0">{{$count}} </p>
+                </div>
+                
+              </div>
+              <hr class="d-none d-sm-block d-lg-none me-4">
+            </div>
+
+        
+    @endforeach
+</div>
+
+
+
+
+
     <div class="col-12">
         <div class="card mb-4">
           <div class="card-widget-separator-wrapper">

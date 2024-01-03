@@ -271,11 +271,11 @@
                                              </div>
                                                 <div class="mt-3 d-flex align-items-center justify-content-between">
                                                       <a href="{{ url()->current() }}" id="resetButton" class="btn btn-danger border-danger btn-sm btn_reset">Reset</a>
-                                                      <div class="checked_company_info"> 
+                                                      <!-- <div class="checked_company_info"> 
                                                          <span class="total_companies badge bg-dark text-capitalize"></span>
                                                          <span class="checked_companies badge bg-primary text-capitalize"></span>
                                                          <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
-                                                      </div>
+                                                      </div> -->
                                                       <button class="btn btn-success btn-sm">Apply</button>
                                                 </div>
                                             </form>

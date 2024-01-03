@@ -162,6 +162,9 @@ body {
 .pe-auto{
   cursor: pointer !important;
 }
+.checked_company_info{
+  display: block !important;
+}
 .checked_company_info span.badge{
   padding: .6rem;
 }
@@ -1375,6 +1378,9 @@ background-color: #C7F6C7;
   /*--- Filter List ---*/
   .filter-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .companies-table{
+    overflow-x: scroll;
   }
 }
 

@@ -9,7 +9,7 @@
 @endpush
 @section('content')
 
-<h4>Pending Profile Approve Requests</h4>
+<h4 class="text-primary">Pending Profile Approve Requests</h4>
 <div class="row">
 
     @if(isset($pendingRequests) && $pendingRequests->count() > 0)
@@ -72,14 +72,14 @@
                         </table>
                         
                     
-                            <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>
-
-                        
-                        <form method="post" action="{{route('admin.profile.disapprove' , $request->id )}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Deny</button>
-                        </form>
+                           <div class="d-flex gap-2">
+                                <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>                    
+                                <form method="post" action="{{route('admin.profile.disapprove' , $request->id )}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Deny</button>
+                                </form>
+                           </div>
                     </div>
                 </div>
             </div>

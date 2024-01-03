@@ -11,8 +11,8 @@
     <ul class="navbar-nav flex-row align-items-center ms-auto">
       <li>
         <a class="dropdown-item" href="{{ route('admin.logout') }}">
-          <i class="bx bx-power-off me-2"></i>
-          <span class="align-middle">Log Out</span>
+          <i class="bx bx-power-off text-danger me-2"></i>
+          <span class="align-middle text-danger">Log Out</span>
         </a>
       </li>
     </ul>

@@ -3,24 +3,54 @@
 @section('title', 'Dashboard')
 
 @section('content')
-  <div class="row gy-4 gy-sm-1 mb-3">
-      <div class="col-sm-6 col-lg-4">
-        <div class="card">
-          <div class="d-flex justify-content-between align-items-start pb-3 pb-sm-0">
-              <div>
-                <h3 class="mb-1 text-primary">{{ $totalCompanyCount }}</h3>
-                <p class="mb-0">Total Companies</p>
-              </div>
-              <span class="badge bg-label-secondary rounded p-2 me-sm-4">
-                <i class='bx bx-chart bx-sm text-primary'></i>
-              </span>
-            </div>
-        </div>
-        <hr class="d-none d-sm-block d-lg-none me-4">
-      </div>
+<div class="row mb-3">
 
+
+    <div class="region col-md-12">
+      <div class="row">
+      @foreach ($regionsCount as $region)
+          <?php
+              $regionName = $region->region;
+              $count = $region->count;
+          ?>
+
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
+                    <div>
+                      <h3 class="mb-1">{{ $regionName }}</h3>
+                      <p class="mb-0">{{$count}} </p>
+                    </div>
+                    
+                  </div>
+                </div>
+                <hr class="d-none d-sm-block d-lg-none me-4">
+              </div>
+
+          
+      @endforeach
+      </div>
+    
+    </div>
+  </div>
+
+<div class="row mb-4">
+     <div class="col-md-4">
+      <div class="card">
+          <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
+            <div>
+              <h3 class="mb-1">{{ $totalCompanyCount }}</h3>
+              <p class="mb-0">Total Companies</p>
+            </div>
+            <span class="badge bg-label-secondary rounded p-2 me-sm-4">
+              <i class='bx bx-chart bx-sm'></i>
+            </span>
+          </div>
+          <hr class="d-none d-sm-block d-lg-none me-4">
+        </div>
+     </div>
       {{-- Pending Request --}}
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-md-4">
         <div class="card">
           <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>
@@ -36,7 +66,7 @@
       </div>
 
       {{-- Approved Request --}}
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-md-4">
         <div class="card">
           <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>
@@ -50,7 +80,7 @@
         </div>
         <hr class="d-none d-sm-block d-lg-none me-4">
       </div>
-  </div>    
+</div>   
      
 <div class="row">
 <div class="col-md-12">

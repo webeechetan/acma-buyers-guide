@@ -6,23 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Http\Controllers\Admin\ProfileApprovalController;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\CompanyController;
 
-class ProfileRejectNotification extends Notification
+class LoginOtpNotification extends Notification
 {
     use Queueable;
-
-    public $company_update_request;
-    public $company;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($company_update_request, $company)
+    public function __construct($user, $otp)
     {
-        $this->company_update_request = $company_update_request;
-        $this->company = $company;
+        $this->user = $user;
+        $this->otp = $otp;
     }
 
     /**
@@ -40,12 +36,12 @@ class ProfileRejectNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-
         return (new MailMessage)
-        ->subject('Your Profile update request is not approved')
-        ->markdown('website.emailers.rejectedprofile', [
-            'company' => $this->company,
-        ]);
+                    ->subject('Login OTP')
+                    ->markdown('website.emailers.loginotp', [
+                        'user' => $this->user,
+                        'otp' => $this->otp,
+                    ]);
     }
 
     /**

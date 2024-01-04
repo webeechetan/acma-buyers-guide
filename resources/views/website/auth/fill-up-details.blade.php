@@ -209,7 +209,7 @@
                                   </div>
 
                                   <div class="col-md-12">
-                                    <label class="form-label" for="plant_email">Year Commencing</label>
+                                    <label class="form-label" for="yearcommencing">Year Commencing</label>
                                     <input type="text" id="year_commencing" name="year_commencing" class="form-control" placeholder="Enter Your Year Commencing" value="{{ $company_contact_details->year_commencing }}">
                                     </div>
                              
@@ -598,7 +598,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="MEMBER">Member</label>
+                              <label class="form-label" for="MEMBER">Membership Type</label>
                               <input type="text" id="member" name="member" class="form-control" placeholder=" Enter Member" value="{{ $company_foreign_collaboration->member }}">
                             </div>
                             
@@ -606,8 +606,6 @@
                               <label class="form-label" for="iso">ISO</label>
                               <input type="text" id="iso" name="iso" class="form-control" placeholder=" Enter ISO" value="{{ $company_foreign_collaboration->iso }}">
                             </div>
-                            
-                            
                             
                             <div class="col-md-4">
                               <label class="form-label" for="isodate">ISO Date</label>
@@ -799,7 +797,7 @@
                               <input type="text" id="afmkt3" name="afmkt3" class="form-control" placeholder="Enter AFMKT3" value="{{$company_product_details->afmkt3 }}">
                             </div>
                             
-                            <div class="col-md-2">
+                            {{-- <div class="col-md-2">
                               <label class="form-label" for="NetExciseDutyPaid">Net Excise Duty Paid</label>
                               <input type="text" id="net_excise_duty_paid" name="net_excise_duty_paid" class="form-control" placeholder=" Enter Net Excise Duty Paid" value="{{$company_product_details->net_excise_duty_paid}}">
                             </div>
@@ -908,7 +906,7 @@
                             <div class="col-md-2">
                               <label class="form-label" for="Field2">Field2</label>
                               <input type="text" id="field2" name="field2" class="form-control" placeholder=" Entter Field2" value="{{$company_product_details->field2 }}">
-                            </div>
+                            </div> --}}
 
                           </div>
                         </div>

@@ -90,13 +90,19 @@ class ProfileApprovalController extends Controller
         $company_id = $company_update_request->company_id;
         $company = Company::find($company_id);
 
-
-
         $company_update_request->status = 'rejected';
-        $company_update_request->save();
-        $this->alert('Success', 'Request Rejected successfully' , 'success');
+        $res = $company_update_request->save();
 
-        $company_update_request->notify(new ProfileRejectNotification($company_update_request, $company));
-        return view('admin.profileapproval.index');
+       
+
+        if($res) {
+
+            $company_update_request->notify(new ProfileRejectNotification($company_update_request, $company));
+            $this->alert('Success', 'Request Rejected successfully' , 'success');
+        }else {
+            $this->alert('Error', 'Something went wrong' , 'error');
+        }
+        
+        return redirect()->route('admin.profile.approval');
     }
 }

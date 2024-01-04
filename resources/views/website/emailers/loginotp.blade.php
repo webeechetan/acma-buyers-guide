@@ -37,43 +37,13 @@
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px">
          
           <tr>
-            <td><p style="margin-bottom: 0;"><b>Hello Admin , <b><br> </p></td>
+            <td><p style="margin-bottom: 0;"><b>Hello  {{ $user->name }} , </b><br> </p></td>
           </tr>
-
           <tr>
-            <td><p style="margin-bottom: 0;">We recieved a request from {{ $company->name }}  to approve the profile changes.</p></td>
+            <td><p style="margin-bottom: 0;">To ensure the security of your account, we have generated a One-Time Password (OTP) for you.</p></td>
           </tr>
-
-          @php 
-
-          foreach ($data as $key => $value) {
-
-            if(!$value['old']){
-                $value['old'] = 'N/A';
-            }
-           
-            $updating_data .= '<b>' . ucfirst(str_replace('_', ' ', $key)) . '</b> From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
-
-            // $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
-        }
-
-//         foreach ($data as $key => $value) {
-//     if (!$value['old']) {
-//         $value['old'] = 'NULL';
-//     }
-
-    
-//     // Assume 'old' and 'new' represent image URLs or file paths
-// $oldImageHtml = $value['old'] !== 'NULL' ? '<img src="' . asset('storage/' . $value['old']) . '" alt="Old Image">' : 'Null';
-// $newImageHtml = $value['new'] !== 'NULL' ? '<img src="' . asset('storage/' . $value['new']) . '" alt="New Image">' : 'Null';
-
-
-//     $updating_data .= $key . ' From ' . $oldImageHtml . ' to ' . $newImageHtml . '<br>';
-// }
-
-        @endphp
           <tr>
-            <td><p style="margin-bottom: 0;">Updating Data : ' . {!! $updating_data !!} </b></p></td>
+            <td><p style="margin-bottom: 0;">Here is your OTP-<b> {{ $otp }} </b></p></td>
           </tr>
           <tr>
             <td>

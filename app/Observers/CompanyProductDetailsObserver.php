@@ -34,13 +34,17 @@ class CompanyProductDetailsObserver
 
         $updated = $companyProductDetails->getAttributes();
 
+        //  dd($original , $updated);
+
         $updatedKeys = array_keys(array_diff_assoc($updated, $original));
 
+        
         $update_request = [];
         foreach ($updatedKeys as $key) {
+
             $update_request[$key] = [
                 'old' => $original[$key],
-                'new' => $original[$key]
+                'new' => $updated[$key]
             ];
         }
 
@@ -53,7 +57,7 @@ class CompanyProductDetailsObserver
 
         $company_update_request->company_id = $companyProductDetails->company_id;
         $company_update_request->data = json_encode($update_request);
-        $company_update_request->modal = 'CompanyProductDetail';
+        $company_update_request->modal = 'CompanyProductDetails';
         $company_update_request->save();
 
         return false;

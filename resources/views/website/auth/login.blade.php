@@ -77,14 +77,15 @@
                       </ul>
                     </div>
                     <div class="tab-content">
-                      <form id="login" class="tab-pane active signup" action="{{ route('company.authenticate') }}" method="POST"> 
+                      <form id="login" class="tab-pane active signup" action="{{ route('company.generate_otp') }}" method="POST"> 
                         @csrf 
                         <div class="mb-3">
                           <label for="email" class="form-label">Email </label>
-                          <input type="text" class="form-control" id="email" name="email"  @if(isset($_COOKIE["email"]))  value="{{ $_COOKIE["email"] }}" @endif   placeholder="Enter your email or username" autofocus>
-                          <x-validation-error name="email" />
+                          <input type="text" class="form-control" id="email" name="email"  placeholder="Enter your email" autofocus>
+                          <x-validation-error name="email"/>
+                         
                         </div>
-                          <div class="mb-3 form-password-toggle">
+                          {{-- <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Password</label>`
                             <div class="input-group input-group-merge">
                               <input type="password" id="password" class="form-control" name="password" @if(isset($_COOKIE["password"]))  value="{{ $_COOKIE["password"] }}" @endif placeholder="Password" aria-describedby="password" />
@@ -92,7 +93,7 @@
                                 <i class="bx bx-hide"></i>
                               </span>
                             </div>
-                          </div>
+                          </div> --}}
                           {{-- <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
                             <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="remember" @if(isset($_COOKIE['email'])) checked="" @endif > <label class="form-check-label">Remember me</label></div>
                              <a href="{{route('company.forgotpassword.view')}}" class="forgot-password">Forgot password?</a>

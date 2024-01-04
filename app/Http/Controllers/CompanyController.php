@@ -14,6 +14,7 @@ use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
 use App\Notifications\Company\ForgotPasswordOtpNotification;
+use App\Notifications\Company\LoginOtpNotification;
 use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
 use Illuminate\Support\Facades\Password;
@@ -34,32 +35,47 @@ class CompanyController extends Controller
         return view('website.auth.login');
     }
 
+    public function generateLoginOtp(Request $request)
+    {
+            $request->validate([
+                'email' => 'required|email|exists:companies'
+            ]);
+
+            $user = Company::where('email',$request->email)->first();       
+            $request->session()->put('OTP_email', $user->email);
+
+            $otp = random_int(100000, 999999);
+
+
+            $user->otp = $otp;
+            $user->saveQuietly();
+            $user->notify(new LoginOtpNotification($user, $otp));
+
+            $this->alert('Success', 'Otp sent to your email address sucessfully' , 'success');
+
+            return redirect()->route('company.otp-form');
+    }
+
+    public function showOtpLoginForm(Request $request)
+    {
+        return view('website.auth.otp-loginform-view');
+    }
+
+
     public function authenticate(Request $request)
     {
 
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'otp' => 'required|digits:6|exists:companies',
         ]);
+        
+        
+        $company = Company::where('otp', $request->otp)->first();
 
-        if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if ($company) {
+            Auth::guard('company')->login($company);
             $request->session()->regenerate();
-
-            //setting cookies in client browser
-
-                if ($request->has('remember')) {
-                
-                
-                setcookie("email", $request->email, time() + 3600 * 24 * 7);
-                setcookie("password", $request->password, time() + 3600 * 24 * 7);
-               
-            } else {
-               
-                setcookie("email", "", time() - 3600); 
-                setcookie("password", "", time() - 3600);    
-            }
             return redirect()->route('company.dashboard');
-           
         }
 
         $this->alert('Error', 'Invalid Details' , 'danger');
@@ -164,7 +180,6 @@ class CompanyController extends Controller
         $company_id = Auth::guard('company')->user()->id;
         $data = $request->all();
 
-        $is_updated = false;
        
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('img_company_logo', 'public'); 
@@ -197,17 +212,13 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
      
-       
         $auth_id = auth()->guard('company')->user()->id;
-
-
          $companies = CompanyHelper::filter($request);       
         
         // $response = Benchmark::measure([
         //     fn() => Company::all(),
         //     fn() =>  Company::select('name')->groupBy('name')->get(),
         //   ]);
-
        
          $companies_name = Company::all(); // Adjust the number per page as needed
         

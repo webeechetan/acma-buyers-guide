@@ -184,6 +184,7 @@
               </div>
               <div class="modal-body pt-1">
               <ul class="list-unstyled mb-4 mt-3">
+                <li>
 
                 @php
 
@@ -208,6 +209,7 @@
 
                   {!! $updating_data !!}
 
+                  <li>
               </ul>
               </div>
             </div>

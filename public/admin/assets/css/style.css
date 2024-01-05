@@ -1571,3 +1571,11 @@ div .timeline .timeline-item{
 .btn-success:hover {
   transform: none !important;
 }
+
+.checked_company_download{
+  display: none;
+}
+
+.company_download_btn_show{
+  display: block;
+}

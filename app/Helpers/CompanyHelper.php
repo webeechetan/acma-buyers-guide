@@ -119,6 +119,22 @@ class CompanyHelper {
             });
         }
 
+        //checkbox filter for sales turnover
+        if ($request->has('ranges')) {
+            $range = $request->input('ranges');
+
+            [$min, $max] = explode('-', $range);
+
+            $min = (int) $min;
+            $max = (int) $max;
+        
+            
+            $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
+                $query->whereBetween('export_turn_02_03', [$min, $max]);
+            });
+        }
+
+
         if($request->has('name')){
             $companies = $companies->where('name','like','%'.$request->name.'%');
         }

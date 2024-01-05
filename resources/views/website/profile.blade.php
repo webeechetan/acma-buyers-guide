@@ -6,39 +6,51 @@
 @section('content')
 <div class="row mt-5 mb-4 border-bottom pb-3">
   <div class="col-12">
-     <div class="d-flex align-items-center profile-card">
-        <div>
-          
-          @if($company_contact_details->image)
-            <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
-          @else
-            <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
-          @endif
+     <div class="d-flex align-items-center justify-content-between flex-wrap  profile-card">
+        <div class="d-flex align-items-center mb-3 mb-md-0">
+          <div>
+            
+            @if($company_contact_details->image)
+              <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
+            @else
+              <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
+            @endif
 
-        </div>
-        <div>
-          <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
-            <div class="user-profile-info">
-              <h4 class="text-dark mb-2">{{$company->name}}</h4>
-              <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
-                
-                @if($company_contact_details->state)
-                <li class="list-inline-item fw-medium">
-                  <i class="bx bx-map"></i> {{$company_contact_details->state}}
-                </li>
-                @endif
-                <li class="list-inline-item fw-medium">
-                  <i class="bx bx-calendar-alt"></i> <span class="text-primary">{{$company->created_at->format('d M-y')}}</span>
-                </li>
-              </ul>
+          </div>
+          <div>
+            <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
+              <div class="user-profile-info">
+                <h4 class="text-dark mb-2">{{$company->name}}</h4>
+                <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+                  
+                  @if($company_contact_details->state)
+                  <li class="list-inline-item fw-medium">
+                    <i class="bx bx-map"></i> {{$company_contact_details->state}}
+                  </li>
+                  @endif
+                  <li class="list-inline-item fw-medium">
+                    <i class="bx bx-calendar-alt"></i> <span class="text-primary">{{$company->created_at->format('d M-y')}}</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
+        <div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-style1 mb-0">
+              <li class="breadcrumb-item">
+                <a href="{{route('company.dashboard')}}">Dashboard</a>
+              </li>
+              <li class="breadcrumb-item active"> My Profile</li>
+            </ol>
+          </nav>
+      </div>
       </div>
   </div>
 </div>
 <div class="row">
-   <div class="col-md-5 border-end">
+   <div class="col-md-5 mb-md-0 mb-4 border-end">
     <!-- About User -->
     <div class="inner-profile-card">
         <!-- <div class="information-list profile-list mb-4">
@@ -139,7 +151,7 @@
     <!-- Activity Timeline -->
     <div class="card-action mb-4">
       <div class="align-items-center">
-        <h5 class="card-action-title mb-0 text-primary fw-semibold"><i class="bx bx-list-ul me-2 text-primary"></i>Company Profile Update Request Status</h5> 
+        <h5 class="card-action-title mb-0 text-primary fw-semibold d-flex"><i class="bx bx-list-ul me-2 text-primary"></i>Company Profile Update Request Status</h5> 
       </div>
    
       @foreach ($CompanyUpdateRequests as $CompanyUpdateRequest)

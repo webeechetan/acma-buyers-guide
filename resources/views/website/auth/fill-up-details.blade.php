@@ -15,6 +15,14 @@
             
             <div class="col-md-12 mb-3 mb-md-0">
               <div class="card">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 justify-content-end">
+                      <li class="breadcrumb-item">
+                        <a href="{{route('company.dashboard')}}">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item active">Account Details</li>
+                    </ol>
+                  </nav>
                 <div class="tab-pane-header">
                   <h2 id="heading" class="title mb-md-0">Company Details</h2>
                   <p class="text-center mb-0">Fill all form field to go to next step</p>  
@@ -914,7 +922,7 @@
                   
                   
                     <div class="form-navigation mt-3">
-                      <button type="button" class="btn btn-primary" id="prev">Back</button>
+                      <button type="button" class="btn btn-primary" id="prev">Previous</button>
                       <button type="button" class="btn btn-primary ms-auto" id="next">Next</button>
                       <button type="submit" class="btn btn-success" id="submit" style="display: none;">Update</button>
                     </div>

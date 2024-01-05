@@ -9,7 +9,7 @@
 @endpush
 @section('content')
 <!-- Content -->
-<section class="sec-space">
+<section class="sec-space pb-0">
    <div>
       <!--- Search Filter ---->
             <div class="card dashboard-header">
@@ -270,12 +270,12 @@
                                                 </div>
                                              </div>
                                                 <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                      <a href="{{ url()->current() }}" class="btn btn-danger border-danger btn-sm btn_reset">Reset</a>
-                                                      <div class="checked_company_info"> 
+                                                      <a href="{{ url()->current() }}" id="resetButton" class="btn btn-danger border-danger btn-sm btn_reset">Reset</a>
+                                                      <!-- <div class="checked_company_info"> 
                                                          <span class="total_companies badge bg-dark text-capitalize"></span>
                                                          <span class="checked_companies badge bg-primary text-capitalize"></span>
                                                          <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
-                                                      </div>
+                                                      </div> -->
                                                       <button class="btn btn-success btn-sm">Apply</button>
                                                 </div>
                                             </form>
@@ -335,7 +335,7 @@
                                  <div class="card card-data">
                                     <div class="company-title">
                                     <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                       <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"> <i class='bx bx-check check-icon' ></i> </span>
+                                       <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Check"> <i class='bx bx-check check-icon' ></i> </span>
                                     </div>
                                     <div class="card-body">
                                        <div class="information-list">
@@ -693,37 +693,64 @@ $(document).ready(function () {
 </script>
 
 <script>
- 
-  function updateBadgeCount(tabId, count) {
-    document.getElementById(tabId + 'Badge').textContent = count;
-  }
+function updateBadgeCount(tabId, count) {
+  document.getElementById(tabId + 'Badge').textContent = count;
+}
 
+function resetBadgeCounts(tabId, storageKey) {
+  localStorage.setItem(storageKey, 0);
+  updateBadgeCount(tabId, 0);
+}
 
-  function handleCheckboxChange(tabId, checkboxSelector, storageKey) {
-    function update() {
-      var checkboxes = document.querySelectorAll(checkboxSelector);
-      var selectedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-      updateBadgeCount(tabId, selectedCount);
-
-      localStorage.setItem(storageKey, selectedCount);
-    }
+function handleCheckboxChange(tabId, checkboxSelector, storageKey) {
+  function update() {
     var checkboxes = document.querySelectorAll(checkboxSelector);
-    checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('change', update);
-    });
+    var selectedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+    updateBadgeCount(tabId, selectedCount);
 
-    document.addEventListener('DOMContentLoaded', function () {
-      var savedCount = localStorage.getItem(storageKey) || 0;
-      updateBadgeCount(tabId, savedCount);
-    });
+    localStorage.setItem(storageKey, selectedCount);
   }
 
-  handleCheckboxChange('company', '.company_checkbox_in_modal', 'selectedCompanyCount');
-  handleCheckboxChange('region', 'input[name="regions[]"]', 'selectedRegionCount');
-  handleCheckboxChange('product', 'input[name="products[]"]', 'selectedProductCount');
-  handleCheckboxChange('trademark', 'input[name="trademarks[]"]', 'selectedTrademarkCount');
-  handleCheckboxChange('sale', 'input[name="range"]', 'selectedSaleCount');
-  handleCheckboxChange('city', 'input[name="location[]"]', 'selectedCityCount');
+  var checkboxes = document.querySelectorAll(checkboxSelector);
+  checkboxes.forEach(function (checkbox) {
+    checkbox.addEventListener('change', update);
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var savedCount = localStorage.getItem(storageKey) || 0;
+    updateBadgeCount(tabId, savedCount);
+  });
+}
+
+function initializeResetButton(tabId, storageKey) {
+  var resetButton = document.getElementById('resetButton');
+  if (resetButton) {
+    resetButton.addEventListener('click', function () {
+      resetBadgeCounts(tabId, storageKey);
+    });
+  }
+}
+
+handleCheckboxChange('company', '.company_checkbox_in_modal', 'selectedCompanyCount');
+handleCheckboxChange('region', 'input[name="regions[]"]', 'selectedRegionCount');
+handleCheckboxChange('product', 'input[name="products[]"]', 'selectedProductCount');
+handleCheckboxChange('trademark', 'input[name="trademarks[]"]', 'selectedTrademarkCount');
+handleCheckboxChange('sale', 'input[name="range"]', 'selectedSaleCount');
+handleCheckboxChange('city', 'input[name="location[]"]', 'selectedCityCount');
+
+initializeResetButton('company', 'selectedCompanyCount');
+initializeResetButton('region', 'selectedRegionCount');
+initializeResetButton('product', 'selectedProductCount');
+initializeResetButton('trademark', 'selectedTrademarkCount');
+initializeResetButton('sale', 'selectedSaleCount');
+initializeResetButton('city', 'selectedCityCount');
+
+</script>
+<script>
+   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+  return new Tooltip(tooltipTriggerEl);
+});
 
 </script>
 

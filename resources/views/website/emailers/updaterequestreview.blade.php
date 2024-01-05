@@ -57,7 +57,7 @@
         </table>        
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px; background-color: #07395C;">
         <tr>
-            <td><p style="text-align: center; color: #fff;">Thank you </p></td>
+            <td><p style="text-align: center; color: #fff; margin-bottom: 0;">Thank you </p></td>
           </tr>
         </table>
       </td>

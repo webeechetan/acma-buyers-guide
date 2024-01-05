@@ -187,7 +187,6 @@ class CompanyController extends Controller
             'phone' => 'nullable|digits_between:7,12',
         ]);
         
-
        
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('img_company_logo', 'public'); 

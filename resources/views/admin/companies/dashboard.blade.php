@@ -49,15 +49,15 @@
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#trademark"><i class='bx bx-store-alt me-2' ></i><div class="filter-tab"><span>Trademark</span>  <span id="trademarkBadge" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="salesTurnover" >
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover"><i class='bx bx-money-withdraw me-2' ></i> <div class="filter-tab"><span>Sales Turnover</span>  <span id="saleBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover"><i class='bx bx-money-withdraw me-2' ></i> <div class="filter-tab"><span>Sales Turnover</span> <span id="saleBadge" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
 
                                                 <li class="filter-name mb-2" data-filter="exportTurnover" >
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#exportTurnover">Export Turnover</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#exportTurnover"><i class='bx bx-money-withdraw me-2' ></i> <div class="filter-tab"><span>Export Turnover</span> <span id="exportBadge" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
 
                                                 <li  class="filter-name mb-2" data-filter="">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#no_of_employees">No of Emp</a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#no_of_employees"><i class='bx bxs-user-rectangle'></i> <div class="filter-tab"><span>No of Emp</span> <span id="noofemp" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
 
                                                 <li  class="filter-name" data-filter="location">
@@ -197,7 +197,7 @@
                                                 </div>
                                                 <div class="tab-pane fade" id="salesTurnover">
                                                    <div class="tab-pane-header">
-                                                      <h5 class="mb-0 text-justify fw-semibold  text-dark">Sales Turnover Filter</h5>
+                                                      <h5 class="mb-0 text-justify fw-semibold  text-dark">Sales Turnover Filter(In Lakh)</h5>
                                                    </div>
                                                    <div class="row scroll-content mt-2">
                                                       <div class="col-md-4">
@@ -227,6 +227,41 @@
                                                    
                                                    </div>
                                                 </div>
+
+
+                                                <div class="tab-pane fade" id="exportTurnover">
+                                                   <div class="tab-pane-header">
+                                                      <h5 class="mb-0 text-justify fw-semibold  text-dark">Export Turnover Filter(In Lakh)</h5>
+                                                   </div>
+                                                   <div class="row scroll-content mt-2">
+                                                      <div class="col-md-4">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="0-5000" {{ request('ranges') == '0-5000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               0 - 5000
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5000-10000" {{ request('ranges') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               5000-10000
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5000-15000" {{ request('ranges') == '10000-15000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  10000-15000
+                                                               </label>
+                                                            </div>
+                                                      </div>
+                                                   
+                                                   </div>
+                                                </div>
+
                                          
                                                 <div class="tab-pane fade" id="location">
                                                    <div class="tab-pane-header">
@@ -741,12 +776,17 @@ handleCheckboxChange('trademark', 'input[name="trademarks[]"]', 'selectedTradema
 handleCheckboxChange('sale', 'input[name="range"]', 'selectedSaleCount');
 handleCheckboxChange('city', 'input[name="location[]"]', 'selectedCityCount');
 
+handleCheckboxChange('export', 'input[name="ranges"]', 'selectedexportCount');
+
+
+
 initializeResetButton('company', 'selectedCompanyCount');
 initializeResetButton('region', 'selectedRegionCount');
 initializeResetButton('product', 'selectedProductCount');
 initializeResetButton('trademark', 'selectedTrademarkCount');
 initializeResetButton('sale', 'selectedSaleCount');
 initializeResetButton('city', 'selectedCityCount');
+initializeResetButton('export', 'selectedexportCount');
 
 </script>
 <script>

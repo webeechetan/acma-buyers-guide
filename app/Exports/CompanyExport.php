@@ -47,6 +47,9 @@ class CompanyExport implements FromCollection, WithMapping, WithHeadings
             $company->foreign_collaboration->f_collab1,
             $company->key_personnels->managing_director,
             $company->product_details->products_manufactured,
+            $company->product_details->sales_turnover,
+            $company->product_details->export_turn_02_03,
+            $company->contact_details->year_commencing,
         ];
     }
 
@@ -65,6 +68,9 @@ class CompanyExport implements FromCollection, WithMapping, WithHeadings
             'Foreign Collaboration',
             'Managing Director',
             'Products Manufactured',
+            'Sales Turnover',
+            'Export Turnover',
+            'Year of Commencing'
         ];
     }
 }

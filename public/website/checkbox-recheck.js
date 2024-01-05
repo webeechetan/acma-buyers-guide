@@ -20,6 +20,9 @@ if (checked_companies.length == 0) {
 
 if (checked_companies.length == 0) {
     $(".checked_company_download").hide();
+}else{
+    checked_companies.length > 0
+    $(".checked_company_download").addClass('company_download_btn_show');
 }
 
 

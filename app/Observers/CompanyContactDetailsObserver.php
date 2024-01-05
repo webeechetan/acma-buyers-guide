@@ -78,8 +78,6 @@ class CompanyContactDetailsObserver
         // stop the update
         return false;
 
-
-
     }
 
     /**

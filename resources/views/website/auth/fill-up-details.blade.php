@@ -52,10 +52,12 @@
                             <div class="col-md-3">
                               <label class="form-label" for="company_name">Company Name</label>
                               <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Company Name" value="{{ $company->name }}">
+                              <x-validation-error name="name"/>
                             </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="phone">Company Phone</label>
                                 <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter Your Phone Number" value="{{ $company_contact_details->phone }}">
+                                <x-validation-error name="phone"/>
                               </div>
                               
                               <div class="col-md-3">
@@ -74,7 +76,9 @@
                               </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="image"> Company Logo</label>
+                                <span class="text text-warning">50 kb max</span>
                                 <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ $company_contact_details->image }}" onchange="previewImage()">
+                                <x-validation-error name="image"/>
                                 <div id="imagePreview" class="preview-image">
                                 
                                   @if($company_contact_details->image)
@@ -96,12 +100,11 @@
                                   <label class="form-label" for="state">State</label>
                                   <input type="text" id="state" name="state" class="form-control" placeholder="Enter Your State" value="{{ $company_contact_details->state }}">
                                   </div>
+
                               <div class="col-md-3">
                               <label class="form-label" for="pin">Company Pin Code</label>
                               <input type="text" id="pin" name="pin" class="form-control" placeholder="Enter Your Pin Code" value="{{ $company_contact_details->pin }}">
                               </div>
-
-
                                 
                                   <div class="col-md-3">
                                     <label class="form-label" for="address2">Address2</label>
@@ -112,10 +115,6 @@
                                       <label class="form-label" for="address3">Address3</label>
                                       <input type="text" id="address3" name="address3" class="form-control" placeholder="Enter Your Address3" value="{{ $company_contact_details->address3 }}">
                                       </div>
-
-                                    
-
-                             
 
                               <div class="col-md-3">
                               <label class="form-label" for="main_address">Main Address</label>
@@ -234,7 +233,7 @@
 
                             <div class="col-md-3">
                               <label class="form-label" for="sales_in_charge">sales incharge</label>
-                              <input type="Enter Sales Incharge Name" id="sales_in_charge" name="sales_in_charge" class="form-control" placeholder="John" value="{{ $company_key_personnels->sales_in_charge }}">
+                              <input type="Enter Sales Incharge Name" id="sales_in_charge" name="sales_in_charge" class="form-control" placeholder="Sales Incharge" value="{{ $company_key_personnels->sales_in_charge }}">
                             </div>
                            
 
@@ -288,15 +287,23 @@
                                 <input type="text" id="update" name="update" class="form-control" placeholder="Enter Update" value="{{ $company_key_personnels->update }}">
                               </div>
                                --}}
-                              <div class="col-md-4">
-                                <label class="form-label" for="Update_Date">Update Year</label>
-                                <input type="text" id="update_date" name="update_date" class="form-control" placeholder="Update Year" value="{{ $company_key_personnels->update_date }}">
-                              </div>
                               
-                              <div class="col-md-4">
+                              
+                              {{-- <div class="col-md-4">
                                 <label class="form-label" for="REGION">Region</label>
                                 <input type="text" id="region" name="region" class="form-control" placeholder="Enter Region" value="{{ $company_key_personnels->region }}">
-                              </div>
+                              </div> --}}
+
+                              <div class="col-md-4">
+                                <label class="form-label" for="REGION">Region</label>
+                                <select id="region" name="region" class="form-control">
+                                    <option value="E" {{ $company_key_personnels->region == 'E' ? 'selected' : '' }}>East</option>
+                                    <option value="W" {{ $company_key_personnels->region == 'W' ? 'selected' : '' }}>West</option>
+                                    <option value="N" {{ $company_key_personnels->region == 'N' ? 'selected' : '' }}>North</option>
+                                    <option value="S" {{ $company_key_personnels->region == 'S' ? 'selected' : '' }}>South</option>
+                                </select>
+                            </div>
+                            
                             <div class="col-md-4">
                               <label class="form-label" for="ProductsManufactured">Products Manufactured</label>
                               <input type="text" id="products_manufactured" name="products_manufactured" class="form-control" placeholder="Enter Product Manufacture" value="{{ $company_product_details->products_manufactured }}">
@@ -347,23 +354,30 @@
                               <input type="text" id="total_investment_plant" name="total_investment_plant" class="form-control" placeholder="Enter Total Investment Plant" value="{{ $company_product_details->total_investment_plant }}">
                             </div>
 
+
                             <div class="col-md-4">
-                              <label class="form-label" for="sales_turnover">Sales Turnover</label>
+                              <label class="form-label" for="Update_Date">Update Year</label>
+                              <input type="text" id="update_date" name="update_date" class="form-control" placeholder="Update Year" value="{{ $company_key_personnels->update_date }}">
+                            </div>
+
+
+                            <div class="col-md-4">
+                              <label class="form-label" for="sales_turnover">Sales Turnover(In Lakhs)</label>
                               <input type="text" id="sales_turnover" name="sales_turnover" class="form-control" placeholder="Enter Sales Turnover" value="{{ $company_product_details->sales_turnover }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="S_TURN">S_TURN(in $ Mln)</label>
+                              <label class="form-label" for="S_TURN">Sales Turnover(in $ Mln)</label>
                               <input type="text" id="s_turn_in" name="s_turn_in" class="form-control" placeholder="Enter S_TURN(in $ Mln)" value="{{ $company_product_details->s_turn_in }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="export_turn-02-03">Export Turn-02-03</label>
+                              <label class="form-label" for="export_turn-02-03">Export Turnover(In Lakhs)</label>
                               <input type="text" id="export_turn_02_03" name="export_turn_02_03" class="form-control" placeholder="Enter Export Turn-02-03" value="{{  $company_product_details->export_turn_02_03 }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="Exports(in $ Mln)">Exports(in $ Mln)</label>
+                              <label class="form-label" for="Exports(in $ Mln)">Exports Turnover(in $ Mln)</label>
                               <input type="text" id="exports_in_mln" name="exports_in_mln" class="form-control" placeholder="Enter Exports(in $ Mln)" value="{{ $company_product_details->exports_in_mln }}">
                             </div>
                             
@@ -378,12 +392,12 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="SemiSkilled">Semi Skilled</label>
+                              <label class="form-label" for="SemiSkilled">Semi-Skilled</label>
                               <input type="text" id="semi_skilled" name="semi_skilled" class="form-control" placeholder="Enter Semi Skilled" value="{{ $company_product_details->semi_skilled }}">
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="UnSkilled">Un Skilled</label>
+                              <label class="form-label" for="UnSkilled">Un-Skilled</label>
                               <input type="text" id="un_skilled" name="un_skilled" class="form-control" placeholder="Enter Un Skilled" value="{{$company_product_details->un_skilled }}">
                             </div>
                             
@@ -393,12 +407,12 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="Manage&Above">Management & Above</label>
+                              <label class="form-label" for="Manage&Above">Manager & Above</label>
                               <input type="text" id="management_above" name="management_above" class="form-control" placeholder="Enter Management & Above " value="{{$company_product_details->management_above }}">
                             </div>
                              
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB1">Foreign Collaboration 1</label>
+                              <label class="form-label" for="F_COLLAB1">Foreign Collab 1</label>
                               <input type="text" id="f_collab1" name="f_collab1" class="form-control" placeholder="Foregin Collaboration 1" value="{{$company_foreign_collaboration->f_collab1 }}">
                             </div>
                             
@@ -418,7 +432,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB2">Foreign Collaboration 2</label>
+                              <label class="form-label" for="F_COLLAB2">Foreign Collab 2</label>
                               <input type="text" id="f_collab2" name="f_collab2" class="form-control" placeholder="Foregin Collaboration 2" value="{{ $company_foreign_collaboration->f_collab2 }}">
                             </div>
                             
@@ -438,7 +452,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB3">Foreign Collaboration 3</label>
+                              <label class="form-label" for="F_COLLAB3">Foreign Collab 3</label>
                               <input type="text" id="f_collab3" name="f_collab3" class="form-control" placeholder="Foregin Collaboration 3" value="{{$company_foreign_collaboration->f_collab3 }}">
                             </div>
                             
@@ -458,7 +472,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB4">Foreign Collaboration 4</label>
+                              <label class="form-label" for="F_COLLAB4">Foreign Collab 4</label>
                               <input type="text" id="f_collab4" name="f_collab4" class="form-control" placeholder="Foregin Collaboration 4" value="{{$company_foreign_collaboration->f_collab4 }}">
                             </div>
                             
@@ -478,7 +492,7 @@
                             </div>
 
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB5">Foreign Collaboration 5</label>
+                              <label class="form-label" for="F_COLLAB5">Foreign Collab 5</label>
                               <input type="text" id="f_collab5" name="f_collab5" class="form-control" placeholder="Foregin Collaboration 5" value="{{$company_foreign_collaboration->f_collab5}}">
                             </div>
                             
@@ -498,7 +512,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB6">Foreign Collaboration 6</label>
+                              <label class="form-label" for="F_COLLAB6">Foreign Collab 6</label>
                               <input type="text" id="f_collab6" name="f_collab6" class="form-control" placeholder="Foregin Collaboration 6" value="{{$company_foreign_collaboration->f_collab6 }}">
                             </div>
                             
@@ -518,7 +532,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB7">Foreign Collaboration 7</label>
+                              <label class="form-label" for="F_COLLAB7">Foreign Collab 7</label>
                               <input type="text" id="f_collab7" name="f_collab7" class="form-control" placeholder="Foregin Collaboration 7" value="{{$company_foreign_collaboration->f_collab7 }}">
                             </div>
                             
@@ -538,7 +552,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB8">Foreign Collaboration 8</label>
+                              <label class="form-label" for="F_COLLAB8">Foreign Collab 8</label>
                               <input type="text" id="f_collab8" name="f_collab8" class="form-control" placeholder="Foregin Collaboration 8" value="{{$company_foreign_collaboration->f_collab8 }}">
                             </div>
                             
@@ -558,7 +572,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB9">Foreign Collaboration 9</label>
+                              <label class="form-label" for="F_COLLAB9">Foreign Collab 9</label>
                               <input type="text" id="f_collab9" name="f_collab9" class="form-control" placeholder="Foregin Collaboration 9" value="{{$company_foreign_collaboration->f_collab9}}">
                             </div>
                             
@@ -578,7 +592,7 @@
                             </div>
                             
                             <div class="col-md-4">
-                              <label class="form-label" for="F_COLLAB10">Foreign Collaboration 10</label>
+                              <label class="form-label" for="F_COLLAB10">Foreign Collab 10</label>
                               <input type="text" id="f_collab10" name="f_collab10" class="form-control" placeholder="Foregin Collaboration 10" value="{{$company_foreign_collaboration->f_collab10 }}">
                             </div>
                             

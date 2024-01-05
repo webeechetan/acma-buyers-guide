@@ -43,7 +43,9 @@ Route::get('/export-word',function(){
 //     dd($res);
 // });
 
+Route::get('/test', function () {
 
+});
 
 // import excel file 
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
 use App\DataTables\CompanyDataTable;
 use Illuminate\Cache\RateLimiter;
 use App\Models\Company;
@@ -17,9 +16,6 @@ use App\Notifications\Company\ForgotPasswordOtpNotification;
 use App\Notifications\Company\LoginOtpNotification;
 use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Benchmark;
 
 
 
@@ -203,15 +199,18 @@ class CompanyController extends Controller
         // $updated_models = ['CompanyContactDetail' => false , 'CompanyKeyPersonnel' => false , 'CompanyProductDetails' => false , 'CompanyForeignCollaboration' => false];
         // session('updated_models', $updated_models);
 
-       
+        session()->put('is_updated', false);
+
         $company->update($data);
         $company_contact_detail->update($data);
         $company_key_personnel->update($data);
         $company_product_detail->update($data);
         $company_foreign_collaboration->update($data);
 
-        $this->alert('Success', 'Details sent to review. we will notify you once approved. ' , 'success');
-       
+        if(session('is_updated') == true){
+            $this->alert('Success', 'Details sent to review. we will notify you once approved. ' , 'success');
+        }
+
         return redirect()->route('company.dashboard');
     }
 

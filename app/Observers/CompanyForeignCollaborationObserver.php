@@ -52,6 +52,7 @@ class CompanyForeignCollaborationObserver
         return false;
     }
 
+    session()->put('is_updated', true);
 
      $company_update_request = new CompanyUpdateRequest();
 

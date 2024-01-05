@@ -53,6 +53,8 @@ class CompanyProductDetailsObserver
             return false;
         }
 
+        session()->put('is_updated', true);
+
         $company_update_request = new CompanyUpdateRequest();
 
         $company_update_request->company_id = $companyProductDetails->company_id;

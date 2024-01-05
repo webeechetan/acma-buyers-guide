@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use App\Http\Controllers\Admin\ProfileApprovalController;
 use Illuminate\Support\Facades\Log;
 
-class UpdateApprovedNotification extends Notification
+class UpdateApprovedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Log;
 
-class UpdateUnderReviewNotification extends Notification
+class UpdateUnderReviewNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

@@ -8,9 +8,12 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Http\Controllers\CompanyController;
 
-class LoginOtpNotification extends Notification
+class LoginOtpNotification extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    public $user;
+    public $otp;
 
     /**
      * Create a new notification instance.

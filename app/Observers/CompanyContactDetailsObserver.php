@@ -67,6 +67,8 @@ class CompanyContactDetailsObserver
         if(count($update_request) == 0)  {
             return false;
         }
+
+        session()->put('is_updated', true);
         
         $company_update_request = new CompanyUpdateRequest();
 

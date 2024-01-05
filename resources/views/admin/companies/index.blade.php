@@ -15,16 +15,22 @@
 
 
 @section('content')
-        <div class="card">
-            <div class="d-flex justify-content-between">
-                <div>Companies</div> 
-                <h4><a class="btn btn-primary btn-sm" href="{{route('import')}}">Import Companies</a></h4>
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card w-100">
             <div class="card-body">
-                {{ $dataTable->table() }}
-               
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="text-primary mb-0">Companies</h4> 
+                    <a class="btn btn-primary" href="{{ route('import') }}">Import Companies</a>
+                </div>
+               <div class="companies-table">
+               {{ $dataTable->table() }}
+               </div>
             </div>
         </div>
+    </div>
+</div>
+
 @endsection
 
 

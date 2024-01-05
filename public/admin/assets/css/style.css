@@ -162,7 +162,10 @@ body {
 .pe-auto{
   cursor: pointer !important;
 }
-span.badge{
+.checked_company_info{
+  display: block !important;
+}
+.checked_company_info span.badge{
   padding: .6rem;
 }
 ul {
@@ -730,6 +733,18 @@ div.subscribe-box {
   z-index: 1;
 }
 
+.progress-step:last-child:after{
+
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.2rem);
+    left: 45%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    color: #000 !important;
+    z-index: 1;
+
+}
 .progress-step.active {
   background-color: var(--primary);
   color: #fff;
@@ -815,7 +830,9 @@ footer {
   align-items: center;
   color: var(--primary);
 }
-
+span.badge{
+  line-height: normal;
+}
 /*--- Company Card ---*/
 .card-border {
   border: 1px solid #2f34387d;
@@ -918,10 +935,6 @@ background-color: #C7F6C7;
   align-items: flex-start;
 }
 
-.information-list li div:last-child {
-  width: 170px;
-}
-
 .information-list li div:last-child a {
   color: #000 !important;
 }
@@ -979,10 +992,13 @@ background-color: #C7F6C7;
 }
 .filter-tab{
   display: grid;
-  grid-template-columns: 85px 30px;
-  grid-gap: 9px;
+  grid-template-columns: 90px 28px;
+  grid-gap: 10px;
   align-items: center;
 
+}
+.filter-tab span.badge{
+  padding: auto;
 }
 .custom_search_filter .category-dropdown .category-dropdown-menu::before {
   content: "";
@@ -1075,11 +1091,7 @@ background-color: #C7F6C7;
   padding:  10px 5px;
   border: 1px solid #eee;
 }
-.advance-filter li{
-  padding: 0;
-  width: 14px;
 
-}
 .alphabet-filter li a{
   background: transparent;
   padding: 0;
@@ -1094,6 +1106,12 @@ background-color: #C7F6C7;
   color: var(--primary);
   text-decoration: underline;
   
+}
+.filter-tab span.badge{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-action::-webkit-scrollbar-track, .scroll-content::-webkit-scrollbar-track{
@@ -1159,7 +1177,9 @@ background-color: #C7F6C7;
   border-radius: .375rem !important;
 
 }
-
+.companies-table{
+  overflow: hidden;
+}
 /*---- Modal ---*/
 .modal.show .modal-dialog {
   transform: translateY(100px) scale(1) !important;
@@ -1182,7 +1202,6 @@ background-color: #C7F6C7;
   .subscribe-banner,
   .subscribe-form {
     width: 100%;
-    margin-top: 30px;
     position: relative;
   }
 
@@ -1194,15 +1213,30 @@ background-color: #C7F6C7;
   div .subscribe-box {
     height: 100%;
   }
-
+  div .dropdown-menu-end[data-bs-popper] {
+    left: 16px !important;
+}
   .copyright {
     position: inherit;
     bottom: 0;
     transform: none;
   }
+  footer{
+    height: 340px;
+  }
+  .footer-copyright{
+    height: 78px;
+  }
+  .sec-space-ft{
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
 
   .copyright p {
     margin-bottom: 0;
+  }
+  .companies-table{
+    overflow: scroll;
   }
 }
 
@@ -1211,16 +1245,29 @@ background-color: #C7F6C7;
     font-size: 22px;
     line-height: 32px;
   }
-
+  .subscribe-banner{
+    min-height: fit-content;
+    padding: 30px 0;
+  }
+  .subscribe-form-wrapper {
+    width: 100%;
+  }
+  .subscribe-form{
+    margin: 10px;
+  }
   .subscribe-box-wrapper {
     height: auto;
     position: inherit;
   }
-
+  div .dropdown-menu-end[data-bs-popper] {
+    left: 16px !important;
+}
   .copyright {
     display: none;
   }
-
+  .pagination .page-item .page-link{
+    border-radius: 10px;
+  }
   .tab-content {
     width: 100%;
     padding: 0;
@@ -1229,7 +1276,7 @@ background-color: #C7F6C7;
   .subscribe-banner,
   .subscribe-form {
     width: 100%;
-    margin-top: 30px;
+
     position: relative;
   }
 
@@ -1274,6 +1321,7 @@ background-color: #C7F6C7;
   .terms {
     font-size: 12px;
   }
+
   /*--- Dashboard ---*/
   .checked_company_info{
     display: flex;
@@ -1284,7 +1332,14 @@ background-color: #C7F6C7;
     margin-bottom: 10px;
   }
   .tab-pane-header{
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 12px;
+  }
+  .tab-pane-header .form-control{
+    display: inline-block;
+    width: 240px;
   }
   .modal-open{
     padding-right: 0 !important;
@@ -1292,8 +1347,15 @@ background-color: #C7F6C7;
   .contact-list li{
     padding-bottom: 10px;
   }
+  .filter-tab{
+    display: grid;
+    grid-template-columns: 160px 28px;
+    grid-gap: 10px;
+    align-items: center;
+  }
+  
   footer{
-    height: auto;
+    height: 340px;
   }
 .footer-sec{
   height: 240px;
@@ -1332,7 +1394,12 @@ background-color: #C7F6C7;
 .light-style .select2-dropdown {
   z-index: 10001;
 }
-
+.filter-tab span.badge{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /*---- Admin Panel Styles ---*/
 .bg-menu-theme {
   background-color: var(--primary) !important;
@@ -1352,12 +1419,23 @@ background-color: #C7F6C7;
   border: 1px solid var(--secondary);
   color: #fff;
   border-radius: .375rem;
-  padding: 0.25rem 0.35rem;
-  font-size: .75rem;
+ letter-spacing: 1px;
+  padding: 5px 12px;
+  font-size: 14px;
+}
+div .dt-buttons{
+  text-align: left;
+  margin-top: 15px;
 }
 
 .dataTable thead {
   background-color: var(--primary);
+}
+
+table.dataTable thead tr th:last-child {
+  width: 130px !important;
+}table.dataTable thead tr th:nth-child(3) {
+  width: 200px !important;
 }
 
 .table:not(.table-dark) th {
@@ -1413,7 +1491,7 @@ background-color: #C7F6C7;
 }
 .profile-card{
   background-color: #eee;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-radius: 10px;
 }
 .inner-profile-card .card-body small {
@@ -1445,7 +1523,10 @@ background-color: #C7F6C7;
   height: 60px !important;
   padding: 10px 0;
 }
-
+div .breadcrumb-item.active
+{
+  color: var(--primary);
+}
 .light-style .user-profile-header .user-profile-img {
   border-color: #fff
 }

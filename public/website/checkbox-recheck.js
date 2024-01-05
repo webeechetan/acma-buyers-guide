@@ -6,7 +6,7 @@ function clear_checked() {
     checked_companies = [];
     $(".checked_companies").html("Selected Companies: 0");
     $(".company_checkbox").prop('checked', false);
-    $(".checked_company_info").hide();
+   // $(".checked_company_info").hide();
     $(".company_checkbox").parent().parent().parent().removeClass('card-border');
     $(".company_checkbox_in_modal").prop('checked', false);
     $(".company_checkbox_in_modal").parent().parent().parent().removeClass('card-border');
@@ -14,8 +14,14 @@ function clear_checked() {
 }
 
 if (checked_companies.length == 0) {
-    $(".checked_company_info").hide();
+    //$(".checked_company_info").hide();
 }
+
+
+if (checked_companies.length == 0) {
+    $(".checked_company_download").hide();
+}
+
 
 $(".company_checkbox").click(function (e) {
     var id = $(this).data('id');
@@ -23,7 +29,8 @@ $(".company_checkbox").click(function (e) {
         $(".company_id_in_modal_" + id).prop('checked', true);
         checked_companies.push(id);
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
-        $(".checked_company_info").fadeIn('slow');
+        //$(".checked_company_info").fadeIn('slow');
+        $(".checked_company_download").fadeIn('slow');
     } else {
         $(".company_id_in_modal_" + id).prop('checked', false);
         checked_companies = checked_companies.filter(function (item) {
@@ -31,7 +38,8 @@ $(".company_checkbox").click(function (e) {
         })
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
         if (checked_companies.length == 0) {
-            $(".checked_company_info").fadeOut('slow');
+           // $(".checked_company_info").fadeOut('slow');
+           $(".checked_company_download").fadeOut('slow');
         }
     }
 
@@ -47,7 +55,7 @@ $(".company_checkbox_in_modal").click(function (e) {
         $("#company_checkbox_" + id).parent().parent().parent().addClass('card-border');
         checked_companies.push(id);
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
-        $(".checked_company_info").fadeIn('slow');
+       // $(".checked_company_info").fadeIn('slow');
     } else {
         $("#company_checkbox_" + id).prop('checked', false);
         $("#company_checkbox_" + id).parent().parent().parent().removeClass('card-border');
@@ -56,7 +64,7 @@ $(".company_checkbox_in_modal").click(function (e) {
         })
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
         if (checked_companies.length == 0) {
-            $(".checked_company_info").fadeOut('slow');
+            //$(".checked_company_info").fadeOut('slow');
         }
     }
 

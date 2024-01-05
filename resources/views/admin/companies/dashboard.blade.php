@@ -427,8 +427,11 @@
                               <span class="checked_companies badge bg-primary text-capitalize"></span>
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                            </div>
-                           <button type="submit" class="btn btn-primary" class="download-button">Download Data  <i class='bx bx-download ms-2 text-white fw-medium' ></i></button>
-                          <p class="mb-0 pt-2 text-dark fw-medium">Download the data in csv format</p>
+
+                           <div class="checked_company_download">
+                              <button type="submit" class="btn btn-primary" class="download-button">Download Data  <i class='bx bx-download ms-2 text-white fw-medium' ></i></button>
+                              <p class="mb-0 pt-2 text-dark fw-medium">Download the data in csv format</p>
+                           </div>
                            <!-- <div class="checked_company_info">
                               <span class="total_companies"></span>
                               <span class="checked_companies"></span>

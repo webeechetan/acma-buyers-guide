@@ -776,9 +776,6 @@ handleCheckboxChange('trademark', 'input[name="trademarks[]"]', 'selectedTradema
 handleCheckboxChange('sale', 'input[name="range"]', 'selectedSaleCount');
 handleCheckboxChange('city', 'input[name="location[]"]', 'selectedCityCount');
 
-handleCheckboxChange('export', 'input[name="ranges"]', 'selectedexportCount');
-
-
 
 initializeResetButton('company', 'selectedCompanyCount');
 initializeResetButton('region', 'selectedRegionCount');
@@ -788,7 +785,61 @@ initializeResetButton('sale', 'selectedSaleCount');
 initializeResetButton('city', 'selectedCityCount');
 initializeResetButton('export', 'selectedexportCount');
 
-</script>
+</script> 
+<script>
+    function updateBadgeCount(tabId, count) {
+      document.getElementById(tabId + 'Badge').textContent = count;
+    }
+
+    function resetBadgeCounts(tabId, storageKey) {
+      localStorage.setItem(storageKey, 0);
+      updateBadgeCount(tabId, 0);
+    }
+
+    function handleCheckboxChange(tabId, checkboxSelector, storageKey) {
+      function update() {
+        var checkboxes = document.querySelectorAll(checkboxSelector);
+        var selectedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+        updateBadgeCount(tabId, selectedCount);
+
+        localStorage.setItem(storageKey, selectedCount);
+      }
+
+      var checkboxes = document.querySelectorAll(checkboxSelector);
+      checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', update);
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var savedCount = localStorage.getItem(storageKey) || 0;
+        updateBadgeCount(tabId, savedCount);
+      });
+    }
+
+    function initializeResetButton(tabId, storageKey) {
+      var resetButton = document.getElementById('resetButton');
+      if (resetButton) {
+        resetButton.addEventListener('click', function () {
+          resetBadgeCounts(tabId, storageKey);
+        });
+      }
+    }
+
+    function updateCardBadgeCount(tabId, checkboxSelector, storageKey) {
+      var checkboxes = document.querySelectorAll(checkboxSelector);
+      var selectedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+      updateBadgeCount(tabId, selectedCount);
+
+      localStorage.setItem(storageKey, selectedCount);
+    }
+
+    handleCheckboxChange('company', '.company_checkbox_in_modal', 'selectedCompanyCount');
+    // Add similar lines for other categories
+
+    initializeResetButton('company', 'selectedCompanyCount');
+    // Add similar lines for other categories
+  </script>
+
 <script>
    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {

@@ -49,7 +49,8 @@ class CompanyController extends Controller
 
             $this->alert('Success', 'Otp sent to your email address sucessfully' , 'success');
 
-            return redirect()->route('company.otp-form');
+            // return redirect()->route('company.otp-form');
+            return redirect()->route('company.login');
     }
 
     public function showOtpLoginForm(Request $request)

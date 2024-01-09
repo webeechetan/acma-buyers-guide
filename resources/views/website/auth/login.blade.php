@@ -72,7 +72,8 @@
                         </li> -->
                         <!-- <li class="nav-item">or</li> -->
                         <li class="nav-item">
-                          <a class="nav-link fw-24 border-none p-0 text-start" data-bs-toggle="pill" href="#login">Sign in to your account</a>
+                          <a class="fw-24 border-none p-0 text-start" data-bs-toggle="pill" href="javascript:void(0);">Sign in to your account</a>
+                          <p class="text-start">Enter Your Email and get otp</p>
                         </li>
                       </ul>
                     </div>
@@ -80,8 +81,12 @@
                       <form id="login" class="tab-pane active signup" action="{{ route('company.generate_otp') }}" method="POST"> 
                         @csrf 
                         <div class="mb-3">
-                          <label for="email" class="form-label">Email </label>
                           <input type="text" class="form-control" id="email" name="email"  placeholder="Enter your email" autofocus>
+                          <x-validation-error name="email"/>
+                         
+                        </div>
+                        <div class="otp mb-3">
+                          <input type="text" class="form-control" id="otp" name="otp"  placeholder="Enter your otp" autofocus>
                           <x-validation-error name="email"/>
                          
                         </div>
@@ -98,7 +103,7 @@
                             <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="remember" @if(isset($_COOKIE['email'])) checked="" @endif > <label class="form-check-label">Remember me</label></div>
                              <a href="{{route('company.forgotpassword.view')}}" class="forgot-password">Forgot password?</a>
                           </div> --}}
-                          <button class="btn btn-primary d-grid w-100" type="submit">Sign In</button>
+                          <button class="btn btn-primary d-grid w-100 otp-btn mt-1" type="submit">Get OTP</button>
                             
                         
                       </form>
@@ -187,7 +192,14 @@
   <script src="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
   <script src="{{ asset('website/') }}/validations/register.js"></script>
-
+  <!-- <script>
+    $(document).ready(()=>{
+     $('.otp-btn').click(function(){
+      $('.otp').addClass('otp-show');
+      $(this).text('Sign In');
+     });
+    })
+  </script> -->
 
   @if(session()->has('alert'))
       @php

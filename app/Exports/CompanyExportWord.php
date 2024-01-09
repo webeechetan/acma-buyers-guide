@@ -6,6 +6,7 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
 use App\Models\Company;
 
+
 class CompanyExportWord
 {
     public $company_ids = [];

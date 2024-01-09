@@ -86,7 +86,7 @@
                                 <label class="form-label" for="image"> Company Logo</label>
                                 <span class="text text-warning">50 kb max</span>
                                 <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ $company_contact_details->image }}" onchange="previewImage()">
-                                <x-validation-error name="image"/>
+                                <x-validation-error name="image" id="imageError"/>
                                 <div id="imagePreview" class="preview-image">
                                 
                                   @if($company_contact_details->image)
@@ -277,41 +277,18 @@
                         <div id="business_details" class="form-card content">
                             <div class="row g-3">
                              
-                              
-                              {{-- ////////////New Excel fields added by AJ on 18 oct -2023////////////// --}}
 
-                              {{-- <div class="col-md-4">
-                                <label class="form-label" for="Responded">Responded</label>
-                                <input type="text" id="responded" name="responded" class="form-control" placeholder="Enter Respond" value="{{ $company_key_personnels->responded}}">
-                              </div>
-                              
-                              <div class="col-md-4">
-                                <label class="form-label" for="SerialNo">SerialNo</label>
-                                <input type="text" id="serial_no" name="serial_no" class="form-control" placeholder="Enter Serial No." value="{{ $company_key_personnels->serial_no }}">
-                              </div>
-                              
-                              <div class="col-md-4">
-                                <label class="form-label" for="Update">Update</label>
-                                <input type="text" id="update" name="update" class="form-control" placeholder="Enter Update" value="{{ $company_key_personnels->update }}">
-                              </div>
-                               --}}
-                              
-                              
-                              {{-- <div class="col-md-4">
-                                <label class="form-label" for="REGION">Region</label>
-                                <input type="text" id="region" name="region" class="form-control" placeholder="Enter Region" value="{{ $company_key_personnels->region }}">
-                              </div> --}}
-
-                              <div class="col-md-4">
+                            <div class="col-md-4">
                                 <label class="form-label" for="REGION">Region</label>
                                 <select id="region" name="region" class="form-control">
+                                  <option value="" {{ $company_key_personnels->region == '' ? 'selected' : '' }}>Select Region</option>
                                     <option value="E" {{ $company_key_personnels->region == 'E' ? 'selected' : '' }}>East</option>
                                     <option value="W" {{ $company_key_personnels->region == 'W' ? 'selected' : '' }}>West</option>
                                     <option value="N" {{ $company_key_personnels->region == 'N' ? 'selected' : '' }}>North</option>
                                     <option value="S" {{ $company_key_personnels->region == 'S' ? 'selected' : '' }}>South</option>
                                 </select>
                             </div>
-                            
+
                             <div class="col-md-4">
                               <label class="form-label" for="ProductsManufactured">Products Manufactured</label>
                               <input type="text" id="products_manufactured" name="products_manufactured" class="form-control" placeholder="Enter Product Manufacture" value="{{ $company_product_details->products_manufactured }}">
@@ -818,117 +795,6 @@
                               <label class="form-label" for="AFMKT3">AFMKT3</label>
                               <input type="text" id="afmkt3" name="afmkt3" class="form-control" placeholder="Enter AFMKT3" value="{{$company_product_details->afmkt3 }}">
                             </div>
-                            
-                            {{-- <div class="col-md-2">
-                              <label class="form-label" for="NetExciseDutyPaid">Net Excise Duty Paid</label>
-                              <input type="text" id="net_excise_duty_paid" name="net_excise_duty_paid" class="form-control" placeholder=" Enter Net Excise Duty Paid" value="{{$company_product_details->net_excise_duty_paid}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="TotalCustomDutyPaid">Total Custom Duty Paid</label>
-                              <input type="text" id="total_custom_duty_paid" name="total_custom_duty_paid" class="form-control" placeholder=" Enter Total Custom Duty Paid" value="{{$company_product_details->total_custom_duty_paid}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="list_of_product_exported1">List of Product Exported 1</label>
-                              <input type="text" id="list_of_product_exported1" name="list_of_product_exported1" class="form-control" placeholder=" Enter List of Product Exported 1" value="{{$company_product_details->list_of_product_exported1}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="list_of_product_exported2">List of Product Exported 2</label>
-                              <input type="text" id="list_of_product_exported2" name="list_of_product_exported2" class="form-control" placeholder="Enter List of Product Exported 2" value="{{$company_product_details->list_of_product_exported2}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Per_share_Export_Buy">Per Share Export Buy</label>
-                              <input type="text" id="per_share_export_buy" name="per_share_export_buy" class="form-control" placeholder="Enter Per Share Export Buy" value="{{$company_product_details->per_share_export_buy}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Per_share_Export_OEM">Per Share Export OEM</label>
-                              <input type="text" id="per_share_export_oem" name="per_share_export_oem" class="form-control" placeholder="Enter Per Share Export OEM" value="{{$company_product_details->per_share_export_oem}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Per_share_Export_Tier1">Per Share Export Tier 1</label>
-                              <input type="text" id="per_share_export_tier1" name="per_share_export_tier1" class="form-control" placeholder="Enter Per Share Export Tier 1" value="{{$company_product_details->per_share_export_tier1}}">
-                            </div>
-                            
-                           
-                            <div class="col-md-2">
-                              <label class="form-label" for="Per_share_Export_AFM">Per Share Export AFM</label>
-                              <input type="text" id="per_share_export_afm" name="per_share_export_afm" class="form-control" placeholder=" Enter Per Share Export AFM" value="{{$company_product_details->per_share_export_afm}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Per_share_Domestic_OEM">Per Share Domestic OEM</label>
-                              <input type="text" id="per_share_domestic_oem" name="per_share_domestic_oem" class="form-control" placeholder=" Enter Per Share Domestic OEM" value="{{$company_product_details->per_share_domestic_oem}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Per_share_Domestic_tier1">Per Share Domestic Tier 1</label>
-                              <input type="text" id="per_share_domestic_tier1" name="per_share_domestic_tier1" class="form-control" placeholder="Enter Per Share Domestic Tier 1 " value="{{$company_product_details->per_share_domestic_tier1}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Per_share_Domestic_AFM">Per Share Domestic AFM</label>
-                              <input type="text" id="per_share_domestic_afm" name="per_share_domestic_afm" class="form-control" placeholder=" Enter Per Share Domestic AFM" value="{{$company_product_details->per_share_domestic_afm}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="product_patent">Product Patent</label>
-                              <input type="text" id="product_patent" name="product_patent" class="form-control" placeholder= "Enter Product Patent" value="{{$company_product_details->product_patent}}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="share_spent_on_RnD">Share Spent on R&D</label>
-                              <input type="text" id="share_spent_on_rnd" name="share_spent_on_rnd" class="form-control" placeholder=" Enter Share Spent on R&D" value="{{$company_product_details->share_spent_on_rnd }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="DSIR">DSIR</label>
-                              <input type="text" id="dsir" name="dsir" class="form-control" placeholder=" Enter DSIR" value="{{$company_product_details->dsir }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Expen_R&D">Expenditure on R&D</label>
-                              <input type="text" id="expen_rd" name="expen_rd" class="form-control" placeholder="Enter Expenditure on R&D" value="{{$company_product_details->expen_rd }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Employee_R&D">Employee R&D</label>
-                              <input type="text" id="employee_rd" name="employee_rd" class="form-control" placeholder=" Enter Employee R&D" value="{{ $company_product_details->employee_rd }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="person_name">Person Name</label>
-                              <input type="text" id="person_name" name="person_name" class="form-control" placeholder=" Enter Person Name" value="{{ $company_product_details->person_name }}">
-                            </div>
-
-                            <div class="col-md-2">
-                              <label class="form-label" for="person_Designation">Person Designation</label>
-                              <input type="text" id="person_designation" name="person_designation" class="form-control" placeholder=" Enter Person Designation" value="{{ $company_product_details->person_designation }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="person_Email">Person Email</label>
-                              <input type="email" id="person_email" name="person_email" class="form-control" placeholder="Enter Person Email" value="{{ $company_product_details->person_email }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Advertisement">Advertisement</label>
-                              <input type="text" id="advertisement" name="advertisement" class="form-control" placeholder="Enter Advertisement" value="{{ $company_product_details->advertisement }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Field1">Field1</label>
-                              <input type="text" id="field1" name="field1" class="form-control" placeholder="Enter Field1" value="{{$company_product_details->field1 }}">
-                            </div>
-                            
-                            <div class="col-md-2">
-                              <label class="form-label" for="Field2">Field2</label>
-                              <input type="text" id="field2" name="field2" class="form-control" placeholder=" Entter Field2" value="{{$company_product_details->field2 }}">
-                            </div> --}}
 
                           </div>
                         </div>
@@ -937,13 +803,12 @@
                   
                     <div class="form-navigation mt-3">
                       <button type="button" class="btn btn-primary" id="prev">Previous</button>
-                      <button type="button" class="btn btn-primary ms-auto" id="next">Next</button>
+                      <button type="button" onclick="validateAndProceed()" class="btn btn-primary ms-auto" id="next">Next</button>
                       <button type="submit" class="btn btn-success" id="submit" style="display: none;">Update</button>
                     </div>
                 </form>
               </div>
             </div>
-            
         </div>
       
         <div class="bs-toast toast toast-placement-ex m-2 fade  top-0 end-0 hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
@@ -979,9 +844,7 @@
 
       $(".auto_save_uploaded_msg").hide();
 
-
         function autoSave(){
-
           
             let formData = new FormData($('#Multi-Steps-form')[0]);
             formData.append('_token', "{{ csrf_token() }}");
@@ -992,7 +855,6 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                  
 
                   if(!response.success){
                     toastr.error(response.message);
@@ -1008,8 +870,7 @@
                     
                 },
                 error: function (response) {
-                 
-                    
+
                 }
             })
         }
@@ -1020,6 +881,22 @@
         //     $(".auto_save_icon_uploading").removeClass('d-none');
         //     $(".auto_save_icon_uploading").addClass('bx-fade-up');
         // }, 5000);
+
+        document.getElementById('image').addEventListener('change', handleFile);
+          function handleFile(event) {
+            const errorSpan = document.getElementById('imageError'); // Assuming you have an element with id 'imageError'
+            const file = event.target.files[0];
+            if(file) {
+              const fileSizeInKB = file.size/1024;
+              if(fileSizeInKB >50) {
+                 alert('File size should be less than 50 kb');
+                  document.getElementById('image').value = '';
+                  return;
+              }else{
+                console.log('');
+              }
+            }
+          }
 
     });
     $(document).ready(function() {
@@ -1091,9 +968,8 @@
                 preview.innerHTML = '';
                 preview.appendChild(image);
             };
-        }
-   
-</script>
+      }
 
+</script>
 @endpush
 

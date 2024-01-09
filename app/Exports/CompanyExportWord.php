@@ -5,6 +5,10 @@ namespace App\Exports;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
 use App\Models\Company;
+use App\Models\CompanyContactDetail;
+use App\Models\CompanyKeyPersonnel;
+use App\Models\CompanyForeignCollaboration;
+
 
 class CompanyExportWord
 {
@@ -17,10 +21,16 @@ class CompanyExportWord
 
     public function export($format = 'Word2007')
 {
-    $companies = Company::all();
+    //$companies = Company::all();
+
+    $companies = Company::with('contact_details', 'key_personnels', 'foreign_collaboration', 'product_details')->get();
+
+ 
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
     foreach ($companies as $company) {
+
+      //  dd($company->key_personnels->chief_executive);
         $section = $phpWord->addSection();
         
         $header = ['size' => 16, 'bold' => true];
@@ -64,8 +74,11 @@ class CompanyExportWord
     // Save the Word document
     $filename = 'exported_document1.docx';
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
-    $objWriter->save(storage_path($filename));
+     $objWriter->save(storage_path($filename));
 
+    // $tempPath = tempnam(sys_get_temp_dir(), 'phpword_export_');
+    // $objWriter->save($tempPath);
+    // return response()->download($tempPath, $filename)->deleteFileAfterSend(true);
     // Provide the download link for the user
     return response()->download(storage_path($filename));
 }

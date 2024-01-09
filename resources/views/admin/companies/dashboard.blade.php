@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="modal-body">
                                        <div class="row">
-                                          <div class="col-md-3 border-end">
+                                          <div class="col-md-4 border-end">
                                              <ul class="nav nav-pills custom-tab  d-block mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
                                                    <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"> <i class='bx bx-building-house me-2' ></i> <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle">0</span></div></a>
@@ -57,12 +57,25 @@
                                                 </li>
 
                                                 <li  class="filter-name mb-2" data-filter="">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#no_of_employees"><i class='bx bxs-user-rectangle'></i> <div class="filter-tab"><span>No of Emp</span> <span id="noofemp" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#no_of_employees"><i class='bx bx-user-plus me-2'></i> <div class="filter-tab"><span>No of Emp</span> <span id="noofemp" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
 
                                                 <li  class="filter-name" data-filter="location">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location"><i class='bx bx-world me-2'></i><div class="filter-tab"><span>State & City</span>  <span id="cityBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>State & City</span>  <span id="cityBadge" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
+                                                <li  class="filter-name" data-filter="quality">
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality"><i class='bx bx-equalizer me-2'></i><div class="filter-tab"><span>QS Standard</span>  <span id="qualityBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                </li>
+                                                <li  class="filter-name" data-filter="domestic">
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#domestic"><i class='bx bx-dice-1 me-2'></i><div class="filter-tab"><span>Domestic Customer</span>  <span id="domesticBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                </li>
+                                                <li  class="filter-name" data-filter="international">
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#international"><i class='bx bx-dice-2 me-2'></i><div class="filter-tab"><span>International Customer</span>  <span id="internationalBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                </li>
+                                                <li  class="filter-name" data-filter="overseas">
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#overseas"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Overseas Aftermarket</span>  <span id="overseasBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                </li>
+
 
                                               
                                                 {{-- <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
@@ -74,7 +87,7 @@
                                                 <!-- Add more options here -->
                                              </ul>
                                           </div>
-                                          <div class="col-md-9">
+                                          <div class="col-md-8">
                                             <form action="" class="advance-filter">
                                              <div class="tab-content">
                                                 <div class="tab-pane active" id="company">
@@ -355,6 +368,7 @@
                   <div class="checked_company_info mb-3"> 
                      <span class="total_companies badge bg-dark text-capitalize"></span>
                      <span class="checked_companies badge bg-primary text-capitalize"></span>
+                     <a href="{{route('company.dashboard')}}" class="badge bg-info text-capitalize p-3">View All</a>                      
                      <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                   </div>
                </div>
@@ -370,7 +384,7 @@
                                  <div class="card card-data">
                                     <div class="company-title">
                                     <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                       <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Check"> <i class='bx bx-check check-icon' ></i> </span>
+                                       <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Selected"> <i class='bx bx-check check-icon' ></i> </span>
                                     </div>
                                     <div class="card-body">
                                        <div class="information-list">
@@ -458,13 +472,13 @@
                            <div class="border-bottom pb-4 mb-3"></div>
                           <div class="checked_company_info mb-3"> 
                               <span class="total_companies badge bg-dark text-capitalize"></span>
-
                               <span class="checked_companies badge bg-primary text-capitalize"></span>
+                              <a href="{{route('company.dashboard')}}" class="btn btn-primary">View All</a>         
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                            </div>
 
                            <div class="checked_company_download">
-                              <button type="submit" class="btn btn-primary" class="download-button">Download Data  <i class='bx bx-download ms-2 text-white fw-medium' ></i></button>
+                              <button type="submit" class="btn btn-primary">Download Data  <i class='bx bx-download ms-2 text-white fw-medium' ></i></button>
                               <p class="mb-0 pt-2 text-dark fw-medium">Download the data in csv format</p>
                            </div>
                            <!-- <div class="checked_company_info">
@@ -786,59 +800,6 @@ initializeResetButton('city', 'selectedCityCount');
 initializeResetButton('export', 'selectedexportCount');
 
 </script> 
-<script>
-    function updateBadgeCount(tabId, count) {
-      document.getElementById(tabId + 'Badge').textContent = count;
-    }
-
-    function resetBadgeCounts(tabId, storageKey) {
-      localStorage.setItem(storageKey, 0);
-      updateBadgeCount(tabId, 0);
-    }
-
-    function handleCheckboxChange(tabId, checkboxSelector, storageKey) {
-      function update() {
-        var checkboxes = document.querySelectorAll(checkboxSelector);
-        var selectedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-        updateBadgeCount(tabId, selectedCount);
-
-        localStorage.setItem(storageKey, selectedCount);
-      }
-
-      var checkboxes = document.querySelectorAll(checkboxSelector);
-      checkboxes.forEach(function (checkbox) {
-        checkbox.addEventListener('change', update);
-      });
-
-      document.addEventListener('DOMContentLoaded', function () {
-        var savedCount = localStorage.getItem(storageKey) || 0;
-        updateBadgeCount(tabId, savedCount);
-      });
-    }
-
-    function initializeResetButton(tabId, storageKey) {
-      var resetButton = document.getElementById('resetButton');
-      if (resetButton) {
-        resetButton.addEventListener('click', function () {
-          resetBadgeCounts(tabId, storageKey);
-        });
-      }
-    }
-
-    function updateCardBadgeCount(tabId, checkboxSelector, storageKey) {
-      var checkboxes = document.querySelectorAll(checkboxSelector);
-      var selectedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-      updateBadgeCount(tabId, selectedCount);
-
-      localStorage.setItem(storageKey, selectedCount);
-    }
-
-    handleCheckboxChange('company', '.company_checkbox_in_modal', 'selectedCompanyCount');
-    // Add similar lines for other categories
-
-    initializeResetButton('company', 'selectedCompanyCount');
-    // Add similar lines for other categories
-  </script>
 
 <script>
    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));

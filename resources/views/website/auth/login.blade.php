@@ -192,14 +192,14 @@
   <script src="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
   <script src="{{ asset('website/') }}/validations/register.js"></script>
-  <!-- <script>
+  <script>
     $(document).ready(()=>{
      $('.otp-btn').click(function(){
       $('.otp').addClass('otp-show');
       $(this).text('Sign In');
      });
     })
-  </script> -->
+  </script>
 
   @if(session()->has('alert'))
       @php

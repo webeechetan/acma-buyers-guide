@@ -13,7 +13,7 @@
             @if($company_contact_details->image)
               <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
             @else
-              <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
+              <img src="{{ asset('admin/') }}/assets/img/avatars/place.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
             @endif
 
           </div>

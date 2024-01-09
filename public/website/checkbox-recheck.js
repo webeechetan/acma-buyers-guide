@@ -18,22 +18,20 @@ if (checked_companies.length == 0) {
 }
 
 
-if (checked_companies.length == 0) {
-    $(".checked_company_download").hide();
-}else{
-    checked_companies.length > 0
+if (checked_companies.length > 0) {
     $(".checked_company_download").addClass('company_download_btn_show');
 }
 
 
 $(".company_checkbox").click(function (e) {
+   
     var id = $(this).data('id');
     if ($(this).is(':checked')) {
         $(".company_id_in_modal_" + id).prop('checked', true);
         checked_companies.push(id);
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
         //$(".checked_company_info").fadeIn('slow');
-        $(".checked_company_download").fadeIn('slow');
+        $(".checked_company_download").fadeIn('slow'); //this line added by ajay on jan 1 to show download button on selection of checkbox in modal
     } else {
         $(".company_id_in_modal_" + id).prop('checked', false);
         checked_companies = checked_companies.filter(function (item) {
@@ -42,7 +40,7 @@ $(".company_checkbox").click(function (e) {
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
         if (checked_companies.length == 0) {
            // $(".checked_company_info").fadeOut('slow');
-           $(".checked_company_download").fadeOut('slow');
+           $(".checked_company_download").fadeOut('slow');//this line added by ajay on jan 1 to hide download button on de-selection of checkbox in modal
         }
     }
 
@@ -52,6 +50,8 @@ $(".company_checkbox").click(function (e) {
 
 
 $(".company_checkbox_in_modal").click(function (e) {
+
+
     var id = $(this).data('id');
     if ($(this).is(':checked')) {
         $("#company_checkbox_" + id).prop('checked', true);
@@ -59,6 +59,7 @@ $(".company_checkbox_in_modal").click(function (e) {
         checked_companies.push(id);
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
        // $(".checked_company_info").fadeIn('slow');
+       $(".checked_company_download").fadeIn('slow');
     } else {
         $("#company_checkbox_" + id).prop('checked', false);
         $("#company_checkbox_" + id).parent().parent().parent().removeClass('card-border');
@@ -68,6 +69,8 @@ $(".company_checkbox_in_modal").click(function (e) {
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
         if (checked_companies.length == 0) {
             //$(".checked_company_info").fadeOut('slow');
+            $(".checked_company_download").fadeOut('slow');
+            
         }
     }
 

@@ -162,9 +162,9 @@ body {
 .pe-auto{
   cursor: pointer !important;
 }
-.checked_company_info{
+/* .checked_company_info{
   display: block !important;
-}
+} */
 .checked_company_info span.badge{
   padding: .6rem;
 }
@@ -172,6 +172,15 @@ ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+.p-3{
+  padding: 0.6rem !important;
+}
+a.badge{
+  line-height: normal !important;
+}
+a.badge:hover{
+  color: #fff !important;
 }
 
 .text-primary {
@@ -202,6 +211,12 @@ ul {
 div .authentication-wrapper{
   min-height:  100%;
 }
+div .authentic-login{
+  min-height: 100vh;
+}
+div .bg-menu-theme .menu-inner>.menu-item.active>.menu-link{
+  color: #fff;
+}
 /*--- Header ----*/
 
 .header {
@@ -230,7 +245,9 @@ div .authentication-wrapper{
 }
 
 .top-header-right {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-nav a.nav-link {
@@ -267,7 +284,7 @@ div .authentication-wrapper{
 }
 
 .dropdown-menu[data-bs-popper] {
-  right: 0 !important;
+  right: -14px !important;
   left: auto !important;
 }
 
@@ -999,7 +1016,7 @@ background-color: #C7F6C7;
 }
 .filter-tab{
   display: grid;
-  grid-template-columns: 90px 28px;
+  grid-template-columns: 137px 28px;
   grid-gap: 10px;
   align-items: center;
 
@@ -1087,7 +1104,12 @@ background-color: #C7F6C7;
   overflow-x: hidden;
   padding-right: 10px;
 }
-
+.custom-tab{
+  height: 470px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
 .pagination .page-item .page-link{
   border-radius: 50%;
 }
@@ -1121,19 +1143,19 @@ background-color: #C7F6C7;
   justify-content: center;
 }
 
-.card-action::-webkit-scrollbar-track, .scroll-content::-webkit-scrollbar-track{
+.card-action::-webkit-scrollbar-track, .scroll-content::-webkit-scrollbar-track, .custom-tab::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--bg-card);
 }
 
-.card-action::-webkit-scrollbar, .scroll-content::-webkit-scrollbar{
+.card-action::-webkit-scrollbar, .scroll-content::-webkit-scrollbar, .custom-tab::-webkit-scrollbar{
   width: 4px;
   background-color: #eee;
   border-radius: 7px;
   height: 4px;
 }
 
-.card-action::-webkit-scrollbar-thumb, .scroll-content::-webkit-scrollbar-thumb{
+.card-action::-webkit-scrollbar-thumb, .scroll-content::-webkit-scrollbar-thumb, .custom-tab::-webkit-scrollbar-thumb{
   background-color: var(--primary);
 }
 
@@ -1267,7 +1289,11 @@ background-color: #C7F6C7;
     position: inherit;
   }
   div .dropdown-menu-end[data-bs-popper] {
-    left: 16px !important;
+    left: 0 !important;
+}
+.company-card .pagination{
+  display:  flex !important;
+  justify-content: space-between !important;
 }
   .copyright {
     display: none;
@@ -1331,9 +1357,8 @@ background-color: #C7F6C7;
 
   /*--- Dashboard ---*/
   .checked_company_info{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
@@ -1368,10 +1393,6 @@ background-color: #C7F6C7;
   height: 240px;
 }
   /*--- Navbar ----*/
-  .top-header-right {
-    display: block;
-  }
-
   .navbar-nav .nav-item.dropdown {
     display: none;
   }
@@ -1460,10 +1481,6 @@ table.dataTable thead tr th:last-child {
   box-shadow: none;
 }
 
-.dropdown-menu-end[data-bs-popper] {
-  left: 0 !important;
-}
-
 .app-brand .layout-menu-toggle {
   background-color: var(--primary) !important;
 }
@@ -1498,7 +1515,7 @@ table.dataTable thead tr th:last-child {
 }
 .profile-card{
   background-color: #eee;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border-radius: 10px;
 }
 .inner-profile-card .card-body small {

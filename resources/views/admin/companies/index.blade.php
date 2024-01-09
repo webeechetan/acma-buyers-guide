@@ -12,8 +12,6 @@
 
 @section('content')
 
-
-
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -21,7 +19,11 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between">
                     <h4 class="text-primary mb-0">Companies</h4> 
-                    <a class="btn btn-primary" href="{{ route('import') }}">Import Companies</a>
+                    <div class="multiple-btn">
+                        <a class="btn btn-primary btn-sm" href="{{ route('import') }}">Import Companies</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('download.excel') }}">Export All</a>
+                    </div>
+
                 </div>
                <div class="companies-table">
                {{ $dataTable->table() }}

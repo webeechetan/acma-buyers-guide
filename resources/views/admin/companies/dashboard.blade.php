@@ -355,6 +355,7 @@
                   <div class="checked_company_info mb-3"> 
                      <span class="total_companies badge bg-dark text-capitalize"></span>
                      <span class="checked_companies badge bg-primary text-capitalize"></span>
+                     <a href="{{route('company.dashboard')}}" class="btn btn-primary">View All</a>                      
                      <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                   </div>
                </div>
@@ -458,13 +459,13 @@
                            <div class="border-bottom pb-4 mb-3"></div>
                           <div class="checked_company_info mb-3"> 
                               <span class="total_companies badge bg-dark text-capitalize"></span>
-
                               <span class="checked_companies badge bg-primary text-capitalize"></span>
+                              <a href="{{route('company.dashboard')}}" class="btn btn-primary">View All</a>         
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                            </div>
 
                            <div class="checked_company_download">
-                              <button type="submit" class="btn btn-primary" class="download-button">Download Data  <i class='bx bx-download ms-2 text-white fw-medium' ></i></button>
+                              <button type="submit" class="btn btn-primary">Download Data  <i class='bx bx-download ms-2 text-white fw-medium' ></i></button>
                               <p class="mb-0 pt-2 text-dark fw-medium">Download the data in csv format</p>
                            </div>
                            <!-- <div class="checked_company_info">

@@ -17,6 +17,15 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
 use App\Exports\CompanyExportWord;
 
+use App\Exports\CompanyContactDetailExport;
+use App\Exports\CompanyExport;
+
+
+Route::get('/download-excel', function () {
+    // return Excel::download(new CompanyContactDetailExport, 'data.xlsx');
+    return Excel::download(new CompanyExport, 'company_data.xlsx');
+})->name('download.excel');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,19 +56,13 @@ Route::get('/test', function () {
 
 });
 
-// import excel file 
-
-// Route::get('/import', function () {
-//     return view('website.test');
-// });
 
 Route::get('/import', function () {
     return view('website.importcompany');
 })->name('import'); // Yo
 
 Route::post('/import', function (Request $request) {
-    // return $request->abg;
-    Excel::import(new CompanyImport, $request->abg) ;
+        Excel::import(new CompanyImport, $request->abg) ;
     // return redirect('/')->with('success', 'All good!');
 })->name('import.post');
 

@@ -40,7 +40,7 @@ class CompanyHelper {
 
     public static function filter($request){
 
-        $companies = Company::with('key_personnels','contact_details','product_details');
+        $companies = Company::with('key_personnels','contact_details','product_details','foreign_collaboration');
 
         $filter = '';
 
@@ -113,8 +113,7 @@ class CompanyHelper {
 
             $min = (int) $min;
             $max = (int) $max;
-       
-            
+          
             $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
                 $query->whereBetween('sales_turnover', [$min, $max]);
             });

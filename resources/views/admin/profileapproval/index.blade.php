@@ -12,7 +12,7 @@
 <h4 class="text-primary"><b>All profile Request</b></h4>
 <div class="row">
     <div class="col-md-12">
-        <ul class="nav nav-pills d-flex gap-2 mb-3">
+        <ul class="nav nav-pills d-flex gap-2 mb-4">
             <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="pill" href="#pending">Pending Request</a>
             </li>

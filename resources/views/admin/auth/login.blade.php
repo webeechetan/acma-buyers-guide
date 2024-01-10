@@ -46,7 +46,7 @@
   <!-- Content -->
 
 <div class="container-xxl">
-  <div class="authentication-wrapper authentication-basic container-p-y">
+  <div class="authentication-wrapper authentication-basic container-p-y authentic-login">
     <div class="authentication-inner">
       <!-- Register -->
       <div class="card">
@@ -54,7 +54,7 @@
           <!-- Logo -->
           <div class="app-brand justify-content-center">
             <a href="#" class="app-brand-link gap-2">
-              <span class="app-brand-text demo text-body text-uppercase fw-bold">Acma</span>
+             <img src="{{ asset('admin/') }}/assets/img/avatars/acma.png" alt=""/>
             </a>
           </div>
           <!-- /Logo -->

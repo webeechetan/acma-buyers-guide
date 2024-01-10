@@ -14,7 +14,7 @@
 <div class="row justify-content-center sec-space">
             
             <div class="col-md-12 mb-3 mb-md-0">
-              <div class="card">
+              <div class="card px-4">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-style1 justify-content-end">
                       <li class="breadcrumb-item">

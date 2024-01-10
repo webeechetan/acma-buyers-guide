@@ -10,7 +10,7 @@ function clear_checked() {
     $(".company_checkbox").parent().parent().parent().removeClass('card-border');
     $(".company_checkbox_in_modal").prop('checked', false);
     $(".company_checkbox_in_modal").parent().parent().parent().removeClass('card-border');
-
+    $('.badge-count').html('0');
 }
 
 if (checked_companies.length == 0) {

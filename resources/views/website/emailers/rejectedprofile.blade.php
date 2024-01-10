@@ -29,15 +29,15 @@
     <tr>
       <td>
         <table width="100%" cellspacing="0" cellpadding="0" style="background-color: #07395C; padding: 5px 20px">
-          <tr>
-            <td style="width: 275px;"><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></td>
-            <td><h3 style="color:#fff;">Acma Buyers Guide</h3></td>
+         <tr>
+            <td><a href="https://acma.in/"><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></a></td>
+            <td><h3 style="color:#fff; margin-bottom: 0; text-align: right;">Acma Buyers Guide</h3></td>
           </tr>
         </table>
-        <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px">
+        <table width="100%" cellspacing="0" cellpadding="0" style="padding: 15px 20px">
          
           <tr>
-            <td><p style="margin-bottom: 0;"><b>Hello  {{ $company->name }} , <b><br> </p></td>
+            <td><p style="margin-bottom: 10px;"><strong style="color:#07395C;">Hello  {{ $company->name }} , </strong><br> </p></td>
           </tr>
           <tr>
             <td><p style="margin-bottom: 0;">We are sorry to inform you that your profile update request is Rejected</p></td>
@@ -48,7 +48,7 @@
           </tr>
 
           <tr>
-            <td><p style="margin-bottom: 0;">Thanks for using our Application.</b></p></td>
+            <td><p style="margin-bottom: 0;">Thanks for using our Application.</p></td>
           </tr>
           <tr>
             <td>
@@ -65,7 +65,7 @@
         </table>        
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px; background-color: #07395C;">
         <tr>
-            <td><p style="text-align: center; color: #fff;">Thank you </p></td>
+            <td><p style="text-align: center; color: #fff; margin-bottom: 0;">Thank you </p></td>
           </tr>
         </table>
       </td>

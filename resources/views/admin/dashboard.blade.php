@@ -3,9 +3,59 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
+
+<div class="row">
+     <div class="col-md-4 mb-3">
+      <div class="card">
+          <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
+            <div>
+              <h3 class="mb-1 text-primary"><b>{{ $totalCompanyCount }}</b></h3>
+              <h5 class="mb-0">Total Companies</h5>
+            </div>
+            <span class="badge bg-label-secondary rounded p-2 me-sm-4">
+              <i class='bx bx-chart bx-sm text-primary'></i>
+            </span>
+          </div>
+          <hr class="d-none d-sm-block d-lg-none me-4">
+        </div>
+     </div>
+      {{-- Pending Request --}}
+      <div class="col-md-4 mb-3">
+        <a href=" {{Route('admin.profile.approval')}}">
+            <div class="card">
+              <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
+                <div>
+                  <h3 class="mb-1 text-secondary"><b>{{ $ProfilependingCount }}</b></h3>
+                  <h5 class="mb-0">Pending Request </h5>
+                </div>
+                <span class="badge bg-label-secondary rounded p-2 me-sm-4">
+                  <i class='bx bx-chart bx-sm text-secondary'></i>
+                </span>
+              </div>
+            </div>
+        </a>
+        <hr class="d-none d-sm-block d-lg-none me-4">
+      </div>
+
+      {{-- Approved Request --}}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
+            <div>
+              <h3 class="mb-1 text-success"><b>{{ $ProfileapprovedCount }}</b></h3>
+              <h5 class="mb-0">Approved Request</h5>
+            </div>
+            <span class="badge bg-label-secondary rounded p-2 me-sm-4">
+            <i class='bx bx-git-pull-request text-success'></i>
+            </span>
+          </div>
+        </div>
+        <hr class="d-none d-sm-block d-lg-none me-4">
+      </div>
+</div>   
 <div class="row">
   <div class="region col-md-12">
-    <h3 class="text-primary"><b>Region</b></h3>
     <div class="row">
     @foreach ($regionsCount as $region)
         <?php
@@ -31,56 +81,7 @@
     </div>
   
   </div>
-  </div>
-
-<div class="row">
-     <div class="col-md-4 mb-3">
-      <div class="card">
-          <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
-            <div>
-              <h3 class="mb-1 text-primary"><b>{{ $totalCompanyCount }}</b></h3>
-              <h5 class="mb-0">Total Companies</h5>
-            </div>
-            <span class="badge bg-label-secondary rounded p-2 me-sm-4">
-              <i class='bx bx-chart bx-sm text-primary'></i>
-            </span>
-          </div>
-          <hr class="d-none d-sm-block d-lg-none me-4">
-        </div>
-     </div>
-      {{-- Pending Request --}}
-      <div class="col-md-4">
-        <div class="card">
-          <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
-            <div>
-              <h3 class="mb-1 text-secondary"><b>{{ $ProfilependingCount }}</b></h3>
-              <h5 class="mb-0">Pending Request </h5>
-            </div>
-            <span class="badge bg-label-secondary rounded p-2 me-sm-4">
-              <i class='bx bx-chart bx-sm text-secondary'></i>
-            </span>
-          </div>
-        </div>
-        <hr class="d-none d-sm-block d-lg-none me-4">
-      </div>
-
-      {{-- Approved Request --}}
-      <div class="col-md-4">
-        <div class="card">
-          <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
-            <div>
-              <h3 class="mb-1 text-success"><b>{{ $ProfileapprovedCount }}</b></h3>
-              <h5 class="mb-0">Approved Request</h5>
-            </div>
-            <span class="badge bg-label-secondary rounded p-2 me-sm-4">
-            <i class='bx bx-git-pull-request text-success'></i>
-            </span>
-          </div>
-        </div>
-        <hr class="d-none d-sm-block d-lg-none me-4">
-      </div>
-</div>   
-     
+</div>
 <div class="row">
 <div class="col-md-12">
         <div class="card h-100">

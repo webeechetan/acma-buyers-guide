@@ -30,14 +30,14 @@
       <td>
         <table width="100%" cellspacing="0" cellpadding="0" style="background-color: #07395C; padding: 5px 20px">
           <tr>
-            <td style="width: 275px;"><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></td>
-            <td><h3 style="color:#fff;">Acma Buyers Guide</h3></td>
+            <td><a href="https://acma.in/"><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></a></td>
+            <td><h3 style="color:#fff; margin-bottom: 0; text-align: right;">Acma Buyers Guide</h3></td>
           </tr>
         </table>
-        <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px">
+        <table width="100%" cellspacing="0" cellpadding="0" style="padding: 15px 20px">
          
           <tr>
-            <td><p style="margin-bottom: 0;"><b>Hello  {{ $user->name }} , <b><br> </p></td>
+            <td><p style="margin-bottom: 10px;"><strong style="color:#07395C;">Hello  {{ $user->name }} , </strong><br> </p></td>
           </tr>
 
           <tr>
@@ -45,7 +45,7 @@
           </tr>
 
           <tr>
-            <td><p style="margin-bottom: 0;">Here is your OTP-<b> {{ $otp }} </b></p></td>
+            <td><p style="margin-bottom: 0;">Here is your OTP-<strong style=" color:#07395C;"> {{ $otp }} </strong></p></td>
           </tr>
           <tr>
             <td>
@@ -62,7 +62,7 @@
         </table>        
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 5px 20px; background-color: #07395C;">
         <tr>
-            <td><p style="text-align: center; color: #fff;">Thank you </p></td>
+            <td><p style="text-align: center; color: #fff; margin-bottom: 0;">Thank you </p></td>
           </tr>
         </table>
       </td>

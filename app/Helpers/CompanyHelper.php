@@ -148,6 +148,7 @@ class CompanyHelper {
         }
 
         if ($request->has('salesTurnover')) {
+            dd('helloww');
             $companies = $companies->whereHas('product_details', function ($query) use ($request) {
                 $query->where('sales_turnover', 'like', '%' . $request->salesTurnover . '%');
             });

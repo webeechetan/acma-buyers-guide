@@ -56,7 +56,7 @@
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#exportTurnover"><i class='bx bx-money-withdraw me-2' ></i> <div class="filter-tab"><span>Export Turnover</span> <span id="exportBadge" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
 
-                                                <li  class="filter-name mb-2" data-filter="">
+                                                <li  class="filter-name mb-2" data-filter="no_of_employees">
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#no_of_employees"><i class='bx bxs-user-rectangle'></i> <div class="filter-tab"><span>No of Emp</span> <span id="noofemp" class="badge bg-primary rounded-circle">0</span></div></a>
                                                 </li>
 
@@ -65,6 +65,9 @@
                                                 </li>
 
                                               
+                                              
+
+
                                                 {{-- <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
                                                    <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
                                                 </li>
@@ -125,12 +128,32 @@
                                                       @foreach ($regions as $region)
                                                       <div class="col-md-2">
                                                          <div class="mt-2">
-                                                            @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
+                                                            {{-- @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
                                                                <div class="form-check form-check-inline mb-2">
                                                                   <input class="form-check-input"  class="active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
                                                                   <label class="form-check-label" for="inlineCheckbox1">{{ $region['region'] }}</label>
                                                                </div>
+                                                            @endif --}}
+                                                            @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
+                                                                  
+                                                                  {{-- Map region code to label --}}
+                                                                  @php
+                                                                        $regionLabels = [
+                                                                           'E' => 'East',
+                                                                           'W' => 'West',
+                                                                           'N' => 'North',
+                                                                           'S' => 'South',
+                                                                        ];
+
+                                                                        $labelText = $regionLabels[$region['region']] ?? $region['region'];
+                                                                  @endphp
+                                                                  
+                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $labelText }}</label>
+                                                               </div>
                                                             @endif
+
                                                          </div>
                                                       </div>
                                                       @endforeach
@@ -146,7 +169,31 @@
                                                          </div>
                                                       </div>
                                                    </div>
+
+
                                                    <div class="row scroll-content">
+                                                      @foreach ($combinedProducts as $combinedProduct)
+
+                                                         <div class="col-md-12">
+                                                            <div class="mt-2">
+                                                               @if(isset($combinedProduct) && !empty($combinedProduct))
+                                                               <div class="form-check form-check-inline mb-2">
+                                                                  <input class="form-check-input" class="active-check" type="checkbox" name="products[]" id="" value="{{ $combinedProduct }}" {{ in_array($combinedProduct, (array)request()->input('products')) ? 'checked' : '' }}>
+                                                                  <label class="form-check-label product-item" data-name="{{str_replace('"','',$combinedProduct)}}" for="">{{ $combinedProduct }}</label>
+                                                               </div>
+                                                               @endif
+                                                            </div>
+                                                         </div>
+                                                      @endforeach
+                                                      <div class="col-md-12">
+                                                         <div class="mt-2">
+                                                            <div class="no-results-found text-danger">No Results found</div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+
+
+                                                   {{-- <div class="row scroll-content">
                                                       @foreach ($products as $product)
 
                                                          <div class="col-md-12">
@@ -165,7 +212,7 @@
                                                             <div class="no-results-found text-danger">No Results found</div>
                                                          </div>
                                                       </div>
-                                                   </div>
+                                                   </div> --}}
                                                    <div class="pagination-container">
                                                       <ul class="pagination alphabet-filter">
                                                          @for($i = 65; $i <= 90; $i++) {{-- ASCII values for A to Z --}}
@@ -303,6 +350,51 @@
                                                       </ul>
                                                    </div>                                               
                                                 </div>
+
+                                                {{-- ////////No of emp --}}
+
+
+                                                <div class="tab-pane fade" id="no_of_employees">
+                                                   <div class="tab-pane-header">
+                                                      <h5 class="mb-0 text-justify fw-semibold  text-dark">No of Employees</h5>
+                                                   </div>
+                                                   <div class="row scroll-content mt-2">
+                                                      <div class="col-md-4">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="0-100" {{ request('no_ofEmp') == '0-100' ? 'checked' : '' }}id="checkbox-one">
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               0 - 100
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="101-200" {{ request('no_ofEmp') == '101-200' ? 'checked' : '' }}id="checkbox-one">
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               101-200
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="201-500" {{ request('no_ofEmp') == '201-500' ? 'checked' : '' }}id="checkbox-one">
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  201-500
+                                                               </label>
+                                                            </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501&more" {{ request('no_ofEmp') == '501 And Above' ? 'checked' : '' }}id="checkbox-one">
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  501 And Above
+                                                               </label>
+                                                            </div>
+                                                      </div>
+                                                   
+                                                   </div>
+                                                </div>
+                                             {{-- //////No of emp --}}
                                              </div>
                                                 <div class="mt-3 d-flex align-items-center justify-content-between">
                                                       <a href="{{ url()->current() }}" id="resetButton" class="btn btn-danger border-danger btn-sm btn_reset">Reset</a>
@@ -365,92 +457,94 @@
                <div>
                   <form action="{{ route('dashboard.company.export') }}">                   
                      <div class="row">
-                     @foreach ($companies as $company)
+                    
+                     @forelse($companies as $company)
 
-                           <div class="col-md-4 mb-3">
-                                 <div class="card card-data">
-                                    <div class="company-title">
-                                    <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                       <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Check"> <i class='bx bx-check check-icon' ></i> </span>
-                                    </div>
-                                    <div class="card-body">
-                                       <div class="information-list">
-                                          <ul>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
-                                                </div>
-                                                <div>
-                                                   @if($company && $company->contact_details->state)
-                                                      <span>{{ucfirst($company->contact_details->state)}}</span>
-                                                   @else
-                                                   <span>NA</span>
-                                                   @endif
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-phone"></i><span>Phone</span>
-                                                </div>
-                                                <div>
-
-                                                   @if($company && $company->contact_details->phone)
-                                                   
-                                                         <span>{{$company->contact_details->phone}}</span>
-                                                   @else 
-                                                   <span>NA</span>
-                                                   @endif
-                                             
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-fax"></i><span>Fax</span>
-                                                </div>
-                                                <div>
-                                                
-                                                   @if($company && $company->contact_details->fax)
-                                                      <span>{{$company->contact_details->fax}}</span> 
-                                                      @else 
-                                                      <span>NA</span>
-                                                      @endif
-                                             
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-envelope"></i><span>E-mail</span>
-                                                </div>
-                                                <div>
-                                                   
-                                                   @if($company && $company->email)
-                                                   <a href="">{{ucfirst($company->email)}}</a>
-                                                   @else 
-                                                   <span>NA</span>
-                                                   @endif
-                                                
-                                                </div>
-                                             </li>
-                                             <li>
-                                                <div>
-                                                   <i class="fa fa-globe"></i><span>Website</span>
-                                                </div>
-                                                <div>
-                                                   @if($company && $company->website)
-                                                   <a href="">{{$company->website}}</a>
-                                                   @else 
-                                                   <span>NA</span>
+                        <div class="col-md-4 mb-3">
+                              <div class="card card-data">
+                                 <div class="company-title">
+                                 <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
+                                    <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Check"> <i class='bx bx-check check-icon' ></i> </span>
+                                 </div>
+                                 <div class="card-body">
+                                    <div class="information-list">
+                                       <ul>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
+                                             </div>
+                                             <div>
+                                                @if($company && $company->contact_details->state)
+                                                   <span>{{ucfirst($company->contact_details->state)}}</span>
+                                                @else
+                                                <span>NA</span>
                                                 @endif
-                                                </div>
-                                             </li>
-                                          </ul>
-                                       </div>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-phone"></i><span>Phone</span>
+                                             </div>
+                                             <div>
+
+                                                @if($company && $company->contact_details->phone)
+                                                
+                                                      <span>{{$company->contact_details->phone}}</span>
+                                                @else 
+                                                <span>NA</span>
+                                                @endif
+                                          
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-fax"></i><span>Fax</span>
+                                             </div>
+                                             <div>
+                                             
+                                                @if($company && $company->contact_details->fax)
+                                                   <span>{{$company->contact_details->fax}}</span> 
+                                                   @else 
+                                                   <span>NA</span>
+                                                   @endif
+                                          
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-envelope"></i><span>E-mail</span>
+                                             </div>
+                                             <div>
+                                                
+                                                @if($company && $company->email)
+                                                <a href="">{{ucfirst($company->email)}}</a>
+                                                @else 
+                                                <span>NA</span>
+                                                @endif
+                                             
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-globe"></i><span>Website</span>
+                                             </div>
+                                             <div>
+                                                @if($company && $company->website)
+                                                <a href="">{{$company->website}}</a>
+                                                @else 
+                                                <span>NA</span>
+                                             @endif
+                                             </div>
+                                          </li>
+                                       </ul>
                                     </div>
                                  </div>
-                              
-                           </div>
-                        @endforeach
-
+                              </div>
+                           
+                        </div>
+                        @empty
+                        <h2>No Result Found</h2>
+                     @endforelse
                      
                      {{ $companies->onEachSide(1)->withQueryString()->links() }}
                      <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">

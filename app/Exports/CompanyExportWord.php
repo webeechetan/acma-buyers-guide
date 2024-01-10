@@ -74,7 +74,7 @@ class CompanyExportWord
     // Save the Word document
     $filename = 'exported_document1.docx';
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
-     $objWriter->save(storage_path($filename));
+    $objWriter->save(storage_path($filename));
 
     // $tempPath = tempnam(sys_get_temp_dir(), 'phpword_export_');
     // $objWriter->save($tempPath);
@@ -82,5 +82,7 @@ class CompanyExportWord
     // Provide the download link for the user
     return response()->download(storage_path($filename));
 }
+
+
 
 }

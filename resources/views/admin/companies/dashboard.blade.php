@@ -64,16 +64,16 @@
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>State & City</span>  <span id="cityBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
                                                 <li  class="filter-name" data-filter="quality">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality"><i class='bx bx-equalizer me-2'></i><div class="filter-tab"><span>QS Standard</span>  <span id="qualityBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality"><i class='bx bx-equalizer me-2'></i><div class="filter-tab"><span>QS Standard</span>  <span id="qualityBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
                                                 <li  class="filter-name" data-filter="domestic">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#domestic"><i class='bx bx-dice-1 me-2'></i><div class="filter-tab"><span>Domestic Customer</span>  <span id="domesticBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#domestic"><i class='bx bx-dice-1 me-2'></i><div class="filter-tab"><span>Domestic Customer</span>  <span id="domesticBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
                                                 <li  class="filter-name" data-filter="international">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#international"><i class='bx bx-dice-2 me-2'></i><div class="filter-tab"><span>International Customer</span>  <span id="internationalBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#international"><i class='bx bx-dice-2 me-2'></i><div class="filter-tab"><span>International Customer</span>  <span id="internationalBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
                                                 <li  class="filter-name" data-filter="overseas">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#overseas"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Overseas Aftermarket</span>  <span id="overseasBadge" class="badge bg-primary rounded-circle">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#overseas"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Overseas Aftermarket</span>  <span id="overseasBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
 
 
@@ -95,7 +95,7 @@
                                              <div class="tab-content">
                                                 <div class="tab-pane active" id="company">
                                                   <div class="tab-pane-header">
-                                                     <h5 class=" mb-md-0 text-justify fw-semibold text-dark">Company Filter</h5>
+                                                     <h5 class=" mb-lg-0 mb-2 text-justify fw-semibold text-dark">Company Filter</h5>
                                                      <div class="custom_search_filter">
                                                        <input type="text"  id="searchCompanies" class="form-control" placeholder="Type 2 characters to search...">
                                                        <div class="custom_search_filter_inputMask">
@@ -174,7 +174,7 @@
                                                 </div>
                                                 <div class="tab-pane fade" id="product">
                                                    <div class="tab-pane-header">
-                                                      <h5 class="mb-md-0 text-justify fw-semibold  text-dark">Product Filter</h5>
+                                                      <h5 class="mb-lg-0 mb-2 text-justify fw-semibold  text-dark">Product Filter</h5>
                                                       <div class="custom_search_filter">
                                                          <input type="text" class="form-control" id="searchProducts" placeholder="Search products...">
                                                          <div class="custom_search_filter_inputMask">
@@ -325,7 +325,7 @@
                                          
                                                 <div class="tab-pane fade" id="location">
                                                    <div class="tab-pane-header">
-                                                      <h5 class="mb-md-0 text-justify fw-semibold  text-dark">States & City</h5>
+                                                      <h5 class="mb-lg-0 mb-2 text-justify fw-semibold  text-dark">States & City</h5>
                                                       <div class="custom_search_filter">
                                                       <input type="text"  id="searchLocations" class="form-control" placeholder="Search States & City">
                                                       <div class="custom_search_filter_inputMask">

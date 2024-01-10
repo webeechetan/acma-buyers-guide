@@ -1277,6 +1277,17 @@ background-color: #C7F6C7;
   .dropdown-menu[data-bs-popper] {
     right: -10px !important;
   }
+  .tab-pane-header{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 12px;
+  }
+  .tab-pane-header .form-control {
+    display: inline-block;
+    width: 300px;
+}
 }
 
 @media (max-width: 767px) {

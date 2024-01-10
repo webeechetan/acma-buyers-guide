@@ -106,6 +106,7 @@ class CompanyHelper {
 
         //checkbox filter for sales turnover
         if ($request->has('range')) {
+            
             $range = $request->input('range');
 
             [$min, $max] = explode('-', $range);
@@ -119,7 +120,8 @@ class CompanyHelper {
             });
         }
 
-        //checkbox filter for sales turnover
+        //checkbox filter for export turnover
+        
         if ($request->has('ranges')) {
             $range = $request->input('ranges');
 
@@ -133,6 +135,23 @@ class CompanyHelper {
                 $query->whereBetween('export_turn_02_03', [$min, $max]);
             });
         }
+
+        ////////No of emp filter/////
+        if ($request->has('no_ofEmp')) {
+            $range = $request->input('no_ofEmp');
+
+            [$min, $max] = explode('-', $range);
+
+            $min = (int) $min;
+            $max = (int) $max;
+        
+            
+            $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
+                $query->whereBetween('number_of_employees', [$min, $max]);
+            });
+        }
+        //No of emp filter////
+
 
 
         if($request->has('name')){
@@ -148,7 +167,6 @@ class CompanyHelper {
         }
 
         if ($request->has('salesTurnover')) {
-            dd('helloww');
             $companies = $companies->whereHas('product_details', function ($query) use ($request) {
                 $query->where('sales_turnover', 'like', '%' . $request->salesTurnover . '%');
             });
@@ -169,7 +187,6 @@ class CompanyHelper {
                 }
             });
         }
-          
 
         if ($request->has('region')) {
             $companies = $companies->whereHas('key_personnels', function ($query) use ($request) {
@@ -205,6 +222,7 @@ class CompanyHelper {
         }
 
         if ($request->has('salesTurnover')) {
+            dd('sales');
             $companies = $companies->whereHas('product_details', function ($query) use ($request) {
                 $query->where('sales_turnover', 'like', '%' . $request->salesTurnover . '%');
             });

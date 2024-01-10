@@ -257,17 +257,17 @@
                                                       </div>
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5000-10000" {{ request('range') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5001-10000" {{ request('range') == '5001-10000' ? 'checked' : '' }}id="checkbox-one">
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               5000-10000
+                                                               5001-10000
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5000-15000" {{ request('range') == '5000-15000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="10001-50000" {{ request('range') == '10001-50000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  5000-15000
+                                                                  10001-50000
                                                                </label>
                                                             </div>
                                                       </div>
@@ -291,17 +291,17 @@
                                                       </div>
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5000-10000" {{ request('ranges') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5001-10000" {{ request('ranges') == '5001-10000' ? 'checked' : '' }}id="checkbox-one">
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               5000-10000
+                                                               5001-10000
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5000-15000" {{ request('ranges') == '10000-15000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10000-50000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  10000-15000
+                                                                  10001-50000
                                                                </label>
                                                             </div>
                                                       </div>
@@ -385,9 +385,9 @@
                                                       </div>
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501&more" {{ request('no_ofEmp') == '501 And Above' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501-12000" {{ request('no_ofEmp') == '501-12000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  501 And Above
+                                                                  501-12000
                                                                </label>
                                                             </div>
                                                       </div>

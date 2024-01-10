@@ -85,7 +85,7 @@
                         </div>
                         <div class="mb-3 otp_section d-none">
                           <label for="email" class="form-label">OTP </label>
-                          <input type="text" class="form-control" name="otp" id="otp" placeholder="Enter OTP" autofocus>
+                          <input type="number" class="form-control" name="otp" id="otp" placeholder="Enter OTP" autofocus>
                         </div>
                           <button class="btn btn-primary d-grid w-100 login_btn" type="submit">Sign In</button>
                       </form>

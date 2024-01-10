@@ -78,13 +78,12 @@
                       </ul>
                     </div>
                     <div class="tab-content">
-                      <form id="login" class="tab-pane active signup" action="{{ route('company.generate_otp') }}" method="POST"> 
+                      <form id="login" class="tab-pane active signup" action="" method="POST"> 
                         @csrf 
                         <div class="mb-3">
                           <input type="text" class="form-control" id="email" name="email"  placeholder="Enter your email" autofocus>
-                          <x-validation-error name="email"/>
-                         
                         </div>
+<<<<<<< HEAD
                         <div class="otp mb-3">
                           <input type="text" class="form-control" id="otp" name="otp"  placeholder="Enter your otp" autofocus>
                           <x-validation-error name="email"/>
@@ -106,34 +105,14 @@
                           <button class="btn btn-primary d-grid w-100 otp-btn mt-1" type="submit">Get OTP</button>
                             
                         
+=======
+                        <div class="mb-3 otp_section d-none">
+                          <label for="email" class="form-label">OTP </label>
+                          <input type="text" class="form-control" name="otp" id="otp" placeholder="Enter OTP" autofocus>
+                        </div>
+                          <button class="btn btn-primary d-grid w-100 login_btn" type="submit">Sign In</button>
+>>>>>>> 8a8d6dca3e9c72ba3fffe48387f589c0e6a42521
                       </form>
-                      <!--- Register ---->
-                         {{-- <form id="formRegistration" class="mb-3 tab-pane fade" action="{{ route('company.store') }}" method="POST">
-                         @csrf
-                          <div class="mb-3">
-                              <label for="name" class="form-label"> Company Name </label>
-                              <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" autofocus>
-                              <x-validation-error name="name" />
-                          </div>
-                          <div class="mb-3">
-                            <label for="email" class="form-label">Email </label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus>
-                            <x-validation-error name="email" />
-                          </div>
-                          <div class="mb-3 form-password-toggle">
-                            <div class="d-flex justify-content-between">
-                              <label class="form-label" for="password">Password</label>
-                            </div>
-                            <div class="input-group input-group-merge">
-                              <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                          </div>
-                          <x-validation-error name="password" />
-                          </div>
-                          <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Sign Up</button>
-                          </div>
-                        </form>  --}}
                     </div>
                 </div>
               </div>
@@ -214,6 +193,81 @@
           });
       </script>
   @endif
+
+<script>
+  $(document).ready(function(){
+
+    
+   $('#login').submit(function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    let previous_value = $(".login_btn").html();
+
+    $(".login_btn").html('Please wait...');
+
+    var formData = $(this).serialize();
+
+    let btn = $(".login_btn");
+
+    let otp_section = $(".otp_section");
+
+    if(otp_section.hasClass('d-none') == false){
+      $.ajax({
+          type: 'POST',
+          url: '{{ route('company.verify_otp') }}',
+          data: formData,
+          success: function (response) {
+              if(response.success){
+                  window.location.href = "{{ route('company.dashboard') }}";
+              }else{
+                  toast('Error',response.message,'success');
+              }
+          },
+          error: function (error) {
+              error = error.responseJSON;
+              if(error.errors){
+                  $.each(error.errors, function (key, value) {
+                      toast('Error',value,'danger');
+                  });
+              }else{
+                  toast('Error',error.message,'danger');
+              }
+              $(".login_btn").html(previous_value);
+          }
+      });
+    }else{
+      $.ajax({
+          type: 'POST',
+          url: '{{ route('company.generate_otp') }}',
+          data: formData,
+          success: function (response) {
+              if(response.success){
+                  $('.otp_section').removeClass('d-none');
+                  toast('Success',response.message,'success');
+                  $(".login_btn").html('Verify OTP');
+              }else{
+                  toast('Error',response.message,'success');
+                  $(".login_btn").html('Verify OTP');
+              }
+          },
+          error: function (error) {
+              error = error.responseJSON;
+              if(error.errors){
+                  $.each(error.errors, function (key, value) {
+                      toast('Error',value,'danger');
+                  });
+                  $(".login_btn").html('Verify OTP');
+              }else{
+                  toast('Error',error.message,'danger');
+                  $(".login_btn").html('Verify OTP');
+              }
+          }
+      });
+    }
+});
+
+  });
+  </script>
   
 </body>
 

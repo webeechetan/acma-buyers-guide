@@ -9,7 +9,7 @@
 @endpush
 @section('content')
 
-<h4 class="text-primary"><b>All profile Request</b></h4>
+<h4 class="text-primary"><b>All Profile Changes Request</b></h4>
 <div class="row">
     <div class="col-md-12">
         <ul class="nav nav-pills d-flex gap-2 mb-4">

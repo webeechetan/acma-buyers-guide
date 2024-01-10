@@ -16,6 +16,7 @@ use App\Notifications\Company\ForgotPasswordOtpNotification;
 use App\Notifications\Company\LoginOtpNotification;
 use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
+use Illuminate\Http\JsonResponse;
 
 
 
@@ -31,25 +32,77 @@ class CompanyController extends Controller
         return view('website.auth.login');
     }
 
+    // public function generateLoginOtp(Request $request)
+    // {
+
+        
+    //         $request->validate([
+    //             'email' => 'required|email|exists:companies'
+    //         ]);
+
+    //         $user = Company::where('email',$request->email)->first();       
+    //         $request->session()->put('OTP_email', $user->email);
+
+    //         $otp = random_int(100000, 999999);
+
+
+    //         $user->otp = $otp;
+    //         $user->saveQuietly();
+    //         $user->notify(new LoginOtpNotification($user, $otp));
+
+    //         $this->alert('Success', 'Otp sent to your email address sucessfully' , 'success');
+
+           
+    //          return redirect()->route('company.otp-form');
+    //        // return redirect()->route('company.login');
+    // }
+
     public function generateLoginOtp(Request $request)
     {
-            $request->validate([
-                'email' => 'required|email|exists:companies'
+
+        $email = $request->input('email');
+
+         $validator = $request->validate([
+            'email' => 'required|email|exists:companies'
+        ]);
+
+        if ($validator->fails()) {
+            $return_array = array([
+                'code' => 0,
+                'status' => 'error',
+                'message' => $validator->errors(),
+                
             ]);
+        }
 
-            $user = Company::where('email',$request->email)->first();       
-            $request->session()->put('OTP_email', $user->email);
+        return $return_array;
+        
+        $user = Company::where('email', $request->email)->first();
 
-            $otp = random_int(100000, 999999);
+        if (!$user) {          
+            $return_array = array([
+                'code' =>0,
+                'status' =>'error',
+                'message' =>'User not found',
+            ]);
+        }
 
+        $request->session()->put('OTP_email', $user->email);
 
-            $user->otp = $otp;
-            $user->saveQuietly();
-            $user->notify(new LoginOtpNotification($user, $otp));
+        $otp = random_int(100000, 999999);
 
-            $this->alert('Success', 'Otp sent to your email address sucessfully' , 'success');
+        $user->otp = $otp;
+        $user->saveQuietly();
+        $user->notify(new LoginOtpNotification($user, $otp));
 
-            return redirect()->route('company.otp-form');
+        $return_array =  array([
+            'code' =>1,
+            'status' =>'success',
+            'message' =>'Otp Sent Successfully!',
+        ]);
+
+        json_encode($return_array);
+        exit;
     }
 
     public function showOtpLoginForm(Request $request)
@@ -217,7 +270,7 @@ class CompanyController extends Controller
     public function dashboard(Request $request) {
      
         $auth_id = auth()->guard('company')->user()->id;
-         $companies = CompanyHelper::filter($request);       
+         $companies = CompanyHelper::filter($request);  
         
         // $response = Benchmark::measure([
         //     fn() => Company::all(),

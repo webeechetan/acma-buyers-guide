@@ -19,7 +19,7 @@
       <li class="menu-item {{ Route::is('admin.dashboard') ? 'active' : ''  }}">
         <a href="{{ route('admin.dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
-          <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
+          <div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
         </a>
       </li>
 
@@ -44,7 +44,7 @@
        <li class="menu-item {{ Route::is('admin.profile.approval') ? 'active' : '' }} ">
         <a href="{{route('admin.profile.approval')}}" class="menu-link ">
           <i class="menu-icon menu-icon bx bx-user"></i>
-          <div class="text-truncate" data-i18n="Approve Profile">Approve Profile</div>
+          <div class="text-truncate" data-i18n="Profile Request">Profile Request</div>
         </a>
       </li>
       

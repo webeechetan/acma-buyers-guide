@@ -18,12 +18,12 @@ use PhpOffice\PhpWord\Style\Font;
 use App\Exports\CompanyExportWord;
 
 use App\Exports\CompanyContactDetailExport;
-use App\Exports\CompanyExport;
+use App\Exports\AdminCompanyExport;
 
 
 Route::get('/download-excel', function () {
     // return Excel::download(new CompanyContactDetailExport, 'data.xlsx');
-    return Excel::download(new CompanyExport, 'company_data.xlsx');
+    return Excel::download(new AdminCompanyExport, 'company_data.xlsx');
 })->name('download.excel');
 
 /*
@@ -122,8 +122,7 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         
         ////////////Emailer template for company detals update for company and admin
         Route::get('/myprofile',[CompanyController::class, 'myprofile'])->name('company.profile');
-
-      
+        
 });
 
 

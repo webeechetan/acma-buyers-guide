@@ -77,7 +77,7 @@
                       </ul>
                     </div>
                     <div class="tab-content">
-                      <form id="login" class="tab-pane active signup" action="{{ route('company.generate_otp') }}" method="POST"> 
+                      <form id="login" class="tab-pane active signup" action="" method="POST"> 
                         @csrf 
                         <div class="mb-3">
                           <label for="email" class="form-label">Email </label>
@@ -202,6 +202,45 @@
           });
       </script>
   @endif
+
+<script>
+  $(document).ready(function(){
+
+    
+   $('#login').submit(function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get form data
+    var formData = $(this).serialize();
+
+    // Send AJAX request
+    $.ajax({
+        type: 'POST',
+        url: '{{ route('company.generate_otp') }}',
+        data: formData,
+        success: function (response) {
+           
+            if (response.code == 1) {
+                alert(response.message); 
+            }else{
+              alert(response.message);
+            }
+        },
+        error: function (xhr) {
+            // Handle the error response
+
+            if (xhr.responseJSON && xhr.responseJSON.error) {
+                alert('Error: ' + xhr.responseJSON.error); // Display specific error message
+            } else {
+                alert('Error: Something went wrong.'); // Generic error message
+            }
+
+        }
+    });
+});
+
+  });
+  </script>
   
 </body>
 

@@ -126,8 +126,8 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 });
 
 
-Route::post('company/otp-verify', [CompanyController::class, 'generateLoginOtp'])->name('company.generate_otp');
 Route::get('company/otp-verify', [CompanyController::class, 'showOtpLoginForm'])->name('company.otp-form');
+Route::post('company/otp-verify', [CompanyController::class, 'generateLoginOtp'])->name('company.generate_otp');
 
 
 
@@ -146,6 +146,6 @@ Route::post('company/login', [CompanyController::class, 'authenticate'])->name('
   Route::get('/forgot-password', [CompanyController::class, 'forgotpassword_view'])->name('company.forgotpassword.view');
   Route::post('/forgot-password', [CompanyController::class, 'forget_password'])->name('company.forgotpassword');
   //Route::get('/otp-verify', [CompanyController::class, 'otp_verify_form'])->name('company.forgotpassword.otpverify');
-  Route::post('/otp-authentication', [CompanyController::class, 'otp_authentication'])->name('company.Otpauthentication');
+  Route::post('/otp-authentication', [CompanyController::class, 'otp_authentication'])->name('company.verify_otp');
   Route::get('/reset-password', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');
   Route::post('/reset-password', [CompanyController::class, 'reset_password_update'])->name('company.ResetPassword.update');

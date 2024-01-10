@@ -17,6 +17,7 @@ use App\Notifications\Company\LoginOtpNotification;
 use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -60,34 +61,18 @@ class CompanyController extends Controller
     public function generateLoginOtp(Request $request)
     {
 
-        $email = $request->input('email');
-
-         $validator = $request->validate([
+        $rules = [
             'email' => 'required|email|exists:companies'
-        ]);
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            $return_array = array([
-                'code' => 0,
-                'status' => 'error',
-                'message' => $validator->errors(),
-                
-            ]);
+           return $this->sendError('Validation Error.', $validator->errors(), 422);
         }
 
-        return $return_array;
         
         $user = Company::where('email', $request->email)->first();
-
-        if (!$user) {          
-            $return_array = array([
-                'code' =>0,
-                'status' =>'error',
-                'message' =>'User not found',
-            ]);
-        }
-
-        $request->session()->put('OTP_email', $user->email);
 
         $otp = random_int(100000, 999999);
 
@@ -95,14 +80,8 @@ class CompanyController extends Controller
         $user->saveQuietly();
         $user->notify(new LoginOtpNotification($user, $otp));
 
-        $return_array =  array([
-            'code' =>1,
-            'status' =>'success',
-            'message' =>'Otp Sent Successfully!',
-        ]);
+        return $this->sendResponse('Otp sent to your email address sucessfully');
 
-        json_encode($return_array);
-        exit;
     }
 
     public function showOtpLoginForm(Request $request)
@@ -362,21 +341,27 @@ class CompanyController extends Controller
 
     public function otp_authentication(Request $request)
     {
-        
-        $request->validate([
-            'otp' => 'required|numeric|exists:companies',
-        ]);
+        $rules = [
+            'otp' => 'required|digits:6|exists:companies',
+        ];
 
+        $messages = [
+            'otp.required' => 'Please enter otp',
+            'otp.digits' => 'Please enter 6 digit otp',
+            'otp.exists' => 'Please enter valid otp',
+        ];
 
-        $otpEmail = session('Otp_email');
+        $validator = Validator::make($request->all(), $rules, $messages);
 
-        $user = Company::where('email', $otpEmail)->first();
-       
-        if ($user) {
-            return redirect()->route('company.ResetPassword.form');
-        }            
-        
-        return redirect()->back();
+        if ($validator->fails()) {
+           return $this->sendError('Validation Error.', $validator->errors(), 422);
+        }
+
+        $company = Company::where('otp', $request->otp)->first();
+        Auth::guard('company')->login($company);
+
+        return $this->sendResponse('Otp verified successfully');
+
     }
 
 

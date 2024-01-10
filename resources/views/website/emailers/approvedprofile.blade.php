@@ -30,7 +30,7 @@
       <td>
         <table width="100%" cellspacing="0" cellpadding="0" style="background-color: #07395C; padding: 5px 20px">
          <tr>
-            <td><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></td>
+            <td><a href="https://acma.in/"><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></a></td>
             <td><h3 style="color:#fff; margin-bottom: 0; text-align: right;">Acma Buyers Guide</h3></td>
           </tr>
         </table>

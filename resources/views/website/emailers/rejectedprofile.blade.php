@@ -29,15 +29,15 @@
     <tr>
       <td>
         <table width="100%" cellspacing="0" cellpadding="0" style="background-color: #07395C; padding: 5px 20px">
-          <tr>
-            <td><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></td>
+         <tr>
+            <td><a href="https://acma.in/"><img src="https://www.acma.in/images/logo.png"style="width: 180px;"></a></td>
             <td><h3 style="color:#fff; margin-bottom: 0; text-align: right;">Acma Buyers Guide</h3></td>
           </tr>
         </table>
         <table width="100%" cellspacing="0" cellpadding="0" style="padding: 15px 20px">
          
           <tr>
-            <td><p style="margin-bottom: 0;"><strong style="color:#07395C;">Hello  {{ $company->name }} , </strong><br> </p></td>
+            <td><p style="margin-bottom: 10px;"><strong style="color:#07395C;">Hello  {{ $company->name }} , </strong><br> </p></td>
           </tr>
           <tr>
             <td><p style="margin-bottom: 0;">We are sorry to inform you that your profile update request is Rejected</p></td>

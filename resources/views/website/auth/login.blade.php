@@ -42,7 +42,7 @@
             <div class="subscribe-banner">
              <div class="subscribe-banner-content">
                  <div class="signup-logo">
-                    <img src="https://www.acma.in/images/logo.png" alt="">
+                   <a href="https://www.acma.in/"> <img src="https://www.acma.in/images/logo.png" alt=""></a>
                   </div>
                   <div class="subscribe-content">
                     <h2 class="title">Buyers Guide</h2>
@@ -83,35 +83,11 @@
                         <div class="mb-3">
                           <input type="text" class="form-control" id="email" name="email"  placeholder="Enter your email" autofocus>
                         </div>
-<<<<<<< HEAD
-                        <div class="otp mb-3">
-                          <input type="text" class="form-control" id="otp" name="otp"  placeholder="Enter your otp" autofocus>
-                          <x-validation-error name="email"/>
-                         
-                        </div>
-                          {{-- <div class="mb-3 form-password-toggle">
-                            <label class="form-label" for="password">Password</label>`
-                            <div class="input-group input-group-merge">
-                              <input type="password" id="password" class="form-control" name="password" @if(isset($_COOKIE["password"]))  value="{{ $_COOKIE["password"] }}" @endif placeholder="Password" aria-describedby="password" />
-                              <span class="input-group-text cursor-pointer">
-                                <i class="bx bx-hide"></i>
-                              </span>
-                            </div>
-                          </div> --}}
-                          {{-- <div class="d-flex align-item-center mb-3 justify-content-between sign-in-footer">
-                            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="remember" @if(isset($_COOKIE['email'])) checked="" @endif > <label class="form-check-label">Remember me</label></div>
-                             <a href="{{route('company.forgotpassword.view')}}" class="forgot-password">Forgot password?</a>
-                          </div> --}}
-                          <button class="btn btn-primary d-grid w-100 otp-btn mt-1" type="submit">Get OTP</button>
-                            
-                        
-=======
                         <div class="mb-3 otp_section d-none">
                           <label for="email" class="form-label">OTP </label>
                           <input type="text" class="form-control" name="otp" id="otp" placeholder="Enter OTP" autofocus>
                         </div>
                           <button class="btn btn-primary d-grid w-100 login_btn" type="submit">Sign In</button>
->>>>>>> 8a8d6dca3e9c72ba3fffe48387f589c0e6a42521
                       </form>
                     </div>
                 </div>

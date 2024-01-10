@@ -469,9 +469,8 @@
             <div class="company-card">
                <div>
                   <form action="{{ route('dashboard.company.export') }}">                   
-<<<<<<< HEAD
                        <div class="row">
-                           @foreach ($companies as $company)
+                              @forelse($companies as $company)
 
                                  <div class="col-md-6 col-lg-4 mb-3">
                                        <div class="card card-data">
@@ -554,108 +553,15 @@
                                           </div>
                                        </div>
                                  </div>
-                              @endforeach
+                              @empty
+                              <h2 class="text-center text-danger">No Result</h2>
+                              @endforelse
 
                            
                            {{ $companies->onEachSide(1)->withQueryString()->links() }}
                            <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
                        </div>
                        <div class="row">
-=======
-                     <div class="row">
-                    
-                     @forelse($companies as $company)
-
-                        <div class="col-md-4 mb-3">
-                              <div class="card card-data">
-                                 <div class="company-title">
-                                 <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                    <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Check"> <i class='bx bx-check check-icon' ></i> </span>
-                                 </div>
-                                 <div class="card-body">
-                                    <div class="information-list">
-                                       <ul>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
-                                             </div>
-                                             <div>
-                                                @if($company && $company->contact_details->state)
-                                                   <span>{{ucfirst($company->contact_details->state)}}</span>
-                                                @else
-                                                <span>NA</span>
-                                                @endif
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-phone"></i><span>Phone</span>
-                                             </div>
-                                             <div>
-
-                                                @if($company && $company->contact_details->phone)
-                                                
-                                                      <span>{{$company->contact_details->phone}}</span>
-                                                @else 
-                                                <span>NA</span>
-                                                @endif
-                                          
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-fax"></i><span>Fax</span>
-                                             </div>
-                                             <div>
-                                             
-                                                @if($company && $company->contact_details->fax)
-                                                   <span>{{$company->contact_details->fax}}</span> 
-                                                   @else 
-                                                   <span>NA</span>
-                                                   @endif
-                                          
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-envelope"></i><span>E-mail</span>
-                                             </div>
-                                             <div>
-                                                
-                                                @if($company && $company->email)
-                                                <a href="">{{ucfirst($company->email)}}</a>
-                                                @else 
-                                                <span>NA</span>
-                                                @endif
-                                             
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div>
-                                                <i class="fa fa-globe"></i><span>Website</span>
-                                             </div>
-                                             <div>
-                                                @if($company && $company->website)
-                                                <a href="">{{$company->website}}</a>
-                                                @else 
-                                                <span>NA</span>
-                                             @endif
-                                             </div>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           
-                        </div>
-                        @empty
-                        <h2>No Result Found</h2>
-                     @endforelse
-                     
-                     {{ $companies->onEachSide(1)->withQueryString()->links() }}
-                     <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
-                     <div class="row">
->>>>>>> 8a8d6dca3e9c72ba3fffe48387f589c0e6a42521
                         <div class="col-md-12 text-center">
                            <div class="border-bottom pb-4 mb-3"></div>
                            <div class="checked_company_info mb-3">

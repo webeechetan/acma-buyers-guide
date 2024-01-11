@@ -37,8 +37,6 @@ Route::get('/download-excel', function () {
 |
 */
 
-
-
 Route::get('/export-word',function(){
    
     $company_export = new CompanyExportWord();
@@ -61,10 +59,27 @@ Route::get('/import', function () {
     return view('website.importcompany');
 })->name('import'); // Yo
 
+// Route::post('/import', function (Request $request) {
+//         Excel::import(new CompanyImport, $request->abg) ;
+//     // return redirect('/')->with('success', 'All good!');
+//     return redirect()->route('admin.companies')->with('success', 'Import completed successfully!');;
+// })->name('import.post');
+
+
 Route::post('/import', function (Request $request) {
-        Excel::import(new CompanyImport, $request->abg) ;
-    // return redirect('/')->with('success', 'All good!');
+    try {
+        Excel::import(new CompanyImport, $request->abg);
+        return redirect()->route('admin.companies');
+        toast('Success','responsemessage','success');
+
+    } catch (\Exception $e) {
+        return redirect()->route('admin.companies')->with('error', 'Error during import: ' . $e->getMessage());
+    }
 })->name('import.post');
+
+
+
+
 
 Route::get('/', function () {
     return view('website.index');

@@ -27,7 +27,9 @@
   letter-spacing: -0.5px;
   text-transform: lowercase;
 }
-
+div .border-top{
+  border-top:  1px solid #eee !important;
+}
 /* ! For .layout-navbar-fixed added fix padding top to .layout-page */
 /* Detached navbar */
 .layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {

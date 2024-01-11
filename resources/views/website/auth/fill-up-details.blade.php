@@ -215,7 +215,7 @@
                                   <textarea id="otherplant_address3" name="otherplant_address3" class="form-control" placeholder="Enter Your Other Plant Address3" rows="1" >{{ $company_contact_details->otherplant_address3 }}</textarea>
                                   </div>
 
-                                  <div class="col-md-12">
+                                  <div class="col-md-4">
                                     <label class="form-label" for="yearcommencing">Year Commencing</label>
                                     <input type="text" id="year_commencing" name="year_commencing" class="form-control" placeholder="Enter Your Year Commencing" value="{{ $company_contact_details->year_commencing }}">
                                     </div>
@@ -646,7 +646,7 @@
                               <input type="text" id="iso14agency" name="iso14agency" class="form-control" placeholder=" Enter ISO 14 Agency" value="{{$company_foreign_collaboration->iso14agency }}">
                             </div>
                             
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                               <label class="form-label" for="ts">TS</label>
                               <input type="text" id="ts" name="ts" class="form-control" placeholder=" Enter Ts" value="{{$company_foreign_collaboration->ts}}">
                             </div>
@@ -801,7 +801,7 @@
                       </div>
                   
                   
-                    <div class="form-navigation mt-3">
+                    <div class="form-navigation mt-3 pt-3 border-top">
                       <button type="button" class="btn btn-primary" id="prev">Previous</button>
                       <button type="button" onclick="validateAndProceed()" class="btn btn-primary ms-auto" id="next">Next</button>
                       <button type="submit" class="btn btn-success" id="submit" style="display: none;">Update</button>

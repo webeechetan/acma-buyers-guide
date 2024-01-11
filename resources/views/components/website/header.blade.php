@@ -31,7 +31,7 @@
                 <li>
                         <a class="dropdown-item pe-none" href="javascript:void(0);">
                         <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-4">
+                            <div class="flex-shrink-0 me-2">
                             <div class="avatar avatar-online">
                                 <div class="d-flex align-items-center">
                                     <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">

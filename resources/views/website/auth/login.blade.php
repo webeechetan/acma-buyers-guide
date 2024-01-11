@@ -59,7 +59,7 @@
              </div>
               
               <div class="copyright">
-                <p>© Copyright 2024 ACMA India, All Right Reserved.</p>
+                <p class="mb-0">© Copyright 2024 ACMA India, All Right Reserved.</p>
               </div>
             </div>
             <div class="subscribe-form">
@@ -72,8 +72,8 @@
                         </li> -->
                         <!-- <li class="nav-item">or</li> -->
                         <li class="nav-item">
-                          <a class="fw-24 border-none p-0 text-start" data-bs-toggle="pill" href="javascript:void(0);">Sign in to your account</a>
-                          <p class="text-start">Enter Your Email and get otp</p>
+                          <h4 class="fw-24 login-header" data-bs-toggle="pill">Sign in to your account</h4>
+                          <p class="text-start">Enter Your Email & Get OTP</p>
                         </li>
                       </ul>
                     </div>

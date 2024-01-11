@@ -13,12 +13,22 @@
             @if($company_contact_details->image)
               <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
             @else
-              <img src="{{ asset('admin/') }}/assets/img/avatars/place.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
+               @php
+                $authenticatedCompany = Auth::guard('company')->user();
+                $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC';
+                @endphp
+                  <div class="avatar avatar-online">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                            {{ $companyInitials }}
+                        </div>
+                        </div>
+                  </div>
             @endif
 
           </div>
           <div>
-            <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
+            <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-3 flex-md-row flex-column gap-4">
               <div class="user-profile-info">
                 <h4 class="text-dark mb-2">{{$company->name}}</h4>
                 <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
@@ -42,7 +52,7 @@
               <li class="breadcrumb-item">
                 <a href="{{route('company.dashboard')}}">Dashboard</a>
               </li>
-              <li class="breadcrumb-item active"> My Profile</li>
+              <li class="breadcrumb-item active">Company Profile</li>
             </ol>
           </nav>
       </div>
@@ -190,7 +200,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="text-primary mb-0" id="exampleModalLabel">Profile Update Request<span class="text-primary mb-0">( {{ $CompanyUpdateRequest->updated_at->format('d-M-y')}})</span></h4>
+                <h4 class="text-primary mb-0" id="exampleModalLabel">Profile Update Request<span class="text-primary mb-0"> ( {{ $CompanyUpdateRequest->updated_at->format('d-M-y')}})</span></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   </button>
               </div>
@@ -211,7 +221,7 @@
                             $newValue = isset($value['new']) ? $value['new'] : '-Blank-';
 
                             // $updating_data .= '<strong>' .ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '<br>';
-                            $updating_data .= '<li><strong>' . ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '</li>';
+                            $updating_data .= '<li class="mb-2"><div class="mb-1"><strong>' . ucfirst(str_replace('_', ' ', $key)) .'</strong> </div>' . $oldValue . ' <i class="fa fa-long-arrow-right mx-1" aria-hidden="true"></i> <span class="text-success">'.$newValue.'</span></li>';
 
 
                         }

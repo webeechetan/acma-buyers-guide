@@ -2,15 +2,19 @@
 var checked_companies = localStorage.getItem('checked_companies') ? JSON.parse(localStorage.getItem('checked_companies')) : [];
 
 function clear_checked() {
+
+   
     localStorage.removeItem('checked_companies');
     checked_companies = [];
     $(".checked_companies").html("Selected Companies: 0");
+    $(".checked_company_download").css("display", "none");
     $(".company_checkbox").prop('checked', false);
+    
    // $(".checked_company_info").hide();
     $(".company_checkbox").parent().parent().parent().removeClass('card-border');
     $(".company_checkbox_in_modal").prop('checked', false);
     $(".company_checkbox_in_modal").parent().parent().parent().removeClass('card-border');
-    $('.badge-count').html('0');
+    $('.badge-count').html('0'); 
 }
 
 if (checked_companies.length == 0) {
@@ -18,9 +22,9 @@ if (checked_companies.length == 0) {
 }
 
 
-if (checked_companies.length > 0) {
-    $(".checked_company_download").addClass('company_download_btn_show');
-}
+// if (checked_companies.length > 0) {
+//     $(".checked_company_download").addClass('company_download_btn_show');
+// }
 
 
 $(".company_checkbox").click(function (e) {

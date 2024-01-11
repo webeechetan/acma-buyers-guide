@@ -36,7 +36,15 @@
                                           <div class="col-md-4 border-end">
                                              <ul class="nav nav-pills custom-tab  d-block mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
-                                                   <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"> <i class='bx bx-building-house me-2' ></i> <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"><i class='bx bx-building-house me-2'></i>
+    
+                                                         <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">0</span>
+                                                         </div>
+
+                                                         {{-- <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">{{ count($_GET['company_name'] ?? []) }}</span>
+                                                         </div>  --}}
+
+                                                   </a>
                                                 </li>
                                                
                                                 <li  class="filter-name mb-2" data-filter="region">
@@ -75,11 +83,6 @@
                                                 <li  class="filter-name" data-filter="overseas">
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#overseas"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Overseas Aftermarket</span>  <span id="overseasBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li> --}}
-
-
-                                              
-                                              
-
 
                                                 {{-- <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
                                                    <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
@@ -256,7 +259,7 @@
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="0-5000" {{ request('range') == '0-5000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="0-5000" {{ request('range') == '0-5000' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                0 - 5000
                                                             </label>
@@ -264,7 +267,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5001-10000" {{ request('range') == '5001-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5001-10000" {{ request('range') == '5001-10000' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                5001-10000
                                                             </label>
@@ -272,7 +275,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="10001-50000" {{ request('range') == '10001-50000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="10001-50000" {{ request('range') == '10001-50000' ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   10001-50000
                                                                </label>
@@ -290,7 +293,7 @@
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="0-5000" {{ request('ranges') == '0-5000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="0-5000" {{ request('ranges') == '0-5000' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                0 - 5000
                                                             </label>
@@ -298,7 +301,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5001-10000" {{ request('ranges') == '5001-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5001-10000" {{ request('ranges') == '5001-10000' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                5001-10000
                                                             </label>
@@ -306,7 +309,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10001-50000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10001-50000' ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   10001-50000
                                                                </label>
@@ -366,7 +369,7 @@
                                                    <div class="row mt-2">
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="0-100" {{ request('no_ofEmp') == '0-100' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="0-100" {{ request('no_ofEmp') == '0-100' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                0 - 100
                                                             </label>
@@ -374,7 +377,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="101-200" {{ request('no_ofEmp') == '101-200' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="101-200" {{ request('no_ofEmp') == '101-200' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                101-200
                                                             </label>
@@ -382,7 +385,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="201-500" {{ request('no_ofEmp') == '201-500' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="201-500" {{ request('no_ofEmp') == '201-500' ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   201-500
                                                                </label>
@@ -390,7 +393,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501-12000" {{ request('no_ofEmp') == '501-12000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501-12000" {{ request('no_ofEmp') == '501-12000' ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   501-12000
                                                                </label>
@@ -410,17 +413,9 @@
                                                 <div class="row mt-2">
                                                     <div class="col-md-4">
                                                         <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input" class="active-check" type="checkbox" name="quality" value="quality" {{ request('quality') == 'quality' ? 'checked' : '' }}>
+                                                            <input class="form-check-input" class="active-check" type="checkbox" name="quality" value="Y" {{ request('quality') == 'quality' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                 Bismark
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input" class="active-check" type="checkbox" name="quality" value="emark" {{ request('quality') == 'emark' ? 'checked' : '' }}>
-                                                            <label class="form-check-label" for="checkbox-one">
-                                                                Emark
                                                             </label>
                                                         </div>
                                                     </div>
@@ -431,45 +426,15 @@
                                              </div>
                                                 <div class="mt-3 d-flex align-items-center justify-content-between">
                                                       <a href="{{ url()->current() }}" id="resetButton" class="btn btn-danger border-danger btn-sm btn_reset">Reset</a>
-                                                      <!-- <div class="checked_company_info"> 
-                                                         <span class="total_companies badge bg-dark text-capitalize"></span>
-                                                         <span class="checked_companies badge bg-primary text-capitalize"></span>
-                                                         <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
-                                                      </div> -->
                                                       <button class="btn btn-success btn-sm">Apply</button>
                                                 </div>
                                             </form>
                                           </div>
                                        </div>
-                                       
                                     </div>
                                  </div>
                               </div>
                            </div>
-                           <!--- Advance Filter Form---->
-                           <!-- <div class="modal fade" id="advance-filter-modal" tabindex="-1" aria-hidden="true">
-                              <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h2 class="modal-title title text-center active-filter-name" id="filterModal"  >Filter By Company</h2>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <div>
-                                      <form action="" method="GET">
-                                        <label for="select2Basic" class="form-label filter_label_name">Company Name</label>
-                                        <input type="text" name="name" placeholder="Search By Company Name"
-                                          class="form-control advance-filter-input" data-allow-clear="true" />
-                                        <div class="mt-3">
-                                          <button class="btn btn-primary">Apply</button>
-                                          <button class="btn btn-primary">Reset</button>
-                                        </div>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              </div> -->
                         </div>
                      </div>
                   </div>
@@ -597,12 +562,6 @@
                                     class='bx bx-download ms-2 text-white fw-medium'></i></button>
                               <p class="mb-0 pt-2 text-dark fw-medium">Download the data in csv format</p>
                            </div>
-                           <!-- <div class="checked_company_info">
-                                                   <span class="total_companies"></span>
-                                                   <span class="checked_companies"></span>
-                                                   <br>
-                                                   <span class="clear_checked" onclick="clear_checked()">Clear</span>
-                                                </div> -->
                         </div>
                      </div>
                   </form>
@@ -859,7 +818,7 @@ $(document).ready(function () {
    });
 
 </script>
-<!-- <script>
+<script>
   function updateBadgeCount(tabId, count) {
     document.getElementById(tabId + 'Badge').textContent = count;
   }
@@ -941,6 +900,7 @@ $(document).ready(function () {
   handleCheckboxChange('trademark', 'input[name="trademarks[]"]', 'selectedTrademarkCount');
   handleCheckboxChange('sale', 'input[name="range"]', 'selectedSaleCount');
   handleCheckboxChange('city', 'input[name="location[]"]', 'selectedCityCount');
+  handleCheckboxChange('export', 'input[name="ranges"]', 'selectedExportCount');
 
   initializeResetButton('company', 'selectedCompanyCount');
   initializeResetButton('region', 'selectedRegionCount');
@@ -948,7 +908,7 @@ $(document).ready(function () {
   initializeResetButton('trademark', 'selectedTrademarkCount');
   initializeResetButton('sale', 'selectedSaleCount');
   initializeResetButton('city', 'selectedCityCount');
-  initializeResetButton('export', 'selectedexportCount');
+  initializeResetButton('export', 'selectedExportCount');
 
   handleCardCheckboxChange('company', '.company_checkbox', 'selectedCompanyCountCard');
 
@@ -956,8 +916,7 @@ $(document).ready(function () {
     clearCheckboxes('company', '.company_checkbox');
     updateBadgeCountsOutsideModal();
   });
-</script> -->
-
+</script>
 
 
 <script>
@@ -965,6 +924,7 @@ $(document).ready(function () {
 var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
 
 });
+
 
 </script>
 

@@ -646,8 +646,8 @@
                               <input type="text" id="iso14agency" name="iso14agency" class="form-control" placeholder=" Enter ISO 14 Agency" value="{{$company_foreign_collaboration->iso14agency }}">
                             </div>
                             
-                            <div class="col-md-4">
-                              <label class="form-label" for="ts">TS</label>
+                            <div class="col-md-12">
+                              <label class="form-label" for="ts">Technical Standard</label>
                               <input type="text" id="ts" name="ts" class="form-control" placeholder=" Enter Ts" value="{{$company_foreign_collaboration->ts}}">
                             </div>
                             

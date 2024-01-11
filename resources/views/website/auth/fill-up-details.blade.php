@@ -14,7 +14,7 @@
 <div class="row justify-content-center sec-space">
             
             <div class="col-md-12 mb-3 mb-md-0">
-              <div class="card">
+              <div class="card px-4">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-style1 justify-content-end">
                       <li class="breadcrumb-item">
@@ -84,7 +84,7 @@
                               </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="image"> Company Logo</label>
-                                <span class="text text-warning">50 kb max</span>
+                                <span class="text text-danger">(size 50 kb max)</span>
                                 <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ $company_contact_details->image }}" onchange="previewImage()">
                                 <x-validation-error name="image" id="imageError"/>
                                 <div id="imagePreview" class="preview-image">

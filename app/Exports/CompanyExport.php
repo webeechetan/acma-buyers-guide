@@ -10,8 +10,7 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
- class CompanyExport implements FromCollection, WithMapping, WithHeadings
-
+  class CompanyExport implements FromCollection, WithMapping, WithHeadings
 
 {
 

@@ -162,9 +162,9 @@ body {
 .pe-auto{
   cursor: pointer !important;
 }
-.checked_company_info{
+/* .checked_company_info{
   display: block !important;
-}
+} */
 .checked_company_info span.badge{
   padding: .6rem;
 }
@@ -172,6 +172,15 @@ ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+.p-3{
+  padding: 0.6rem !important;
+}
+a.badge{
+  line-height: normal !important;
+}
+a.badge:hover{
+  color: #fff !important;
 }
 
 .text-primary {
@@ -199,6 +208,15 @@ ul {
   box-shadow: none !important;
 }
 
+div .authentication-wrapper{
+  min-height:  100%;
+}
+div .authentic-login{
+  min-height: 100vh;
+}
+div .bg-menu-theme .menu-inner>.menu-item.active>.menu-link{
+  color: #fff;
+}
 /*--- Header ----*/
 
 .header {
@@ -227,7 +245,9 @@ ul {
 }
 
 .top-header-right {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-nav a.nav-link {
@@ -264,15 +284,16 @@ ul {
 }
 
 .dropdown-menu[data-bs-popper] {
-  right: 0 !important;
+  right: -14px !important;
   left: auto !important;
+  top: 43px;
 }
 
 .dropdown-menu::before {
   content: "";
   position: absolute;
   top: -5px;
-  right: 30px;
+  right: 25px;
   height: 10px;
   width: 10px;
   transform: rotate(45deg);
@@ -294,7 +315,12 @@ ul {
   font-size: 24px;
   font-weight: 600;
 }
-
+.otp{
+  display: none;
+}
+.otp-show{
+  display: block;
+}
 .subscribe-btn .nav-pills .fw-24:hover {
   background-color: transparent !important;
   border: none !important;
@@ -442,7 +468,6 @@ div.subscribe-box {
 }
 
 .subscribe-btn {
-  padding-bottom: 30px;
   width: 100%;
 }
 
@@ -789,10 +814,6 @@ footer {
   color: #fff;
   padding-left: 0 !important;
   margin-bottom: 0;
-  display: flex;
-  column-gap: 20px;
-  flex-wrap: wrap;
-  align-items: center;
 }
 
 .contact-list li a {
@@ -806,6 +827,7 @@ footer {
 .sec-space-ft {
   padding-top: 20px;
   padding-bottom: 20px;
+  height: 200px;
 }
 
 .footer-copyright {
@@ -846,14 +868,14 @@ span.badge{
   min-height: 100%;
   box-shadow: none;
 }
-.company-card .row .col-md-4:nth-child(odd) .card-data, .company-card .row .col-md-4:nth-child(even) .card-data{
+.company-card .row .col-md-6:nth-child(odd) .card-data, .company-card .row .col-md-6:nth-child(even) .card-data ,.company-card .row .col-lg-4:nth-child(odd) .card-data, .company-card .row .col-lg-4:nth-child(even) .card-data{
   border:  4px solid #323c6c12;
 }
-.company-card .row .col-md-4:nth-child(odd) .card-data .company-title{
+.company-card .row .col-md-6:nth-child(odd) .card-data .company-title, .company-card .row .col-lg-4:nth-child(odd) .card-data .company-title{
   background-color: #FBEEE6;
   ;
 }
-.company-card .row .col-md-4:nth-child(even) .card-data .company-title{
+.company-card .row .col-md-6:nth-child(even) .card-data .company-title,.company-card .row .col-lg-4:nth-child(even) .card-data .company-title{
 background-color: #C7F6C7;
 }
 .company-card button[type="submit"].btn-primary{
@@ -871,10 +893,10 @@ background-color: #C7F6C7;
   background-color: var(--title-bg);
 }
 
-.company-card .row .col-md-4:nth-child(odd) .card-border{
+.company-card .row .col-lg-4:nth-child(odd) .card-border{
   border: 4px solid  #FBEEE6;
 }
-.company-card .row .col-md-4:nth-child(even) .card-border{
+.company-card .row .col-lg-4:nth-child(even) .card-border{
   border: 4px solid #C7F6C7;
 }
 .company-title .check{
@@ -992,7 +1014,7 @@ background-color: #C7F6C7;
 }
 .filter-tab{
   display: grid;
-  grid-template-columns: 90px 28px;
+  grid-template-columns: 137px 28px;
   grid-gap: 10px;
   align-items: center;
 
@@ -1080,7 +1102,12 @@ background-color: #C7F6C7;
   overflow-x: hidden;
   padding-right: 10px;
 }
-
+.custom-tab{
+  height: 470px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
 .pagination .page-item .page-link{
   border-radius: 50%;
 }
@@ -1114,19 +1141,19 @@ background-color: #C7F6C7;
   justify-content: center;
 }
 
-.card-action::-webkit-scrollbar-track, .scroll-content::-webkit-scrollbar-track{
+.card-action::-webkit-scrollbar-track, .scroll-content::-webkit-scrollbar-track, .custom-tab::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--bg-card);
 }
 
-.card-action::-webkit-scrollbar, .scroll-content::-webkit-scrollbar{
+.card-action::-webkit-scrollbar, .scroll-content::-webkit-scrollbar, .custom-tab::-webkit-scrollbar{
   width: 4px;
   background-color: #eee;
   border-radius: 7px;
   height: 4px;
 }
 
-.card-action::-webkit-scrollbar-thumb, .scroll-content::-webkit-scrollbar-thumb{
+.card-action::-webkit-scrollbar-thumb, .scroll-content::-webkit-scrollbar-thumb, .custom-tab::-webkit-scrollbar-thumb{
   background-color: var(--primary);
 }
 
@@ -1204,7 +1231,7 @@ background-color: #C7F6C7;
     width: 100%;
     position: relative;
   }
-
+  
   .subscribe-box-wrapper {
     min-height: auto;
     position: inherit;
@@ -1213,9 +1240,7 @@ background-color: #C7F6C7;
   div .subscribe-box {
     height: 100%;
   }
-  div .dropdown-menu-end[data-bs-popper] {
-    left: 16px !important;
-}
+
   .copyright {
     position: inherit;
     bottom: 0;
@@ -1230,6 +1255,7 @@ background-color: #C7F6C7;
   .sec-space-ft{
     padding-top: 45px;
     padding-bottom: 45px;
+    height: 390px;
   }
 
   .copyright p {
@@ -1238,6 +1264,30 @@ background-color: #C7F6C7;
   .companies-table{
     overflow: scroll;
   }
+  .custom-tab, .advance-filter .scroll-content{
+    height: 200px;
+  }
+  .checked_company_info{
+    margin: auto;
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+  .dropdown-menu[data-bs-popper] {
+    right: -10px !important;
+  }
+  .tab-pane-header{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 12px;
+  }
+  .tab-pane-header .form-control {
+    display: inline-block;
+    width: 300px;
+}
 }
 
 @media (max-width: 767px) {
@@ -1247,7 +1297,7 @@ background-color: #C7F6C7;
   }
   .subscribe-banner{
     min-height: fit-content;
-    padding: 30px 0;
+    padding: 30px 10px;
   }
   .subscribe-form-wrapper {
     width: 100%;
@@ -1260,7 +1310,13 @@ background-color: #C7F6C7;
     position: inherit;
   }
   div .dropdown-menu-end[data-bs-popper] {
-    left: 16px !important;
+    left: 0 !important;
+    top: 35px;
+}
+
+.company-card .pagination{
+  display:  flex !important;
+  justify-content: space-between !important;
 }
   .copyright {
     display: none;
@@ -1324,9 +1380,8 @@ background-color: #C7F6C7;
 
   /*--- Dashboard ---*/
   .checked_company_info{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
@@ -1361,10 +1416,6 @@ background-color: #C7F6C7;
   height: 240px;
 }
   /*--- Navbar ----*/
-  .top-header-right {
-    display: block;
-  }
-
   .navbar-nav .nav-item.dropdown {
     display: none;
   }
@@ -1453,10 +1504,6 @@ table.dataTable thead tr th:last-child {
   box-shadow: none;
 }
 
-.dropdown-menu-end[data-bs-popper] {
-  left: 0 !important;
-}
-
 .app-brand .layout-menu-toggle {
   background-color: var(--primary) !important;
 }
@@ -1491,7 +1538,7 @@ table.dataTable thead tr th:last-child {
 }
 .profile-card{
   background-color: #eee;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border-radius: 10px;
 }
 .inner-profile-card .card-body small {

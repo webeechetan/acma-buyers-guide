@@ -69,10 +69,12 @@ class CompanyExportWord
         $table->addRow();
         $table->addCell(4000)->addText($company->name);
         $table->addCell(4000)->addText($company->contact_details->company_address);
+
     }
 
     // Save the Word document
     $filename = 'exported_document1.docx';
+    \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(true);
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
     $objWriter->save(storage_path($filename));
 

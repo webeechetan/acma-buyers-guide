@@ -190,13 +190,13 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="text-primary mb-0" id="exampleModalLabel">Profile Update Request</h4>
+                <h4 class="text-primary mb-0" id="exampleModalLabel">Profile Update Request<span class="text-primary mb-0">( {{ $CompanyUpdateRequest->updated_at->format('d-M-y')}})</span></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   </button>
               </div>
               <div class="modal-body pt-1">
               <ul class="list-unstyled mb-4 mt-3">
-                <li>
+              
 
                 @php
 
@@ -210,7 +210,9 @@
                             $oldValue = isset($value['old']) ? $value['old'] : '-Blank-';
                             $newValue = isset($value['new']) ? $value['new'] : '-Blank-';
 
-                            $updating_data .= '<strong>' .ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '<br>';
+                            // $updating_data .= '<strong>' .ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '<br>';
+                            $updating_data .= '<li><strong>' . ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '</li>';
+
 
                         }
                     } else {
@@ -221,7 +223,7 @@
 
                   {!! $updating_data !!}
 
-                  <li>
+                 
               </ul>
               </div>
             </div>

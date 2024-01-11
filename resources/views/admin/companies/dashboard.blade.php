@@ -141,12 +141,6 @@
                                                       @foreach ($regions as $region)
                                                       <div class="col-md-3 col-sm-3 col-3">
                                                          <div class="mt-2">
-                                                            {{-- @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
-                                                               <div class="form-check form-check-inline mb-2">
-                                                                  <input class="form-check-input"  class="active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
-                                                                  <label class="form-check-label" for="inlineCheckbox1">{{ $region['region'] }}</label>
-                                                               </div>
-                                                            @endif --}}
                                                             @if(isset($region['region']) && $region['region'] !== null && $region['region'] !== '')
                                                                <div class="form-check form-check-inline mb-2">
                                                                   <input class="form-check-input active-check" type="checkbox" name="regions[]" id="regions" value="{{ $region['region'] }}" {{ in_array($region['region'], (array)request()->input('regions')) ? 'checked' : '' }}>
@@ -312,7 +306,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10000-50000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10001-50000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   10001-50000
                                                                </label>
@@ -369,8 +363,8 @@
                                                    <div class="tab-pane-header">
                                                       <h5 class="mb-0 text-justify fw-semibold  text-dark">No of Employees</h5>
                                                    </div>
-                                                   <div class="row scroll-content mt-2">
-                                                      <div class="col-md-4">
+                                                   <div class="row mt-2">
+                                                      <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="0-100" {{ request('no_ofEmp') == '0-100' ? 'checked' : '' }}id="checkbox-one">
                                                             <label class="form-check-label" for="checkbox-one">
@@ -378,7 +372,7 @@
                                                             </label>
                                                          </div>
                                                       </div>
-                                                      <div class="col-md-4">
+                                                      <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="101-200" {{ request('no_ofEmp') == '101-200' ? 'checked' : '' }}id="checkbox-one">
                                                             <label class="form-check-label" for="checkbox-one">
@@ -386,7 +380,7 @@
                                                             </label>
                                                          </div>
                                                       </div>
-                                                      <div class="col-md-4">
+                                                      <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                                <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="201-500" {{ request('no_ofEmp') == '201-500' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
@@ -394,7 +388,7 @@
                                                                </label>
                                                             </div>
                                                       </div>
-                                                      <div class="col-md-4">
+                                                      <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                                <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501-12000" {{ request('no_ofEmp') == '501-12000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
@@ -413,7 +407,7 @@
                                                 <div class="tab-pane-header">
                                                     <h5 class="mb-0 text-justify fw-semibold  text-dark">Quality System Standard</h5>
                                                 </div>
-                                                <div class="row scroll-content mt-2">
+                                                <div class="row mt-2">
                                                     <div class="col-md-4">
                                                         <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input" class="active-check" type="checkbox" name="quality" value="quality" {{ request('quality') == 'quality' ? 'checked' : '' }}>

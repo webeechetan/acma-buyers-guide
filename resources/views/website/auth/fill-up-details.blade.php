@@ -25,7 +25,7 @@
                   </nav>
                 <div class="tab-pane-header">
                   <h2 id="heading" class="title mb-md-0">Company Details</h2>
-                  <p class="text-center mb-0">Fill all form field to go to next step</p>  
+                  <p class="text-center mb-0"><b>Fill all form field to go to next step</b></p>  
                 </div>
                   <div class="text-center">
                     <span class="auto_save_icons">

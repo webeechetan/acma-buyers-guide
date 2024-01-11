@@ -134,7 +134,7 @@
                                                       </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="region">
-                                                   <div class="tab-pane-header">
+                                                   <div class="tab-pane-header-new">
                                                          <h5 class="mb-0 fw-semibold text-justify text-dark">Region Filter</h5>
                                                    </div>
                                                    <div class="row">
@@ -237,7 +237,7 @@
                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="trademark">
-                                                   <div class="tab-pane-header">
+                                                   <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-justify fw-semibold text-dark">Trademark Filter</h5>
                                                    </div>
                                                    <div class="row scroll-content">
@@ -256,7 +256,7 @@
                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="salesTurnover">
-                                                   <div class="tab-pane-header">
+                                                   <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-justify fw-semibold  text-dark">Sales Turnover Filter(In Lakh)</h5>
                                                    </div>
                                                    <div class="row mt-2">
@@ -290,10 +290,10 @@
 
 
                                                 <div class="tab-pane fade" id="exportTurnover">
-                                                   <div class="tab-pane-header">
+                                                   <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-start fw-semibold  text-dark">Export Turnover Filter(In Lakh)</h5>
                                                    </div>
-                                                   <div class="row scroll-content mt-2">
+                                                   <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="0-5000" {{ request('ranges') == '0-5000' ? 'checked' : '' }}id="checkbox-one">
@@ -366,10 +366,10 @@
 
                                                 {{-- ////////No of emp --}}
                                                 <div class="tab-pane fade" id="no_of_employees">
-                                                   <div class="tab-pane-header">
+                                                   <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-justify fw-semibold  text-dark">No of Employees</h5>
                                                    </div>
-                                                   <div class="row scroll-content mt-2">
+                                                   <div class="row mt-2">
                                                       <div class="col-md-4">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="0-100" {{ request('no_ofEmp') == '0-100' ? 'checked' : '' }}id="checkbox-one">
@@ -378,7 +378,7 @@
                                                             </label>
                                                          </div>
                                                       </div>
-                                                      <div class="col-md-4">
+                                                      <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="101-200" {{ request('no_ofEmp') == '101-200' ? 'checked' : '' }}id="checkbox-one">
                                                             <label class="form-check-label" for="checkbox-one">
@@ -386,7 +386,7 @@
                                                             </label>
                                                          </div>
                                                       </div>
-                                                      <div class="col-md-4">
+                                                      <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                                <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="201-500" {{ request('no_ofEmp') == '201-500' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
@@ -394,7 +394,7 @@
                                                                </label>
                                                             </div>
                                                       </div>
-                                                      <div class="col-md-4">
+                                                      <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                                <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501-12000" {{ request('no_ofEmp') == '501-12000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
@@ -502,7 +502,7 @@
                                        <div class="card card-data">
                                           <div class="company-title">
                                           <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                             <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Selected"> <i class='bx bx-check check-icon' ></i> </span>
+                                             <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select"> <i class='bx bx-check check-icon' ></i> </span>
                                           </div>
                                           <div class="card-body">
                                              <div class="information-list">
@@ -593,7 +593,7 @@
                            <div class="checked_company_info mb-3">
                               <span class="total_companies badge bg-dark text-capitalize"></span>
                               <span class="checked_companies badge bg-primary text-capitalize"></span>
-                              <a href="{{route('company.dashboard')}}" class="btn btn-primary">View All</a>
+                              <a href="{{route('company.dashboard')}}" class="badge bg-info text-capitalize p-3">View All</a>
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i
                                     class="fa fa-times text-white" aria-hidden="true"></i></span>
                            </div>
@@ -865,7 +865,7 @@ $(document).ready(function () {
    });
 
 </script>
-<script>
+<!-- <script>
   function updateBadgeCount(tabId, count) {
     document.getElementById(tabId + 'Badge').textContent = count;
   }
@@ -873,7 +873,6 @@ $(document).ready(function () {
   function resetBadgeCounts(tabId, storageKey) {
     localStorage.setItem(storageKey, 0);
     updateBadgeCount(tabId, 0);
-    console.log(storageKey);
   }
 
   function handleCheckboxChange(tabId, checkboxSelector, storageKey) {
@@ -963,15 +962,14 @@ $(document).ready(function () {
     clearCheckboxes('company', '.company_checkbox');
     updateBadgeCountsOutsideModal();
   });
-
-</script>
+</script> -->
 
 
 
 <script>
    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-  return new Tooltip(tooltipTriggerEl);
+
 });
 
 </script>

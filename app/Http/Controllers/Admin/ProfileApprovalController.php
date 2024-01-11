@@ -18,7 +18,9 @@ class ProfileApprovalController extends Controller
     {
         $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->get();
 
-        return view('admin.profileapproval.index', compact('pendingRequests'));
+        $approvedRequests = CompanyUpdateRequest::where('status', 'approved')->get();
+
+        return view('admin.profileapproval.index', compact('pendingRequests', 'approvedRequests'));
     }
 
     /**

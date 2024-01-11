@@ -61,28 +61,7 @@
                                                 <td>{{ $values['new'] }}</td>
                                             </tr>
                                         @endforeach
-                                        {{-- @foreach ($profile as $key => $values)
-                                        <tr>
-                                            <td>{{ $key }}</td>
-                                            <td>
-                                                @if ($key === 'image' && $values['old'] !== 'NULL' && isImage($values['old']))
-                                                    <img src="{{ asset('storage/' . $values['old']) }}" alt="Old Image" style="max-width: 100px; max-height: 100px;">
-                                                @else
-                                                    {{ $values['old'] }}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($key === 'image' && $values['new'] !== 'NULL' && isImage($values['new']))
-                                                    <img src="{{ asset('storage/' . $values['new']) }}" alt="New Image" style="max-width: 100px; max-height: 100px;">
-                                                @else
-                                                    {{ $values['new'] }}
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    --}}
-                                    
-                                    
+                                                                          
                                     </tbody>
                                 </table>
                                 
@@ -106,8 +85,8 @@
         </div>
         <div class="tab-pane container fade" id="approve">
             <div class="row">
-            @if(isset($pendingRequests) && $pendingRequests->count() > 0)
-                @foreach ($pendingRequests as $request)
+            @if(isset($approvedRequests) && $approvedRequests->count() > 0)
+                @foreach ($approvedRequests as $request)
 
 
 
@@ -166,20 +145,20 @@
                                 </table>
                                 
                             
-                                <div class="d-flex gap-2">
+                                {{-- <div class="d-flex gap-2">
                                         <a href="{{ route('admin.profile.approve',$request->id) }}"><button type="submit" class="btn btn-success btn-sm">Approve</button></a>                    
                                         <form method="post" action="{{route('admin.profile.disapprove' , $request->id )}}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Deny</button>
                                         </form>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                 @endforeach
             @else
-                    <span class="text text-danger"> No Pending Request</span>
+                    <span class="text text-danger"> No Request</span>
             @endif
             </div>
         </div>

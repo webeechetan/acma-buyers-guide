@@ -40,6 +40,7 @@
 
       {{-- Approved Request --}}
       <div class="col-md-4 mb-3">
+        <a href=" {{Route('admin.profile.approval')}}">
         <div class="card">
           <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>
@@ -51,6 +52,7 @@
             </span>
           </div>
         </div>
+      </a>
         <hr class="d-none d-sm-block d-lg-none me-4">
       </div>
 </div>   
@@ -58,12 +60,14 @@
   <div class="region col-md-12">
     <div class="row">
     @foreach ($regionsCount as $region)
+
+   
         <?php
             $regionName = $region->region;
             $count = $region->count;
         ?>
 
-            <div class="col-md-3 mb-3">
+            {{-- <div class="col-md-3 mb-3">
               <div class="card">
                 <div>
                   <div class=" d-flex justify-content-between align-items-center">
@@ -74,7 +78,32 @@
                 </div>
               </div>
               <hr class="d-none d-sm-block d-lg-none me-4">
-            </div>
+            </div> --}}
+
+            <div class="col-md-3 mb-3">
+              <div class="card">
+                  <div>
+                      <div class="d-flex justify-content-between align-items-center">
+                          <span class="mb-1 badge bg-primary">
+                              @if ($regionName == 'E')
+                                  East
+                              @elseif ($regionName == 'N')
+                                  North
+                              @elseif ($regionName == 'W')
+                                  West
+                              @elseif ($regionName == 'S')
+                                  South
+                              @else
+                                  {{ $regionName }} {{-- Display the original code if not E, N, W, or S --}}
+                              @endif
+                          </span>
+                          <p class="mb-0">{{ $count }}</p>
+                      </div>
+                  </div>
+              </div>
+              <hr class="d-none d-sm-block d-lg-none me-4">
+          </div>
+          
 
         
     @endforeach

@@ -647,7 +647,7 @@
                             </div>
                             
                             <div class="col-md-12">
-                              <label class="form-label" for="ts">TS</label>
+                              <label class="form-label" for="ts">Technical Standard</label>
                               <input type="text" id="ts" name="ts" class="form-control" placeholder=" Enter Ts" value="{{$company_foreign_collaboration->ts}}">
                             </div>
                             

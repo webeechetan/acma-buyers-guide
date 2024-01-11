@@ -151,6 +151,16 @@ class CompanyHelper {
         }
         //No of emp filter////
 
+        /////quality filter/////
+
+          //checkbox filters for products
+          if($request->has('quality')) {
+
+            $companies = $companies->whereHas('foreign_collaboration', function ($query) use ($request) {
+                $query->where('bismark', 'like', '%' . $request->quality . '%');
+            });
+        }
+        /////quality filter
 
 
         if($request->has('name')){

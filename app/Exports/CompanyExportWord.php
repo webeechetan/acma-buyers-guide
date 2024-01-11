@@ -10,6 +10,7 @@ use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyForeignCollaboration;
 
 
+
 class CompanyExportWord
 {
     public $company_ids = [];
@@ -33,7 +34,7 @@ class CompanyExportWord
       //  dd($company->key_personnels->chief_executive);
         $section = $phpWord->addSection();
         
-        $header = ['size' => 16, 'bold' => true];
+        $header = ['size' => 10, 'bold' => true];
 
         // Title for each company
         $section->addTextBreak(1);
@@ -42,7 +43,7 @@ class CompanyExportWord
         // Table for each company
         $fancyTableStyleName = 'Fancy Table';
         $fancyTableStyle = [
-            'borderSize' => 2,
+            'borderSize' => 1,
             'borderColor' => '006699',
             'cellMargin' => 80,
             'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,
@@ -57,18 +58,24 @@ class CompanyExportWord
         $fancyTableFontStyle = ['bold' => true];
 
         $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
+        // Set the left margin to 0
         $table = $section->addTable($fancyTableStyleName);
 
         // Header row
         $table->addRow(900);
-        $table->addCell(4000, $fancyTableCellStyle)->addText('Company Details', $fancyTableFontStyle);
-        $table->addCell(4000, $fancyTableCellStyle)->addText('Company Contact Details', $fancyTableFontStyle);
+        $table->addCell(2000, $fancyTableCellStyle)->addText('Company Details', $fancyTableFontStyle);
+        $table->addCell(2000, $fancyTableCellStyle)->addText('Company Contact Details', $fancyTableFontStyle);
 
         // Data rows
         // there should be a card in each cell of the table with the company details
         $table->addRow();
-        $table->addCell(4000)->addText($company->name);
-        $table->addCell(4000)->addText($company->contact_details->company_address);
+        $table->addCell(2000)->addText($company->name);
+        $table->addCell(2000)->addText($company->contact_details->company_address);
+        $table->addCell(2000)->addText($company->key_personnels->managing_director);
+        $table->addCell(2000)->addText($company->key_personnels->chief_executive);
+        $table->addCell(2000)->addText($company->key_personnels->sales_in_charge);
+        $table->addCell(2000)->addText($company->key_personnels->production_in_charge);
+        $table->addCell(2000)->addText($company->key_personnels->region);
 
     }
 
@@ -78,10 +85,7 @@ class CompanyExportWord
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
     $objWriter->save(storage_path($filename));
 
-    // $tempPath = tempnam(sys_get_temp_dir(), 'phpword_export_');
-    // $objWriter->save($tempPath);
-    // return response()->download($tempPath, $filename)->deleteFileAfterSend(true);
-    // Provide the download link for the user
+   
     return response()->download(storage_path($filename));
 }
 

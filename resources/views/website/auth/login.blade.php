@@ -84,7 +84,7 @@
                           <input type="text" class="form-control" id="email" name="email"  placeholder="Enter your email" autofocus>
                         </div>
                         <div class="mb-3 otp_section d-none">
-                          <input type="text" class="form-control" name="otp" id="otp" placeholder="Enter OTP" autofocus>
+                          <input type="number" class="form-control" name="otp" id="otp" placeholder="Enter OTP" autofocus>
                         </div>
                           <button class="btn btn-primary d-grid w-100 login_btn" type="submit">Sign In</button>
                       </form>
@@ -146,14 +146,14 @@
   <script src="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.js"></script>
   <script src="{{ asset('admin/') }}/assets/js/ui-toasts.js"></script>
   <script src="{{ asset('website/') }}/validations/register.js"></script>
-  <script>
+  {{-- <script>
     $(document).ready(()=>{
      $('.otp-btn').click(function(){
       $('.otp').addClass('otp-show');
       $(this).text('Sign In');
      });
     })
-  </script>
+  </script> --}}
 
   @if(session()->has('alert'))
       @php
@@ -192,7 +192,9 @@
           url: '{{ route('company.verify_otp') }}',
           data: formData,
           success: function (response) {
+
               if(response.success){
+                  toast('success','Login Successfully','success');
                   window.location.href = "{{ route('company.dashboard') }}";
               }else{
                   toast('Error',response.message,'success');
@@ -218,6 +220,7 @@
           success: function (response) {
               if(response.success){
                   $('.otp_section').removeClass('d-none');
+                  $('#email').attr('readonly', true);
                   toast('Success',response.message,'success');
                   $(".login_btn").html('Verify OTP');
               }else{
@@ -231,10 +234,10 @@
                   $.each(error.errors, function (key, value) {
                       toast('Error',value,'danger');
                   });
-                  $(".login_btn").html('Verify OTP');
+                  $(".login_btn").html(previous_value);
               }else{
                   toast('Error',error.message,'danger');
-                  $(".login_btn").html('Verify OTP');
+                  $(".login_btn").html(previous_value);
               }
           }
       });

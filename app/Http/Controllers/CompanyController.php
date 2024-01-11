@@ -80,7 +80,7 @@ class CompanyController extends Controller
         $user->saveQuietly();
         $user->notify(new LoginOtpNotification($user, $otp));
 
-        return $this->sendResponse('Otp sent to your email address sucessfully');
+        return $this->sendResponse('Otp sent to your email address sucessfully','success');
 
     }
 

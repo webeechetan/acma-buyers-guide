@@ -40,6 +40,7 @@
 
       {{-- Approved Request --}}
       <div class="col-md-4 mb-3">
+        <a href=" {{Route('admin.profile.approval')}}">
         <div class="card">
           <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>
@@ -51,6 +52,7 @@
             </span>
           </div>
         </div>
+      </a>
         <hr class="d-none d-sm-block d-lg-none me-4">
       </div>
 </div>   
@@ -58,12 +60,14 @@
   <div class="region col-md-12">
     <div class="row">
     @foreach ($regionsCount as $region)
+
+   
         <?php
             $regionName = $region->region;
             $count = $region->count;
         ?>
 
-            <div class="col-md-3 mb-3">
+            {{-- <div class="col-md-3 mb-3">
               <div class="card">
                 <div>
                   <div class=" d-flex justify-content-between align-items-center">
@@ -74,7 +78,32 @@
                 </div>
               </div>
               <hr class="d-none d-sm-block d-lg-none me-4">
-            </div>
+            </div> --}}
+
+            <div class="col-md-3 mb-3">
+              <div class="card">
+                  <div>
+                      <div class="d-flex justify-content-between align-items-center">
+                          <span class="mb-1 badge bg-primary">
+                              @if ($regionName == 'E')
+                                  East
+                              @elseif ($regionName == 'N')
+                                  North
+                              @elseif ($regionName == 'W')
+                                  West
+                              @elseif ($regionName == 'S')
+                                  South
+                              @else
+                                  {{ $regionName }} {{-- Display the original code if not E, N, W, or S --}}
+                              @endif
+                          </span>
+                          <p class="mb-0">{{ $count }}</p>
+                      </div>
+                  </div>
+              </div>
+              <hr class="d-none d-sm-block d-lg-none me-4">
+          </div>
+          
 
         
     @endforeach
@@ -85,14 +114,15 @@
 <div class="row">
 <div class="col-md-12">
         <div class="card h-100">
-          <div class="card-header d-flex align-items-center justify-content-between">
-            <h3 class="card-title m-0 me-2 text-primary"><b>Recently Added Company</b> </h3>
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="card-title mb-3 ms-2 text-primary"><b>Recently Added Company</b> </h3>
           </div>
 
-          @foreach($lastestFiveCompanies as $latestCompany)
+   
           <div class="card-body">
             <ul class="p-0 m-0">
-              <li class="d-flex mb-4 pb-1">
+            @foreach($lastestFiveCompanies as $latestCompany)
+              <li class="d-flex mb-2">
                 <div class="avatar flex-shrink-0 me-3">
                   <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase-round.png" alt="User" class="rounded">
                 </div>
@@ -106,9 +136,10 @@
                   </div>
                 <div class="resize-triggers"><div class="expand-trigger"><div style="width: 284px; height: 40px;"></div></div><div class="contract-trigger"></div></div></div>
               </li>
+              @endforeach
             </ul>
           </div>
-          @endforeach
+ 
           
         </div>
       </div>

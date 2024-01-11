@@ -52,7 +52,7 @@
               <li class="breadcrumb-item">
                 <a href="{{route('company.dashboard')}}">Dashboard</a>
               </li>
-              <li class="breadcrumb-item active"> My Profile</li>
+              <li class="breadcrumb-item active">Company Profile</li>
             </ol>
           </nav>
       </div>
@@ -200,13 +200,13 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="text-primary mb-0" id="exampleModalLabel">Profile Update Request</h4>
+                <h4 class="text-primary mb-0" id="exampleModalLabel">Profile Update Request<span class="text-primary mb-0"> ( {{ $CompanyUpdateRequest->updated_at->format('d-M-y')}})</span></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   </button>
               </div>
               <div class="modal-body pt-1">
               <ul class="list-unstyled mb-4 mt-3">
-                <li>
+              
 
                 @php
 
@@ -220,7 +220,9 @@
                             $oldValue = isset($value['old']) ? $value['old'] : '-Blank-';
                             $newValue = isset($value['new']) ? $value['new'] : '-Blank-';
 
-                            $updating_data .= '<strong>' .ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '<br>';
+                            // $updating_data .= '<strong>' .ucfirst(str_replace('_', ' ', $key)) .'</strong>  From ' . $oldValue . ' to ' .$newValue. '<br>';
+                            $updating_data .= '<li class="mb-2"><div class="mb-1"><strong>' . ucfirst(str_replace('_', ' ', $key)) .'</strong> </div>' . $oldValue . ' <i class="fa fa-long-arrow-right mx-1" aria-hidden="true"></i> <span class="text-success">'.$newValue.'</span></li>';
+
 
                         }
                     } else {
@@ -231,7 +233,7 @@
 
                   {!! $updating_data !!}
 
-                  <li>
+                 
               </ul>
               </div>
             </div>

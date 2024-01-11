@@ -66,7 +66,7 @@
                                                 <li  class="filter-name" data-filter="quality">
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality"><i class='bx bx-equalizer me-2'></i><div class="filter-tab"><span>QS Standard</span>  <span id="qualityBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
-                                                <li  class="filter-name" data-filter="domestic">
+                                                {{-- <li  class="filter-name" data-filter="domestic">
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#domestic"><i class='bx bx-dice-1 me-2'></i><div class="filter-tab"><span>Domestic Customer</span>  <span id="domesticBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
                                                 <li  class="filter-name" data-filter="international">
@@ -74,7 +74,7 @@
                                                 </li>
                                                 <li  class="filter-name" data-filter="overseas">
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#overseas"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Overseas Aftermarket</span>  <span id="overseasBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
-                                                </li>
+                                                </li> --}}
 
 
                                               
@@ -270,17 +270,17 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5000-10000" {{ request('range') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5001-10000" {{ request('range') == '5001-10000' ? 'checked' : '' }}id="checkbox-one">
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               5000-10000
+                                                               5001-10000
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="5000-15000" {{ request('range') == '5000-15000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="range" value="10001-50000" {{ request('range') == '10001-50000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  5000-15000
+                                                                  10001-50000
                                                                </label>
                                                             </div>
                                                       </div>
@@ -304,17 +304,17 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5000-10000" {{ request('ranges') == '5000-10000' ? 'checked' : '' }}id="checkbox-one">
+                                                            <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5001-10000" {{ request('ranges') == '5001-10000' ? 'checked' : '' }}id="checkbox-one">
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               5000-10000
+                                                               5001-10000
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="5000-15000" {{ request('ranges') == '10000-15000' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10000-50000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  10000-15000
+                                                                  10001-50000
                                                                </label>
                                                             </div>
                                                       </div>
@@ -365,8 +365,6 @@
                                                 </div>
 
                                                 {{-- ////////No of emp --}}
-
-
                                                 <div class="tab-pane fade" id="no_of_employees">
                                                    <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-justify fw-semibold  text-dark">No of Employees</h5>
@@ -398,9 +396,9 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501&more" {{ request('no_ofEmp') == '501 And Above' ? 'checked' : '' }}id="checkbox-one">
+                                                               <input class="form-check-input"  class="active-check" type="checkbox" name="no_ofEmp" value="501-12000" {{ request('no_ofEmp') == '501-12000' ? 'checked' : '' }}id="checkbox-one">
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  501 And Above
+                                                                  501-12000
                                                                </label>
                                                             </div>
                                                       </div>
@@ -408,6 +406,34 @@
                                                    </div>
                                                 </div>
                                              {{-- //////No of emp --}}
+
+                                             {{-- ////quality standard//// --}}
+
+                                             <div class="tab-pane fade" id="quality">
+                                                <div class="tab-pane-header">
+                                                    <h5 class="mb-0 text-justify fw-semibold  text-dark">Quality System Standard</h5>
+                                                </div>
+                                                <div class="row scroll-content mt-2">
+                                                    <div class="col-md-4">
+                                                        <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" class="active-check" type="checkbox" name="quality" value="quality" {{ request('quality') == 'quality' ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                                Bismark
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" class="active-check" type="checkbox" name="quality" value="emark" {{ request('quality') == 'emark' ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                                Emark
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                             {{-- /////quality standard --}}
                                              </div>
                                                 <div class="mt-3 d-flex align-items-center justify-content-between">
                                                       <a href="{{ url()->current() }}" id="resetButton" class="btn btn-danger border-danger btn-sm btn_reset">Reset</a>
@@ -839,7 +865,7 @@ $(document).ready(function () {
    });
 
 </script>
-<script>
+<!-- <script>
   function updateBadgeCount(tabId, count) {
     document.getElementById(tabId + 'Badge').textContent = count;
   }
@@ -936,7 +962,7 @@ $(document).ready(function () {
     clearCheckboxes('company', '.company_checkbox');
     updateBadgeCountsOutsideModal();
   });
-</script>
+</script> -->
 
 
 

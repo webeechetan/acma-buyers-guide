@@ -13,12 +13,22 @@
             @if($company_contact_details->image)
               <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
             @else
-              <img src="{{ asset('admin/') }}/assets/img/avatars/place.png" alt="user image" class="d-block h-auto ms-0 rounded user-profile-img">
+               @php
+                $authenticatedCompany = Auth::guard('company')->user();
+                $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC';
+                @endphp
+                  <div class="avatar avatar-online">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white text-center" style="width: 40px; height: 40px; line-height: 40px;">
+                            {{ $companyInitials }}
+                        </div>
+                        </div>
+                  </div>
             @endif
 
           </div>
           <div>
-            <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
+            <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-3 flex-md-row flex-column gap-4">
               <div class="user-profile-info">
                 <h4 class="text-dark mb-2">{{$company->name}}</h4>
                 <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">

@@ -85,23 +85,6 @@
                                                 <li  class="filter-name" data-filter="quality">
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality"><i class='bx bx-equalizer me-2'></i><div class="filter-tab"><span>QS Standard</span>  <span id="qualityBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
                                                 </li>
-                                                {{-- <li  class="filter-name" data-filter="domestic">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#domestic"><i class='bx bx-dice-1 me-2'></i><div class="filter-tab"><span>Domestic Customer</span>  <span id="domesticBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
-                                                </li>
-                                                <li  class="filter-name" data-filter="international">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#international"><i class='bx bx-dice-2 me-2'></i><div class="filter-tab"><span>International Customer</span>  <span id="internationalBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
-                                                </li>
-                                                <li  class="filter-name" data-filter="overseas">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#overseas"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Overseas Aftermarket</span>  <span id="overseasBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
-                                                </li> --}}
-
-                                                {{-- <li class="filter-name mb-2" data-filter="OverseasAftermarket" >
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#OverseasAftermarket">Overseas Aftermarket</a>
-                                                </li>
-                                                <li class="filter-name mb-2" data-filter="ForeignCollaboration" >
-                                                   <a class="nav-link" data-bs-toggle="pill" href="#ForeignCollaboration">Foreign Collaboration</a> 
-                                                </li> --}}
-                                                <!-- Add more options here -->
                                              </ul>
                                           </div>
                                           <div class="col-md-8">
@@ -340,7 +323,6 @@
                                                    </div>                                               
                                                 </div>
 
-                                                {{-- ////////No of emp --}}
                                                 <div class="tab-pane fade" id="no_of_employees">
                                                    <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-justify fw-semibold text-dark">No of Employees</h5>
@@ -382,50 +364,49 @@
                                                       </div>
                                                    </div>
                                                 </div>
-                                             {{-- //////No of emp --}}
 
-                                             {{-- ////quality standard//// --}}
+                                                {{-- //quality standard --}} 
 
-                                             <div class="tab-pane fade" id="quality">
-                                                <div class="tab-pane-header">
-                                                    <h5 class="mb-0 text-justify fw-semibold  text-dark">Quality System Standard</h5>
+
+                                                <div class="tab-pane fade" id="quality">
+                                                   <div class="tab-pane-header">
+                                                       <h5 class="mb-0 text-justify fw-semibold  text-dark">Quality System Standard</h5>
+                                                   </div>
+                                                   <div class="row mt-2">
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="bismark" {{ in_array('bismark', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               Bismark
+                                                            </label>
+                                                         </div>
+                                                      </div>
+   
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="emark" {{ in_array('emark', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               Emark
+                                                            </label>
+   
+                                                         </div>
+                                                      </div>
+   
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="japan_quality_medal" {{ in_array('japan_quality_medal', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               Japan Quality Metal
+                                                            </label>
+                                                         </div>
+                                                      </div>
+   
+                                                   </div>
                                                 </div>
-                                                <div class="row mt-2">
-                                                   <div class="col-md-4 col-6 mb-2">
-                                                      <div class="form-check form-check-inline form-check-flex">
-                                                         <input class="form-check-input" type="checkbox" name="quality[]" value="bismark" {{ in_array('bismark', request('quality', [])) ? 'checked' : '' }}>
-                                                         <label class="form-check-label" for="checkbox-one">
-                                                            Bismark
-                                                         </label>
-                                                      </div>
-                                                   </div>
-
-                                                   <div class="col-md-4 col-6 mb-2">
-                                                      <div class="form-check form-check-inline form-check-flex">
-                                                         <input class="form-check-input" type="checkbox" name="quality[]" value="emark" {{ in_array('emark', request('quality', [])) ? 'checked' : '' }}>
-                                                         <label class="form-check-label" for="checkbox-one">
-                                                            Emark
-                                                         </label>
-
-                                                      </div>
-                                                   </div>
-
-                                                   <div class="col-md-4 col-6 mb-2">
-                                                      <div class="form-check form-check-inline form-check-flex">
-
-                                                         <input class="form-check-input" type="checkbox" name="quality[]" value="japan_quality_medal" {{ in_array('japan_quality_medal', request('quality', [])) ? 'checked' : '' }}>
-                                                         <label class="form-check-label" for="checkbox-one">
-                                                            Japan Quality Metal
-                                                         </label>
-                                                      </div>
-                                                   </div>
-
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
                                             
-                                             {{-- /////quality standard --}}
+                                         
+                                            
+                                              {{-- /////quality standard --}}
                                              </div>
                                                 <div class="mt-3 d-flex align-items-center justify-content-between">
                                                       <a href="{{ url()->current() }}" id="resetButton" class="btn btn-danger border-danger btn-sm btn_reset">Reset</a>

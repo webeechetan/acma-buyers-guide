@@ -68,15 +68,14 @@ class CompanyExportWord
 
         // Data rows
         // there should be a card in each cell of the table with the company details
+
+
         $table->addRow();
         $table->addCell(2000)->addText($company->name);
         $table->addCell(2000)->addText($company->contact_details->company_address);
         $table->addCell(2000)->addText($company->key_personnels->managing_director);
-        $table->addCell(2000)->addText($company->key_personnels->chief_executive);
-        $table->addCell(2000)->addText($company->key_personnels->sales_in_charge);
-        $table->addCell(2000)->addText($company->key_personnels->production_in_charge);
-        $table->addCell(2000)->addText($company->key_personnels->region);
 
+     
     }
 
     // Save the Word document

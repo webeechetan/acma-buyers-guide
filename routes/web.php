@@ -39,7 +39,7 @@ Route::get('/download-excel', function () {
 
 Route::get('/export-word',function(){
    
-    $company_export = new CompanyExportWord();
+    $company_export = new CompanyExportWord(98);
 
     $company_export->export();
 });

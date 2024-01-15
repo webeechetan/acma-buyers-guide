@@ -60,26 +60,10 @@
   <div class="region col-md-12">
     <div class="row">
     @foreach ($regionsCount as $region)
-
-   
         <?php
             $regionName = $region->region;
             $count = $region->count;
         ?>
-
-            {{-- <div class="col-md-3 mb-3">
-              <div class="card">
-                <div>
-                  <div class=" d-flex justify-content-between align-items-center">
-                    <span class="mb-1 badge bg-primary">{{ $regionName }}</span>
-                      <p class="mb-0">{{$count}} </p>
-                  </div>
-                  
-                </div>
-              </div>
-              <hr class="d-none d-sm-block d-lg-none me-4">
-            </div> --}}
-
             <div class="col-md-3 mb-3">
               <div class="card">
                   <div>
@@ -103,19 +87,15 @@
               </div>
               <hr class="d-none d-sm-block d-lg-none me-4">
           </div>
-          
-
-        
     @endforeach
     </div>
-  
   </div>
 </div>
 <div class="row">
 <div class="col-md-12">
         <div class="card h-100">
           <div class="d-flex align-items-center justify-content-between">
-            <h3 class="card-title mb-3 ms-2 text-primary"><b>Recently Added Company</b> </h3>
+            <h4 class="card-title mb-3 ms-2 text-primary"><b>Recently Added Company</b></h4>
           </div>
 
    

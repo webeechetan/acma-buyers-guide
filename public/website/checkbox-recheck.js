@@ -2,8 +2,7 @@
 var checked_companies = localStorage.getItem('checked_companies') ? JSON.parse(localStorage.getItem('checked_companies')) : [];
 
 function clear_checked() {
-
-   
+  
     localStorage.removeItem('checked_companies');
     checked_companies = [];
     $(".checked_companies").html("Selected Companies: 0");

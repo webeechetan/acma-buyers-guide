@@ -76,9 +76,8 @@ class CompanyDataTable extends DataTable
             ->data('name', 'name'),
             Column::make('email'),
             Column::make('website'),
-            Column::make('updated_at'),
-            
-
+            Column::make('updated_at'),           
+         
         ];
     }
 

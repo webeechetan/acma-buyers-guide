@@ -149,6 +149,8 @@ class CompanyHelper {
                 $query->whereBetween('number_of_employees', [$min, $max]);
             });
         }
+
+        
         //No of emp filter////
 
         /////quality filter/////
@@ -156,9 +158,13 @@ class CompanyHelper {
           //checkbox filters for products
           if($request->has('quality')) {
 
-            $companies = $companies->whereHas('foreign_collaboration', function ($query) use ($request) {
-                $query->where('bismark', 'like', '%' . $request->quality . '%');
-            });
+            $selectedCheckboxes = $request->input('quality', []);
+
+            foreach ($selectedCheckboxes as $key => $value) {
+                $companies = $companies->whereHas('foreign_collaboration', function ($query) use ($key, $value) {
+                    $query->where($value, 'like', '%' . 'Y' . '%');
+                });
+            }
         }
         /////quality filter
 

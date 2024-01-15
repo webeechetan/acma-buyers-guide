@@ -12,15 +12,15 @@
   <link rel="icon" type="image/x-icon" href="https://www.acma.in/img/favicon.ico" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  {{-- <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin> --}}
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
   <!-- Icons -->
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/fonts/boxicons.css" />
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/fonts/fontawesome.css" />
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/fonts/flag-icons.css" />
+  {{-- <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/fonts/flag-icons.css" /> --}}
 
   <!-- Core CSS -->
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/css/rtl/core.css"
@@ -30,9 +30,9 @@
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/css/style.css" />
 
   <!-- Vendors CSS -->
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  {{-- <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.css" />
-  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
+  <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apex-charts.css" /> --}}
   <link rel="stylesheet" href="{{ asset('admin/') }}/assets/vendor/libs/toastr/toastr.css" />
 
 
@@ -76,16 +76,16 @@
   <script src="{{ asset('admin/') }}/assets/vendor/libs/jquery/jquery.js"></script>
   <script src="{{ asset('admin/') }}/assets/vendor/libs/popper/popper.js"></script>
   <script src="{{ asset('admin/') }}/assets/vendor/js/bootstrap.js"></script>
-  <script src="{{ asset('admin/') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-  <script src="{{ asset('admin/') }}/assets/vendor/libs/hammer/hammer.js"></script>
-  <script src="{{ asset('admin/') }}/assets/vendor/libs/i18n/i18n.js"></script>
-  <script src="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.js"></script>
-  <script src="{{ asset('admin/') }}/assets/vendor/js/menu.js"></script>
+  {{-- <script src="{{ asset('admin/') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script> --}}
+  {{-- <script src="{{ asset('admin/') }}/assets/vendor/libs/hammer/hammer.js"></script> --}}
+  {{-- <script src="{{ asset('admin/') }}/assets/vendor/libs/i18n/i18n.js"></script> --}}
+  {{-- <script src="{{ asset('admin/') }}/assets/vendor/libs/typeahead-js/typeahead.js"></script> --}}
+  {{-- <script src="{{ asset('admin/') }}/assets/vendor/js/menu.js"></script> --}}
 
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+  {{-- <script src="{{ asset('admin/') }}/assets/vendor/libs/apex-charts/apexcharts.js"></script> --}}
 
   <!-- Main JS -->
   <script src="{{ asset('admin/') }}/assets/js/main.js"></script>

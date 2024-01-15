@@ -68,6 +68,9 @@ class CompanyHelper {
         //checkbox filters for products
         if($request->has('products')) {
             $selectedProducts = $request->input('products');
+
+             //dd($selectedProducts);
+
             if(is_array($selectedProducts)) {
                 $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {       
                     $query->whereIn('products_manufactured', $selectedProducts);

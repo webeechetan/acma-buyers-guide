@@ -66,20 +66,31 @@ class CompanyHelper {
         }
 
         //checkbox filters for products
-        if($request->has('products')) {
-            $selectedProducts = $request->input('products');
+        // if($request->has('products')) {
 
-             //dd($selectedProducts);
+        //     $selectedProducts = $request->input('products');
+           
+        //     if(is_array($selectedProducts)) {
+        //         $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {       
+        //             $query->whereIn('products_manufactured', $selectedProducts);
+        //             $query->orWhereIn('product2', $selectedProducts);
+        //             $query->orWhereIn('product3', $selectedProducts);
+        //             $query->orWhereIn('product4', $selectedProducts);
 
-            if(is_array($selectedProducts)) {
-                $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {       
-                    $query->whereIn('products_manufactured', $selectedProducts);
-                    $query->orWhereIn('product2', $selectedProducts);
-                    $query->orWhereIn('product3', $selectedProducts);
-                    $query->orWhereIn('product4', $selectedProducts);
+        //         });
+        //     }
+            
+        // }
+
+        if ($request->has('products')) {
+            $selectedProductId = $request->input('products');
+            if (is_array($selectedProductId)) {
+                $companies = $companies->whereHas('product_details', function ($query) use ($selectedProductId) {
+                    $query->whereIn('id', $selectedProductId);
                 });
             }
         }
+        
 
 
           // checkbox filters for Location states
@@ -197,9 +208,11 @@ class CompanyHelper {
         
             $companies = $companies->whereHas('contact_details', function ($query) use ($location) {
                 if (is_array($location)) {
+
                     $query->whereIn('state', $location)
                           ->orWhereIn('city', $location);
                 } else {
+
                     $query->where('state', 'like', '%' . $location . '%')
                           ->orWhere('city', 'like', '%' . $location . '%');
                 }
@@ -212,20 +225,20 @@ class CompanyHelper {
             });
         }
 
-        if ($request->has('product')) {
-            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
-                $query->where('products_manufactured', 'like', '%' . $request->region . '%');
-            });
-        }
+        // if ($request->has('product')) {
+        //     $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+        //         $query->where('products_manufactured', 'like', '%' . $request->region . '%');
+        //     });
+        // }
 
-        if ($request->has('product')) {
-            $companies = $companies->whereHas('product_details', function ($query) use ($request) {
-                $query->where('products_manufactured', 'like', '%' . $request->product . '%')
-                      ->orWhere('product2', 'like', '%' . $request->product . '%')
-                      ->orWhere('product3', 'like', '%' . $request->product . '%')
-                      ->orWhere('product4', 'like', '%' . $request->product . '%');
-            });
-        }
+        // if ($request->has('product')) {
+        //     $companies = $companies->whereHas('product_details', function ($query) use ($request) {
+        //         $query->where('products_manufactured', 'like', '%' . $request->product . '%')
+        //               ->orWhere('product2', 'like', '%' . $request->product . '%')
+        //               ->orWhere('product3', 'like', '%' . $request->product . '%')
+        //               ->orWhere('product4', 'like', '%' . $request->product . '%');
+        //     });
+        // }
 
         if ($request->has('trademark')) {
             $companies = $companies->whereHas('product_details', function ($query) use ($request) {

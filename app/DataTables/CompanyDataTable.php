@@ -23,14 +23,36 @@ class CompanyDataTable extends DataTable
      *
      * @param QueryBuilder $query Results from query() method.
      */
+    // public function dataTable(QueryBuilder $query): EloquentDataTable
+    // {
+    //     return (new EloquentDataTable($query))
+    //         ->editColumn('updated_at', function ($data) {
+    //             return carbon::parse($data->updated_at)->format('Y-m-d');
+    //         });
+    // }
+
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+        ->addColumn('Action', function ($data) {
+            $id = $data->id;
+            
+            $formStart = '<form method="POST" action="'.route('admin.company.destroy', $id).'" style="display: inline-block;">';
+            $csrfField = csrf_field();
+            $methodField = method_field('DELETE');
+            $submitBtn = '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete the company?\')">Delete</button>';
+            $formEnd = '</form>';
+            
+            $action_btn = $formStart . $csrfField . $methodField . $submitBtn . $formEnd;
+            
+            return $action_btn;
+            })
+            ->rawColumns(['Action'])
             ->editColumn('updated_at', function ($data) {
-                return carbon::parse($data->updated_at)->format('Y-m-d');
+                return Carbon::parse($data->updated_at)->format('Y-m-d');
             });
-    }
 
+    }
     /**
      * Get the query source of dataTable.
      */
@@ -76,7 +98,8 @@ class CompanyDataTable extends DataTable
             ->data('name', 'name'),
             Column::make('email'),
             Column::make('website'),
-            Column::make('updated_at'),           
+            Column::make('updated_at'),
+            Column::make('Action'),    
          
         ];
     }

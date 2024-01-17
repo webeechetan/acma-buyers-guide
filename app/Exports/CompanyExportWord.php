@@ -9,6 +9,7 @@ use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyForeignCollaboration;
 
+use PDF;
 
 
 class CompanyExportWord
@@ -22,8 +23,6 @@ class CompanyExportWord
 
     public function export($format = 'Word2007')
 {
-    //$companies = Company::all();
-
     $companies = Company::with('contact_details', 'key_personnels', 'foreign_collaboration', 'product_details')->get();
 
  
@@ -31,15 +30,37 @@ class CompanyExportWord
 
     foreach ($companies as $company) {
 
-      //  dd($company->key_personnels->chief_executive);
         $section = $phpWord->addSection();
-        
+        $section->addColumns(['space' => 1000, 'continuous' => false]); // Adjust space as needed
+
         $header = ['size' => 10, 'bold' => true];
+        $subheading = ['size' => 8, 'bold' => true];
 
         // Title for each company
         $section->addTextBreak(1);
-        $section->addText("Company: {$company->name}", $header);
 
+       // Two columns
+        $section = $phpWord->addSection(
+            [
+                'colsNum' => 2,
+                'colsSpace' => 1440,
+                'breakType' => 'continuous',
+            ]
+        );
+
+        $section->addText("Company: {$company->name}", $header);
+        $section->addText("Phone: {$company->contact_details->phone}", $subheading);
+        $section->addText("Fax: {$company->contact_details->fax}", $subheading);
+        $section->addText("Email: {$company->email}", $subheading);
+        $section->addText("Website: {$company->website}", $subheading);
+        $section->addText("Address: {$company->contact_details->company_address}", $subheading);
+        $section->addText("Managing Director: {$company->key_personnels->managing_director}", $subheading);
+        $section->addText("Chief Executive: {$company->key_personnels->chief_executive}", $subheading);
+        $section->addText("Year of Commencing Production: {$company->contact_details->year_commencing}", $subheading);
+        $section->addText("Products Manufactured: {$company->product_details->products_manufactured}", $subheading);
+        $section->addText("No of Employees: {$company->product_details->number_of_employees}", $subheading);
+
+        
         // Table for each company
         $fancyTableStyleName = 'Fancy Table';
         $fancyTableStyle = [
@@ -60,32 +81,21 @@ class CompanyExportWord
         $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
         // Set the left margin to 0
         $table = $section->addTable($fancyTableStyleName);
-
-        // Header row
-        $table->addRow(900);
-        $table->addCell(2000, $fancyTableCellStyle)->addText('Company Details', $fancyTableFontStyle);
-        $table->addCell(2000, $fancyTableCellStyle)->addText('Company Contact Details', $fancyTableFontStyle);
-
-        // Data rows
-        // there should be a card in each cell of the table with the company details
-
-
-        $table->addRow();
-        $table->addCell(2000)->addText($company->name);
-        $table->addCell(2000)->addText($company->contact_details->company_address);
-        $table->addCell(2000)->addText($company->key_personnels->managing_director);
-
      
     }
 
-    // Save the Word document
-    $filename = 'exported_document1.docx';
-    \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(true);
-    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
-    $objWriter->save(storage_path($filename));
+        $filename = 'exported_document1.docx';
+        \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(true);
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, $format);
 
-   
-    return response()->download(storage_path($filename));
+        // Set appropriate headers for download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Output the Word document directly to the browser
+        $objWriter->save('php://output');
+
 }
 
 

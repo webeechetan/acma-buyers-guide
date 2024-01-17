@@ -11,9 +11,7 @@ class CompanyObserver
      */
 
      public function deleting(Company $company){
-        dd('alert');
-
-
+        // dd('alert');
      }
 
     public function created(Company $company): void

@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+
+use App\Models\Company;
+
 use Illuminate\Http\Request;
 
-class SubscriptionController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin/.subscription.subscription');
+        //
     }
 
     /**
@@ -59,7 +65,18 @@ class SubscriptionController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    {    
+        $company = Company::find($id);
+
+        if ($company) {
+            
+            $company->delete();
+            $this->alert('Success', 'Company deleted successfully','success');
+            return redirect()->route('admin.companies');
+        } else {
+            $this->alert('Error', 'Invalid details','danger');
+            return redirect()->back();
+            
+        }
     }
 }

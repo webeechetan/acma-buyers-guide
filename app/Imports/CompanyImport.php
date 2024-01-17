@@ -21,6 +21,9 @@ class CompanyImport implements ToCollection
     */
     public function collection(Collection $rows)
     {
+
+        $rows = $rows->skip(1);
+        
         $formatted_rows = $this->format_in_assoc_array($rows);
 
         foreach($formatted_rows as $row){
@@ -39,8 +42,8 @@ class CompanyImport implements ToCollection
             $company_contact_details->company_id = $company->id;
             $company_contact_details->company_address = $row['company_address'];
             $company_contact_details->pin = $row['pin'];
-            $company_contact_details->city = $row['city'];
-            $company_contact_details->state = $row['state'];
+            $company_contact_details->city = preg_replace('/\s+/', ' ',$row['city']);
+            $company_contact_details->state = preg_replace('/\s+/', ' ', $row['state']);
             $company_contact_details->image = $row['image'];
             $company_contact_details->address2 = $row['address2'];
             $company_contact_details->address3 = $row['address3'];
@@ -83,10 +86,11 @@ class CompanyImport implements ToCollection
 
             $CompanyProductDetails = new CompanyProductDetails();
             $CompanyProductDetails->company_id = $company->id;
-            $CompanyProductDetails->products_manufactured = $row['products_manufactured'];
-            $CompanyProductDetails->product2 = $row['product2'];
-            $CompanyProductDetails->product3 = $row['product3'];
-            $CompanyProductDetails->product4 = $row['product4'];
+
+            $CompanyProductDetails->products_manufactured = preg_replace('/\s+/', ' ', $row['products_manufactured']);
+            $CompanyProductDetails->product2 = preg_replace('/\s+/', ' ', $row['product2']);
+            $CompanyProductDetails->product3 = preg_replace('/\s+/', ' ', $row['product3']);
+            $CompanyProductDetails->product4 = preg_replace('/\s+/', ' ', $row['product4']);
             $CompanyProductDetails->scale = $row['scale'];
             $CompanyProductDetails->ssi_info= $row['ssi_info'];
             $CompanyProductDetails->trademark= $row['trademark']; 
@@ -103,28 +107,7 @@ class CompanyImport implements ToCollection
             $CompanyProductDetails->un_skilled= $row['un_skilled'];
             $CompanyProductDetails->contractual= $row['contractual'];
             $CompanyProductDetails->management_above= $row['management_above'];
-            // $CompanyProductDetails->net_excise_duty_paid= $row['net_excise_duty_paid'];
-            // $CompanyProductDetails->total_custom_duty_paid= $row['total_custom_duty_paid'];
-            // $CompanyProductDetails->list_of_product_exported1= $row['list_of_product_exported1'];
-            // $CompanyProductDetails->list_of_product_exported2= $row['list_of_product_exported2'];
-            // $CompanyProductDetails->per_share_export_buy= $row['per_share_export_buy'];
-            // $CompanyProductDetails->per_share_export_oem= $row['per_share_export_oem'];
-            // $CompanyProductDetails->per_share_export_tier1= $row['per_share_export_tier1'];
-            // $CompanyProductDetails->per_share_export_afm= $row['per_share_export_afm'];
-            // $CompanyProductDetails->per_share_domestic_oem= $row['per_share_domestic_oem'];
-            // $CompanyProductDetails->per_share_domestic_tier1= $row['per_share_domestic_tier1'];
-            // $CompanyProductDetails->per_share_domestic_afm= $row['per_share_domestic_afm'];
-            // $CompanyProductDetails->product_patent= $row['product_patent'];
-            // $CompanyProductDetails->share_spent_on_rnd= $row['share_spent_on_rnd'];
-            // $CompanyProductDetails->dsir= $row['dsir'];
-            // $CompanyProductDetails->expen_rd= $row['expen_rd'];
-            // $CompanyProductDetails->employee_rd= $row['employee_rd'];
-            // $CompanyProductDetails->person_name= $row['person_name'];
-            // $CompanyProductDetails->person_designation= $row['person_designation'];
-            // $CompanyProductDetails->person_email= $row['person_email'];
-            // $CompanyProductDetails->advertisement= $row['advertisement'];
-            // $CompanyProductDetails->field1= $row['field1'];
-            // $CompanyProductDetails->field2= $row['field2'];
+           
             $CompanyProductDetails->other_mark1= $row['other_mark1'];
             $CompanyProductDetails->other_mark2= $row['other_mark2'];
             $CompanyProductDetails->domesticoe= $row['domesticoe'];

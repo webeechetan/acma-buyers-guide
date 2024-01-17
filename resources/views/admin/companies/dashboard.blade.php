@@ -35,37 +35,33 @@
                                           <div class="col-md-4 border-end">
                                              <ul class="nav nav-pills custom-tab  d-block mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
-                                                   <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"><i class='bx bx-building-house me-2'></i>
-    
-                                                         <div class="filter-tab"><span>Company </span><span id="companyBadge" class="badge bg-primary rounded-circle badge-count">0</span>
-                                                         </div>
-
-                                                         {{-- @php 
-
-                                                         if(isset($_GET['company_name'])){
-
-                                                            echo count($_GET['company_name']);
-                                                         }else{
-                                                            echo "E";
-
-                                                         }
-
-                                                         @endphp --}}
-
-                                                         {{-- <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">   {{ request()->input('company_name') ? count(request()->input('company_name')) : 0 }}</span>
-                                                         </div>  --}}
-
+                                                   <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"><i class='bx bx-building-house me-2'></i>                                                                               
+                                                      <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">
+                                                         @php echo isset($_GET['company_name']) ? count($_GET['company_name']) : 0; 
+                                                         @endphp 
+                                                         </span>
+                                                      </div> 
                                                    </a>
                                                 </li>
                                                
                                                 <li  class="filter-name mb-2" data-filter="region">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#region"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Region</span>  <span id="regionBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#region"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>Region</span>  <span id="regionBadge" class="badge bg-primary rounded-circle badge-count">
+                                                   
+                                                      @php echo isset($_GET['regions']) ? count($_GET['regions']) : 0; 
+                                                         @endphp 
+                                                   </span></div></a>
                                                 </li>
                                                 <li  class="filter-name mb-2" data-filter="product">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#product"> <i class='bx bx-cart-alt me-2' ></i><div class="filter-tab"><span>Products</span>  <span id="productBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#product"> <i class='bx bx-cart-alt me-2' ></i><div class="filter-tab"><span>Products</span>  <span id="productBadge" class="badge bg-primary rounded-circle badge-count">
+                                                      @php echo isset($_GET['products']) ? count($_GET['products']) : 0; 
+                                                      @endphp 
+                                                   </span></div></a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="trademark" >
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#trademark"><i class='bx bx-store-alt me-2' ></i><div class="filter-tab"><span>Trademark</span>  <span id="trademarkBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#trademark"><i class='bx bx-store-alt me-2' ></i><div class="filter-tab"><span>Trademark</span>  <span id="trademarkBadge" class="badge bg-primary rounded-circle badge-count">
+                                                      @php echo isset($_GET['trademarks']) ? count($_GET['trademarks']) : 0; 
+                                                      @endphp 
+                                                      </span></div></a>
                                                 </li>
                                                 <li class="filter-name mb-2" data-filter="salesTurnover" >
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover"><i class='bx bx-money-withdraw me-2' ></i> <div class="filter-tab"><span>Sales Turnover</span> <span id="saleBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
@@ -80,7 +76,11 @@
                                                 </li>
 
                                                 <li  class="filter-name" data-filter="location">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>State & City</span>  <span id="cityBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#location"><i class='bx bx-globe me-2'></i><div class="filter-tab"><span>State & City</span>  <span id="cityBadge" class="badge bg-primary rounded-circle badge-count">
+                                                   
+                                                      @php echo isset($_GET['location']) ? count($_GET['location']) : 0; 
+                                                      @endphp 
+                                                   </span></div></a>
                                                 </li>
                                                 <li  class="filter-name" data-filter="quality">
                                                    <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality"><i class='bx bx-equalizer me-2'></i><div class="filter-tab"><span>QS Standard</span>  <span id="qualityBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
@@ -170,7 +170,7 @@
                                                       </div>
                                                    </div>
                                                 <div class="row scroll-content">
-                                                   @foreach ($combinedProducts as $combinedProduct)
+                                                   {{-- @foreach ($combinedProducts as $combinedProduct)
                                                       <div class="col-md-12">
                                                          <div class="mt-2">
                                                             @if(isset($combinedProduct) && !empty($combinedProduct))
@@ -182,7 +182,35 @@
                                                             @endif
                                                          </div>
                                                       </div>
-                                                   @endforeach
+                                                   @endforeach --}}
+
+                                                  
+                                                      @foreach ($combinedProducts as $productDetail)                                                   
+                                                      @php
+
+                                                         $productNames = array_filter([
+                                                            $productDetail->products_manufactured,
+                                                            $productDetail->product2,
+                                                            $productDetail->product3,
+                                                            $productDetail->product4,
+                                                         ]);
+                                                      @endphp
+                                                
+                                                      @if (!empty($productNames))
+                                                         <div class="col-md-12">
+                                                            <div class="mt-2">
+                                                                  <div class="form-check form-check-inline mb-2">
+                                                                     <input class="form-check-input active-check" type="checkbox" name="products[]" id="" value="{{ $productDetail->id }}" {{ in_array($productDetail->id, (array)request()->input('products',[])) ? 'checked' : '' }}>
+                                                                     <label class="form-check-label product-item" data-name="{{ implode(', ', $productNames) }}" for="">
+                                                                        {{ implode(', ', $productNames) }}
+                                                                     </label>
+                                                                  </div>
+                                                            </div>
+                                                         </div>
+                                                      @endif
+                                                @endforeach
+                                                
+                                                   
                                                    <div class="col-md-12">
                                                       <div class="mt-2">
                                                          <div class="no-results-found text-danger">No Results found</div>
@@ -225,7 +253,7 @@
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="range" value="0-5000" {{ request('range') == '0-5000' ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="range" value="0-5000" {{ request('range')== '0-5000' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                0 - 5000
                                                             </label>
@@ -233,7 +261,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="range" value="5001-10000" {{ request('range') == '5001-10000' ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="range" value="5001-10000" {{ request('range')== '5001-10000' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                5001-10000
                                                             </label>
@@ -241,13 +269,15 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="range" value="10001-50000" {{ request('range') == '10001-50000' ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="range" value="10001-50000" {{ request('range')== '10001-50000' ? 'checked' : ''  }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   10001-50000
                                                                </label>
                                                             </div>
                                                       </div>                                                  
                                                    </div>
+
+                                                   
                                                 </div>
                                                 <div class="tab-pane fade" id="exportTurnover">
                                                    <div class="tab-pane-header-new">
@@ -429,7 +459,12 @@
                   <div class="checked_company_info mb-3"> 
                      <span class="total_companies badge bg-dark text-capitalize"></span>
                      <span class="checked_companies badge bg-primary text-capitalize"></span>
-                     <a href="{{ url()->current() }}"  class="badge bg-info text-capitalize p-3 view-all-button">View All</a>    
+
+                     @if(!empty(request()->query()))
+                        <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a>
+                     @endif
+
+                     {{-- <a href="{{ url()->current() }}"  class="badge bg-info text-capitalize p-3 view-all-button">View All</a>     --}}
                      <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                   </div>
                </div>
@@ -536,7 +571,11 @@
                            <div class="checked_company_info mb-3">
                               <span class="total_companies badge bg-dark text-capitalize"></span>
                               <span class="checked_companies badge bg-primary text-capitalize"></span>
-                              <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a>
+
+                              @if(!empty(request()->query()))
+                                 <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a>
+                              @endif
+                              {{-- <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a> --}}
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i
                                     class="fa fa-times text-white" aria-hidden="true"></i></span>
                            </div>
@@ -828,7 +867,7 @@ $(document).ready(function () {
 
     document.addEventListener('DOMContentLoaded', function () {
       var savedCount = localStorage.getItem(storageKey) || 0;
-      updateBadgeCount(tabId, savedCount);
+     // updateBadgeCount(tabId, savedCount);
     });
   }
 
@@ -857,7 +896,7 @@ $(document).ready(function () {
 
     document.addEventListener('DOMContentLoaded', function () {
       var savedCount = localStorage.getItem(storageKey) || 0;
-      updateBadgeCount(tabId, savedCount);
+      //updateBadgeCount(tabId, savedCount);
     });
   }
 

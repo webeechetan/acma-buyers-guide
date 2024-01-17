@@ -577,9 +577,8 @@
                               @endif
                               {{-- <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a> --}}
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i
-                                    class="fa fa-times text-white" aria-hidden="true"></i></span>
+                                    class="fa fa-times text-white" aria-hidden="true"></i></span>                                     
                            </div>
-
                            <div class="checked_company_download">
                               <button type="submit" class="btn btn-primary">Download Data <i
                                     class='bx bx-download ms-2 text-white fw-medium'></i></button>
@@ -966,6 +965,9 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             window.location.href = '{{ route("company.dashboard") }}';
         });
     });
+
+
+    
 
 
 </script>

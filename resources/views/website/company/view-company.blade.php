@@ -54,6 +54,9 @@
       </div>
   </div>
 </div>
+
+<h5><a href="{{route('download.excel', ['company_ids' => $company->id])}}" class="btn btn-primary btn-sm">Download</a></h5>
+
 <div class="row mb-4">
   <div class="col-md-6 mb-4 mb-md-0">
     <!-- About User -->
@@ -129,7 +132,7 @@
      <div class="inner-profile-card border-bottom pb-3">
         <div class="information-list profile-list">
             <h5 class="text-primary fw-semibold">Contact</h5>
-            <ul>
+             <ul>
                 <li>
                   <div>
                       <i class="bx bx-user"></i><span>Contact</span>

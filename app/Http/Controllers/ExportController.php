@@ -12,6 +12,6 @@ class ExportController extends Controller
 {
     public function export_company(Request $request){
         $company_ids = $request->company_ids;
-        return Excel::download(new CompanyExport($company_ids), 'company.xlsx');
+        return Excel::download(new CompanyExport($company_ids), 'ACMA Buyers Guide.xlsx');
     }
 }

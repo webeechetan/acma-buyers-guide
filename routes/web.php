@@ -1,13 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\MemberController;
-use App\Http\Controllers\Admin\SubscriptionController;
-use App\Http\Controllers\Admin\AdminPaymentController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Admin\CompanyController as AdminCompanyController;
 use App\Http\Controllers\Admin\ProfileApprovalController;
 use App\Imports\CompanyImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,10 +13,8 @@ use App\Models\Company;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
 use App\Exports\CompanyExportWord;
-
 use App\Exports\CompanyContactDetailExport;
 use App\Exports\AdminCompanyExport;
-
 
 Route::get('/download-excel', function () {
     // return Excel::download(new CompanyContactDetailExport, 'data.xlsx');
@@ -36,13 +31,12 @@ Route::get('/download-excel', function () {
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/export-word',function(){
    
     $company_export = new CompanyExportWord(98);
 
     $company_export->export();
-});
+})->name('export-word');
 
 // Route::get('/update-request', function () {
 //     $company_update_request = CompanyUpdateRequest::find(31);
@@ -53,7 +47,6 @@ Route::get('/export-word',function(){
 Route::get('/test', function () {
 
 });
-
 
 Route::get('/import', function () {
     return view('website.importcompany');
@@ -77,10 +70,6 @@ Route::post('/import', function (Request $request) {
     }
 })->name('import.post');
 
-
-
-
-
 Route::get('/', function () {
     return view('website.index');
 });
@@ -91,19 +80,10 @@ Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login'
 Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admin.authenticate');
 
 
-
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    // Route::get('/dashboard', function () {
-    //     dd('hello1');
-    //     return view('admin.dashboard');
-    // })->name('admin.dashboard');
-
-    Route::get('/members', [MemberController::class, 'index'])->name('admin.members');
-    Route::get('/subscription', [SubscriptionController::class, 'index'])->name('admin.subscription');
-    Route::get('/payments', [AdminPaymentController::class, 'index'])->name('admin.payments');
+    Route::delete('/companies/destroy/{id}', [AdminCompanyController::class, 'destroy'])->name('admin.company.destroy');
     Route::get('/companies', [CompanyController::class, 'index'])->name('admin.companies');
-    Route::get('/companies/{id}', [CompanyController::class, 'destroy'])->name('admin.companies.destroy');
     Route::get('/companies-data', [CompanyController::class, 'companiesData'])->name('admin.companies.data');
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     Route::get('/profile', [ProfileApprovalController::class, 'index'])->name('admin.profile.approval');
@@ -114,16 +94,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     });
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
-   
+    
 });
 
 
 /************* Company Routes ****************/
 
-
 Route::middleware(['company.auth'])->prefix('company')->group(function () {
-
 
         Route::get('/dashboard/{filter?}', [CompanyController::class, 'dashboard'])->name('company.dashboard');     
         Route::get('/fill-up-details', [CompanyController::class, 'fillUpDetails'])->name('company.fillUpDetails');
@@ -131,8 +108,6 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         Route::get('/logout', [CompanyController::class, 'logout'])->name('company.logout');
 
         /************* payments Routes ****************/
-        Route::get('/payments', [PaymentController::class, 'subscription_payment'])->name('company.payments');
-        Route::post('/subscription-payment', [PaymentController::class, 'makePayment'])->name('payment.makepayment');
         Route::get('/view-company/{id}', [CompanyController::class, 'view_company'])->name('company.view_company');
         
         ////////////Emailer template for company detals update for company and admin
@@ -144,8 +119,6 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 Route::get('company/otp-verify', [CompanyController::class, 'showOtpLoginForm'])->name('company.otp-form');
 Route::post('company/otp-verify', [CompanyController::class, 'generateLoginOtp'])->name('company.generate_otp');
 
-
-
 Route::get('company/export/', [ExportController::class, 'export_company'])->name('dashboard.company.export');
 
 
@@ -155,11 +128,10 @@ Route::get('company/login', [CompanyController::class, 'login'])->name('company.
 
 Route::post('company/login', [CompanyController::class, 'authenticate'])->name('company.authenticate');
   
-
     ////////***********Forgot password****************//////////////
 
-  Route::get('/forgot-password', [CompanyController::class, 'forgotpassword_view'])->name('company.forgotpassword.view');
-  Route::post('/forgot-password', [CompanyController::class, 'forget_password'])->name('company.forgotpassword');
+//   Route::get('/forgot-password', [CompanyController::class, 'forgotpassword_view'])->name('company.forgotpassword.view');
+//   Route::post('/forgot-password', [CompanyController::class, 'forget_password'])->name('company.forgotpassword');
   //Route::get('/otp-verify', [CompanyController::class, 'otp_verify_form'])->name('company.forgotpassword.otpverify');
   Route::post('/otp-authentication', [CompanyController::class, 'otp_authentication'])->name('company.verify_otp');
   Route::get('/reset-password', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');

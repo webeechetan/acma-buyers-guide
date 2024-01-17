@@ -33,31 +33,6 @@ class CompanyController extends Controller
         return view('website.auth.login');
     }
 
-    // public function generateLoginOtp(Request $request)
-    // {
-
-        
-    //         $request->validate([
-    //             'email' => 'required|email|exists:companies'
-    //         ]);
-
-    //         $user = Company::where('email',$request->email)->first();       
-    //         $request->session()->put('OTP_email', $user->email);
-
-    //         $otp = random_int(100000, 999999);
-
-
-    //         $user->otp = $otp;
-    //         $user->saveQuietly();
-    //         $user->notify(new LoginOtpNotification($user, $otp));
-
-    //         $this->alert('Success', 'Otp sent to your email address sucessfully' , 'success');
-
-           
-    //          return redirect()->route('company.otp-form');
-    //        // return redirect()->route('company.login');
-    // }
-
     public function generateLoginOtp(Request $request)
     {
 
@@ -70,7 +45,6 @@ class CompanyController extends Controller
         if ($validator->fails()) {
            return $this->sendError('Validation Error.', $validator->errors(), 422);
         }
-
         
         $user = Company::where('email', $request->email)->first();
 
@@ -201,7 +175,23 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        dd("destroy");
+
+        dd($company);
+        if ($company->delete()) {
+            $this->alert('success', 'User Deleted successfully', 'success');
+
+            dd('deleted');
+            // return redirect()->route('user-index');
+        } else {
+
+            dd('not deleted');
+            $this->alert('error', 'Something went wrong', 'danger');
+            // return redirect()->back();
+        }
+        // dd($company->id);
+
+        // $company->delete();
+        // return redirect()->route('your.index.route')->with('success', 'Company deleted successfully');
     }
 
     public function fillUpDetailsStore(Request $request){
@@ -261,14 +251,28 @@ class CompanyController extends Controller
         $regions = CompanyKeyPersonnel::select('region')
         ->whereNotNull('region')->where('region', '<>', '')->groupBy('region')->get();
          
-        $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
-        $products2 = CompanyProductDetails::select('product2')->groupBy('product2')->get();
-        $products3 = CompanyProductDetails::select('product3')->groupBy('product3')->get();
-        $products4 = CompanyProductDetails::select('product4')->groupBy('product4')->get();
 
-        // Combine all above arrays into a single array
-         $combinedProducts = array_merge($products->pluck('products_manufactured')->toArray(), $products2->pluck('product2')->toArray(),$products3->pluck('product3')->toArray(),$products4->pluck('product4')->toArray());
+
+        $combinedProducts = CompanyProductDetails::select('id', 'products_manufactured', 'product2', 'product3', 'product4')
+    ->groupBy('id', 'products_manufactured', 'product2', 'product3', 'product4')
+    ->get();
+
+    // foreach ($productDetails as $p) {
+
+    //     echo"<pre>";
+    //     echo $p;
+    // }
+
+    //dd(count($productDetails));
+        // $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
+        // $products2 = CompanyProductDetails::select('product2')->groupBy('product2')->get();
+        // $products3 = CompanyProductDetails::select('product3')->groupBy('product3')->get();
+        // $products4 = CompanyProductDetails::select('product4')->groupBy('product4')->get();
+
+        // // Combine all above arrays into a single array
+        //  $combinedProducts = array_unique(array_merge($products->pluck('products_manufactured')->toArray(), $products2->pluck('product2')->toArray(),$products3->pluck('product3')->toArray(),$products4->pluck('product4')->toArray()));
         
+        //  dd(count($combinedProducts));
         $trademarks = CompanyProductDetails::select('trademark')
         ->whereNotNull('trademark')->where('trademark', '<>', '')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
@@ -287,7 +291,7 @@ class CompanyController extends Controller
          $combinedLocations = array_values($uniqueLocations);
 
         // dd(count($uniqueLocations));
-        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','products','salesTurnovers','combinedLocations','combinedProducts'));
+        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','salesTurnovers','combinedLocations','combinedProducts'));
     
     }
 

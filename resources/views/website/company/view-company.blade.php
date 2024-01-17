@@ -178,7 +178,7 @@
                   </div>
                   @if($company->email)
                   <div>
-                      <span>{{ucfirst($company->email)}}</span>
+                      <span>{{$company->email}}</span>
                   </div>
                   @else 
                   <span>NA</span>
@@ -191,7 +191,7 @@
                   </div>
                   @if($company->website)
                   <div>
-                      <span>{{ucfirst($company->website)}}</span>
+                      <span>{{$company->website}}</span>
                   </div>
                   @else
                   <span>NA</span>

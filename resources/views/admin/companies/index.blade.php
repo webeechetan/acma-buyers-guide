@@ -20,6 +20,7 @@
                     <div class="multiple-btn">
                         <a class="btn btn-primary" href="{{ route('import') }}">Import Companies</a>
                         <a class="btn btn-primary" href="{{ route('download.excel') }}">Export All</a>
+                        <a class="btn btn-primary" href="{{ route('export-word') }}">Export in Word</a>
                     </div>
                 </div>
                <div class="companies-table">

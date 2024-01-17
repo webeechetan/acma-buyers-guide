@@ -23,6 +23,6 @@
 </head>
 <body>
     <h1>Page Not Found</h1>
-    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Go to Home Page</a>
+    {{-- <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Go to Home Page</a> --}}
 </body>
 </html>

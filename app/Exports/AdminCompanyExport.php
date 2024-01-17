@@ -15,11 +15,31 @@ class AdminCompanyExport implements FromCollection, WithHeadings ,WithStyles
     /**
     * @return \Illuminate\Support\Collection
     */
+
+    protected $companyIds;
+
+    public function __construct($companyIds = null)
+    {
+        $this->companyIds = $companyIds;
+    }
+
    
     public function collection()
     {
+
+
+        if ($this->companyIds) {
+           
+            $companies = Company::with('key_personnels', 'contact_details', 'product_details', 'foreign_collaboration')
+            ->whereIn('id', $this->companyIds)
+            ->get();
+     
+        }else{
+
         $companies = Company::with('key_personnels', 'contact_details', 'product_details', 'foreign_collaboration')->get();
 
+        }
+      
         $data = [];
 
         foreach ($companies as $company) {

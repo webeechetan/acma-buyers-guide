@@ -16,10 +16,24 @@ use App\Exports\CompanyExportWord;
 use App\Exports\CompanyContactDetailExport;
 use App\Exports\AdminCompanyExport;
 
-Route::get('/download-excel', function () {
-    // return Excel::download(new CompanyContactDetailExport, 'data.xlsx');
-    return Excel::download(new AdminCompanyExport, 'company_data.xlsx');
+// Route::get('/download-excel', function () {
+//     // return Excel::download(new CompanyContactDetailExport, 'data.xlsx');
+//     return Excel::download(new AdminCompanyExport, 'company_data.xlsx');
+// })->name('download.excel');
+
+Route::get('/download-excel/{company_ids?}', function (Request $request, $companyIds = null) {
+    // Convert comma-separated company_ids to an array
+    $companyIdsArray = $companyIds ? explode(',', $companyIds) : $request->input('company_ids');
+
+    if ($companyIdsArray) {
+        // Download for specific company IDs
+        return Excel::download(new AdminCompanyExport($companyIdsArray), 'company_data.xlsx');
+    } else {
+        // Download for all records
+        return Excel::download(new AdminCompanyExport(), 'company_data.xlsx');
+    }
 })->name('download.excel');
+
 
 /*
 |--------------------------------------------------------------------------

@@ -29,6 +29,7 @@ Route::get('/download-excel/{company_ids?}', function (Request $request, $compan
     // Convert comma-separated company_ids to an array
     $companyIdsArray = $companyIds ? explode(',', $companyIds) : $request->input('company_ids');
 
+   
     if ($companyIdsArray) {
         // Download for specific company IDs
         return Excel::download(new AdminCompanyExport($companyIdsArray), 'ACMA Buyers Guide.xlsx');
@@ -156,7 +157,8 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 Route::get('company/otp-verify', [CompanyController::class, 'showOtpLoginForm'])->name('company.otp-form');
 Route::post('company/otp-verify', [CompanyController::class, 'generateLoginOtp'])->name('company.generate_otp');
 
-Route::get('company/export/', [ExportController::class, 'export_company'])->name('dashboard.company.export');
+// Route::get('company/export/', [ExportController::class, 'export_company'])->name('dashboard.company.export');
+Route::get('company/export/', [ExportController::class, 'exportMultipleCompanyPDF'])->name('dashboard.company.export');
 
 
 Route::post('/register', [CompanyController::class, 'store'])->name('company.store');

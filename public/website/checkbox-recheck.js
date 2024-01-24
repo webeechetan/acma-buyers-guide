@@ -27,6 +27,7 @@ if (checked_companies.length == 0) {
 
 
 $(".company_checkbox").click(function (e) {
+
    
     var id = $(this).data('id');
     if ($(this).is(':checked')) {

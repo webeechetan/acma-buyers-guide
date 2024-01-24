@@ -23,9 +23,9 @@ class CompanyExportWord
 
     public function export($format = 'Word2007')
 {
+
     $companies = Company::with('contact_details', 'key_personnels', 'foreign_collaboration', 'product_details')->get();
 
- 
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
     foreach ($companies as $company) {

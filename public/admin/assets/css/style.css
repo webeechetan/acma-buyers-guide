@@ -1633,3 +1633,7 @@ div .timeline .timeline-item{
 .company_download_btn_show{
   display: block;
 }
+
+.check_allcheckbox{
+  display: block !important;
+}

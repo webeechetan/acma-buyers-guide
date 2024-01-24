@@ -49,6 +49,11 @@
         .clear {
             clear: both;
         }
+
+        .main-row{
+    display:flex;
+    justify-content:space-between;
+}
     </style>
     
 </head>
@@ -60,50 +65,74 @@
             <h1>ACMA</h1>
         </div>
 
-    <div class="company-container">
-        <h1>ACMA Buyers Guide</h1>
-
-        <div class="column watermark-column">
-            <div class="company-info">
-               
-                    <p><strong>Name:</strong> {{ $company->name }}</p>
-                    
-                <!-- Add other properties as needed -->
-            </div>
-        </div>
-
-        <div class="column watermark-column">
-            <div class="company-info">
-              
+            <table style="width: 600px">
                 
-
-                <!-- Add other properties as needed -->
-            </div>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="column watermark-column">
-            <div class="company-info">
-              
-                <!-- Add other properties as needed -->
-            </div>
-        </div>
-
-        <div class="column watermark-column">
-            <div class="company-info">
-
-                
-            
-                <!-- Add other properties as needed -->
-            </div>
-        </div>
-       
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>Name:</strong> {{ $company->name }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>Email:</strong> {{ $company->email }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>Website:</strong> {{ $company->website }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>Company address:</strong> {{ $company->contact_details->email }}</p>
+                    </td>    
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>Pin:</strong> {{ $company->contact_details->pin }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>City:</strong> {{ $company->contact_details->city }}</p>
+                    </td>  
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>State:</strong> {{ $company->contact_details->state }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>Address2:</strong> {{ $company->contact_details->address2 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>Address3:</strong> {{ $company->contact_details->address3 }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>Phone:</strong> {{ $company->contact_details->phone }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>Fax:</strong> {{ $company->contact_details->fax }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>Mainaddress1:</strong> {{ $company->contact_details->mainaddress1 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>Mainaddress2:</strong> {{ $company->contact_details->mainaddress2 }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>Main City:</strong> {{ $company->contact_details->maincity }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px">
+                        <p><strong>Plant Pin:</strong> {{ $company->contact_details->plant_pin }}</p>
+                    </td>
+                    <td style="width: 300px">
+                        <p><strong>Main State:</strong> {{ $company->contact_details->mainstate }}</p>
+                    </td>
+                </tr>
+            <table> 
     </div>
-
-</div>
-
-</div>
 
   
 </body>

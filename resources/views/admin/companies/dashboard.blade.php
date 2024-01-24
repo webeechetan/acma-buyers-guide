@@ -994,44 +994,48 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
     });
 
 
-  
-      // var selectAllBtn = document.getElementById("select-all");
-      // selectAllBtn.addEventListener("click", function () {
-      // var allcheckboxes  = document.querySelectorAll('.company_checkbox')
-
-      //   alert(allcheckboxes.length);
-
-      //   allcheckboxes.forEach(function (checkbox) {  
-      //       $(".company_checkbox").attr('checked', true);    
-      //   });
-       
-      // });
-
-//       $("#checkAll").change(function () {
-
-//          alert("All checkboxes");
-//     $("input:checkbox").prop('checked', $(this).prop("checked"));
-// });
-
-
    $(document).ready(function(){
       $('.toggle_allcheckbox').click(function(){
          var check = $(this).attr("data-check");
+        
          if(check == 'true'){
             $('.company_checkbox').parent().parent().parent().addClass('card-border');
             $('.company_checkbox').prop('checked', true);
             $(this).attr("data-check", false);
             $(this).text('Uncheck All');
+
+            $(".checked_company_download").fadeIn('slow');
+            var checkedCount = $('.company_checkbox:checked').length;
+            $(".checked_companies").html("Selected Companies: " + checkedCount);
+           
+
+
+            var id = [];
+            $('.company_checkbox:checked').each(function() {
+               var companyId = $(this).val();
+               id.push(companyId);
+            });
+
+            id.forEach(function(companyId) {
+               $(".company_id_in_modal_" + companyId).prop('checked', true);
+            });
+            
+            
+
+            
          }else{
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
             $('.company_checkbox').prop('checked', false);
             $(this).attr("data-check", true);
             $(this).text('Check All');
+
+            $(".checked_company_download").fadeOut('slow');
+            var checkedCount = $('.company_checkbox:checked').length;
+            $(".checked_companies").html("Selected Companies: " + checkedCount);
+            
          }
       });
    });
-
-
 
 </script>
 

@@ -477,7 +477,7 @@
 
                <!-- Your modified HTML code with a styled button -->
                
-               <button type="button" class="btn btn-primary check_allcheckbox">Check All</button>
+               <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true">Check All</button>
 
    
                <a href="{{ route('download-All') }}" class="btn btn-danger">Download PDF</a>
@@ -485,9 +485,10 @@
             <!--- Company Card --->
             <div class="company-card">
                <div>
-                  <form action="{{ route('dashboard.company.export') }}">     
+                  <form action="{{ route('dashboard.company.export') }}" class="export-data-form">     
                      
                        <div class="row">
+                          <span class="appended_checkboxes_for_download" style="display: none"></span>
                               @forelse($companies as $company)
 
                                  <div class="col-md-6 col-lg-4 mb-3">
@@ -616,6 +617,18 @@
 <script>
 
 $(document).ready(function () {
+
+   // hanlde download form submit 
+
+   $(".export-data-form").submit(function (e) {
+      e.preventDefault();
+      var checked_companies_on_other_pages = localStorage.getItem('checked_companies');
+      checked_companies_on_other_pages = JSON.parse(checked_companies_on_other_pages);
+      checked_companies_on_other_pages.forEach(function (company_id) {
+         $(".appended_checkboxes_for_download").append('<input type="checkbox" name="company_ids[]" value="' + company_id + '" checked>');
+      });
+      $(this).unbind('submit').submit();
+   });
 
 
    $(".filter-name").click(function (e) {
@@ -1001,14 +1014,23 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
 // });
 
 
-    $('.check_allcheckbox').click(function(){
+   $(document).ready(function(){
+      $('.toggle_allcheckbox').click(function(){
+         var check = $(this).attr("data-check");
+         if(check == 'true'){
+            $('.company_checkbox').parent().parent().parent().addClass('card-border');
+            $('.company_checkbox').prop('checked', true);
+            $(this).attr("data-check", false);
+            $(this).text('Uncheck All');
+         }else{
+            $('.company_checkbox').parent().parent().parent().removeClass('card-border');
+            $('.company_checkbox').prop('checked', false);
+            $(this).attr("data-check", true);
+            $(this).text('Check All');
+         }
+      });
+   });
 
-      var allcheckboxes  = document.querySelectorAll('.company_checkbox')
-      alert(allcheckboxes.length);            
-         allCheckboxes.forEach(function(checkbox) {
-            checkbox.checked = true;
-         });
-    });
 
 
 </script>

@@ -7,10 +7,7 @@ use App\Models\Company;
 use App\Exports\CompanyExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\View;
-
-
 use App\Exports\CompanyExportPDF;
-
 use Illuminate\Support\Collection;
 
 
@@ -27,13 +24,10 @@ class ExportController extends Controller
 
     public function exportToPDF($id)
     {
-        $export = new CompanyExportPDF($id);
 
-        // Retrieve the data from the export class
-        $collection = $export->collection()->first();
+        $company = Company::find($id);
 
-        // Pass the data to a Blade view for customization
-        $view = View::make('website.company.companydownload-pdf', compact('collection'));
+        $view = View::make('website.company.companydownload-pdf', compact('company'));
 
         // Generate PDF from the Blade view
         $pdf = \PDF::loadHTML($view->render());

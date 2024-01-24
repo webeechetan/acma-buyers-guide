@@ -9,6 +9,7 @@
 @endpush
 @section('content')
 <!-- Content -->
+
 <section class="sec-space pb-0">
    <div>
       <!--- Search Filter ---->
@@ -19,7 +20,9 @@
                         <div>
                            <h2 class="title mb-md-0 text-center text-md-start">Buyers Guide Database</h2>
                         </div>
-                     </div>
+                     </div>                    
+
+
                      <div class="col-md-6">
                         <div class="custom_search_filter text-center text-md-end">
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"id="filter_category" name="filter_category">Filter by Category<span class='bx bx-filter ms-2'></span></button>           
@@ -466,13 +469,24 @@
 
                      {{-- <a href="{{ url()->current() }}"  class="badge bg-info text-capitalize p-3 view-all-button">View All</a>     --}}
                      <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
+                     
                   </div>
                </div>
             </div>
+
+
+               <!-- Your modified HTML code with a styled button -->
+               
+               <button type="button" class="btn btn-primary check_allcheckbox">Check All</button>
+
+   
+               <a href="{{ route('download-All') }}" class="btn btn-danger">Download PDF</a>
+
             <!--- Company Card --->
             <div class="company-card">
                <div>
-                  <form action="{{ route('dashboard.company.export') }}">                   
+                  <form action="{{ route('dashboard.company.export') }}">     
+                     
                        <div class="row">
                               @forelse($companies as $company)
 
@@ -480,7 +494,7 @@
                                        <div class="card card-data">
                                           <div class="company-title">
                                           <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                             <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" id="" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select"> <i class='bx bx-check check-icon' ></i> </span>
+                                             <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select"> <i class='bx bx-check check-icon' ></i> </span>
                                           </div>
                                           <div class="card-body">
                                              <div class="information-list">
@@ -804,7 +818,7 @@ $(document).ready(function () {
    }
    var no_results_found = false;
 
-   states_city.forEach(function (item) {
+    states_city.forEach(function (item) {
          var state_city  = item.dataset.name;
          state_city = state_city.toLowerCase();
 
@@ -967,7 +981,34 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
     });
 
 
-    
+  
+      // var selectAllBtn = document.getElementById("select-all");
+      // selectAllBtn.addEventListener("click", function () {
+      // var allcheckboxes  = document.querySelectorAll('.company_checkbox')
+
+      //   alert(allcheckboxes.length);
+
+      //   allcheckboxes.forEach(function (checkbox) {  
+      //       $(".company_checkbox").attr('checked', true);    
+      //   });
+       
+      // });
+
+//       $("#checkAll").change(function () {
+
+//          alert("All checkboxes");
+//     $("input:checkbox").prop('checked', $(this).prop("checked"));
+// });
+
+
+    $('.check_allcheckbox').click(function(){
+
+      var allcheckboxes  = document.querySelectorAll('.company_checkbox')
+      alert(allcheckboxes.length);            
+         allCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = true;
+         });
+    });
 
 
 </script>

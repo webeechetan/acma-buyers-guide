@@ -55,8 +55,6 @@
   </div>
 </div>
 
-<h5><a href="{{route('download.excel', ['company_ids' => $company->id])}}" class="btn btn-primary btn-sm">Download</a></h5>
-
 <div class="row mb-4">
   <div class="col-md-6 mb-4 mb-md-0">
     <!-- About User -->
@@ -238,7 +236,7 @@
                     </li>
                     <li>
                       <div>
-                          <i class="bx bx-user"></i><span>Sales Inchrage</span>
+                          <i class="bx bx-user"></i><span>Sales Incharge</span>
                       </div>
                       @if($company_key_personnels->sales_in_charge)
                       <div>
@@ -336,7 +334,14 @@
   </div>
 </div>
 
+
+
 </div>
+
+
+<h5 style="text-align: center;">
+  <a href="{{ route('exportToPDF', ['id' => $company->id]) }}" class="btn btn-primary btn-sm">Download</a>
+</h5>
 
 @endsection
 @push('scripts')

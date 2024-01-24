@@ -15,22 +15,26 @@ use PhpOffice\PhpWord\Style\Font;
 use App\Exports\CompanyExportWord;
 use App\Exports\CompanyContactDetailExport;
 use App\Exports\AdminCompanyExport;
+use App\Exports\CompanyExportPDF;
+use Illuminate\Support\Facades\Storage;
 
-// Route::get('/download-excel', function () {
-//     // return Excel::download(new CompanyContactDetailExport, 'data.xlsx');
-//     return Excel::download(new AdminCompanyExport, 'company_data.xlsx');
-// })->name('download.excel');
+use Illuminate\Support\Facades\File;
+
+
+
+
 
 Route::get('/download-excel/{company_ids?}', function (Request $request, $companyIds = null) {
+
     // Convert comma-separated company_ids to an array
     $companyIdsArray = $companyIds ? explode(',', $companyIds) : $request->input('company_ids');
 
     if ($companyIdsArray) {
         // Download for specific company IDs
-        return Excel::download(new AdminCompanyExport($companyIdsArray), 'company_data.xlsx');
+        return Excel::download(new AdminCompanyExport($companyIdsArray), 'ACMA Buyers Guide.xlsx');
     } else {
         // Download for all records
-        return Excel::download(new AdminCompanyExport(), 'company_data.xlsx');
+        return Excel::download(new AdminCompanyExport(), 'ACMA Buyers Guide.xlsx');
     }
 })->name('download.excel');
 
@@ -46,33 +50,47 @@ Route::get('/download-excel/{company_ids?}', function (Request $request, $compan
 |
 */
 Route::get('/export-word',function(){
-   
-    $company_export = new CompanyExportWord(98);
-
+    $company_export = new CompanyExportWord();
     $company_export->export();
 })->name('export-word');
 
-// Route::get('/update-request', function () {
-//     $company_update_request = CompanyUpdateRequest::find(31);
-//     $res = $company_update_request->approve();
-//     dd($res);
+
+
+Route::get('/download-pdf', function () {
+
+    dd('downlo');
+//    $pdfPath = public_path('Acma Buyers Guide.pdf');
+//      dd($pdfPath);
+//     if (File::exists($pdfPath)) {
+//         return response()->download($pdfPath, 'Acma Buyers Guide.pdf');
+//     } else {
+//         abort(404, 'PDF file not found');
+//     }
+})->name('download-All');
+
+// Route::get('/test/{id}', function (Request $request, $id) {
+//     return Excel::download(new CompanyExportPDF($id), 'companies.pdf', \Maatwebsite\Excel\Excel::MPDF);
 // });
 
-Route::get('/test', function () {
 
+// Route::get('/test/{id}', function ($id) {
+//     $companyExport = new CompanyExportPDF($id);
+// });
+
+
+Route::get('/test/{id}', function ($id) {
+    return \Maatwebsite\Excel\Facades\Excel::download(new CompanyExportPDF($id), 'Acma Buyers Guide.pdf');
 });
+
+
 
 Route::get('/import', function () {
     return view('website.importcompany');
 })->name('import'); // Yo
 
-// Route::post('/import', function (Request $request) {
-//         Excel::import(new CompanyImport, $request->abg) ;
-//     // return redirect('/')->with('success', 'All good!');
-//     return redirect()->route('admin.companies')->with('success', 'Import completed successfully!');;
-// })->name('import.post');
 
 
+//This function to import on admin side///
 Route::post('/import', function (Request $request) {
     try {
         Excel::import(new CompanyImport, $request->abg);
@@ -83,6 +101,7 @@ Route::post('/import', function (Request $request) {
         return redirect()->route('admin.companies')->with('error', 'Error during import: ' . $e->getMessage());
     }
 })->name('import.post');
+
 
 Route::get('/', function () {
     return view('website.index');
@@ -126,6 +145,10 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         
         ////////////Emailer template for company detals update for company and admin
         Route::get('/myprofile',[CompanyController::class, 'myprofile'])->name('company.profile');
+
+        ////Download all details once we enter in company  
+        
+        Route::get('/export/{id}', [ExportController::class, 'exportToPDF'])->name('exportToPDF');
         
 });
 

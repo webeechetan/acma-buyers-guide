@@ -1009,19 +1009,25 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $(".checked_companies").html("Selected Companies: " + checkedCount);
            
 
-
+ 
             var id = [];
             $('.company_checkbox:checked').each(function() {
                var companyId = $(this).val();
-               id.push(companyId);
+               id.push(parseInt(companyId));
             });
 
             id.forEach(function(companyId) {
                $(".company_id_in_modal_" + companyId).prop('checked', true);
             });
-            
-            
 
+            var already_checked_on_other_pages = localStorage.getItem('checked_companies');
+            already_checked_on_other_pages = JSON.parse(already_checked_on_other_pages);
+            if(already_checked_on_other_pages == null){
+               already_checked_on_other_pages = [];
+            }
+            already_checked_on_other_pages.push(...id);
+            localStorage.setItem('checked_companies', JSON.stringify(already_checked_on_other_pages));
+            
             
          }else{
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
@@ -1033,6 +1039,8 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
             
+            localStorage.setItem('checked_companies', JSON.stringify([]));
+
          }
       });
    });

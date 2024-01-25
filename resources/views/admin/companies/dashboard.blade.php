@@ -1030,6 +1030,8 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             
             
          }else{
+
+
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
             $('.company_checkbox').prop('checked', false);
             $(this).attr("data-check", true);
@@ -1044,6 +1046,10 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
          }
       });
    });
+
+
+
+
 
 </script>
 

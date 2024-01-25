@@ -35,6 +35,7 @@ Route::get('/download-excel/{company_ids?}', function (Request $request, $compan
         return Excel::download(new AdminCompanyExport($companyIdsArray), 'ACMA Buyers Guide.xlsx');
     } else {
         // Download for all records
+        dd('else');
         return Excel::download(new AdminCompanyExport(), 'ACMA Buyers Guide.xlsx');
     }
 })->name('download.excel');
@@ -59,14 +60,14 @@ Route::get('/export-word',function(){
 
 Route::get('/download-pdf', function () {
 
-    dd('downlo');
-//    $pdfPath = public_path('Acma Buyers Guide.pdf');
-//      dd($pdfPath);
-//     if (File::exists($pdfPath)) {
-//         return response()->download($pdfPath, 'Acma Buyers Guide.pdf');
-//     } else {
-//         abort(404, 'PDF file not found');
-//     }
+    //dd('downlo');
+   $pdfPath = public_path('Acma Buyers Guide.pdf');
+    //  dd($pdfPath);
+    if (File::exists($pdfPath)) {
+        return response()->download($pdfPath, 'Acma Buyers Guide.pdf');
+    } else {
+        abort(404, 'PDF file not found');
+    }
 })->name('download-All');
 
 // Route::get('/test/{id}', function (Request $request, $id) {
@@ -159,6 +160,9 @@ Route::post('company/otp-verify', [CompanyController::class, 'generateLoginOtp']
 
 // Route::get('company/export/', [ExportController::class, 'export_company'])->name('dashboard.company.export');
 Route::get('company/export/', [ExportController::class, 'exportMultipleCompanyPDF'])->name('dashboard.company.export');
+
+//This route will help to download all data in pdf for website in book formate
+Route::get('company/export-all', [ExportController::class, 'exportAllCompanyPDF'])->name('dashboard.company.exportAll');
 
 
 Route::post('/register', [CompanyController::class, 'store'])->name('company.store');

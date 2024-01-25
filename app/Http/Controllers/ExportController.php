@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 
 
 
+
 class ExportController extends Controller
 {
     public function export_company(Request $request){
@@ -43,7 +44,7 @@ class ExportController extends Controller
 
     public function exportMultipleCompanyPDF(Request $request){
         $company_ids = $request->company_ids;
-
+           
         $companies = Company::whereIn('id', $company_ids)->get();
 
         $view = View::make('selected-company-download-pdf', compact('companies'));
@@ -59,9 +60,41 @@ class ExportController extends Controller
          return response()->download($pdfPath, 'Acma Buyers Guide.pdf')->deleteFileAfterSend(true);
         //   // Generate PDF
         //  $pdf = PDF::loadView('book-format-pdf', $companies );
-        
+     
 
        
    }
 
+
+   
+   public function exportAllCompanyPDF(Request $request){
+       
+
+
+    // $companies = Company::all();
+
+    $companies = Company::whereBetween('id', [1789, 1900])->get();
+
+
+     $view = View::make('all-company-download-pdf', compact('companies'));
+
+    // Generate PDF from the Blade view
+    $pdf = \PDF::loadHTML($view->render());
+
+     // Save the PDF file to a temporary location
+     $pdfPath = storage_path('app/Acma2_Buyers_Guide.pdf');
+     $pdf->save($pdfPath);
+
+     // Return the file download response
+     return response()->download($pdfPath, 'Acma2 Buyers Guide.pdf')->deleteFileAfterSend(true);
+    //   // Generate PDF
+    //  $pdf = PDF::loadView('book-format-pdf', $companies );
+ 
+
+   
+}
+
+
+
+   
 }

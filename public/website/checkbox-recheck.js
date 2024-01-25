@@ -27,7 +27,6 @@ if (checked_companies.length == 0) {
 
 
 $(".company_checkbox").click(function (e) {
-
    
     var id = $(this).data('id');
     if ($(this).is(':checked')) {
@@ -42,7 +41,14 @@ $(".company_checkbox").click(function (e) {
             return item !== id
         })
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
-        if (checked_companies.length == 0) {
+
+
+        //  var checkedCompanies = localStorage.getItem('checked_companies');
+        //  var checked_companies = JSON.parse(checkedCompanies);
+        
+
+        //alert(checked_companies.length);
+         if (checked_companies.length == 0) {
            // $(".checked_company_info").fadeOut('slow');
            $(".checked_company_download").fadeOut('slow');//this line added by ajay on jan 1 to hide download button on de-selection of checkbox in modal
         }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->string('password')->nullable();
             $table->string('otp')->nullable(); //otp option added
+            $table->integer('download_count')->default(0);
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

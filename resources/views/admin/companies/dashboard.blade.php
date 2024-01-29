@@ -480,7 +480,7 @@
                <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true">Check All</button>
 
    
-               <a href="{{ route('download-All') }}" class="btn btn-danger">Download PDF</a>
+               <a href="{{ route('dashboard.company.exportAll') }}" class="btn btn-danger">Download PDF</a>
 
             <!--- Company Card --->
             <div class="company-card">

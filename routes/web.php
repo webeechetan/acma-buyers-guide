@@ -35,7 +35,7 @@ Route::get('/download-excel/{company_ids?}', function (Request $request, $compan
         return Excel::download(new AdminCompanyExport($companyIdsArray), 'ACMA Buyers Guide.xlsx');
     } else {
         // Download for all records
-        dd('else');
+    
         return Excel::download(new AdminCompanyExport(), 'ACMA Buyers Guide.xlsx');
     }
 })->name('download.excel');

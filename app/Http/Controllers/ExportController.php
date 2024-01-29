@@ -20,9 +20,6 @@ class ExportController extends Controller
          return Excel::download(new CompanyExport($company_ids), 'ACMA Buyers Guide.xlsx');
     }
 
-
-
-
     public function exportToPDF($id)
     {
 
@@ -70,26 +67,45 @@ class ExportController extends Controller
    public function exportAllCompanyPDF(Request $request){
        
 
+    $company = auth('company')->user();
+    $downloadLimit = 5;
 
-    // $companies = Company::all();
+    if ($company->download_count >= $downloadLimit) {
+        // Company has reached the download limit, redirect or show an error
+        $this->alert('Error', 'Download limit finished' , 'danger');
+        return back();
+    }
+    
 
-    $companies = Company::whereBetween('id', [1789, 1900])->get();
+    $company->download_count++;
+    $company->saveQuietly();
 
+    //  $companies = Company::all();
 
-     $view = View::make('all-company-download-pdf', compact('companies'));
+    //$customersWithOrders = Customer::with('')->select('customer_id', 'customer_name', 'email')->get();
 
-    // Generate PDF from the Blade view
+    // $companies = Company::with([
+    //     'contact_details' => function ($query) {
+    //         $query->select('state', 'pin', 'city');
+    //     },
+    //     'key_personnels' => function ($query) {
+    //         $query->select('managing_director', 'chief_executive', 'sales_in_charge');
+    //     }
+    // ])->select('id', 'name', 'email', 'website')->get();
+    
+
+     $companies = Company::take(100)->get();
+
+    $view = View::make('all-company-download-pdf', compact('companies'));
     $pdf = \PDF::loadHTML($view->render());
 
      // Save the PDF file to a temporary location
      $pdfPath = storage_path('app/Acma2_Buyers_Guide.pdf');
      $pdf->save($pdfPath);
 
+     
      // Return the file download response
      return response()->download($pdfPath, 'Acma2 Buyers Guide.pdf')->deleteFileAfterSend(true);
-    //   // Generate PDF
-    //  $pdf = PDF::loadView('book-format-pdf', $companies );
- 
 
    
 }

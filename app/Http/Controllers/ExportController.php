@@ -94,7 +94,7 @@ class ExportController extends Controller
     // ])->select('id', 'name', 'email', 'website')->get();
     
 
-     $companies = Company::take(100)->get();
+     $companies = Company::all();
 
     $view = View::make('all-company-download-pdf', compact('companies'));
     $pdf = \PDF::loadHTML($view->render());

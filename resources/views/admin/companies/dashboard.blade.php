@@ -997,7 +997,7 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
    $(document).ready(function(){
       $('.toggle_allcheckbox').click(function(){
          var check = $(this).attr("data-check");
-        
+         
          if(check == 'true'){
             $('.company_checkbox').parent().parent().parent().addClass('card-border');
             $('.company_checkbox').prop('checked', true);

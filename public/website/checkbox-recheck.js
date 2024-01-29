@@ -16,15 +16,6 @@ function clear_checked() {
     $('.badge-count').html('0'); 
 }
 
-if (checked_companies.length == 0) {
-    //$(".checked_company_info").hide();
-}
-
-
-// if (checked_companies.length > 0) {
-//     $(".checked_company_download").addClass('company_download_btn_show');
-// }
-
 
 $(".company_checkbox").click(function (e) {
    
@@ -45,10 +36,10 @@ $(".company_checkbox").click(function (e) {
 
         //  var checkedCompanies = localStorage.getItem('checked_companies');
         //  var checked_companies = JSON.parse(checkedCompanies);
-        
+        let checked_companies_count = localStorage.getItem('checked_companies') ? JSON.parse(localStorage.getItem('checked_companies')) : [];
 
         //alert(checked_companies.length);
-         if (checked_companies.length == 0) {
+         if (checked_companies_count.length == 0) {
            // $(".checked_company_info").fadeOut('slow');
            $(".checked_company_download").fadeOut('slow');//this line added by ajay on jan 1 to hide download button on de-selection of checkbox in modal
         }

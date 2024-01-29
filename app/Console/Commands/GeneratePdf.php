@@ -4,8 +4,10 @@
 namespace App\Console\Commands;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Console\Command;
-
 use Illuminate\Support\Facades\File;
+use App\Models\Company;
+use Illuminate\Support\Facades\View;
+
 
 class GeneratePdf extends Command
 {
@@ -28,39 +30,18 @@ class GeneratePdf extends Command
      */
     public function handle()
     {
-        // $this->generatePdf();
-        // $this->info('PDF generated successfully.');
 
-        $this->deletePdf();
-        $this->info('PDF deleted successfully.');
-    }
-
-    private function generatePdf()
-    {
-        // Generate PDF
-        $pdf = PDF::loadView('mypdf'); // replace 'pdf.template' with your actual Blade template
-        $pdf->save(public_path('CompanyData/Acma Buyers Guide.pdf'));
-        // $pdf->save(storage_path('app/public/CompanyData/Acma Buyers Guide.pdf'));
-    }
-
-    private function deletePdf()
-    {
-       
-        // Delete PDF
-        // $pdfPath = storage_path('app/public/CompanyData/Acma Buyers Guide.pdf');
-        $pdfPath = public_path('CompanyData/Acma Buyers Guide.pdf');
-
-        dd($pdfPath);
-        
-         if (File::exists($pdfPath)) {
-            
-            dd('if');
+        $pdfPath = storage_path('app/Acma2_Buyers_Guide.pdf');
+        if (File::exists($pdfPath)) {
             File::delete($pdfPath);
-        } else {
-            dd('else');
-            $this->error('PDF not found for deletion.');
         }
-       
+        
+        $companies = Company::all();
+
+        $view = View::make('all-company-download-pdf', compact('companies'));
+        $pdf = \PDF::loadHTML($view->render());
+        $pdfPath = storage_path('app/Acma2_Buyers_Guide.pdf');
+        $pdf->save($pdfPath);
     }
 
 }

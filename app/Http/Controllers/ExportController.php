@@ -55,10 +55,6 @@ class ExportController extends Controller
  
          // Return the file download response
          return response()->download($pdfPath, 'Acma Buyers Guide.pdf')->deleteFileAfterSend(true);
-        //   // Generate PDF
-        //  $pdf = PDF::loadView('book-format-pdf', $companies );
-     
-
        
    }
 
@@ -75,38 +71,20 @@ class ExportController extends Controller
         $this->alert('Error', 'Download limit finished' , 'danger');
         return back();
     }
-    
+  
+    $filePath = storage_path('app/Acma_Buyers_Guide.pdf');
 
-    $company->download_count++;
-    $company->saveQuietly();
+    // Check if the file exists
+    if (file_exists($filePath)) {
 
-    //  $companies = Company::all();
-
-    //$customersWithOrders = Customer::with('')->select('customer_id', 'customer_name', 'email')->get();
-
-    // $companies = Company::with([
-    //     'contact_details' => function ($query) {
-    //         $query->select('state', 'pin', 'city');
-    //     },
-    //     'key_personnels' => function ($query) {
-    //         $query->select('managing_director', 'chief_executive', 'sales_in_charge');
-    //     }
-    // ])->select('id', 'name', 'email', 'website')->get();
-    
-
-     $companies = Company::all();
-
-    $view = View::make('all-company-download-pdf', compact('companies'));
-    $pdf = \PDF::loadHTML($view->render());
-
-     // Save the PDF file to a temporary location
-     $pdfPath = storage_path('app/Acma2_Buyers_Guide.pdf');
-     $pdf->save($pdfPath);
-
-     
-     // Return the file download response
-     return response()->download($pdfPath, 'Acma2 Buyers Guide.pdf')->deleteFileAfterSend(true);
-
+        $company->download_count++;
+        $company->saveQuietly();
+        // Provide headers for the download
+        return response()->download($filePath, 'Acma_Buyers_Guide.pdf');
+    } else {
+            $this->alert('Error', 'File Not found' , 'danger');
+            return back();
+    }
    
 }
 

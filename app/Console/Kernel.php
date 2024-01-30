@@ -12,6 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+
+        $schedule->command('app:generate-pdf')->dailyAt('00:00');
+        
         $schedule->command('queue:work --tries=3 --stop-when-empty')->everyMinute();
     }
 

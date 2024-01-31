@@ -1005,15 +1005,19 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             
          }else{
 
+            
 
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
             $('.company_checkbox').prop('checked', false);
             $(this).attr("data-check", true);
             $(this).text('Check All');
-
             $(".checked_company_download").fadeOut('slow');
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
+
+
+            //this line to is uncheck the modalcheckbox 
+            $(".company_checkbox_in_modal").prop('checked', false);
             
             localStorage.setItem('checked_companies', JSON.stringify([]));
 
@@ -1023,25 +1027,25 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
 
 
  
-                                                    document.addEventListener('DOMContentLoaded', function () {
-                                                        const rangeTypeRadios = document.getElementsByName('range-type');
-                                                        const rangeRadios = document.getElementsByName('range');
-                                                        const dollarsRadios = document.getElementsByName('sales_range');
-                                                
-                                                        rangeTypeRadios.forEach(function (radio) {
-                                                            radio.addEventListener('change', function () {
-                                                                if (this.value === 'rupees') {
-                                                                    // Show rupees options
-                                                                    rangeRadios[0].checked = true;
-                                                                    dollarsRadios[0].checked = false;
-                                                                } else {
-                                                                    // Show dollars options
-                                                                    rangeRadios[0].checked = false;
-                                                                    dollarsRadios[0].checked = true;
-                                                                }
-                                                            });
-                                                        });
-                                                    });
-                                                </script>
+      document.addEventListener('DOMContentLoaded', function () {
+         const rangeTypeRadios = document.getElementsByName('range-type');
+         const rangeRadios = document.getElementsByName('range');
+         const dollarsRadios = document.getElementsByName('sales_range');
+
+         rangeTypeRadios.forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                  if (this.value === 'rupees') {
+                     // Show rupees options
+                     rangeRadios[0].checked = true;
+                     dollarsRadios[0].checked = false;
+                  } else {
+                     // Show dollars options
+                     rangeRadios[0].checked = false;
+                     dollarsRadios[0].checked = true;
+                  }
+            });
+         });
+      });
+</script>
 
 @endpush

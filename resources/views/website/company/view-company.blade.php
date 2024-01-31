@@ -64,7 +64,7 @@
           <ul>
               <li>
                 <div>
-                    <i class="bx bx-user"></i><span>Company</span>
+                    <i class="bx bx-buildings"></i><span>Company</span>
                 </div>
                   @if($company && $company->name)
                   <div>
@@ -271,6 +271,19 @@
                       <span>NA</span>
                       @endif
                     </li>
+                    <li>
+                      <div>
+                          <i class="bx bx-map"></i><span>Region</span>
+                      </div>
+
+                      @if($company_key_personnels->region)
+                      <div>
+                          <span>{{ucfirst($company_key_personnels->region)}}</span>
+                      </div>
+                      @else 
+                      <span>NA</span>
+                      @endif
+                    </li>
                 </ul>
               </div>
         </div>
@@ -323,6 +336,18 @@
                   @if($company_product_details->product4)
                   <div>
                       <span>{{ucfirst($company_product_details->product4)}}</span>
+                  </div>
+                  @else
+                  <span>NA</span> 
+                  @endif
+                </li> 
+                <li>
+                  <div>
+                      <i class="bx bx-user"></i><span>No of Employees</span>
+                  </div>
+                  @if($company_product_details->number_of_employees)
+                  <div>
+                      <span>{{ucfirst($company_product_details->number_of_employees)}}</span>
                   </div>
                   @else
                   <span>NA</span> 

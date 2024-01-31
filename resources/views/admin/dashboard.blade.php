@@ -56,6 +56,7 @@
         <hr class="d-none d-sm-block d-lg-none me-4">
       </div>
 </div>   
+
 <div class="row">
   <div class="region col-md-12">
     <div class="row">
@@ -91,37 +92,62 @@
     </div>
   </div>
 </div>
-<div class="row">
-<div class="col-md-12">
-        <div class="card h-100">
+{{-- <div class="row">
+  <div class="col-md-4">
+      <div class="card h-100">
           <div class="d-flex align-items-center justify-content-between">
-            <h4 class="card-title mb-3 ms-2 text-primary"><b>Recently Added Company</b></h4>
+              <h4 class="card-title mb-3 ms-2 text-primary"><b>Set $ Rate</b></h4>
           </div>
 
-   
           <div class="card-body">
-            <ul class="p-0 m-0">
-            @foreach($lastestFiveCompanies as $latestCompany)
-              <li class="d-flex mb-2">
-                <div class="avatar flex-shrink-0 me-3">
-                  <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase-round.png" alt="User" class="rounded">
-                </div>
-                <div class="d-flex w-100 align-items-start gap-2" style="position: relative;">
-                  <div class="d-flex justify-content-between flex-grow-1 flex-wrap">
-                    <div>
-                        <h6 class="mb-0 text-primary">{{$latestCompany->name}}</h6>
-                        <small class="text-muted"> Joined on - {{$latestCompany->created_at->format('d- M - Y') }}</small>
-                        <p> Email : <span> {{$latestCompany->email}}</span> </p>
-                    </div>
+              <form method="post" action="{{route('admin.companies.conversionrate')}}">
+                @csrf
+                  <div class="row">
+                      <div class="col-md-6 mb-3">
+                          <label for="dollar_rate" class="form-label">Dollar Rate:</label>
+                          <input type="text" class="form-control" id="dollar_rate" name="dollar_rate" required>
+                      </div>
                   </div>
-                <div class="resize-triggers"><div class="expand-trigger"><div style="width: 284px; height: 40px;"></div></div><div class="contract-trigger"></div></div></div>
-              </li>
-              @endforeach
-            </ul>
+
+                  <div class="row">
+                      <div class="col-md-12">
+                          <button type="submit" class="btn btn-primary">Save</button>
+                      </div>
+                  </div>
+              </form>
           </div>
- 
-          
-        </div>
       </div>
+  </div>
+</div> --}}
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="card h-100">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="card-title mb-3 ms-2 text-primary"><b>Recently Added Company</b></h4>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+              @foreach($lastestFiveCompanies as $latestCompany)
+                  <div class="col-md-4"> <!-- Adjust the column size based on your requirement -->
+                      <div class="d-flex mb-2">
+                          <div class="avatar flex-shrink-0 me-3">
+                              <img src="{{ asset('admin/') }}/assets/img/icons/unicons/briefcase-round.png" alt="User" class="rounded">
+                          </div>
+                          <div class="d-flex flex-column w-100">
+                              <h6 class="mb-0 text-primary">{{$latestCompany->name}}</h6>
+                              <small class="text-muted"> Joined on - {{$latestCompany->created_at->format('d- M - Y') }}</small>
+                              <p>Email: <span>{{$latestCompany->email}}</span></p>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+        </div>
+        
+      </div>
+  </div>
 </div>
 @endsection

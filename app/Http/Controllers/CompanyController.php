@@ -432,4 +432,26 @@ class CompanyController extends Controller
 
     }
 
+
+    // public function CurrencyconversionRate(Request $request)
+    // {
+
+    //     $request->validate([
+
+    //         'dollar_rate' => 'required|numeric'
+    //     ]);
+        
+       
+    //     $currency = $request->dollar_rate;
+
+    //     $company = new Company();
+    //     $company->dollar_rate = $currency;
+    //     $company->save();
+
+    //     $this->alert('success', '$ Rate is set Successfully' , 'success');
+    //     return back();
+    
+       
+    // }
+
 }

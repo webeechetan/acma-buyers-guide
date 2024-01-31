@@ -356,6 +356,9 @@
                               <input type="text" id="s_turn_in" name="s_turn_in" class="form-control" placeholder="Enter S_TURN(in $ Mln)" value="{{ $company_product_details->s_turn_in }}">
                             </div>
                             
+
+                    
+
                             <div class="col-md-4">
                               <label class="form-label" for="export_turn-02-03">Export Turnover(In Lakhs)</label>
                               <input type="text" id="export_turn_02_03" name="export_turn_02_03" class="form-control" placeholder="Enter Export Turn-02-03" value="{{  $company_product_details->export_turn_02_03 }}">
@@ -957,23 +960,72 @@
    });
 
 
-   function previewImage() {
+      function previewImage() 
+        {
             var input = document.getElementById('image');
             var preview = document.getElementById('imagePreview');
             var image = new Image();
-
             image.src = URL.createObjectURL(input.files[0]);
-
             image.onload = function () {
                 preview.innerHTML = '';
                 preview.appendChild(image);
             };
-      }
+        }  
+
+      
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get references to the input fields
+
+            var conversionRate = 80;
+            var salesTurnoverInput = document.getElementById('sales_turnover');
+            var sTurnInInput = document.getElementById('s_turn_in');
+
+            // Add an event listener to the sales_turnover input
+            salesTurnoverInput.addEventListener('input', function() {
+                // Get the value entered in sales_turnover
+                var salesTurnoverValue = parseFloat(salesTurnoverInput.value);
+
+                // Check if the entered value is a valid number
+                if (!isNaN(salesTurnoverValue)) {
+                    // Convert sales turnover to rupees and then to dollars
+                    var sTurnInValue = (salesTurnoverValue * 100000 * (1/conversionRate)) / 1000000;
+
+                    // Update the value of s_turn_in input
+                    sTurnInInput.value = sTurnInValue.toFixed(2); // Round to 2 decimal places
+                } else {
+                    // Handle the case when the entered value is not a valid number
+                    sTurnInInput.value = ''; // Clear the value in s_turn_in
+                }
+            });
+        });
 
 
-     
-  
+        document.addEventListener('DOMContentLoaded', function() {
+        // Get references to the input fields
+        var conversionRate = 80;
+        var exportTurnoverInput = document.getElementById('export_turn_02_03');
+        var exportsInMlnInput = document.getElementById('exports_in_mln');
 
+        // Add an event listener to the export_turn_02_03 input
+        exportTurnoverInput.addEventListener('input', function() {
+            // Get the value entered in export_turn_02_03
+            var exportTurnoverValue = parseFloat(exportTurnoverInput.value);
+
+            // Check if the entered value is a valid number
+            if (!isNaN(exportTurnoverValue)) {
+                // Convert export turnover to million dollars
+                var exportsInMlnValue = (exportTurnoverValue * 100000 * (1/conversionRate)) / 1000000; // Assuming 1 lakh = 0.01 million
+
+                // Update the value of exports_in_mln input
+                exportsInMlnInput.value = exportsInMlnValue.toFixed(2); // Round to 2 decimal places
+            } else {
+                // Handle the case when the entered value is not a valid number
+                exportsInMlnInput.value = ''; // Clear the value in exports_in_mln
+            }
+        });
+    });
+
+        
 </script>
 @endpush
 

@@ -12,6 +12,7 @@ use App\Models\CompanyContactDetail;
 use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
+use App\Models\Setting;
 use App\Notifications\Company\ForgotPasswordOtpNotification;
 use App\Notifications\Company\LoginOtpNotification;
 use App\Helpers\CompanyHelper;
@@ -108,7 +109,11 @@ class CompanyController extends Controller
         $company_product_details = CompanyProductDetails::where('company_id',Auth::guard('company')->user()->id)->first();
         $company_foreign_collaboration = CompanyForeignCollaboration::where('company_id',Auth::guard('company')->user()->id)->first();
 
-        return view('website.auth.fill-up-details', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration'));
+        $settings = Setting::latest()->first();
+
+
+
+        return view('website.auth.fill-up-details', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration','settings'));
     }
 
     /**
@@ -433,25 +438,28 @@ class CompanyController extends Controller
     }
 
 
-    // public function CurrencyconversionRate(Request $request)
-    // {
+    public function CurrencyconversionRate(Request $request)
+    {
 
-    //     $request->validate([
 
-    //         'dollar_rate' => 'required|numeric'
-    //     ]);
+
+        $request->validate([
+
+            'dollar_rate' => 'required|numeric'
+        ]);
         
        
-    //     $currency = $request->dollar_rate;
+        $currency = $request->dollar_rate;
 
-    //     $company = new Company();
-    //     $company->dollar_rate = $currency;
-    //     $company->save();
+      
+        $setting = new Setting();
+        $setting->dollar_price = $currency;
+        $setting->save();
 
-    //     $this->alert('success', '$ Rate is set Successfully' , 'success');
-    //     return back();
+        $this->alert('success', '$ Rate is set Successfully' , 'success');
+        return back();
     
        
-    // }
+    }
 
 }

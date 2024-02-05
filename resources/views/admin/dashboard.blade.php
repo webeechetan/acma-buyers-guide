@@ -92,11 +92,11 @@
     </div>
   </div>
 </div>
-{{-- <div class="row">
-  <div class="col-md-4">
+<div class="row">
+  <div class="col-md-4 mb-3">
       <div class="card h-100">
           <div class="d-flex align-items-center justify-content-between">
-              <h4 class="card-title mb-3 ms-2 text-primary"><b>Set $ Rate</b></h4>
+              <h5 class="card-title mb-3 text-primary"><b>Update $ Rate (Indian Rupees {{ $settings->dollar_price }})</b></h5>
           </div>
 
           <div class="card-body">
@@ -104,21 +104,21 @@
                 @csrf
                   <div class="row">
                       <div class="col-md-6 mb-3">
-                          <label for="dollar_rate" class="form-label">Dollar Rate:</label>
-                          <input type="text" class="form-control" id="dollar_rate" name="dollar_rate" required>
+                          <label for="dollar_rate" class="form-label">Dollar Rate: </label>
+                          <input type="text" class="form-control" placeholder="$" id="dollar_rate" value="{{ $settings->dollar_price }}" name="dollar_rate" required>
                       </div>
                   </div>
 
                   <div class="row">
                       <div class="col-md-12">
-                          <button type="submit" class="btn btn-primary">Save</button>
+                          <button type="submit" class="btn btn-primary btn-sm">Save</button>
                       </div>
                   </div>
               </form>
           </div>
       </div>
   </div>
-</div> --}}
+</div>
 
 
 <div class="row">

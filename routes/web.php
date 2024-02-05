@@ -128,7 +128,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         return view('admin.edit-emailer');
     });
 
-    // Route::post('/companies/conversion-rate', [CompanyController::class, 'CurrencyconversionRate'])->name('admin.companies.conversionrate');
+    Route::post('/companies/conversion-rate', [CompanyController::class, 'CurrencyconversionRate'])->name('admin.companies.conversionrate');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     

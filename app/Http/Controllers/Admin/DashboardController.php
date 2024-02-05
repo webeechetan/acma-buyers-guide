@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyUpdateRequest;
 use App\Models\CompanyKeyPersonnel;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -25,9 +26,12 @@ class DashboardController extends Controller
             ->where('region', '<>', '')
             ->groupBy('region')
             ->get();
+
+        $settings = Setting::latest()->first();
+       
         
         $lastestFiveCompanies = Company::orderBy('created_at', 'desc')->limit(5)->get();
-        return view('admin.dashboard', compact('totalCompanyCount','lastestFiveCompanies','ProfilependingCount','ProfileapprovedCount','regionsCount'));
+        return view('admin.dashboard', compact('totalCompanyCount','lastestFiveCompanies','ProfilependingCount','ProfileapprovedCount','regionsCount','settings'));
     }
 
 }

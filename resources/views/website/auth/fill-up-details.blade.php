@@ -976,7 +976,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Get references to the input fields
 
-            var conversionRate = 80;
+            var inr  = @json($settings->dollar_price);
+            var conversionPrice = JSON.parse(JSON.stringify(inr));
+
+         
             var salesTurnoverInput = document.getElementById('sales_turnover');
             var sTurnInInput = document.getElementById('s_turn_in');
 
@@ -988,7 +991,7 @@
                 // Check if the entered value is a valid number
                 if (!isNaN(salesTurnoverValue)) {
                     // Convert sales turnover to rupees and then to dollars
-                    var sTurnInValue = (salesTurnoverValue * 100000 * (1/conversionRate)) / 1000000;
+                    var sTurnInValue = (salesTurnoverValue * 100000 * (1/conversionPrice)) / 1000000;
 
                     // Update the value of s_turn_in input
                     sTurnInInput.value = sTurnInValue.toFixed(2); // Round to 2 decimal places
@@ -1002,7 +1005,10 @@
 
         document.addEventListener('DOMContentLoaded', function() {
         // Get references to the input fields
-        var conversionRate = 80;
+
+        var inr  = @json($settings->dollar_price);
+        var conversionPrice = JSON.parse(JSON.stringify(inr));
+
         var exportTurnoverInput = document.getElementById('export_turn_02_03');
         var exportsInMlnInput = document.getElementById('exports_in_mln');
 
@@ -1014,7 +1020,7 @@
             // Check if the entered value is a valid number
             if (!isNaN(exportTurnoverValue)) {
                 // Convert export turnover to million dollars
-                var exportsInMlnValue = (exportTurnoverValue * 100000 * (1/conversionRate)) / 1000000; // Assuming 1 lakh = 0.01 million
+                var exportsInMlnValue = (exportTurnoverValue * 100000 * (1/conversionPrice)) / 1000000; // Assuming 1 lakh = 0.01 million
 
                 // Update the value of exports_in_mln input
                 exportsInMlnInput.value = exportsInMlnValue.toFixed(2); // Round to 2 decimal places

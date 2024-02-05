@@ -64,16 +64,51 @@
                                                       @endphp 
                                                       </span></div></a>
                                                 </li>
-                                                <li class="filter-name mb-2" data-filter="salesTurnover" >
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover"><i class='bx bx-money-withdraw me-2' ></i> <div class="filter-tab"><span>Sales Turnover</span> <span id="saleBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
-                                                </li>
+                                              
+
+                                                <li class="filter-name mb-2" data-filter="salesTurnover">
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#salesTurnover">
+                                                       <i class='bx bx-money-withdraw me-2'></i>
+                                                       <div class="filter-tab">
+                                                           <span>Sales Turnover</span>
+                                                           <span id="saleBadge" class="badge bg-primary rounded-circle badge-count">
+                                                               @php
+                                                                   $range = request('range', []);
+                                                                   echo is_array($range) ? count($range) : 0;
+                                                               @endphp
+                                                           </span>
+                                                       </div>
+                                                   </a>
+                                               </li>
 
                                                 <li class="filter-name mb-2" data-filter="exportTurnover" >
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#exportTurnover"><i class='bx bx-money-withdraw me-2' ></i> <div class="filter-tab"><span>Export Turnover</span> <span id="exportBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#exportTurnover">
+                                                      <i class='bx bx-money-withdraw me-2' ></i>
+                                                      <div class="filter-tab">
+                                                         <span>Export Turnover</span> 
+                                                         <span id="exportBadge" class="badge bg-primary rounded-circle badge-count">
+                                                            @php
+                                                            $range = request('ranges', []);
+                                                            echo is_array($range) ? count($range) : 0;
+                                                        @endphp
+                                                         </span>
+                                                      </div>
+                                                   </a>
                                                 </li>
 
                                                 <li  class="filter-name mb-2" data-filter="">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#no_of_employees"><i class='bx bx-user-plus me-2'></i> <div class="filter-tab"><span>No of Emp</span> <span id="noofempBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#no_of_employees">
+                                                      <i class='bx bx-user-plus me-2'></i>
+                                                      <div class="filter-tab">
+                                                         <span>No of Emp</span> 
+                                                         <span id="noofempBadge" class="badge bg-primary rounded-circle badge-count">
+                                                            @php
+                                                            $noof_emp = request('no_ofEmp', []);
+                                                            echo is_array($noof_emp) ? count($noof_emp) : 0;
+                                                        @endphp
+                                                         </span>
+                                                      </div>
+                                                   </a>
                                                 </li>
 
                                                 <li  class="filter-name" data-filter="location">
@@ -84,7 +119,17 @@
                                                    </span></div></a>
                                                 </li>
                                                 <li  class="filter-name" data-filter="quality">
-                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality"><i class='bx bx-equalizer me-2'></i><div class="filter-tab"><span>QS Standard</span>  <span id="qualityBadge" class="badge bg-primary rounded-circle badge-count">0</span></div></a>
+                                                   <a class="nav-link text-capitalize" data-bs-toggle="pill" href="#quality">
+                                                      <i class='bx bx-equalizer me-2'></i>
+                                                      <div class="filter-tab">
+                                                         <span>QS Standard</span>
+                                                         <span id="qualityBadge" class="badge bg-primary rounded-circle badge-count">
+                                                            @php
+                                                            echo isset($_GET['quality']) ? count($_GET['quality']) : 0; 
+                                                            @endphp
+                                                         </span>
+                                                      </div>
+                                                   </a>
                                                 </li>
                                              </ul>
                                           </div>
@@ -241,7 +286,7 @@
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="range" value="0-5000" {{ request('range')== '0-5000' ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="range[]" value="0-5000" {{ in_array('0-5000', request('range', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                0 - 5000
                                                             </label>
@@ -249,7 +294,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="range" value="5001-10000" {{ request('range')== '5001-10000' ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="range[]" value="5001-10000"{{ in_array('5001-10000', request('range', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                5001-10000
                                                             </label>
@@ -257,15 +302,14 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="range" value="10001-50000" {{ request('range')== '10001-50000' ? 'checked' : ''  }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="10001-50000" {{ in_array('10001-50000', request('range', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   10001-50000
                                                                </label>
                                                             </div>
                                                       </div>                                                  
                                                    </div>
-                                                   
-
+                                                  
                                                 </div>
 
 
@@ -273,7 +317,7 @@
                                                    <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-start fw-semibold  text-dark">Export Turnover Filter(In Lakh)</h5>
                                                    </div>
-                                                   <div class="row mt-2">
+                                                   {{-- <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input active-check"  type="checkbox" name="ranges" value="0-5000" {{ request('ranges') == '0-5000' ? 'checked' : '' }}>
@@ -293,6 +337,33 @@
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                                <input class="form-check-input active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10001-50000' ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  10001-50000
+                                                               </label>
+                                                            </div>
+                                                      </div>                                   
+                                                   </div> --}}
+
+                                                   <div class="row mt-2">
+                                                      <div class="col-md-4 col-sm-6 col-6">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input active-check"  type="checkbox" name="ranges[]" value="0-5000" {{ in_array('0-5000', request('ranges', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               0 - 5000
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-4 col-sm-6 col-6">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="5001-10000" {{ in_array('5001-10000', request('ranges', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               5001-10000
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-4 col-sm-6 col-6">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="10001-50000" {{ in_array('10001-50000', request('ranges', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   10001-50000
                                                                </label>
@@ -350,7 +421,7 @@
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="no_ofEmp" value="0-100" {{ in_array('0-100', (array)request('no_ofEmp')) ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="no_ofEmp[]" value="0-100" {{ in_array('0-100', request('no_ofEmp', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                0 - 100
                                                             </label>
@@ -358,7 +429,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="no_ofEmp" value="101-200" {{ in_array('101-200', (array)request('no_ofEmp')) ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="no_ofEmp[]" value="101-200" {{ in_array('101-200', request('no_ofEmp', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                101-200
                                                             </label>
@@ -366,7 +437,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp" value="201-500" {{ in_array('201-500', (array)request('no_ofEmp')) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp[]" value="201-500" {{ in_array('201-500', request('no_ofEmp', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   201-500
                                                                </label>
@@ -374,7 +445,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp" value="501-12000" {{ in_array('501-12000', (array)request('no_ofEmp')) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp[]" value="501-12000" {{ in_array('501-12000', request('no_ofEmp', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   501-12000
                                                                </label>
@@ -571,7 +642,7 @@
                            <div class="checked_company_download">
                               <button type="submit" class="btn btn-primary">Download Data <i
                                     class='bx bx-download ms-2 text-white fw-medium'></i></button>
-                              <p class="mb-0 pt-2 text-dark fw-medium">Download the data in csv format</p>
+                              <p class="mb-0 pt-2 text-dark fw-medium">Download the data in PDF format</p>
                            </div>
                         </div>
                      </div>
@@ -921,10 +992,10 @@ $(document).ready(function () {
   handleCheckboxChange('region', 'input[name="regions[]"]', 'selectedRegionCount');
   handleCheckboxChange('product', 'input[name="products[]"]', 'selectedProductCount');
   handleCheckboxChange('trademark', 'input[name="trademarks[]"]', 'selectedTrademarkCount');
-  handleCheckboxChange('sale', 'input[name="range"]', 'selectedSaleCount');
+  handleCheckboxChange('sale', 'input[name="range[]"]', 'selectedSaleCount');
   handleCheckboxChange('city', 'input[name="location[]"]', 'selectedCityCount');
-  handleCheckboxChange('export', 'input[name="ranges"]', 'selectedExportCount');
-  handleCheckboxChange('noofemp', 'input[name="no_ofEmp"]', 'selectedNoOfEmpCount');
+  handleCheckboxChange('export', 'input[name="ranges[]"]', 'selectedExportCount');
+  handleCheckboxChange('noofemp', 'input[name="no_ofEmp[]"]', 'selectedNoOfEmpCount');
   handleCheckboxChange('quality', 'input[name="quality[]"]', 'selectedQualityCount');
 
   initializeResetButton('company', 'selectedCompanyCount');
@@ -970,9 +1041,11 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
 
    $(document).ready(function(){
       $('.toggle_allcheckbox').click(function(){
+
          var check = $(this).attr("data-check");
          
          if(check == 'true'){
+            
             $('.company_checkbox').parent().parent().parent().addClass('card-border');
             $('.company_checkbox').prop('checked', true);
             $(this).attr("data-check", false);
@@ -982,6 +1055,9 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
            
+
+
+             $('#companyBadge').html(checkedCount);
 
  
             var id = [];
@@ -1006,6 +1082,7 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
          }else{
 
             
+            
 
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
             $('.company_checkbox').prop('checked', false);
@@ -1016,6 +1093,10 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $(".checked_companies").html("Selected Companies: " + checkedCount);
 
 
+
+            $('#companyBadge').html(checkedCount);
+
+            
             //this line to is uncheck the modalcheckbox 
             $(".company_checkbox_in_modal").prop('checked', false);
             

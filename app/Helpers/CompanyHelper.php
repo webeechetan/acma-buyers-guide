@@ -65,22 +65,6 @@ class CompanyHelper {
            
         }
 
-        //checkbox filters for products
-        // if($request->has('products')) {
-
-        //     $selectedProducts = $request->input('products');
-           
-        //     if(is_array($selectedProducts)) {
-        //         $companies = $companies->whereHas('product_details', function ($query) use ($selectedProducts) {       
-        //             $query->whereIn('products_manufactured', $selectedProducts);
-        //             $query->orWhereIn('product2', $selectedProducts);
-        //             $query->orWhereIn('product3', $selectedProducts);
-        //             $query->orWhereIn('product4', $selectedProducts);
-
-        //         });
-        //     }
-            
-        // }
 
         if ($request->has('products')) {
             $selectedProductId = $request->input('products');
@@ -91,7 +75,6 @@ class CompanyHelper {
             }
         }
         
-
 
           // checkbox filters for Location states
           if ($request->has('state')) {
@@ -119,39 +102,60 @@ class CompanyHelper {
         }
 
         //checkbox filter for sales turnover
-        if ($request->has('range')) {
+        // if ($request->has('range')) {
             
-            $range = $request->input('range');
+        //     $range = $request->input('range');
 
-            [$min, $max] = explode('-', $range);
+        //     [$min, $max] = explode('-', $range);
 
-            $min = (int) $min;
-            $max = (int) $max;
+        //     $min = (int) $min;
+        //     $max = (int) $max;
           
-            $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
-                $query->whereBetween('sales_turnover', [$min, $max]);
-            });
+        //     $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
+        //         $query->whereBetween('sales_turnover', [$min, $max]);
+        //     });
+        // }
+
+
+        if ($request->has('range')) {
+            $ranges = $request->input('range');
+        
+            // Iterate through each range in the array
+            foreach ($ranges as $range) {
+                [$min, $max] = explode('-', $range);
+        
+                $min = (int) $min;
+                $max = (int) $max;
+        
+                $companies = $companies->orWhereHas('product_details', function ($query) use ($min, $max) {
+                    $query->whereBetween('sales_turnover', [$min, $max]);
+                });
+            }
         }
+
 
         //checkbox filter for export turnover
         
         if ($request->has('ranges')) {
-            $range = $request->input('ranges');
-
+            $ranges = $request->input('ranges');
+ foreach ($ranges as $range) {
             [$min, $max] = explode('-', $range);
 
             $min = (int) $min;
             $max = (int) $max;
         
             
-            $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
+            $companies = $companies->orWhereHas('product_details', function ($query) use ($min, $max) {
                 $query->whereBetween('export_turn_02_03', [$min, $max]);
             });
+        }
         }
 
         ////////No of emp filter/////
         if ($request->has('no_ofEmp')) {
-            $range = $request->input('no_ofEmp');
+            $ranges = $request->input('no_ofEmp');
+
+            foreach ($ranges as $range) {
 
             [$min, $max] = explode('-', $range);
 
@@ -159,9 +163,10 @@ class CompanyHelper {
             $max = (int) $max;
         
             
-            $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
+            $companies = $companies->orWhereHas('product_details', function ($query) use ($min, $max) {
                 $query->whereBetween('number_of_employees', [$min, $max]);
             });
+            }
         }
 
         
@@ -225,20 +230,7 @@ class CompanyHelper {
             });
         }
 
-        // if ($request->has('product')) {
-        //     $companies = $companies->whereHas('product_details', function ($query) use ($request) {
-        //         $query->where('products_manufactured', 'like', '%' . $request->region . '%');
-        //     });
-        // }
-
-        // if ($request->has('product')) {
-        //     $companies = $companies->whereHas('product_details', function ($query) use ($request) {
-        //         $query->where('products_manufactured', 'like', '%' . $request->product . '%')
-        //               ->orWhere('product2', 'like', '%' . $request->product . '%')
-        //               ->orWhere('product3', 'like', '%' . $request->product . '%')
-        //               ->orWhere('product4', 'like', '%' . $request->product . '%');
-        //     });
-        // }
+     
 
         if ($request->has('trademark')) {
             $companies = $companies->whereHas('product_details', function ($query) use ($request) {

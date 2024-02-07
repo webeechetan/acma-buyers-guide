@@ -31,7 +31,7 @@ class GeneratePdf extends Command
     public function handle()
     {
 
-        $pdfPath = storage_path('app/Acma_Buyers_Guide.pdf');
+        $pdfPath = storage_path('app/public/CompanyData/Acma_Buyers_Guide.pdf');
         if (File::exists($pdfPath)) {
             File::delete($pdfPath);
         }
@@ -40,7 +40,7 @@ class GeneratePdf extends Command
 
         $view = View::make('all-company-download-pdf', compact('companies'));
         $pdf = \PDF::loadHTML($view->render());
-        $pdfPath = storage_path('app/Acma_Buyers_Guide.pdf');
+        $pdfPath = storage_path('app/public/CompanyData/Acma_Buyers_Guide.pdf');
         $pdf->save($pdfPath);
     }
 

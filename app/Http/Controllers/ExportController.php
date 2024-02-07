@@ -63,6 +63,7 @@ class ExportController extends Controller
    public function exportAllCompanyPDF(Request $request){
        
 
+ 
     $company = auth('company')->user();
     $downloadLimit = 5;
 
@@ -72,7 +73,7 @@ class ExportController extends Controller
         return back();
     }
   
-    $filePath = storage_path('app/Acma_Buyers_Guide.pdf');
+    $filePath = storage_path('app/public/CompanyData/Acma_Buyers_Guide.pdf');
 
     // Check if the file exists
     if (file_exists($filePath)) {

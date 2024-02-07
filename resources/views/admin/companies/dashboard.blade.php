@@ -317,32 +317,6 @@
                                                    <div class="tab-pane-header-new">
                                                       <h5 class="mb-0 text-start fw-semibold  text-dark">Export Turnover Filter(In Lakh)</h5>
                                                    </div>
-                                                   {{-- <div class="row mt-2">
-                                                      <div class="col-md-4 col-sm-6 col-6">
-                                                         <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check"  type="checkbox" name="ranges" value="0-5000" {{ request('ranges') == '0-5000' ? 'checked' : '' }}>
-                                                            <label class="form-check-label" for="checkbox-one">
-                                                               0 - 5000
-                                                            </label>
-                                                         </div>
-                                                      </div>
-                                                      <div class="col-md-4 col-sm-6 col-6">
-                                                         <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="ranges" value="5001-10000" {{ request('ranges') == '5001-10000' ? 'checked' : '' }}>
-                                                            <label class="form-check-label" for="checkbox-one">
-                                                               5001-10000
-                                                            </label>
-                                                         </div>
-                                                      </div>
-                                                      <div class="col-md-4 col-sm-6 col-6">
-                                                         <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="ranges" value="10001-50000" {{ request('ranges') == '10001-50000' ? 'checked' : '' }}>
-                                                               <label class="form-check-label" for="checkbox-one">
-                                                                  10001-50000
-                                                               </label>
-                                                            </div>
-                                                      </div>                                   
-                                                   </div> --}}
 
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
@@ -370,6 +344,11 @@
                                                             </div>
                                                       </div>                                   
                                                    </div>
+
+                                                   {{-- /////// --}}
+
+
+
                                                 </div>
                                          
                                                 <div class="tab-pane fade" id="location">
@@ -523,9 +502,13 @@
             </div>
                <!-- Your modified HTML code with a styled button -->
                
+
+            
+
             <div class="d-flex gap-2 mb-4">
                <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true">Check All</button>
-               <a href="{{ route('dashboard.company.exportAll') }}" class="btn btn-danger">Download In PDF</a>
+               <a href="{{ route('dashboard.company.exportAll') }}" class="btn btn-danger">Download All Data</a>
+              
             </div>
 
             <!--- Company Card --->
@@ -1055,11 +1038,7 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
            
-
-
              $('#companyBadge').html(checkedCount);
-
- 
             var id = [];
             $('.company_checkbox:checked').each(function() {
                var companyId = $(this).val();
@@ -1077,12 +1056,8 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             }
             already_checked_on_other_pages.push(...id);
             localStorage.setItem('checked_companies', JSON.stringify(already_checked_on_other_pages));
-            
-            
+                        
          }else{
-
-            
-            
 
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
             $('.company_checkbox').prop('checked', false);
@@ -1091,12 +1066,7 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $(".checked_company_download").fadeOut('slow');
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
-
-
-
             $('#companyBadge').html(checkedCount);
-
-            
             //this line to is uncheck the modalcheckbox 
             $(".company_checkbox_in_modal").prop('checked', false);
             
@@ -1106,27 +1076,9 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
       });
    });
 
+   
 
- 
-      document.addEventListener('DOMContentLoaded', function () {
-         const rangeTypeRadios = document.getElementsByName('range-type');
-         const rangeRadios = document.getElementsByName('range');
-         const dollarsRadios = document.getElementsByName('sales_range');
 
-         rangeTypeRadios.forEach(function (radio) {
-            radio.addEventListener('change', function () {
-                  if (this.value === 'rupees') {
-                     // Show rupees options
-                     rangeRadios[0].checked = true;
-                     dollarsRadios[0].checked = false;
-                  } else {
-                     // Show dollars options
-                     rangeRadios[0].checked = false;
-                     dollarsRadios[0].checked = true;
-                  }
-            });
-         });
-      });
 </script>
 
 @endpush

@@ -72,7 +72,6 @@
                     <div><span class="data-title">Phone:</span> <a href="tel:{{ $company->contact_details->phone }}">{{ $company->contact_details->phone }}</a></div>
                     <div><span class="data-title">Fax:</span><a>{{ $company->contact_details->fax }}</a></div>
                     <div><span class="data-title">Email: </span><a href="mailto:{{ $company->email }}">{{ $company->email }}</a></div>
-                    <div><span class="data-title">Email: </span><a href="mailto:{{ $company->email }}">{{ $company->email }}</a></div>
                     <div><span class="data-title">Website:</span> {{ $company->website }}</div>
                     <div><span class="data-title">Company Address:</span> {{ $company->contact_details->company_address }}</div>
                     <div><span class="data-title">Managing Director:</span> {{ $company->key_personnels->managing_director }}</div>

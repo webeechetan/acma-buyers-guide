@@ -64,26 +64,42 @@ class CompanyDataTable extends DataTable
     /**
      * Optional method if you want to use the html builder.
      */
-    public function html(): HtmlBuilder
-    {
-        return $this->builder()
-                    ->setTableId('company-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('pdf'),
-                        Button::make('print'),
+    // public function html(): HtmlBuilder
+    // {
+    //     return $this->builder()
+    //                 ->setTableId('company-table')
+    //                 ->columns($this->getColumns())
+    //                 ->minifiedAjax()
+    //                 ->dom('Bfrtip')
+    //                 ->orderBy(1)
+    //                 ->selectStyleSingle()
+    //                 ->buttons([
+    //                     Button::make('excel'),
+    //                     Button::make('pdf'),
+    //                     Button::make('print'),
                       
-                    Button::make('Download All')->extend('csv')->filename($this->filename())->exportOptions(['page' => 'all']),
+    //                 Button::make('Download All')->extend('csv')->filename($this->filename())->exportOptions(['page' => 'all']),
                        
-                    ])->parameters([
-                        'paging' => true, // Disable pagination for export
-                    ]);
-    }
+    //                 ])->parameters([
+    //                     'paging' => true, // Disable pagination for export
+    //                 ]);
+    // }
+
+
+             public function html(): HtmlBuilder
+            {
+                return $this->builder()
+                            ->setTableId('company-table')
+                            ->columns($this->getColumns())
+                            ->minifiedAjax()
+                            ->dom('Bfrtip')
+                            ->orderBy(1)
+                            ->selectStyleSingle()
+                            ->parameters([
+                                'paging' => true, // Disable pagination for export
+                                'buttons' => [], // Remove all buttons
+                            ]);
+            }
 
    
 

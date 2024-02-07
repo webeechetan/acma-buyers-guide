@@ -38,8 +38,6 @@ $(".company_checkbox").click(function (e) {
         })
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
 
-
-
         //////////
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);

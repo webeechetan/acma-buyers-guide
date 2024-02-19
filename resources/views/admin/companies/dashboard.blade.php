@@ -37,9 +37,11 @@
                                              <ul class="nav nav-pills custom-tab  d-block mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
                                                    <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"><i class='bx bx-building-house me-2'></i>                                                                               
-                                                      <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">
-                                                         @php echo isset($_GET['company_name']) ? count($_GET['company_name']) : 0; 
-                                                         @endphp 
+                                                      <div class="filter-tab"><span>Company </span>  
+                                                         <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">
+                                                            @php 
+                                                               echo isset($_GET['company_name']) ? count($_GET['company_name']) : 0; 
+                                                            @endphp 
                                                          </span>
                                                       </div> 
                                                    </a>
@@ -640,7 +642,6 @@
 
 <script src="{{ asset('admin/') }}/assets/vendor/libs/select2/select2.js"></script>
 <script src="{{ asset('admin/') }}/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
-<script src="{{ asset('website/') }}/checkbox-recheck.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
 
@@ -1081,4 +1082,8 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
 
 </script>
 
+@endpush
+
+@push('scripts')
+<script src="{{ asset('website/') }}/checkbox-recheck.js"></script>
 @endpush

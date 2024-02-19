@@ -1,6 +1,6 @@
 
 var checked_companies = localStorage.getItem('checked_companies') ? JSON.parse(localStorage.getItem('checked_companies')) : [];
-
+var checked_companies_count = [];
 function clear_checked() {
   
     localStorage.removeItem('checked_companies');
@@ -42,20 +42,18 @@ $(".company_checkbox").click(function (e) {
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
         //////////
-        
-
-        let checked_companies_count = localStorage.getItem('checked_companies') ? JSON.parse(localStorage.getItem('checked_companies')) : [];
-
-        // alert(checked_companies_count);
-        //alert(checked_companies.length);
-        //  if (checked_companies_count.length == 0) {
-            if (checked_companies_count === 0) {
-           // $(".checked_company_info").fadeOut('slow');
-           $(".checked_company_download").fadeOut('slow');//this line added by ajay on jan 1 to hide download button on de-selection of checkbox in modal
-        }
     }
 
+    
     localStorage.setItem('checked_companies', JSON.stringify(checked_companies));
+    checked_companies_count = localStorage.getItem('checked_companies');
+    if(checked_companies_count){
+        checked_companies_count = JSON.parse(checked_companies_count);
+    }
+    console.log(checked_companies_count)
+    if(checked_companies_count.length  == 0){
+            $(".checked_company_download").fadeOut('slow');
+    }
 
 });
 
@@ -110,5 +108,18 @@ $(".advance-filter").submit(function (e) {
 
 $(".btn_reset").click(function (e) {
     clear_checked();
+});
+
+$(document).ready(function () {
+
+    var checked_companies_storage = localStorage.getItem('checked_companies');
+
+    if(checked_companies_storage){
+        checked_companies_storage = JSON.parse(checked_companies_storage);
+        console.log(checked_companies_storage.length);
+        if(checked_companies_storage.length > 0){
+            $("#companyBadge").html(checked_companies_storage.length);
+        }
+    }
 });
 

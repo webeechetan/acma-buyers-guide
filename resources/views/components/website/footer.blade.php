@@ -7,7 +7,7 @@
             <ul class="contact-list">
                 <li>
                     <i class="fa fa-phone" aria-hidden="true"></i>
-                    <a href="tel:+91-11-26160315">+91-11-26160315</a>
+                    <a href="tel:+91-11-26160315">+91-11-43520361</a>
                   </li>
               <li>
                 <i class="fas fa-envelope-open-text"></i>

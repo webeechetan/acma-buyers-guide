@@ -243,6 +243,7 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
      
+       
         $auth_id = auth()->guard('company')->user()->id;
          $companies = CompanyHelper::filter($request);  
         

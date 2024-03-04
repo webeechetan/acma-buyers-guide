@@ -23,6 +23,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
+       
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {

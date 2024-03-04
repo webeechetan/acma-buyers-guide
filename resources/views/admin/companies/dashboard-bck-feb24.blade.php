@@ -37,11 +37,9 @@
                                              <ul class="nav nav-pills custom-tab  d-block mb-4">
                                                 <li  class="filter-name nav-item mb-2" data-filter="name">
                                                    <a class="nav-link text-capitalize active" data-bs-toggle="pill" href="#company"><i class='bx bx-building-house me-2'></i>                                                                               
-                                                      <div class="filter-tab"><span>Company </span>  
-                                                         <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">
-                                                            @php 
-                                                               echo isset($_GET['company_name']) ? count($_GET['company_name']) : 0; 
-                                                            @endphp 
+                                                      <div class="filter-tab"><span>Company </span>  <span id="companyBadge" class="badge bg-primary rounded-circle badge-count">
+                                                         @php echo isset($_GET['company_name']) ? count($_GET['company_name']) : 0; 
+                                                         @endphp 
                                                          </span>
                                                       </div> 
                                                    </a>
@@ -149,26 +147,23 @@
                                                      </div>                                                   
                                                   </div>
                                                   <div class="row scroll-content">
-                                                   @if(count($companies_name) > 0)
-                                                         @foreach($companies_name as $company)
-                                                            <div class="col-md-6">
-                                                               <div class="mt-2">
-                                                                  @if(isset($company['name']) && !empty($company['name']))
-                                                                     <div class="form-check form-check-inline mb-2">
-                                                                        <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>    
-                                                                        <label class="form-check-label company-item" data-name="{{ $company['name'] }}" for="">{{ $company['name'] }}</label>
-                                                                     </div>
-                                                                  @endif
-                                                               </div>
+                                                      @foreach($companies_name as $company)
+                                                         <div class="col-md-6">
+                                                            <div class="mt-2">
+                                                               @if(isset($company['name']) && !empty($company['name']))
+                                                                  <div class="form-check form-check-inline mb-2">
+                                                                     <input class="form-check-input company_checkbox_in_modal company_id_in_modal_{{$company['id']}}" data-id="{{ $company['id'] }}"  class="active-check" name="company_name[]" type="checkbox" id="{{ $company['name'] }}" value="{{ $company['name'] }}"  {{ in_array($company['name'], (array)request()->input('company_name')) ? 'checked' : '' }}>    
+                                                                     <label class="form-check-label company-item" data-name="{{ $company['name'] }}" for="">{{ $company['name'] }}</label>
+                                                                  </div>
+                                                               @endif
                                                             </div>
-                                                         @endforeach    
-                                                   @else                                           
-                                                      <div class="col-md-12">
-                                                         <div class="mt-2">
-                                                            <div class="no-results-found text-danger text-center">No Results founds</div>
                                                          </div>
-                                                      </div>   
-                                                   @endif
+                                                      @endforeach                                               
+                                                      <div class="col-md-12">
+                                                      <div class="mt-2">
+                                                         <div class="no-results-found text-danger text-center">No Results found</div>
+                                                      </div>
+                                                   </div>   
                                                   </div>
                                                       <div class="pagination-container">
                                                          <ul class="pagination alphabet-filter">
@@ -221,33 +216,31 @@
                                                       </div>
                                                    </div>
                                                 <div class="row scroll-content">
-                                                     @if(count($combinedProducts) > 0)   
-                                                    
-                                                         @foreach ($combinedProducts as $productDetail)                                                   
-                                                            @php
+                                                        
+                                                      @foreach ($combinedProducts as $productDetail)                                                   
+                                                         @php
 
-                                                               $productNames = array_filter([
-                                                                  $productDetail->products_manufactured,
-                                                                  $productDetail->product2,
-                                                                  $productDetail->product3,
-                                                                  $productDetail->product4,
-                                                               ]);
-                                                            @endphp
-                                                      
-                                                            @if (!empty($productNames))
-                                                               <div class="col-md-12">
-                                                                  <div class="mt-2">
-                                                                        <div class="form-check form-check-inline mb-2">
-                                                                           <input class="form-check-input active-check" type="checkbox" name="products[]" id="" value="{{ $productDetail->id }}" {{ in_array($productDetail->id, (array)request()->input('products',[])) ? 'checked' : '' }}>
-                                                                           <label class="form-check-label product-item" data-name="{{ implode(', ', $productNames) }}" for="">
-                                                                              {{ implode(', ', $productNames) }}
-                                                                           </label>
-                                                                        </div>
-                                                                  </div>
+                                                            $productNames = array_filter([
+                                                               $productDetail->products_manufactured,
+                                                               $productDetail->product2,
+                                                               $productDetail->product3,
+                                                               $productDetail->product4,
+                                                            ]);
+                                                         @endphp
+                                                   
+                                                         @if (!empty($productNames))
+                                                            <div class="col-md-12">
+                                                               <div class="mt-2">
+                                                                     <div class="form-check form-check-inline mb-2">
+                                                                        <input class="form-check-input active-check" type="checkbox" name="products[]" id="" value="{{ $productDetail->id }}" {{ in_array($productDetail->id, (array)request()->input('products',[])) ? 'checked' : '' }}>
+                                                                        <label class="form-check-label product-item" data-name="{{ implode(', ', $productNames) }}" for="">
+                                                                           {{ implode(', ', $productNames) }}
+                                                                        </label>
+                                                                     </div>
                                                                </div>
-                                                            @endif
-                                                         @endforeach
-                                                      @else      
+                                                            </div>
+                                                         @endif
+                                                      @endforeach
                                                 
                                                    
                                                    <div class="col-md-12">
@@ -255,7 +248,6 @@
                                                          <div class="no-results-found text-danger">No Results found</div>
                                                       </div>
                                                    </div>
-                                                   @endif
                                                 </div>
                                                 <div class="pagination-container">
                                                    <ul class="pagination alphabet-filter">
@@ -370,28 +362,25 @@
                                                       </div>
                                                    </div>
 
-                                                   <div class="row scroll-content">
-                                                      @if(count($combinedLocations) > 0)                                               
-                                                         @foreach ($combinedLocations as $combinedLocation)
-                                                            <div class="col-md-4">
-                                                               <div class="mt-2">
-                                                                     @if(isset($combinedLocation) && !empty($combinedLocation))
-                                                                        <div class="form-check form-check-inline mb-2">
-                                                                           <input class="form-check-input active-check" type="checkbox" name="location[]" id="locations_{{ $combinedLocation }}" value="{{ $combinedLocation }}" {{ in_array($combinedLocation, (array)request()->input('location', [])) ? 'checked' : '' }}>
-                                                                           <label class="form-check-label location-items" data-name="{{ $combinedLocation }}" for="locations_{{ $combinedLocation }}">{{ $combinedLocation }}</label>
-                                                                        </div>
-                                                                     @endif
-                                                               </div>
+                                                   <div class="row scroll-content">                                                   
+                                                      @foreach ($combinedLocations as $combinedLocation)
+                                                         <div class="col-md-4">
+                                                            <div class="mt-2">
+                                                                  @if(isset($combinedLocation) && !empty($combinedLocation))
+                                                                     <div class="form-check form-check-inline mb-2">
+                                                                        <input class="form-check-input active-check" type="checkbox" name="location[]" id="locations_{{ $combinedLocation }}" value="{{ $combinedLocation }}" {{ in_array($combinedLocation, (array)request()->input('location', [])) ? 'checked' : '' }}>
+                                                                        <label class="form-check-label location-items" data-name="{{ $combinedLocation }}" for="locations_{{ $combinedLocation }}">{{ $combinedLocation }}</label>
+                                                                     </div>
+                                                                  @endif
                                                             </div>
-                                                         @endforeach
-                                                      @else
+                                                         </div>
+                                                      @endforeach
 
                                                       <div class="col-md-12">
                                                          <div class="mt-2">
                                                             <div class="no-results-found text-danger">No Results found</div>
                                                          </div>
                                                       </div>
-                                                      @endif
                                                    </div>         
                                                    <div class="pagination-container">
                                                       <ul class="pagination alphabet-filter">
@@ -518,7 +507,7 @@
 
             <div class="d-flex gap-2 mb-4">
                <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true">Check All</button>
-               <a href="{{ route('dashboard.company.exportAll') }}"  class="btn btn-danger">Download All Data</a>
+               <a href="{{ route('dashboard.company.exportAll') }}" class="btn btn-danger">Download All Data</a>
               
             </div>
 
@@ -636,27 +625,14 @@
                            <div class="checked_company_download">
                               <button type="submit" class="btn btn-primary">Download Data <i
                                     class='bx bx-download ms-2 text-white fw-medium'></i></button>
+                              <p class="mb-0 pt-2 text-dark fw-medium">Download the data in PDF format</p>
                            </div>
                         </div>
                      </div>
                   </form>
                </div>
             </div>
-   </div> 
-
-
-
-   
-<!-- Popup container for all data download -->
-<div id="popupContainer" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-   <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 400px;">
-     <p>This is a popup!</p>
-     <button onclick="okayButtonClicked()">Okay</button>
-     <button onclick="cancelButtonClicked()">Cancel</button>
    </div>
- </div>
-
-
 </section>
 @endsection
 @push('scripts')
@@ -664,6 +640,7 @@
 
 <script src="{{ asset('admin/') }}/assets/vendor/libs/select2/select2.js"></script>
 <script src="{{ asset('admin/') }}/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="{{ asset('website/') }}/checkbox-recheck.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
 
@@ -795,7 +772,6 @@ $(document).ready(function () {
 
    function filterProducts(letter) {
 
-
       productItems.forEach(function (item) {
 
          var productName = item.dataset.name;
@@ -804,10 +780,8 @@ $(document).ready(function () {
 
          if (letter === 'all' || productName.charAt(0).toUpperCase() === letter) {
             $(item).parent().parent().parent().css('display', 'block');
-           
             } else {
                $(item).parent().parent().parent().css('display', 'none');
-              
             }
       });
 
@@ -1089,7 +1063,6 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $('.company_checkbox').prop('checked', false);
             $(this).attr("data-check", true);
             $(this).text('Check All');
-
             $(".checked_company_download").fadeOut('slow');
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
@@ -1103,11 +1076,9 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
       });
    });
 
+   
+
 
 </script>
 
-@endpush
-
-@push('scripts')
-<script src="{{ asset('website/') }}/checkbox-recheck.js"></script>
 @endpush

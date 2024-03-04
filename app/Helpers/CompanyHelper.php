@@ -101,20 +101,7 @@ class CompanyHelper {
             }
         }
 
-        //checkbox filter for sales turnover
-        // if ($request->has('range')) {
-            
-        //     $range = $request->input('range');
-
-        //     [$min, $max] = explode('-', $range);
-
-        //     $min = (int) $min;
-        //     $max = (int) $max;
-          
-        //     $companies = $companies->whereHas('product_details', function ($query) use ($min, $max) {
-        //         $query->whereBetween('sales_turnover', [$min, $max]);
-        //     });
-        // }
+        
 
 
         if ($request->has('range')) {
@@ -210,7 +197,7 @@ class CompanyHelper {
         if ($request->has('location')) {
 
             $location = $request->location;
-        
+
             $companies = $companies->whereHas('contact_details', function ($query) use ($location) {
                 if (is_array($location)) {
 

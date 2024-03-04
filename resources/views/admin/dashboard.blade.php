@@ -96,7 +96,7 @@
   <div class="col-md-4 mb-3">
       <div class="card h-100">
           <div class="d-flex align-items-center justify-content-between">
-              <h5 class="card-title mb-3 text-primary"><b>Update $ Rate (Indian Rupees {{ $settings->dollar_price }})</b></h5>
+              <h5 class="card-title mb-3 text-primary"><b>Update $ Rate (Indian Rupees  @if($settings) {{ $settings->dollar_price }} @endif )</b></h5>
           </div>
 
           <div class="card-body">
@@ -105,7 +105,7 @@
                   <div class="row">
                       <div class="col-md-6 mb-3">
                           <label for="dollar_rate" class="form-label">Dollar Rate: </label>
-                          <input type="text" class="form-control" placeholder="$" id="dollar_rate" value="{{ $settings->dollar_price }}" name="dollar_rate" required>
+                          <input type="text" class="form-control" placeholder="$" id="dollar_rate" @if($settings) value="{{ $settings->dollar_price }}" @endif name="dollar_rate" required>
                       </div>
                   </div>
 

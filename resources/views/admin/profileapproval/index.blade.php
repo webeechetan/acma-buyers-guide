@@ -71,6 +71,13 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                            {{-- paginations --}}
+
+                            <div class="d-flex justify-content-center">
+                                {{ $pendingRequests->links() }}
+                            </div>
+
                         @else
                             <span class="text text-danger"> No Pending Request</span>
                         @endif
@@ -92,7 +99,7 @@
                                             $profile = json_decode($request->data, true);
                                         @endphp
 
-                                        <table class="table mb-3" id="profile">
+                                        <table class="table mb-3" id="approved-requests">
                                             <thead>
                                                 <tr style="color: rgb(38, 5, 5);">
                                                     <th>Field</th>
@@ -114,6 +121,12 @@
                                 </div>
                             </div>
                         @endforeach
+
+                        {{-- paginations --}}
+
+                        <div class="d-flex justify-content-center">
+                            {{ $approvedRequests->withQueryString()->links() }}
+                        </div>
                     @else
                             <span class="text text-danger"> No Approved Request</span>
                     @endif
@@ -125,8 +138,7 @@
 
 @endsection
 @push('scripts')
-    <script src="{{ asset('admin/') }}/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script>
-    new DataTable('#profile');   
+
     </script>
 @endpush

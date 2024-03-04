@@ -44,13 +44,13 @@ $(".company_checkbox").click(function (e) {
         //////////
     }
 
-    
+
     localStorage.setItem('checked_companies', JSON.stringify(checked_companies));
     checked_companies_count = localStorage.getItem('checked_companies');
     if(checked_companies_count){
         checked_companies_count = JSON.parse(checked_companies_count);
     }
-    console.log(checked_companies_count)
+    console.log(checked_companies_count);
     if(checked_companies_count.length  == 0){
             $(".checked_company_download").fadeOut('slow');
     }
@@ -122,4 +122,5 @@ $(document).ready(function () {
         }
     }
 });
+
 

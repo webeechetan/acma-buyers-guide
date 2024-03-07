@@ -243,8 +243,12 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
      
-       
         $auth_id = auth()->guard('company')->user()->id;
+
+        // $user = auth()->guard('company')->user();
+        // dd($user);
+       
+
          $companies = CompanyHelper::filter($request);  
         
         // $response = Benchmark::measure([
@@ -258,27 +262,11 @@ class CompanyController extends Controller
         ->whereNotNull('region')->where('region', '<>', '')->groupBy('region')->get();
          
 
-
         $combinedProducts = CompanyProductDetails::select('id', 'products_manufactured', 'product2', 'product3', 'product4')
     ->groupBy('id', 'products_manufactured', 'product2', 'product3', 'product4')
     ->get();
 
-    // foreach ($productDetails as $p) {
-
-    //     echo"<pre>";
-    //     echo $p;
-    // }
-
-    //dd(count($productDetails));
-        // $products = CompanyProductDetails::select('products_manufactured')->groupBy('products_manufactured')->get();
-        // $products2 = CompanyProductDetails::select('product2')->groupBy('product2')->get();
-        // $products3 = CompanyProductDetails::select('product3')->groupBy('product3')->get();
-        // $products4 = CompanyProductDetails::select('product4')->groupBy('product4')->get();
-
-        // // Combine all above arrays into a single array
-        //  $combinedProducts = array_unique(array_merge($products->pluck('products_manufactured')->toArray(), $products2->pluck('product2')->toArray(),$products3->pluck('product3')->toArray(),$products4->pluck('product4')->toArray()));
-        
-        //  dd(count($combinedProducts));
+    
         $trademarks = CompanyProductDetails::select('trademark')
         ->whereNotNull('trademark')->where('trademark', '<>', '')->groupBy('trademark')->get();
         $salesTurnovers = CompanyProductDetails::select('sales_turnover')->groupBy('sales_turnover')->get();
@@ -296,7 +284,8 @@ class CompanyController extends Controller
         // // If you want to re-index the array after removing duplicates
          $combinedLocations = array_values($uniqueLocations);
 
-        // dd(count($uniqueLocations));
+
+
         return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','salesTurnovers','combinedLocations','combinedProducts'));
     
     }
@@ -462,5 +451,6 @@ class CompanyController extends Controller
     
        
     }
+
 
 }

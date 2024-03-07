@@ -21,9 +21,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
-
-
-
 Route::get('/download-excel/{company_ids?}', function (Request $request, $companyIds = null) {
 
     // Convert comma-separated company_ids to an array
@@ -70,15 +67,6 @@ Route::get('/download-pdf', function () {
     }
 })->name('download-All');
 
-// Route::get('/test/{id}', function (Request $request, $id) {
-//     return Excel::download(new CompanyExportPDF($id), 'companies.pdf', \Maatwebsite\Excel\Excel::MPDF);
-// });
-
-
-// Route::get('/test/{id}', function ($id) {
-//     $companyExport = new CompanyExportPDF($id);
-// });
-
 
 Route::get('/test/{id}', function ($id) {
     return \Maatwebsite\Excel\Facades\Excel::download(new CompanyExportPDF($id), 'Acma Buyers Guide.pdf');
@@ -106,7 +94,8 @@ Route::post('/import', function (Request $request) {
 
 
 Route::get('/', function () {
-    return view('website.index');
+    //return view('website.index');
+    return view('website.auth.login');
 });
 
 /************* Admin Routes ****************/
@@ -127,13 +116,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/edit-details', function () {  
         return view('admin.edit-emailer');
 
-      
-
     });
 
     Route::post('/companies/conversion-rate', [CompanyController::class, 'CurrencyconversionRate'])->name('admin.companies.conversionrate');
 
-     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/profile/approved', [ProfileApprovalController::class, 'showApprovedRequest'])->name('admin.profile.approved');
     
 });
 
@@ -156,6 +145,7 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
         ////Download all details once we enter in company  
         
         Route::get('/export/{id}', [ExportController::class, 'exportToPDF'])->name('exportToPDF');
+
         
 });
 
@@ -184,3 +174,14 @@ Route::post('company/login', [CompanyController::class, 'authenticate'])->name('
   Route::post('/otp-authentication', [CompanyController::class, 'otp_authentication'])->name('company.verify_otp');
   Route::get('/reset-password', [CompanyController::class, 'reset_password_form'])->name('company.ResetPassword.form');
   Route::post('/reset-password', [CompanyController::class, 'reset_password_update'])->name('company.ResetPassword.update');
+
+
+  // In routes/web.php
+
+    //  Route::view('error/419', 'errors.419')->name('error.419');
+    Route::get('error/419', function () {
+        return view('errors.419');
+    })->name('error.419');
+
+
+

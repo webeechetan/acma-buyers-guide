@@ -40,7 +40,7 @@
 
       {{-- Approved Request --}}
       <div class="col-md-4 mb-3">
-        <a href=" {{Route('admin.profile.approval')}}">
+        <a href=" {{Route('admin.profile.approved')}}">
         <div class="card">
           <div class="d-flex justify-content-between align-items-start card-widget-1 pb-3 pb-sm-0">
             <div>

@@ -16,15 +16,14 @@ class CompanyAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
        
         if (Auth::guard('company')->check()) {
             return $next($request);
         }
         return redirect()->route('company.login')->with('alert', [
             'type' => 'danger',
-            'msg' => 'Unauthorized access',
-            'body' => 'You are not Authorized to access this page',
+            'msg' => 'Session expired',
+            'body' => 'Please login again with your details.',
         ]);
         
     }

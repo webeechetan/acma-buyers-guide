@@ -184,8 +184,8 @@
           url: '{{ route('company.verify_otp') }}',
           data: formData,
           success: function (response) {
-
               if(response.success){
+                  localStorage.removeItem('checked_companies');
                   toast('success','Login Successfully','success');
                   window.location.href = "{{ route('company.dashboard') }}";
               }else{
@@ -193,6 +193,7 @@
               }
           },
           error: function (error) {
+           
               error = error.responseJSON;
               if(error.errors){
                   $.each(error.errors, function (key, value) {
@@ -210,14 +211,26 @@
           url: '{{ route('company.generate_otp') }}',
           data: formData,
           success: function (response) {
+
               if(response.success){
+               
                   $('.otp_section').removeClass('d-none');
                   $('#email').attr('readonly', true);
                   toast('Success',response.message,'success');
                   $(".login_btn").html('Verify OTP');
               }else{
-                  toast('Error',response.message,'success');
-                  $(".login_btn").html('Verify OTP');
+               
+
+                  if (response.code == 419) {
+                      
+                     toast('Error','Session Expired','success');
+                      window.location.reload();
+                  }
+             
+                  //toast('Error',response.message,'success');
+                  // $(".login_btn").html('Verify OTP');
+                  $(".login_btn").html(previous_value);
+
               }
           },
           error: function (error) {

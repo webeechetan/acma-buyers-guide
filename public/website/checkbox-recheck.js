@@ -24,6 +24,9 @@ $(".company_checkbox").click(function (e) {
     var id = $(this).data('id');
     if ($(this).is(':checked')) {
 
+        // alert('if block');
+       
+
         $(".company_id_in_modal_" + id).prop('checked', true);
         checked_companies.push(id);
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
@@ -31,6 +34,7 @@ $(".company_checkbox").click(function (e) {
         $(".checked_company_download").fadeIn('slow'); //this line added by ajay on jan 1 to show download button on selection of checkbox in modal
     } else {
 
+        // alert('else block');
        
         $(".company_id_in_modal_" + id).prop('checked', false);
         checked_companies = checked_companies.filter(function (item) {
@@ -52,10 +56,14 @@ $(".company_checkbox").click(function (e) {
         checked_companies_count = JSON.parse(checked_companies_count);
     }
     if(checked_companies_count.length  == 0){
-            $(".checked_company_download").fadeOut('slow');
-    }
+           $(".checked_company_download").fadeOut('slow');
+    }   
+   
+
 
 });
+
+
 
 
 $(".company_checkbox_in_modal").click(function (e) {
@@ -110,6 +118,8 @@ $(".btn_reset").click(function (e) {
     clear_checked();
 });
 
+
+
 $(document).ready(function () {
 
     var checked_companies_storage = localStorage.getItem('checked_companies');
@@ -121,6 +131,28 @@ $(document).ready(function () {
             $("#companyBadge").html(checked_companies_storage.length);
         }
     }
+
+
+
+
+//The download option for show popup message about the free download
+    $("#downloadAllButton").click(function(e) {
+        e.preventDefault();
+
+        var confirmation = confirm("Do you want to download all company data for free? You're limited to 5 downloads per year. Are you sure?");
+
+        if (confirmation) {
+            var url = $(this).attr("href");
+            window.location.href = url;
+        } else {
+            return false;
+        }
+    });
+    
+//The download option for show popup message about the free download
+
+
+
 });
 
 

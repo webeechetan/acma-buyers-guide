@@ -1,5 +1,4 @@
-{{-- @extends('website.layouts.app')
-@section('title', "Page Not Found")
+{{-- @section('title', "Page Not Found")
 @section('content')
 <div class="container">
     <div class="row">
@@ -23,6 +22,7 @@
 </head>
 <body>
     <h1>Page Not Found</h1>
-    {{-- <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Go to Home Page</a> --}}
+    <a href="{{ route('company.dashboard') }}" class="btn btn-primary mt-3">Go to Home Page</a>
 </body>
 </html>
+

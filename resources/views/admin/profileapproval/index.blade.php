@@ -14,10 +14,10 @@
         <div class="col-md-12">
             <ul class="nav nav-pills d-flex gap-2 mb-4">
                 <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="pill" href="#pending">Pending Request</a>
+                    <a class="nav-link active" href="{{route('admin.profile.approval')}}">Pending Request</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="pill" href="#approve">Approved Request</a>
+                    <a class="nav-link" href="{{route('admin.profile.approved')}}">Approved Request</a>
                 </li>
         
             </ul>

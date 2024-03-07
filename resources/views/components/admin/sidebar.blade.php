@@ -31,15 +31,7 @@
         </a>
       </li>
 
-     
-      {{-- Payments --}}
-      {{-- <li class="menu-item {{Route::is('admin.payments') ? 'active' : '' }} ">
-        <a href="{{ route('admin.payments') }}" class="menu-link ">
-          <i class=' "menu-icon bx bx-user'></i>
-          <div class="text-truncate" data-i18n="Payments">Payments</div>
-        </a>
-      </li>
-       --}}
+
 
        <li class="menu-item {{ Route::is('admin.profile.approval') ? 'active' : '' }} ">
         <a href="{{route('admin.profile.approval')}}" class="menu-link ">
@@ -47,6 +39,15 @@
           <div class="text-truncate" data-i18n="Profile Request">Profile Request</div>
         </a>
       </li>
+
+      
+      {{-- Approved Request
+      <li class="menu-item {{ Route::is('admin.profile.approved') ? 'active' : '' }} ">
+        <a href="{{route('admin.profile.approved')}}" class="menu-link ">
+          <i class="menu-icon menu-icon bx bx-user"></i>
+          <div class="text-truncate" data-i18n="Approved Request">Approved Request</div>
+        </a>
+      </li> --}}
       
     </ul>
 </aside>

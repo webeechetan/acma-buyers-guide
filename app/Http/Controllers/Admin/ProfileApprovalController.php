@@ -16,11 +16,11 @@ class ProfileApprovalController extends Controller
      */
     public function index()
     {
-        $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->paginate(1);
+        $pendingRequests = CompanyUpdateRequest::where('status', 'pending')->paginate(5);
+        //$approvedRequests = CompanyUpdateRequest::where('status', 'approved')->paginate(1);
+        return view('admin.profileapproval.index', compact('pendingRequests'));
 
-        $approvedRequests = CompanyUpdateRequest::where('status', 'approved')->paginate(1);
-
-        return view('admin.profileapproval.index', compact('pendingRequests', 'approvedRequests'));
+        // return view('admin.profileapproval.index', compact('pendingRequests', 'approvedRequests'));
     }
 
     /**
@@ -106,5 +106,15 @@ class ProfileApprovalController extends Controller
         }
         
         return redirect()->route('admin.profile.approval');
+    }
+
+
+    public function showApprovedRequest()
+    {
+
+        //dd('show approved request');
+        $approvedRequests = CompanyUpdateRequest::where('status', 'approved')->paginate(5);
+        return view('admin.profileapproval.approve', compact('approvedRequests'));
+
     }
 }

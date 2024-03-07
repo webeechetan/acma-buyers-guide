@@ -40,21 +40,37 @@ class ExportController extends Controller
 
 
     public function exportMultipleCompanyPDF(Request $request){
+
+       
         $company_ids = $request->company_ids;
-           
-        $companies = Company::whereIn('id', $company_ids)->get();
 
-        $view = View::make('selected-company-download-pdf', compact('companies'));
+        if ($company_ids && count($company_ids) > 0) {
+            $companies = Company::whereIn('id', $company_ids)->get();
 
-        // Generate PDF from the Blade view
-        $pdf = \PDF::loadHTML($view->render());
+        
+            if ($companies->count() > 0) {
+                $view = View::make('selected-company-download-pdf', compact('companies'));
+        
+                // Generate PDF from the Blade view
+                $pdf = \PDF::loadHTML($view->render());
+        
+                // Save the PDF file to a temporary location
+                $pdfPath = storage_path('app/Acma_Buyers_Guide.pdf');
+                $pdf->save($pdfPath);
+        
+                // Return the file download response
+                return response()->download($pdfPath, 'Acma Buyers Guide.pdf')->deleteFileAfterSend(true);
+            } else {
+                // Show message if no companies were found
+                return 'No companies found';
+            }
+        } else {
+            // Show message if $company_ids is not set or empty
+            return redirect()->route('company.dashboard');
 
-         // Save the PDF file to a temporary location
-         $pdfPath = storage_path('app/Acma_Buyers_Guide.pdf');
-         $pdf->save($pdfPath);
- 
-         // Return the file download response
-         return response()->download($pdfPath, 'Acma Buyers Guide.pdf')->deleteFileAfterSend(true);
+        }
+
+        return redirect()->route('company.dashboard');
        
    }
 
@@ -69,7 +85,7 @@ class ExportController extends Controller
 
     if ($company->download_count >= $downloadLimit) {
         // Company has reached the download limit, redirect or show an error
-        $this->alert('Error', 'Download limit finished' , 'danger');
+        $this->alert('Error', 'Free Download limit finished' , 'danger');
         return back();
     }
   

@@ -307,6 +307,9 @@ div .bg-menu-theme .menu-inner>.menu-item.active>.menu-link{
 .dropdown-item i {
   color: var(--light_purple);
 }
+
+
+
 .btn-danger:hover{
   transform: none !important;
 }
@@ -358,6 +361,8 @@ div .bg-menu-theme .menu-inner>.menu-item.active>.menu-link{
 .btn-account {
   border: 1px solid #fff;
 }
+
+
 
 .form-label {
   color: var(--text-color);

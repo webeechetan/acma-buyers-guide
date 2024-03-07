@@ -289,33 +289,49 @@
 
                                                 <div class="tab-pane fade" id="salesTurnover">
                                                    <div class="tab-pane-header-new">
-                                                      <h5 class="mb-0 text-justify fw-semibold  text-dark">Sales Turnover Filter(In Lakh)</h5>
+                                                      <h5 class="mb-0 text-justify fw-semibold  text-dark">Sales Turnover Filter(In Crore)</h5>
                                                    </div>
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input active-check" type="checkbox" name="range[]" value="0-5000" {{ in_array('0-5000', request('range', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               0 - 5000
+                                                               0 - 50
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="range[]" value="5001-10000"{{ in_array('5001-10000', request('range', [])) ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="range[]" value="5100-10000"{{ in_array('5100-10000', request('range', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               5001-10000
+                                                               51-100
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="10001-50000" {{ in_array('10001-50000', request('range', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="10100-20000" {{ in_array('10100-20000', request('range', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  10001-50000
+                                                                  101-200
                                                                </label>
                                                             </div>
-                                                      </div>                                                  
+                                                      </div>     
+                                                      <div class="col-md-4 col-sm-6 col-6">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="20100-50000" {{ in_array('20100-50000', request('range', [])) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  201-500
+                                                               </label>
+                                                            </div>
+                                                      </div>
+                                                      <div class="col-md-4 col-sm-6 col-6">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="50100-500000" {{ in_array('50100-500000', request('range', [])) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  501 and More
+                                                               </label>
+                                                            </div>
+                                                      </div>                                           
                                                    </div>
                                                   
                                                 </div>
@@ -323,7 +339,7 @@
 
                                                 <div class="tab-pane fade" id="exportTurnover">
                                                    <div class="tab-pane-header-new">
-                                                      <h5 class="mb-0 text-start fw-semibold  text-dark">Export Turnover Filter(In Lakh)</h5>
+                                                      <h5 class="mb-0 text-start fw-semibold  text-dark">Export Turnover Filter(In Crore)</h5>
                                                    </div>
 
                                                    <div class="row mt-2">
@@ -331,26 +347,43 @@
                                                          <div class="form-check form-check-inline form-check-flex">
                                                             <input class="form-check-input active-check"  type="checkbox" name="ranges[]" value="0-5000" {{ in_array('0-5000', request('ranges', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               0 - 5000
+                                                               0 - 50
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="5001-10000" {{ in_array('5001-10000', request('ranges', [])) ? 'checked' : '' }}>
+                                                            <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="5100-10000" {{ in_array('5100-10000', request('ranges', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               5001-10000
+                                                               51-100
                                                             </label>
                                                          </div>
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="10001-50000" {{ in_array('10001-50000', request('ranges', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="10100-20000" {{ in_array('10100-20000', request('ranges', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  10001-50000
+                                                                  101-200
                                                                </label>
                                                             </div>
-                                                      </div>                                   
+                                                      </div>          
+                                                      <div class="col-md-4 col-sm-6 col-6">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="20100-50000" {{ in_array('20100-50000', request('ranges', [])) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  201-500
+                                                               </label>
+                                                            </div>
+                                                      </div>         
+                                                      <div class="col-md-4 col-sm-6 col-6">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="50100-500000" {{ in_array('50100-500000', request('ranges', [])) ? 'checked' : '' }}>
+                                                               <label class="form-check-label" for="checkbox-one">
+                                                                  501 and more
+                                                               </label>
+                                                            </div>
+                                                      </div>         
+
                                                    </div>
 
                                                    {{-- /////// --}}
@@ -453,28 +486,139 @@
                                                    <div class="row mt-2">
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="bismark" {{ in_array('bismark', request('quality', [])) ? 'checked' : '' }}>
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 9001" {{ in_array('ISO 9001', request('quality', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               Bismark
+                                                               ISO 9001
                                                             </label>
                                                          </div>
                                                       </div>
+                                                      
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="emark" {{ in_array('emark', request('quality', [])) ? 'checked' : '' }}>
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 9000" {{ in_array('ISO 9000', request('quality', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               Emark
+                                                               ISO 9000
                                                             </label>
                                                          </div>
                                                       </div>
+
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="japan_quality_medal" {{ in_array('japan_quality_medal', request('quality', [])) ? 'checked' : '' }}>
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 9002" {{ in_array('ISO 9002', request('quality', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
-                                                               Japan Quality Metal
+                                                               ISO 9002
                                                             </label>
                                                          </div>
                                                       </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 19001" {{ in_array('ISO 19001', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               ISO 19001
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="9001:2008" {{ in_array('9001:2008', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               9001:2008
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="9001:2005" {{ in_array('9001:2005', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               9001:2005
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="9001:2015" {{ in_array('9001:2015', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               9001:2015
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="QS 9000" {{ in_array('QS 9000', request('QS 9000', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               QS 9000
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 14001" {{ in_array('ISO 14001', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               ISO 14001
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="14001:2015" {{ in_array('14001:2015', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               14001:2015
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="14001:2018" {{ in_array('14001:2018', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               14001:2018
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 14000" {{ in_array('ISO 14000', request('ISO 14000', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               ISO 14000
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="14001:2004" {{ in_array('14001:2004', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               14001:2004
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO/TS16949" {{ in_array('ISO/TS16949', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               ISO/TS16949
+                                                            </label>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="col-md-4 col-6 mb-2">
+                                                         <div class="form-check form-check-inline form-check-flex">
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="TS16949" {{ in_array('TS16949', request('quality', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="checkbox-one">
+                                                               TS16949
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      
                                                    </div>
                                                 </div>
                                               {{-- /////quality standard --}}
@@ -518,7 +662,7 @@
 
             <div class="d-flex gap-2 mb-4">
                <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true">Check All</button>
-               <a href="{{ route('dashboard.company.exportAll') }}"  class="btn btn-danger">Download All Data</a>
+               {{-- <a href="{{ route('dashboard.company.exportAll') }}"  class="btn btn-danger">Download All Data</a> --}}
               
             </div>
 
@@ -631,7 +775,9 @@
                               @endif
                               {{-- <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a> --}}
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i
-                                    class="fa fa-times text-white" aria-hidden="true"></i></span>                                     
+                                    class="fa fa-times text-white" aria-hidden="true"></i></span>   
+                                    
+                                    <a id="downloadAllButton" href="{{ route('dashboard.company.exportAll') }}"  class="btn btn-primary">Download All Data</a>
                            </div>
                            <div class="checked_company_download">
                               <button type="submit" class="btn btn-primary">Download Data <i
@@ -1051,6 +1197,8 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
    $(document).ready(function(){
       $('.toggle_allcheckbox').click(function(){
 
+         //alert(checked_companies);
+
          var check = $(this).attr("data-check");
          
          if(check == 'true'){
@@ -1061,6 +1209,7 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $(this).text('Uncheck All');
 
             $(".checked_company_download").fadeIn('slow');
+
             var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
            

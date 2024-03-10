@@ -207,7 +207,7 @@ class CompanyController extends Controller
         $request->validate([
             'name' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:50',
-            'phone' => 'nullable|digits_between:7,12',
+            'phone' => 'nullable|regex:/^[0-9()-]{7,12}$/',
         ]);
         
        

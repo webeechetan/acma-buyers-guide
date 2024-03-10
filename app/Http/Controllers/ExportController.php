@@ -42,7 +42,9 @@ class ExportController extends Controller
     public function exportMultipleCompanyPDF(Request $request){
 
        
-        $company_ids = $request->company_ids;
+       // $company_ids = $request->company_ids;
+
+       $company_ids = array_unique($request->company_ids);
 
         if ($company_ids && count($company_ids) > 0) {
             $companies = Company::whereIn('id', $company_ids)->get();

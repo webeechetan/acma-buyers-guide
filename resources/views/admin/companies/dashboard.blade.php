@@ -549,7 +549,7 @@
 
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="QS 9000" {{ in_array('QS 9000', request('QS 9000', [])) ? 'checked' : '' }}>
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="QS 9000" {{ in_array('QS 9000', request('quality', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                QS 9000
                                                             </label>
@@ -585,7 +585,7 @@
 
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 14000" {{ in_array('ISO 14000', request('ISO 14000', [])) ? 'checked' : '' }}>
+                                                            <input class="form-check-input" type="checkbox" name="quality[]" value="ISO 14000" {{ in_array('ISO 14000', request('quality', [])) ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="checkbox-one">
                                                                ISO 14000
                                                             </label>
@@ -826,6 +826,7 @@ $(document).ready(function () {
       });
       $(this).unbind('submit').submit();
    });
+
 
 
    $(".filter-name").click(function (e) {

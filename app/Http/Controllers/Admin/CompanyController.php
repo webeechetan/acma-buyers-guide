@@ -69,14 +69,19 @@ class CompanyController extends Controller
         $company = Company::find($id);
 
         if ($company) {
+            //here I am removing the company update request table related data
+            foreach ($company->company_update_requests as $updatelogs) {
+               $updatelogs->delete();
+            }
+            
             
             $company->delete();
-            $this->alert('Success', 'Company deleted successfully','success');
+    
+            $this->alert('Success', 'Company and related data deleted successfully', 'success');
             return redirect()->route('admin.companies');
         } else {
-            $this->alert('Error', 'Invalid details','danger');
+            $this->alert('Error', 'Invalid details', 'danger');
             return redirect()->back();
-            
         }
     }
 }

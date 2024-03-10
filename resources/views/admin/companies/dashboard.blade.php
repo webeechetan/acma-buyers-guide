@@ -825,6 +825,8 @@ $(document).ready(function () {
          $(".appended_checkboxes_for_download").append('<input type="checkbox" name="company_ids[]" value="' + company_id + '" checked>');
       });
       $(this).unbind('submit').submit();
+
+      clear_checked();
    });
 
 
@@ -1188,7 +1190,6 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
         button.addEventListener('click', function() {
             // Clear the entire local storage
             localStorage.clear();
-
             // Redirect to the 'company.dashboard' route or any other desired route
             window.location.href = '{{ route("company.dashboard") }}';
         });
@@ -1196,6 +1197,14 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
 
 
    $(document).ready(function(){
+
+      var checked_companies_for_dispaly_download_btn = localStorage.getItem('checked_companies');
+      checked_companies_for_dispaly_download_btn = JSON.parse(checked_companies_for_dispaly_download_btn);
+
+      if(checked_companies_for_dispaly_download_btn != null && checked_companies_for_dispaly_download_btn.length > 0){
+         $(".checked_company_download").fadeIn('slow');
+      }
+
       $('.toggle_allcheckbox').click(function(){
 
          //alert(checked_companies);
@@ -1212,6 +1221,17 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $(".checked_company_download").fadeIn('slow');
 
             var checkedCount = $('.company_checkbox:checked').length;
+
+            var old_checked_companies = localStorage.getItem('checked_companies');
+
+            old_checked_companies = JSON.parse(old_checked_companies);
+
+            if(old_checked_companies == null){
+               old_checked_companies = [];
+            }
+
+            checkedCount = +checkedCount + old_checked_companies.length;
+
             $(".checked_companies").html("Selected Companies: " + checkedCount);
            
              $('#companyBadge').html(checkedCount);
@@ -1235,19 +1255,53 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
                         
          }else{
 
+            var checkboxex_on_current_page = $('.company_checkbox:checked');
+
+            var ids = [];
+
+            checkboxex_on_current_page.each(function(){
+               var companyId = $(this).val();
+               ids.push(parseInt(companyId));
+            });
+
+            console.log(ids);
+
+            var checked_companies = localStorage.getItem('checked_companies');
+
+            checked_companies = JSON.parse(checked_companies);
+
+            if(checked_companies == null){
+               checked_companies = [];
+            }
+
+            var new_checked_companies = checked_companies.filter(function(companyId){
+               return !ids.includes(companyId);
+            });
+
+            localStorage.setItem('checked_companies', JSON.stringify(new_checked_companies));
+
+            var checkedCount = localStorage.getItem('checked_companies');
+
+            checkedCount = JSON.parse(checkedCount);
+
+            checkedCount = checkedCount.length;
+
+
+            $(".checked_company_download").fadeOut('slow');
+            var checkedCount = localStorage.getItem('checked_companies');
+            checkedCount = JSON.parse(checkedCount);
+            checkedCount = checkedCount.length;
+
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
             $('.company_checkbox').prop('checked', false);
             $(this).attr("data-check", true);
             $(this).text('Check All');
 
-            $(".checked_company_download").fadeOut('slow');
-            var checkedCount = $('.company_checkbox:checked').length;
             $(".checked_companies").html("Selected Companies: " + checkedCount);
             $('#companyBadge').html(checkedCount);
             //this line to is uncheck the modalcheckbox 
             $(".company_checkbox_in_modal").prop('checked', false);
             
-            localStorage.setItem('checked_companies', JSON.stringify([]));
 
          }
       });

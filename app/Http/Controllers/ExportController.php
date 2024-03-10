@@ -53,23 +53,18 @@ class ExportController extends Controller
             if ($companies->count() > 0) {
                 $view = View::make('selected-company-download-pdf', compact('companies'));
         
-                // Generate PDF from the Blade view
                 $pdf = \PDF::loadHTML($view->render());
         
-                // Save the PDF file to a temporary location
                 $pdfPath = storage_path('app/Acma_Buyers_Guide.pdf');
                 $pdf->save($pdfPath);
         
-                // Return the file download response
                 return response()->download($pdfPath, 'Acma Buyers Guide.pdf')->deleteFileAfterSend(true);
+
             } else {
-                // Show message if no companies were found
                 return 'No companies found';
             }
         } else {
-            // Show message if $company_ids is not set or empty
             return redirect()->route('company.dashboard');
-
         }
 
         return redirect()->route('company.dashboard');

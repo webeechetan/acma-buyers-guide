@@ -24,6 +24,10 @@ $(".company_checkbox").click(function (e) {
     var id = $(this).data('id');
     if ($(this).is(':checked')) {
 
+        $(".toggle_allcheckbox").prop('checked', true);
+        $(".toggle_allcheckbox").attr("data-check",'false');
+        $(".toggle_allcheckbox").html('Uncheck All');
+
         // alert('if block');
        
 
@@ -35,21 +39,20 @@ $(".company_checkbox").click(function (e) {
     } else {
 
         // alert('else block');
-       
+        checked_companies = localStorage.getItem('checked_companies') ? JSON.parse(localStorage.getItem('checked_companies')) : [];
+
+        
         $(".company_id_in_modal_" + id).prop('checked', false);
         checked_companies = checked_companies.filter(function (item) {
             return item !== id
         })
-        $(".checked_companies").html("Selected Companies: " + checked_companies.length);
-
+        
         //////////
-            var checkedCount = $('.company_checkbox:checked').length;
-            $(".checked_companies").html("Selected Companies: " + checkedCount);
+        var checkedCount = $('.company_checkbox:checked').length;
+        $(".checked_companies").html("Selected Companies: " + checkedCount);
         //////////
     }
 
-
-    console.log(checked_companies);
     localStorage.setItem('checked_companies', JSON.stringify(checked_companies));
     checked_companies_count = localStorage.getItem('checked_companies');
     if(checked_companies_count){
@@ -58,7 +61,8 @@ $(".company_checkbox").click(function (e) {
     if(checked_companies_count.length  == 0){
            $(".checked_company_download").fadeOut('slow');
     }   
-   
+
+    $(".checked_companies").html("Selected Companies: " + checked_companies.length);
 
 
 });
@@ -76,6 +80,10 @@ $(".company_checkbox_in_modal").click(function (e) {
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
        // $(".checked_company_info").fadeIn('slow');
        $(".checked_company_download").fadeIn('slow');
+
+       $(".toggle_allcheckbox").prop('checked', true);
+       $(".toggle_allcheckbox").attr("data-check",'false');
+       $(".toggle_allcheckbox").html('Uncheck All');
 
     } else {
         $("#company_checkbox_" + id).prop('checked', false);
@@ -107,8 +115,11 @@ if (checked_companies_storage) {
     });
 }
 
+
 $(".total_companies").html("Total Companies: " + $("#total_companies").val());
 $(".checked_companies").html("Selected Companies: " + checked_companies.length);
+
+setTimeout(checkIfAnyCompanyCheckedOnCurrentPage, 1000);
 
 $(".advance-filter").submit(function (e) {
     localStorage.removeItem('checked_companies');
@@ -126,7 +137,6 @@ $(document).ready(function () {
 
     if(checked_companies_storage){
         checked_companies_storage = JSON.parse(checked_companies_storage);
-        console.log(checked_companies_storage.length);
         if(checked_companies_storage.length > 0){
             $("#companyBadge").html(checked_companies_storage.length);
         }
@@ -154,5 +164,14 @@ $(document).ready(function () {
 
 
 });
+
+function checkIfAnyCompanyCheckedOnCurrentPage(){
+    var checked_c = $('.company_checkbox:checked');
+    if(checked_c.length > 0){
+        $(".toggle_allcheckbox").prop('checked', true);
+        $(".toggle_allcheckbox").attr("data-check",'false');
+        $(".toggle_allcheckbox").html('Uncheck All');
+    }
+}
 
 

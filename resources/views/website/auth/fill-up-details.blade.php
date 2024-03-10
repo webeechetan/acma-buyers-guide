@@ -64,7 +64,7 @@
                             </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="phone">Company Phone</label>
-                                <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter Your Phone Number" value="{{ $company_contact_details->phone }}">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter Your Phone Number" value="{{ $company_contact_details->phone }}">
                                 <x-validation-error name="phone"/>
                               </div>
                               
@@ -157,7 +157,7 @@
                                   
                               <div class="col-md-3">
                               <label class="form-label" for="plant_phone">Plant Phone</label>
-                              <input type="number" id="plant_phone" name="plant_phone" class="form-control" placeholder="Enter Your Plant Phone Number" value="{{ $company_contact_details->plant_phone }}">
+                              <input type="text" id="plant_phone" name="plant_phone" class="form-control" placeholder="Enter Your Plant Phone Number" value="{{ $company_contact_details->plant_phone }}">
                               </div>
 
                               <div class="col-md-3">

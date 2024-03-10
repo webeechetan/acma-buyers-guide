@@ -70,7 +70,7 @@
                             </div>
 
                         @else
-                            <span class="text text-danger"> No Approveed Request</span>
+                            <span class="text text-danger"> No Approved Request</span>
                         @endif
                     </div>
                 </div>

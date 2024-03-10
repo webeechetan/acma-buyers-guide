@@ -42,5 +42,9 @@ class Company extends Authenticatable
         return $this->hasOne(CompanyForeignCollaboration::class);
     }
 
+    public function company_update_requests(){
+        return $this->hasMany(CompanyUpdateRequest::class);
+    }
+
     
 }

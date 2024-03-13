@@ -57,6 +57,7 @@ class ExportController extends Controller
         
                 $pdfPath = storage_path('app/Acma_Buyers_Guide.pdf');
                 $pdf->save($pdfPath);
+                session()->put('downloaded', true);
         
                 return response()->download($pdfPath, 'Acma Buyers Guide.pdf')->deleteFileAfterSend(true);
 

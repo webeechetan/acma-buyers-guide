@@ -284,8 +284,6 @@ class CompanyController extends Controller
         // // If you want to re-index the array after removing duplicates
          $combinedLocations = array_values($uniqueLocations);
 
-
-
         return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','salesTurnovers','combinedLocations','combinedProducts'));
     
     }

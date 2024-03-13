@@ -10,6 +10,7 @@
 @section('content')
 <!-- Content -->
 
+
 <section class="sec-space pb-0">
    <div>
       <!--- Search Filter ---->
@@ -804,6 +805,17 @@
 
 
 </section>
+
+
+{{-- @if(session()->has('downloaded'))
+    <div id="downloaded" data-downloaded="true"></div>
+@else
+    <div id="downloaded" data-downloaded="false"></div>
+@endif
+ --}}
+
+
+
 @endsection
 @push('scripts')
 
@@ -815,7 +827,18 @@
 
 $(document).ready(function () {
 
+
+   // var downloaded = document.getElementById('downloaded').getAttribute('data-downloaded');
+   //  if (downloaded === 'true') {
+   //     sessionStorage.removeItem('downloaded');
+   //     //window.location.reload();
+   //  } 
+
+
+
+
    // hanlde download form submit 
+
 
    $(".export-data-form").submit(function (e) {
       e.preventDefault();
@@ -824,9 +847,11 @@ $(document).ready(function () {
       checked_companies_on_other_pages.forEach(function (company_id) {
          $(".appended_checkboxes_for_download").append('<input type="checkbox" name="company_ids[]" value="' + company_id + '" checked>');
       });
-      $(this).unbind('submit').submit();
 
       clear_checked();
+      $(this).unbind('submit').submit();
+
+     
    });
 
 

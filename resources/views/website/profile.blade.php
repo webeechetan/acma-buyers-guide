@@ -83,7 +83,7 @@
         </div> -->
           <div class="information-list profile-list">
              <div class="d-flex justify-content-between mb-2">
-                <h5 class="text-primary fw-medium mb-0">Contact</h5>
+                <h5 class="text-primary fw-medium">Contact Details</h5>
                 <a href="{{ route('company.fillUpDetails') }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Edit"><i class='bx bxs-edit'></i></a>
              </div>
             <ul>
@@ -200,7 +200,8 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="text-primary mb-0" id="exampleModalLabel">Profile Update Request<span class="text-primary mb-0"> ( {{ $CompanyUpdateRequest->updated_at->format('d-M-y')}})</span></h4>
+                <h4 class="text-primary mb-2" id="exampleModalLabel">Profile Update Request</h4>
+                <span class="text-primary mb-0">{{ $CompanyUpdateRequest->updated_at->format('d-M-y')}}</span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   </button>
               </div>

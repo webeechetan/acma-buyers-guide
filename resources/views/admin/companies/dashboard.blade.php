@@ -643,15 +643,15 @@
             <div class="row">
               <div class="col-md-12">
                   <div class="checked_company_info mb-3"> 
-                     <span class="total_companies badge bg-dark text-capitalize"></span>
-                     <span class="checked_companies badge bg-primary text-capitalize"></span>
+                     <span class="total_companies badge bg-dark text-uppercase"></span>
+                     <span class="checked_companies badge bg-primary text-uppercase"></span>
 
                      @if(!empty(request()->query()))
-                        <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a>
+                        <a href="{{ url()->current() }}" class="badge bg-info text-uppercase p-3 view-all-button">View All</a>
                      @endif
 
-                     {{-- <a href="{{ url()->current() }}"  class="badge bg-info text-capitalize p-3 view-all-button">View All</a>     --}}
-                     <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
+                     {{-- <a href="{{ url()->current() }}"  class="badge bg-info text-uppercase p-3 view-all-button">View All</a>     --}}
+                     <span class="clear_checked badge bg-danger text-uppercase pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                      
                   </div>
                </div>
@@ -661,11 +661,20 @@
 
             
 
-            <div class="d-flex gap-2 mb-4">
-               <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true">Check All</button>
+            <div class="multi-button mb-4">
+               <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true" data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select All on Page 1">Select All</button>
+               <span class="text-uppercase" id="regionBadge">Total Region:</span>
+               <span class="text-uppercase">Total Products:</span>
+               <span class="text-uppercase">Total Trademark:</span>
+               <span class="text-uppercase">Total Sale Turnover:</span>
+               <span class="text-uppercase">Total Export Turnover:</span>
+               <span class="text-uppercase">Total No. Of Employees:</span>
+               <span class="text-uppercase">Total State & City:</span>
+               <span class="text-uppercase">Total Qs Standard:</span>
                {{-- <a href="{{ route('dashboard.company.exportAll') }}"  class="btn btn-danger">Download All Data</a> --}}
               
             </div>
+
 
             <!--- Company Card --->
             <div class="company-card">
@@ -778,12 +787,16 @@
                               <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i
                                     class="fa fa-times text-white" aria-hidden="true"></i></span>   
                                     
-                                    <a id="downloadAllButton" href="{{ route('dashboard.company.exportAll') }}"  class="btn btn-primary">Download All Data</a>
+                                   
                            </div>
                            <div class="checked_company_download">
                               <button type="submit" class="btn btn-primary">Download Data <i
                                     class='bx bx-download ms-2 text-white fw-medium'></i></button>
+                                    
                            </div>
+                          <div class="mt-4">
+                          <a id="downloadAllButton" class="btn-data" href="{{ route('dashboard.company.exportAll') }}"  >Download All Data</a>
+                          </div>
                         </div>
                      </div>
                   </form>
@@ -1201,9 +1214,29 @@ $(document).ready(function () {
 
 
 <script>
-   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
 
+// Tooltip Checkboxes by Himanshu
+document.addEventListener("DOMContentLoaded", function() {
+    var checkboxes = document.querySelectorAll('.company_checkbox');
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener("change", function() {
+            var tooltip = bootstrap.Tooltip.getInstance(this);
+
+            if (this.checked) {
+                tooltip._element.setAttribute("title", "Selected");
+                tooltip._element.dataset.originalTitle = "Selected"; 
+            } else {
+                tooltip._element.setAttribute("title", "Select");
+                tooltip._element.dataset.originalTitle = "Select"; 
+            }
+            tooltip._fixTitle();
+
+            tooltip.show();
+        });
+
+        new bootstrap.Tooltip(checkbox);
+    });
 });
 
 
@@ -1241,7 +1274,7 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $('.company_checkbox').parent().parent().parent().addClass('card-border');
             $('.company_checkbox').prop('checked', true);
             $(this).attr("data-check", false);
-            $(this).text('Uncheck All');
+            $(this).text('UnSelect All');
 
             $(".checked_company_download").fadeIn('slow');
 
@@ -1320,7 +1353,7 @@ var viewAllButtons = document.querySelectorAll('.view-all-button');
             $('.company_checkbox').parent().parent().parent().removeClass('card-border');
             $('.company_checkbox').prop('checked', false);
             $(this).attr("data-check", true);
-            $(this).text('Check All');
+            $(this).text('Select All');
 
             $(".checked_companies").html("Selected Companies: " + checkedCount);
             $('#companyBadge').html(checkedCount);

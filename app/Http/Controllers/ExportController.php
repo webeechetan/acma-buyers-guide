@@ -74,34 +74,33 @@ class ExportController extends Controller
 
 
    
-   public function exportAllCompanyPDF(Request $request){
-       
-
- 
-    $company = auth('company')->user();
-    $downloadLimit = 5;
-
-    if ($company->download_count >= $downloadLimit) {
-        // Company has reached the download limit, redirect or show an error
-        $this->alert('Error', 'Free Download limit finished' , 'danger');
-        return back();
-    }
-  
-    $filePath = storage_path('app/public/CompanyData/Acma_Buyers_Guide.pdf');
-
-    // Check if the file exists
-    if (file_exists($filePath)) {
-
-        $company->download_count++;
-        $company->saveQuietly();
-        // Provide headers for the download
-        return response()->download($filePath, 'Acma_Buyers_Guide.pdf');
-    } else {
-            $this->alert('Error', 'File Not found' , 'danger');
-            return back();
-    }
+   public function exportAllCompanyPDF(Request $request)
    
-}
+     {
+       
+        $company = auth('company')->user();
+        $downloadLimit = 5;
+
+        if ($company->download_count >= $downloadLimit) {
+            // Company has reached the download limit, redirect or show an error
+            $this->alert('Error', 'Free Download limit finished' , 'danger');
+            return back();
+        }
+  
+        $filePath = storage_path('app/public/CompanyData/Acma_Buyers_Guide.pdf');
+        // Check if the file exists
+        if (file_exists($filePath)) {
+
+            $company->download_count++;
+            $company->saveQuietly();
+            // Provide headers for the download
+            return response()->download($filePath, 'Acma_Buyers_Guide.pdf');
+        } else {
+                $this->alert('Error', 'File Not found' , 'danger');
+                return back();
+        }
+   
+    }
 
 
 

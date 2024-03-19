@@ -40,43 +40,6 @@ class ExportController extends Controller
     }
 
 
-//     public function exportMultipleCompanyPDF(Request $request){
-       
-
-       
-        
-//         $company_ids = $request->company_ids;
-
-//        $company_ids = array_unique($request->company_ids);
-
-//         if ($company_ids && count($company_ids) > 0) {
-//             $companies = Company::whereIn('id', $company_ids)->get();
-
-        
-//             if ($companies->count() > 0) {
-//                 $view = View::make('selected-company-download-pdf', compact('companies'));
-        
-//                 $pdf = \PDF::loadHTML($view->render());
-        
-//                 $pdfPath = storage_path('app/Acma_Buyers_Guide.pdf');
-//                 $pdf->save($pdfPath);
-//                 session()->put('down', true);
-
-        
-//                 return response()->download($pdfPath, 'Acma Buyers Guide.pdf')->deleteFileAfterSend(true);
-
-//             } else {
-//                 return 'No companies found';
-//             }
-//         } else {
-//             return redirect()->route('company.dashboard');
-//         }
-       
-//         return redirect()->route('company.dashboard');
-      
-//    }
-
-
 
 public function exportMultipleCompanyPDF(Request $request) {
     

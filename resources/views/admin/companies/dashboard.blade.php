@@ -327,7 +327,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="50100-500000" {{ in_array('50100-500000', request('range', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="50100-5000000" {{ in_array('50100-5000000', request('range', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   501 and More
                                                                </label>
@@ -378,13 +378,12 @@
                                                       </div>         
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="50100-500000" {{ in_array('50100-500000', request('ranges', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="50100-5000000" {{ in_array('50100-5000000', request('ranges', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   501 and more
                                                                </label>
                                                             </div>
-                                                      </div>         
-
+                                                      </div>     
                                                    </div>
 
                                                    {{-- /////// --}}
@@ -469,9 +468,9 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp[]" value="501-12000" {{ in_array('501-12000', request('no_ofEmp', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp[]" value="501-120000" {{ in_array('501-120000', request('no_ofEmp', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  501-12000
+                                                                  501-120000
                                                                </label>
                                                             </div>
                                                       </div>

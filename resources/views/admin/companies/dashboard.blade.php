@@ -658,7 +658,7 @@
                <!-- Your modified HTML code with a styled button -->
 
             <div class="multi-button mb-4">
-               <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true" data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select All on Page 1">Select All</button>
+               <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true" data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select All on Current Page">Select All</button>
             
                <span class="text-uppercase {{ request()->has('regions') ? 'highlight' : '' }}">Region</span>
                <span class="text-uppercase {{ request()->has('products') ? 'highlight' : '' }}" >Products</span>

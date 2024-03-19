@@ -3,9 +3,6 @@ var checked_companies = localStorage.getItem('checked_companies') ? JSON.parse(l
 var checked_companies_count = [];
 function clear_checked() {
   
-
-    window.location.assign('http://127.0.0.1:8000/company/dashboard');
-
     localStorage.removeItem('checked_companies');
     checked_companies = [];
     $(".checked_companies").html("Selected Companies: 0");
@@ -22,8 +19,7 @@ function clear_checked() {
     //this is to change the text of select all button 
     $(".toggle_allcheckbox").prop('checked', false);
     $(".toggle_allcheckbox").attr("data-check",'true');
-    $(".toggle_allcheckbox").html('Select All');
-
+    $(".toggle_allcheckbox").html('Check All');
 
 }
 
@@ -52,7 +48,7 @@ $(".company_checkbox").click(function (e) {
 
         $(".toggle_allcheckbox").prop('checked', false);
         $(".toggle_allcheckbox").attr("data-check",'true');
-        $(".toggle_allcheckbox").html('Select All');
+        $(".toggle_allcheckbox").html('Check All');
 
 
         // alert('else block');
@@ -89,14 +85,11 @@ $(".company_checkbox").click(function (e) {
 
 $(".company_checkbox_in_modal").click(function (e) {
    
-
     var id = $(this).data('id');
     if ($(this).is(':checked')) {
         $("#company_checkbox_" + id).prop('checked', true);
         $("#company_checkbox_" + id).parent().parent().parent().addClass('card-border');
         checked_companies.push(id);
-
-        
         $(".checked_companies").html("Selected Companies: " + checked_companies.length);
        // $(".checked_company_info").fadeIn('slow');
        $(".checked_company_download").fadeIn('slow');
@@ -110,7 +103,7 @@ $(".company_checkbox_in_modal").click(function (e) {
 
         $(".toggle_allcheckbox").prop('checked', false);
         $(".toggle_allcheckbox").attr("data-check",'true');
-        $(".toggle_allcheckbox").html('Select All');
+        $(".toggle_allcheckbox").html('Check All');
 
 
         $("#company_checkbox_" + id).prop('checked', false);

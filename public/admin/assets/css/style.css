@@ -1675,3 +1675,9 @@ div .timeline .timeline-item{
 .bg-success.toast .toast-header .btn-close, .bg-success.bs-toast .toast-header .btn-close{
   background-color: #008000 !important;
 }
+
+.multi-button span.highlight {
+  background-color: var(--secondary);
+  color: #fff;
+  border: 1px solid var(--secondary);
+}

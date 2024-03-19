@@ -174,7 +174,8 @@
             <div class="timeline-event">
               <div class="timeline-header mb-1">
                 <h6 class="mb-0 text-warning">Request Sent</h6>
-                <small class="text-muted text-warning">{{$CompanyUpdateRequest->created_at->format('d M-y')}}</small>
+                {{-- <small class="text-muted text-warning">{{$CompanyUpdateRequest->created_at->format('d M-y')}}</small> --}}
+                <small class="text-muted text-warning">{{$CompanyUpdateRequest->created_at->format('d M Y H:i:s')}}</small>
               </div>
             </div>
           </li>

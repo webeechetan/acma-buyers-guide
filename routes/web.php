@@ -21,6 +21,13 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
+use Illuminate\Support\Facades\Redirect;
+
+Route::get('company/goto-google', function () {
+    return Redirect::away('https://www.google.com');
+})->name('company.goto');
+
+
 Route::get('/download-excel/{company_ids?}', function (Request $request, $companyIds = null) {
 
     // Convert comma-separated company_ids to an array
@@ -55,17 +62,17 @@ Route::get('/export-word',function(){
 
 
 
-Route::get('/download-pdf', function () {
+// Route::get('/download-pdf', function () {
 
-    //dd('downlo');
-   $pdfPath = public_path('Acma Buyers Guide.pdf');
-    //  dd($pdfPath);
-    if (File::exists($pdfPath)) {
-        return response()->download($pdfPath, 'Acma Buyers Guide.pdf');
-    } else {
-        abort(404, 'PDF file not found');
-    }
-})->name('download-All');
+//     dd('downlo');
+//    $pdfPath = public_path('Acma Buyers Guide.pdf');
+//     //  dd($pdfPath);
+//     if (File::exists($pdfPath)) {
+//         return response()->download($pdfPath, 'Acma Buyers Guide.pdf');
+//     } else {
+//         abort(404, 'PDF file not found');
+//     }
+// })->name('download-All');
 
 
 Route::get('/test/{id}', function ($id) {
@@ -131,6 +138,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 Route::middleware(['company.auth'])->prefix('company')->group(function () {
 
+
         Route::get('/dashboard/{filter?}', [CompanyController::class, 'dashboard'])->name('company.dashboard');     
         Route::get('/fill-up-details', [CompanyController::class, 'fillUpDetails'])->name('company.fillUpDetails');
         Route::post('/fill-up-details', [CompanyController::class, 'fillUpDetailsStore'])->name('company.fillUpDetailsStore');
@@ -153,8 +161,10 @@ Route::middleware(['company.auth'])->prefix('company')->group(function () {
 Route::get('company/otp-verify', [CompanyController::class, 'showOtpLoginForm'])->name('company.otp-form');
 Route::post('company/otp-verify', [CompanyController::class, 'generateLoginOtp'])->name('company.generate_otp');
 
-// Route::get('company/export/', [ExportController::class, 'export_company'])->name('dashboard.company.export');
-Route::get('company/export/', [ExportController::class, 'exportMultipleCompanyPDF'])->name('dashboard.company.export');
+
+
+//Route::get('company/export/', [ExportController::class, 'exportMultipleCompanyPDF'])->name('dashboard.company.export');
+Route::post('company/export/', [ExportController::class, 'exportMultipleCompanyPDF'])->name('dashboard.company.export');
 
 //This route will help to download all data in pdf for website in book formate
 Route::get('company/export-all', [ExportController::class, 'exportAllCompanyPDF'])->name('dashboard.company.exportAll');

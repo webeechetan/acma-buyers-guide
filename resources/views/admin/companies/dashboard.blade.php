@@ -786,7 +786,7 @@
                                  
                          </div>
                          <div class="checked_company_download">
-                            <button type="submit" class="btn btn-primary">Download Data <i
+                            <button type="submit" class="btn btn-primary">Download Selected Data <i
                                   class='bx bx-download ms-2 text-white fw-medium'></i></button>
                                   
                          </div>

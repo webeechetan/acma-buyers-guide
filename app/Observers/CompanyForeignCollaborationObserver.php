@@ -59,7 +59,7 @@ class CompanyForeignCollaborationObserver
      $company_update_request->company_id = $companyForeignCollaboration->company_id;
      $company_update_request->data = json_encode($update_request);
      $company_update_request->modal = 'CompanyForeignCollaboration';
-     $company_update_request->save();
+     $company_update_request->save(); 
 
      return false;
 

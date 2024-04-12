@@ -9,9 +9,6 @@ function clear_checked() {
 
     //window.location.assign('http://127.0.0.1:8000/company/dashboard');
 
-    window.location.assign('https://buyers-guide.webeetest.tech/company/dashboard')
-
-
     localStorage.removeItem('checked_companies');
     checked_companies = [];;
     $(".checked_companies").html("Selected Companies: 0");
@@ -29,6 +26,8 @@ function clear_checked() {
     $(".toggle_allcheckbox").prop('checked', false);
     $(".toggle_allcheckbox").attr("data-check",'true');
     $(".toggle_allcheckbox").html('Select All');
+
+    location.href = location.protocol+'//'+location.host+'/company/dashboard';
 
 
 }
@@ -86,7 +85,10 @@ $(".company_checkbox").click(function (e) {
     }   
 
     $(".checked_companies").html("Selected Companies: " + checked_companies.length);
-
+    // console.log(JSON.parse(localStorage.getItem('checked_companies')).length)
+    setTimeout(()=>{
+        $("#companyBadge").html(JSON.parse(localStorage.getItem('checked_companies')).length)
+    },2000)
 
 });
 

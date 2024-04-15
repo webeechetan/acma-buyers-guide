@@ -46,16 +46,16 @@
 
           @php 
 
-          foreach ($data as $key => $value) {
+        //   foreach ($data as $key => $value) {
 
-            if(!$value['old']){
-                $value['old'] = 'N/A';
-            }
+        //     if(!$value['old']){
+        //         $value['old'] = 'N/A';
+        //     }
            
-            $updating_data .= '<b>' . ucfirst(str_replace('_', ' ', $key)) . '</b> From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
+        //     $updating_data .= '<b>' . ucfirst(str_replace('_', ' ', $key)) . '</b> From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
 
-            // $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
-        }
+        //     // $updating_data .= ucfirst(str_replace('_', ' ', $key)) . ' From ' . implode(', ', (array)$value['old']) . ' to ' . implode(', ', (array)$value['new']) . '<br>';
+        // }
 
 //         foreach ($data as $key => $value) {
 //     if (!$value['old']) {
@@ -72,9 +72,6 @@
 // }
 
         @endphp
-          <tr>
-            <td><p style="margin-bottom: 0;">Updating Data : ' . {!! $updating_data !!} </b></p></td>
-          </tr>
           <tr>
             <td>
                 <p style="margin-bottom: 0;">Regards,</p>

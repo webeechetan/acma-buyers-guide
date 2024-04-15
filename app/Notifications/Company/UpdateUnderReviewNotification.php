@@ -18,7 +18,7 @@ class UpdateUnderReviewNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      */
-    public function __construct($company_update_request, $company)
+    public function __construct($company_update_request = null, $company)
     {
 
         

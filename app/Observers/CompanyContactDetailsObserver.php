@@ -69,6 +69,7 @@ class CompanyContactDetailsObserver
         }
 
         session()->put('is_updated', true);
+        session()->put('should_send_under_review_mail', true);
         
         $company_update_request = new CompanyUpdateRequest();
 
@@ -76,7 +77,7 @@ class CompanyContactDetailsObserver
         $company_update_request->data = json_encode($update_request);
         $company_update_request->modal = 'CompanyContactDetail';
 
-        $company_update_request->save();
+        $company_update_request->saveQuietly();
         // stop the update
         return false;
 

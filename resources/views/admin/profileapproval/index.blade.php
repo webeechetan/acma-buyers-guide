@@ -31,7 +31,15 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="card">
                                         <div>
-                                        <h5 class="text-primary"><b> {{ $request->company->name }}</b></h5>
+                                        <div class="text-primary">
+                                            <b>{{ $request->company->name }}</b> has requested to update their
+                                            <b> 
+                                                @foreach(Str::ucsplit($request->modal) as $word) 
+                                                    {{ $word }} 
+                                                @endforeach
+                                            </b>
+                                            {{-- <b>{{ optional($request->company)->name ?? 'No Company Name' }}</b> has requested to update their @foreach(Str::ucsplit($request->modal) as $word) {{ $word }} @endforeach --}}
+                                        </div>
                                         {{-- <h5 class="text-primary"> {{ optional($request->company)->name ?? 'No Company Name' }}</h5> --}}
                                         </div>
                                         <div class="profile-approve">

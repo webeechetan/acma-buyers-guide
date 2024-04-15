@@ -28,6 +28,7 @@ class CompanyUpdateRequestObserver
     {
         // send only one email when last created update request is created
         
+        // dd($CompanyUpdateRequest);
         // $updated_models = session('updated_models');
 
         // $current_model = $CompanyUpdateRequest->modal;

@@ -33,9 +33,7 @@ class CompanyUpdateRequest extends Model
         $data = json_decode($this->data, true);
 
 
-        //  dd($data);
        // $company = Company::find($this->company_id);
-
         // dd($company);
 
         $company = Company::where('id', $this->company_id)->first();

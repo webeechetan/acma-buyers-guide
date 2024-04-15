@@ -167,7 +167,7 @@
 
                               <div class="col-md-3">
                               <label class="form-label" for="plant_email">Plant Email</label>
-                              <input type="email" id="plant_email" name="plant_email" class="form-control" placeholder="" value="{{ $company_contact_details->plant_email }}">
+                              <input type="text" id="plant_email" name="plant_email" class="form-control" placeholder="" value="{{ $company_contact_details->plant_email }}">
                               </div>
 
                             

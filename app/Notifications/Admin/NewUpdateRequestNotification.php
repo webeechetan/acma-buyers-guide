@@ -17,7 +17,7 @@ class NewUpdateRequestNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      */
-    public function __construct($company_update_request, $company)
+    public function __construct($company_update_request = null, $company)
     {
         $this->company_update_request = $company_update_request;
         $this->company = $company;
@@ -38,9 +38,9 @@ class NewUpdateRequestNotification extends Notification implements ShouldQueue
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $data = $this->company_update_request->data;
-        $data = json_decode($data , true);
-        $updating_data = '';
+        // $data = $this->company_update_request->data;
+        // $data = json_decode($data , true);
+        // $updating_data = '';
 
 
         // $imagePath = $data['image_path'] ?? null;
@@ -52,8 +52,6 @@ class NewUpdateRequestNotification extends Notification implements ShouldQueue
             ->subject('New Update Request')
             ->markdown('admin.emailers.newupdaterequest', [
                 'company' => $this->company,
-                'data' => $data,
-                'updating_data' =>$updating_data,
             ]);
     }
 

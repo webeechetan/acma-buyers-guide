@@ -19,6 +19,9 @@ use App\Helpers\CompanyHelper;
 use App\Models\CompanyUpdateRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\Company\UpdateUnderReviewNotification;
+use App\Models\User;
+use App\Notifications\Admin\NewUpdateRequestNotification;
 
 
 
@@ -207,7 +210,7 @@ class CompanyController extends Controller
         $request->validate([
             'name' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:50',
-            'phone' => 'nullable|regex:/^[0-9()-]{7,12}$/',
+            // 'phone' => 'nullable|regex:/^[0-9()-]{7,12}$/',
         ]);
         
        
@@ -226,6 +229,8 @@ class CompanyController extends Controller
         // $updated_models = ['CompanyContactDetail' => false , 'CompanyKeyPersonnel' => false , 'CompanyProductDetails' => false , 'CompanyForeignCollaboration' => false];
         // session('updated_models', $updated_models);
 
+        session()->put('should_send_under_review_mail', false);
+
         session()->put('is_updated', false);
 
         $company->update($data);
@@ -233,8 +238,14 @@ class CompanyController extends Controller
         $company_key_personnel->update($data);
         $company_product_detail->update($data);
         $company_foreign_collaboration->update($data);
-
         if(session('is_updated') == true){
+            if(session('should_send_under_review_mail')){
+                $company = Company::where('id', $company_id)->first();
+                $company->notify(new UpdateUnderReviewNotification(null,$company));
+                $admin = User::find(1);
+                $admin->notify(new NewUpdateRequestNotification(null, $company));
+                session()->pull('should_send_under_review_mail');
+            }
             $this->alert('Success', 'Details sent to review. we will notify you once approved. ' , 'success');
         }
 

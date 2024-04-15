@@ -54,13 +54,14 @@ class CompanyProductDetailsObserver
         }
 
         session()->put('is_updated', true);
+        session()->put('should_send_under_review_mail', true);
 
         $company_update_request = new CompanyUpdateRequest();
 
         $company_update_request->company_id = $companyProductDetails->company_id;
         $company_update_request->data = json_encode($update_request);
         $company_update_request->modal = 'CompanyProductDetails';
-        $company_update_request->save();
+        $company_update_request->saveQuietly();
 
         return false;
 

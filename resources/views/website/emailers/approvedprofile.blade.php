@@ -40,7 +40,7 @@
             <td><p style="margin-bottom: 0;"><strong style="color: #07395C;">Hello  {{ $company->name }} , </strong><br> </p></td>
           </tr>
           <tr>
-            <td><p style="margin-bottom: 0;">Your company update request is approved Successfully</p></td>
+            <td><p style="margin-bottom: 0;">Your company update request is approved successfully</p></td>
           </tr>
 
           <tr>

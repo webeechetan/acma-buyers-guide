@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProfileApprovalController;
 use App\Imports\CompanyImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\Admin\GuestController;
 use App\Models\Company;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
@@ -131,6 +132,19 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/profile/approved', [ProfileApprovalController::class, 'showApprovedRequest'])->name('admin.profile.approved');
     
+
+
+    //////////Guest login routes
+    Route::get('/guest', [GuestController::class, 'index'])->name('guest');
+    Route::post('/guest/add', [GuestController::class, 'store'])->name('guest.store');
+    Route::delete('/guest/destroy/{id}', [GuestController::class, 'destroy'])->name('guest.destroy');
+
+
+
+    
+Route::get('/guest/login', [GuestController::class, 'login'])->name('guest.login');
+
+
 });
 
 

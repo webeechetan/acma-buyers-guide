@@ -694,7 +694,8 @@
                                                        <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
                                                     </div>
                                                     <div>
-                                                       @if($company && $company->contact_details->state)
+                                                       {{-- @if($company && $company->contact_details->state) --}}
+                                                       @if($company && $company->contact_details && $company->contact_details->state)
                                                           <span>{{ucfirst($company->contact_details->state)}}</span>
                                                        @else
                                                        <span>NA</span>
@@ -707,7 +708,7 @@
                                                     </div>
                                                     <div>
 
-                                                       @if($company && $company->contact_details->phone)
+                                                      @if($company && $company->contact_details && $company->contact_details->phone)
                                                        
                                                              <span>{{$company->contact_details->phone}}</span>
                                                        @else 
@@ -722,7 +723,7 @@
                                                     </div>
                                                     <div>
                                                     
-                                                       @if($company && $company->contact_details->fax)
+                                                      @if($company && $company->contact_details && $company->contact_details->fax)
                                                           <span>{{$company->contact_details->fax}}</span> 
                                                           @else 
                                                           <span>NA</span>

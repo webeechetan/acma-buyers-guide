@@ -48,6 +48,14 @@
           <div class="text-truncate" data-i18n="Approved Request">Approved Request</div>
         </a>
       </li> --}}
+
+      
+      <li class="menu-item {{ Route::is('guest') ? 'active' : '' }} ">
+        <a href="{{route('guest')}}" class="menu-link ">
+          <i class="menu-icon menu-icon bx bx-user"></i>
+          <div class="text-truncate" data-i18n="Guests">Guests</div>
+        </a>
+      </li> 
       
     </ul>
 </aside>

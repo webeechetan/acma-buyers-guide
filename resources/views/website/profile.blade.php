@@ -10,7 +10,8 @@
         <div class="d-flex align-items-center mb-3 mb-md-0">
           <div>
             
-            @if($company_contact_details->image)
+            
+            @if($company_contact_details && $company_contact_details->image)
               <img src="{{ asset('storage/'. $company_contact_details->image) }}" alt="Company_logo" class="d-block h-auto ms-0 rounded user-profile-img">
             @else
                @php
@@ -33,7 +34,7 @@
                 <h4 class="text-dark mb-2">{{$company->name}}</h4>
                 <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                   
-                  @if($company_contact_details->state)
+                  @if($company_contact_details && $company_contact_details->state)
                   <li class="list-inline-item fw-medium">
                     <i class="bx bx-map"></i> {{$company_contact_details->state}}
                   </li>
@@ -92,7 +93,7 @@
                       <i class="bx bx-phone"></i><span>Contact</span>
                   </div>
 
-                  @if($company_contact_details->phone)
+                  @if( $company_contact_details && $company_contact_details->phone)
                   <div>
                       <span>{{$company_contact_details->phone }}</span>
                   </div>
@@ -105,7 +106,7 @@
                       <i class="bx bx-chat"></i><span>Fax</span> 
                   </div>
 
-                  @if($company_contact_details->fax)
+                  @if($company_contact_details && $company_contact_details->fax)
                   <div>
                       <span>{{$company_contact_details->fax}}</span>
                   </div>
@@ -117,7 +118,7 @@
                   <div>
                       <i class="bx bx-map-pin"></i><span>Pin</span>
                   </div>
-                  @if($company_contact_details->pin)
+                  @if($company_contact_details && $company_contact_details->pin)
                   <div>
                       <span>{{$company_contact_details->pin}}</span>
                   </div>

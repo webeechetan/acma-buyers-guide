@@ -184,7 +184,7 @@ $(document).ready(function () {
     $("#downloadAllButton").click(function(e) {
         e.preventDefault();
 
-        var confirmation = confirm("Do you want to download all company data for free? You're limited to 5 downloads per year. Are you sure?");
+        var confirmation = confirm("You are limited to 1 downloads per financial year till 31st March 2025. Are you sure you want to proceed with the download?");
 
         if (confirmation) {
             var url = $(this).attr("href");

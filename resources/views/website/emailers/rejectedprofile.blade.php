@@ -40,11 +40,12 @@
             <td><p style="margin-bottom: 10px;"><strong style="color:#07395C;">Hello  {{ $company->name }} , </strong><br> </p></td>
           </tr>
           <tr>
-            <td><p style="margin-bottom: 0;">We are sorry to inform you that your profile update request is Rejected</p></td>
+            <td><p style="margin-bottom: 0;">We are sorry to inform you that your profile update request is rejected</p></td>
           </tr>
 
           <tr>
-            <td><p style="margin-bottom: 0;">For more information please connect to the [NAME][Email]. </p></td>
+            <td><p style="margin-bottom: 0;">For more information please connect to the Deepak Jain at 
+              <a href="mailto:Deepak.jain@acma.in">Deepak.jain@acma.in</a> </p></td>
           </tr>
 
           <tr>

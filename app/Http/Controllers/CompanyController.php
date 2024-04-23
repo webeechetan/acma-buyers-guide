@@ -25,8 +25,6 @@ use App\Notifications\Admin\NewUpdateRequestNotification;
 
 
 
-
-
 //use Illuminate\Support\Facades\Cookie;
 
 class CompanyController extends Controller
@@ -41,7 +39,7 @@ class CompanyController extends Controller
     {
 
         $rules = [
-            'email' => 'required|email|exists:companies'
+             'email' => 'required|email|exists:companies'
         ];
 
         $validator = Validator::make($request->all(), $rules);

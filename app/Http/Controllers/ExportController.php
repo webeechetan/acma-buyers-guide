@@ -113,7 +113,7 @@ public function exportMultipleCompanyPDF(Request $request) {
 
        
         $company = auth('company')->user();
-        $downloadLimit = 5;
+        $downloadLimit = 1;
 
         if ($company->download_count >= $downloadLimit) {
             // Company has reached the download limit, redirect or show an error

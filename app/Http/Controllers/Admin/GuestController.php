@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Guest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class GuestController extends Controller
 {
@@ -32,15 +34,15 @@ class GuestController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:guests,email|max:255',
+        $request->validate([
+            'username' => 'required|string|unique:guests',
+            'password' => 'required|min:6',
         ]);
     
         // Create a new Guest instance
         $guest = new Guest();
-        $guest->name = $validatedData['name'];
-        $guest->email = $validatedData['email'];
+        $guest->username = $request->username;
+        $guest->password = Hash::make($request->password);
         
         // Save the guest record
         $guest->save();
@@ -95,8 +97,23 @@ class GuestController extends Controller
 
     public function login()
     {
+        return view('website.auth.guest-login');
+    }
 
-        dd('login');
-        return view('guests.auth.login');
+    public function authenticate(Request $request){
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        $res = Auth::guard('guest')->attempt(['username' => $request->username, 'password' => $request->password]);
+
+        if ($res) {
+            session('guard', 'guest');
+            return redirect()->route('company.dashboard');
+        } else {
+            $this->alert('Error', 'Invalid login details', 'danger');
+            return redirect()->back()->with('error', 'Invalid login details');
+        }
     }
 }

@@ -7,15 +7,23 @@
             </div>
         </a>
         <div class="top-header-right">
+            @if(session('guard')=='company')
             <div><a class="me-4 text-white" href="{{route('company.profile')}}"><i class='bx bx-user'></i> Profile</a></div>
+            @endif
             <div><a class="me-4 text-white btn btn-danger btn-sm" href="{{ route('company.logout') }}"><i class='bx bx-power-off'></i> Logout</a></div>
            
             <div class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                    <div class="avatar avatar-online">
                         @php
-                        $company = auth()->guard('company')->user();
-                        $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC'; // Default initials if name is empty
+                        $company = auth()->guard(session('guard'))->user();
+                        $name = '';
+                        if(!$company->name) {
+                            $name = $company->username;
+                        } else {
+                            $name = $company->name;
+                        }
+                        $companyInitials = strtoupper(substr($name, 0, 2)) ?? 'DC'; // Default initials if name is empty
                         @endphp
 
                         <div class="d-flex align-items-center">
@@ -27,7 +35,7 @@
                 </a>
                 
                 @php
-                $authenticatedCompany = Auth::guard('company')->user();
+                $authenticatedCompany = Auth::guard(session('guard'))->user();
                 @endphp
                 <ul class="dropdown-menu dropdown-menu-end">
                 <li>
@@ -51,12 +59,14 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
+                    @if(session('guard')=='company')
                     <li>
                         <a class="dropdown-item" href="{{ route('company.fillUpDetails') }}">
                         <i class='bx bx-user-plus me-2'></i>
                         <span class="align-middle">Account Details</span>
                         </a>
                     </li>
+                    @endif
                    
                     <li>
 
@@ -90,7 +100,13 @@
                     <div class="avatar avatar-online">
 
                         @php
-                        $company = auth()->guard('company')->user();
+                        $company = auth()->guard(session('gurard'))->user();
+                        $name = '';
+                        if(!$company->name) {
+                            $name = $company->username;
+                        } else {
+                            $name = $company->name;
+                        }
                         $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC'; // Default initials if name is empty
                         @endphp
 
@@ -103,7 +119,7 @@
                 </a>
 
                 @php
-                $authenticatedCompany = Auth::guard('company')->user();
+                $authenticatedCompany = Auth::guard(session('guard'))->user();
                 @endphp
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li>

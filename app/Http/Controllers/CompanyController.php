@@ -252,7 +252,6 @@ class CompanyController extends Controller
 
     public function dashboard(Request $request) {
      
-        $auth_id = auth()->guard('company')->user()->id;
 
         // $user = auth()->guard('company')->user();
         // dd($user);
@@ -291,7 +290,7 @@ class CompanyController extends Controller
         $uniqueLocations = array_unique($merged_array);
 
         // // If you want to re-index the array after removing duplicates
-         $combinedLocations = array_values($uniqueLocations);
+        $combinedLocations = array_values($uniqueLocations);
 
         return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','salesTurnovers','combinedLocations','combinedProducts'));
     
@@ -364,6 +363,7 @@ class CompanyController extends Controller
         }
 
         $company = Company::where('otp', $request->otp)->first();
+        session('guard', 'company');
         Auth::guard('company')->login($company);
 
         return $this->sendResponse('Otp verified successfully');

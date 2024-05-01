@@ -72,25 +72,28 @@
                         <!-- <li class="nav-item">or</li> -->
                         <li class="nav-item">
                           <h4 class="fw-24 login-header" data-bs-toggle="pill">Sign in to your account</h4>
-                          <p class="text-start">Enter Your Email & Get OTP</p>
+                          <p class="text-start">Enter Your Email & Password
                         </li>
                       </ul>
                     </div>
                     <div class="tab-content">
-                      <form id="login" class="tab-pane active signup" action="" method="POST"> 
+                      <form id="login" class="tab-pane active signup" action="{{ route('guest.authenticate') }}" method="POST"> 
                         @csrf 
                         <div class="mb-3">
-                          <input type="text" class="form-control" id="email" name="email"  placeholder="Enter your email" autofocus>
+                          <input type="text" class="form-control" id="username" name="username"  placeholder="Enter your username" autofocus>
                         </div>
-                        <div class="mb-3 otp_section d-none">
-                          <input type="number" class="form-control" name="otp" id="otp" placeholder="Enter OTP" autofocus>
+                        @error('username')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="password" name="password"  placeholder="******" autofocus>
                         </div>
                           <button class="btn btn-primary d-grid w-100 login_btn" type="submit">Sign In</button>
                       </form>
                       <div class="mt-4">
                         <div class="text-center">
-                          <p class="mb-0">Login as Guest? <a href="{{ route('guest.login') }}" class="fw-bold">Login</a></p>
-                          <p class="mb-0">Login as Acma Member? <a href="{{ route('guest.login') }}" class="fw-bold">Login</a></p>
+                          <p class="mb-0">Login as Company? <a href="{{ route('company.login') }}" class="fw-bold">Login</a></p>
+                          <p class="mb-0">Login as Acma Memebr? <a href="{{ route('acma.member.login') }}" class="fw-bold">Login</a></p>
                         </div>
                       </div>
                     </div>
@@ -167,96 +170,7 @@
       </script>
   @endif
 
-<script>
-  $(document).ready(function(){
-
-    
-   $('#login').submit(function (e) {
-    e.preventDefault(); // Prevent the default form submission
-
-    let previous_value = $(".login_btn").html();
-
-    $(".login_btn").html('Please wait...');
-
-    var formData = $(this).serialize();
-
-    let btn = $(".login_btn");
-
-    let otp_section = $(".otp_section");
-
-    if(otp_section.hasClass('d-none') == false){
-      $.ajax({
-          type: 'POST',
-          url: '{{ route('company.verify_otp') }}',
-          data: formData,
-          success: function (response) {
-              if(response.success){
-                  localStorage.removeItem('checked_companies');
-                  toast('success','Login Successfully','success');
-                  window.location.href = "{{ route('company.dashboard') }}";
-              }else{
-                  toast('Error',response.message,'success');
-              }
-          },
-          error: function (error) {
-           
-              error = error.responseJSON;
-              if(error.errors){
-                  $.each(error.errors, function (key, value) {
-                      toast('Error',value,'danger');
-                  });
-              }else{
-                  toast('Error',error.message,'danger');
-              }
-              $(".login_btn").html(previous_value);
-          }
-      });
-    }else{
-      $.ajax({
-          type: 'POST',
-          url: '{{ route('company.generate_otp') }}',
-          data: formData,
-          success: function (response) {
-
-              if(response.success){
-               
-                  $('.otp_section').removeClass('d-none');
-                  $('#email').attr('readonly', true);
-                  toast('Success',response.message,'success');
-                  $(".login_btn").html('Verify OTP');
-              }else{
-               
-
-                  if (response.code == 419) {
-                      
-                     toast('Error','Session Expired','success');
-                      window.location.reload();
-                  }
-             
-                  //toast('Error',response.message,'success');
-                  // $(".login_btn").html('Verify OTP');
-                  $(".login_btn").html(previous_value);
-
-              }
-          },
-          error: function (error) {
-              error = error.responseJSON;
-              if(error.errors){
-                  $.each(error.errors, function (key, value) {
-                      toast('Error',value,'danger');
-                  });
-                  $(".login_btn").html(previous_value);
-              }else{
-                  toast('Error',error.message,'danger');
-                  $(".login_btn").html(previous_value);
-              }
-          }
-      });
-    }
-});
-
-  });
-  </script>
+<script></script>
   
 </body>
 

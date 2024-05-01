@@ -28,10 +28,10 @@
                                 <form id="guestForm"  action="{{ route('guest.store') }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <input type="text" style="min-height: 50px;" class="form-control " id="guestName" name="name" placeholder="Enter your name" value="" required>
+                                        <input type="text" style="min-height: 50px;" class="form-control " id="username" name="username" placeholder="Enter your user name" value="" required>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="email" style="min-height: 50px;" class="form-control" id="guestEmail" name="email" placeholder="Enter your email" value="" required>
+                                        <input type="text" style="min-height: 50px;" class="form-control" id="password" name="password" placeholder="Enter your password" value="" required>
                                     </div>
                                     @error('email')
                                         <div class="text-danger">{{ $message }}</div>
@@ -60,15 +60,13 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($guests as $guest)
                         <tr>
-                            <td>{{ $guest->name }}</td>
-                            <td>{{ $guest->email }}</td>
+                            <td>{{ $guest->username }}</td>
                             <td>
                                 <!-- Action buttons go here -->
                                 {{-- <a href="{{ route('guest.edit', $guest->id) }}" class="btn btn-primary">Edit</a> --}}

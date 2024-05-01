@@ -18,11 +18,9 @@ use App\Exports\CompanyContactDetailExport;
 use App\Exports\AdminCompanyExport;
 use App\Exports\CompanyExportPDF;
 use Illuminate\Support\Facades\Storage;
-
 use Illuminate\Support\Facades\File;
-
-
 use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Row;
 
 Route::get('company/goto-google', function () {
     return Redirect::away('https://www.google.com');
@@ -142,10 +140,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 
     
-Route::get('/guest/login', [GuestController::class, 'login'])->name('guest.login');
-
-
+    
+    
 });
+
+// Guest Auth Routes
+Route::get('/guest/login', [GuestController::class, 'login'])->name('guest.login');
+Route::post('/guest/login', [GuestController::class, 'authenticate'])->name('guest.authenticate');
 
 
 /************* Company Routes ****************/
@@ -206,6 +207,13 @@ Route::post('company/login', [CompanyController::class, 'authenticate'])->name('
     Route::get('error/419', function () {
         return view('errors.419');
     })->name('error.419');
+
+    // Acma memebrs auth routes
+
+    Route::get('/acma-member/login', [AuthController::class, 'acmaMemberLogin'])->name('acma.member.login');
+    Route::post('/acma-member/login', [AuthController::class, 'acmaMemberAuthenticate'])->name('acma.member.authenticate');
+    Route::post('/acma-member/generate-otp', [AuthController::class, 'generateOtp'])->name('acma.member.generate_otp');
+    Route::post('/acma-member/otp-verify', [AuthController::class, 'verifyOtp'])->name('acma.member.verify_otp');
 
 
 

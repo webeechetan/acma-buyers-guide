@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('type')->default('2')->comment('1=Admin, 2=Customer');
+            $table->string('type')->default('2')->comment('1=Admin, 2=Acma Memeber');
+            $table->integer('otp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

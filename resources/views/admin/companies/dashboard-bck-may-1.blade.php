@@ -8,8 +8,8 @@
 {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> --}}
 @endpush
 @section('content')
-<!-- Content -->
 
+<!-- Content -->
 
 <section class="sec-space pb-0">
    <div>
@@ -21,7 +21,9 @@
                         <div>
                            <h2 class="title mb-md-0 text-center text-md-start">Buyers Guide Database</h2>
                         </div>
-                     </div>                    
+                     </div>           
+
+
                      <div class="col-md-6">
                         <div class="custom_search_filter text-center text-md-end">
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"id="filter_category" name="filter_category">Filter by Category<span class='bx bx-filter ms-2'></span></button>           
@@ -327,7 +329,7 @@
                                                       </div>
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="50100-500000" {{ in_array('50100-500000', request('range', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="range[]" value="50100-5000000" {{ in_array('50100-5000000', request('range', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   501 and More
                                                                </label>
@@ -378,13 +380,12 @@
                                                       </div>         
                                                       <div class="col-md-4 col-sm-6 col-6">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="50100-500000" {{ in_array('50100-500000', request('ranges', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check" type="checkbox" name="ranges[]" value="50100-5000000" {{ in_array('50100-5000000', request('ranges', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
                                                                   501 and more
                                                                </label>
                                                             </div>
-                                                      </div>         
-
+                                                      </div>     
                                                    </div>
 
                                                    {{-- /////// --}}
@@ -469,9 +470,9 @@
                                                       </div>
                                                       <div class="col-md-4 col-6 mb-2">
                                                          <div class="form-check form-check-inline form-check-flex">
-                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp[]" value="501-12000" {{ in_array('501-12000', request('no_ofEmp', [])) ? 'checked' : '' }}>
+                                                               <input class="form-check-input active-check"  type="checkbox" name="no_ofEmp[]" value="501-120000" {{ in_array('501-120000', request('no_ofEmp', [])) ? 'checked' : '' }}>
                                                                <label class="form-check-label" for="checkbox-one">
-                                                                  501-12000
+                                                                  501-120000
                                                                </label>
                                                             </div>
                                                       </div>
@@ -646,9 +647,9 @@
                      <span class="total_companies badge bg-dark text-uppercase"></span>
                      <span class="checked_companies badge bg-primary text-uppercase"></span>
 
-                     @if(!empty(request()->query()))
+                     {{-- @if(!empty(request()->query()))
                         <a href="{{ url()->current() }}" class="badge bg-info text-uppercase p-3 view-all-button">View All</a>
-                     @endif
+                     @endif --}}
 
                      <span class="clear_checked badge bg-danger text-uppercase pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                      
@@ -656,21 +657,18 @@
                </div>
             </div>
                <!-- Your modified HTML code with a styled button -->
-               
-
-            
 
             <div class="multi-button mb-4">
-               <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true" data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select All on Page 1">Select All</button>
-               <span class="text-uppercase" id="regionBadge">Total Region:</span>
-               <span class="text-uppercase">Total Products:</span>
-               <span class="text-uppercase">Total Trademark:</span>
-               <span class="text-uppercase">Total Sale Turnover:</span>
-               <span class="text-uppercase">Total Export Turnover:</span>
-               <span class="text-uppercase">Total No. Of Employees:</span>
-               <span class="text-uppercase">Total State & City:</span>
-               <span class="text-uppercase">Total Qs Standard:</span>
-               {{-- <a href="{{ route('dashboard.company.exportAll') }}"  class="btn btn-danger">Download All Data</a> --}}
+               <button type="button" class="btn btn-primary toggle_allcheckbox" data-check="true" data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select All on Current Page">Select All</button>
+            
+               <span class="text-uppercase {{ request()->has('regions') ? 'highlight' : '' }}">Region</span>
+               <span class="text-uppercase {{ request()->has('products') ? 'highlight' : '' }}" >Products</span>
+               <span class="text-uppercase {{ request()->has('trademarks') ? 'highlight' : '' }}">Trademark</span>
+               <span class="text-uppercase {{ request()->has('range') ? 'highlight' : '' }}">Sale Turnover</span>
+               <span class="text-uppercase {{ request()->has('ranges') ? 'highlight' : '' }}">Export Turnover</span>
+               <span class="text-uppercase {{ request()->has('no_ofEmp') ? 'highlight' : '' }}">No. Of Employees</span>
+               <span class="text-uppercase {{ request()->has('location') ? 'highlight' : '' }}">State & City</span>
+               <span class="text-uppercase {{ request()->has('quality') ? 'highlight' : '' }}">Qs Standard</span>
               
             </div>
 
@@ -678,133 +676,150 @@
             <!--- Company Card --->
             <div class="company-card">
                <div>
-                  <form action="{{ route('dashboard.company.export') }}" class="export-data-form">     
-                       <div class="row">
-                          <span class="appended_checkboxes_for_download" style="display: none"></span>
-                              @forelse($companies as $company)
+                  <form action="{{ route('dashboard.company.export') }}" class="export-data-form" method="post"> 
+                     @csrf    
+                     <div class="row">
+                        <span class="appended_checkboxes_for_download" style="display: none"></span>
 
-                                 <div class="col-md-6 col-lg-4 mb-3">
-                                       <div class="card card-data">
-                                          <div class="company-title">
-                                          <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                             <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select"> <i class='bx bx-check check-icon' ></i> </span>
-                                          </div>
-                                          <div class="card-body">
-                                             <div class="information-list">
-                                                <ul>
-                                                   <li>
-                                                      <div>
-                                                         <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
-                                                      </div>
-                                                      <div>
-                                                         @if($company && $company->contact_details->state)
-                                                            <span>{{ucfirst($company->contact_details->state)}}</span>
-                                                         @else
-                                                         <span>NA</span>
-                                                         @endif
-                                                      </div>
-                                                   </li>
-                                                   <li>
-                                                      <div>
-                                                         <i class="fa fa-phone"></i><span>Phone</span>
-                                                      </div>
-                                                      <div>
 
-                                                         @if($company && $company->contact_details->phone)
-                                                         
-                                                               <span>{{$company->contact_details->phone}}</span>
-                                                         @else 
-                                                         <span>NA</span>
-                                                         @endif
-                                                   
-                                                      </div>
-                                                   </li>
-                                                   <li>
-                                                      <div>
-                                                         <i class="fa fa-fax"></i><span>Fax</span>
-                                                      </div>
-                                                      <div>
-                                                      
-                                                         @if($company && $company->contact_details->fax)
-                                                            <span>{{$company->contact_details->fax}}</span> 
-                                                            @else 
-                                                            <span>NA</span>
-                                                            @endif
-                                                   
-                                                      </div>
-                                                   </li>
-                                                   <li>
-                                                      <div>
-                                                         <i class="fa fa-envelope"></i><span>E-mail</span>
-                                                      </div>
-                                                      <div>
-                                                         
-                                                         @if($company && $company->email)
-                                                         <a href="">{{ucfirst($company->email)}}</a>
-                                                         @else 
-                                                         <span>NA</span>
-                                                         @endif
-                                                      
-                                                      </div>
-                                                   </li>
-                                                   <li>
-                                                      <div>
-                                                         <i class="fa fa-globe"></i><span>Website</span>
-                                                      </div>
-                                                      <div>
-                                                         @if($company && $company->website)
-                                                         <a href="">{{$company->website}}</a>
-                                                         @else 
-                                                         <span>NA</span>
-                                                      @endif
-                                                      </div>
-                                                   </li>
-                                                </ul>
-                                             </div>
-                                          </div>
-                                       </div>
-                                 </div>
-                              @empty
-                              <h2 class="text-center text-danger">No Result</h2>
-                              @endforelse
-
+                        {{-- This is to show the banners added from admin panel --}}
+                          
+                           {{-- Display banners before rendering the cards --}}
+                                 @foreach($banners as $banner)
+                                    <div class="banner">
+                                       <!-- Display banner image or any other banner content -->
+                                       <img src="{{ asset('storage/' . $banner->image) }}" width="100px" height="100px" alt="{{ $banner->title }}">
+                                    </div>
+                                 @endforeach
                            
-                           {{ $companies->onEachSide(1)->withQueryString()->links() }}
-                           <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
-                       </div>
-                       <div class="row">
-                        <div class="col-md-12 text-center">
-                           <div class="border-bottom pb-4 mb-3"></div>
-                           <div class="checked_company_info mb-3">
-                              <span class="total_companies badge bg-dark text-capitalize"></span>
-                              <span class="checked_companies badge bg-primary text-capitalize"></span>
 
-                              @if(!empty(request()->query()))
-                                 <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a>
-                              @endif
-                            
-                              <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i
-                                    class="fa fa-times text-white" aria-hidden="true"></i></span>   
-                                    
-                                   
-                           </div>
-                           <div class="checked_company_download">
-                              <button type="submit" class="btn btn-primary">Download Data <i
-                                    class='bx bx-download ms-2 text-white fw-medium'></i></button>
-                                    
-                           </div>
-                          <div class="mt-4">
-                          <a id="downloadAllButton" class="btn-data" href="{{ route('dashboard.company.exportAll') }}"  >Download All Data</a>
-                          </div>
-                        </div>
+
+
+                            @forelse($companies as $company)
+
+                               <div class="col-md-6 col-lg-4 mb-3">
+                                     <div class="card card-data">
+                                        <div class="company-title">
+                                        <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
+                                           <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select"> <i class='bx bx-check check-icon' ></i> </span>
+                                        </div>
+                                        <div class="card-body">
+                                           <div class="information-list">
+                                              <ul>
+                                                 <li>
+                                                    <div>
+                                                       <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
+                                                    </div>
+                                                    <div>
+                                                       {{-- @if($company && $company->contact_details->state) --}}
+                                                       @if($company && $company->contact_details && $company->contact_details->state)
+                                                          <span>{{ucfirst($company->contact_details->state)}}</span>
+                                                       @else
+                                                       <span>NA</span>
+                                                       @endif
+                                                    </div>
+                                                 </li>
+                                                 <li>
+                                                    <div>
+                                                       <i class="fa fa-phone"></i><span>Phone</span>
+                                                    </div>
+                                                    <div>
+
+                                                      @if($company && $company->contact_details && $company->contact_details->phone)
+                                                       
+                                                             <span>{{$company->contact_details->phone}}</span>
+                                                       @else 
+                                                       <span>NA</span>
+                                                       @endif
+                                                 
+                                                    </div>
+                                                 </li>
+                                                 <li>
+                                                    <div>
+                                                       <i class="fa fa-fax"></i><span>Fax</span>
+                                                    </div>
+                                                    <div>
+                                                    
+                                                      @if($company && $company->contact_details && $company->contact_details->fax)
+                                                          <span>{{$company->contact_details->fax}}</span> 
+                                                          @else 
+                                                          <span>NA</span>
+                                                          @endif
+                                                 
+                                                    </div>
+                                                 </li>
+                                                 <li>
+                                                    <div>
+                                                       <i class="fa fa-envelope"></i><span>E-mail</span>
+                                                    </div>
+                                                    <div>
+                                                       
+                                                       @if($company && $company->email)
+                                                       <a href="">{{ucfirst($company->email)}}</a>
+                                                       @else 
+                                                       <span>NA</span>
+                                                       @endif
+                                                    
+                                                    </div>
+                                                 </li>
+                                                 <li>
+                                                    <div>
+                                                       <i class="fa fa-globe"></i><span>Website</span>
+                                                    </div>
+                                                    <div>
+                                                       @if($company && $company->website)
+                                                       <a href="">{{$company->website}}</a>
+                                                       @else 
+                                                       <span>NA</span>
+                                                    @endif
+                                                    </div>
+                                                 </li>
+                                              </ul>
+                                           </div>
+                                        </div>
+                                     </div>
+                               </div>
+                            @empty
+                            <h2 class="text-center text-danger">No Result</h2>
+                            @endforelse
+
+                         
+                         {{ $companies->onEachSide(1)->withQueryString()->links() }}
+                         <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
                      </div>
+                     <div class="row">
+                      <div class="col-md-12 text-center">
+                         <div class="border-bottom pb-4 mb-3"></div>
+                         <div class="checked_company_info mb-3">
+                            <span class="total_companies badge bg-dark text-capitalize"></span>
+                            <span class="checked_companies badge bg-primary text-capitalize"></span>
+
+                            {{-- @if(!empty(request()->query()))
+                               <a href="{{ url()->current() }}" class="badge bg-info text-capitalize p-3 view-all-button">View All</a>
+                            @endif --}}
+                          
+                            <span class="clear_checked badge bg-danger text-capitalize pe-auto" onclick="clear_checked()">Clear <i
+                                  class="fa fa-times text-white" aria-hidden="true"></i></span>   
+                                  
+                                 
+                         </div>
+                         <div class="checked_company_download">
+                            <button type="submit" class="btn btn-primary">Download Selected Data <i
+                                  class='bx bx-download ms-2 text-white fw-medium'></i></button>
+                                  
+                         </div>
+                        <div class="mt-4">
+                        <a id="downloadAllButton" class="btn-data" href="{{ route('dashboard.company.exportAll') }}?v={{  date('h:i:s')}}">Download All Data</a>
+                        </div>
+                      </div>
+                   </div>
                   </form>
                </div>
             </div>
    </div> 
 
 
-
+ 
    
 <!-- Popup container for all data download -->
 <div id="popupContainer" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
@@ -813,20 +828,9 @@
      <button onclick="okayButtonClicked()">Okay</button>
      <button onclick="cancelButtonClicked()">Cancel</button>
    </div>
- </div>
-
+</div>
 
 </section>
-
-
-{{-- @if(session()->has('downloaded'))
-    <div id="downloaded" data-downloaded="true"></div>
-@else
-    <div id="downloaded" data-downloaded="false"></div>
-@endif
- --}}
-
-
 
 @endsection
 @push('scripts')
@@ -852,19 +856,59 @@ $(document).ready(function () {
    // hanlde download form submit 
 
 
-   $(".export-data-form").submit(function (e) {
-      e.preventDefault();
-      var checked_companies_on_other_pages = localStorage.getItem('checked_companies');
-      checked_companies_on_other_pages = JSON.parse(checked_companies_on_other_pages);
-      checked_companies_on_other_pages.forEach(function (company_id) {
-         $(".appended_checkboxes_for_download").append('<input type="checkbox" name="company_ids[]" value="' + company_id + '" checked>');
-      });
+   // $(".export-data-form").submit(function (e) {
+   //    e.preventDefault();
 
-      clear_checked();
-      $(this).unbind('submit').submit();
+   //    alert('multiple download');
 
      
+
+   //    var checked_companies_on_other_pages = localStorage.getItem('checked_companies');
+   //    checked_companies_on_other_pages = JSON.parse(checked_companies_on_other_pages);
+   //    checked_companies_on_other_pages.forEach(function (company_id) {
+   //       $(".appended_checkboxes_for_download").append('<input type="checkbox" name="company_ids[]" value="' + company_id + '" checked>');
+   //    });
+
+   //    clear_checked();
+   //    $(this).unbind('submit').submit();
+
+     
+   // });
+
+   // Capture form submission event
+$('.export-data-form').submit(function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    // Gather selected company IDs from local storage
+    var checkedCompanies = localStorage.getItem('checked_companies');
+
+    checkedCompanies = JSON.parse(checkedCompanies);
+
+   $.ajax({
+      url: $(this).attr('action'),
+      method: 'POST',
+      data: { company_ids: checkedCompanies, _token: '{{ csrf_token() }}' }, // Include CSRF token in data
+      dataType: 'json', // Specify expected data type
+      success: function(response) {
+         
+         console.log(response);
+         if (response.code == 1) {
+              
+               window.open(response.path, '_blank');
+
+               setTimeout(function() {
+                  window.location.href = "{{ route('company.dashboard') }}";
+               }, 2000);  
+             
+         }
+      },
+      error: function(xhr, status, error) {
+         console.error('Error downloading file:', error);
+         window.location.href = "{{ route('company.dashboard') }}";
+      }
    });
+});
+
 
 
 

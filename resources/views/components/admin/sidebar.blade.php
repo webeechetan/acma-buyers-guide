@@ -56,6 +56,13 @@
           <div class="text-truncate" data-i18n="Guests">Guests</div>
         </a>
       </li> 
+
+      <li class="menu-item {{ Route::is('banners') ? 'active' : '' }} ">
+        <a href="{{route('banners')}}" class="menu-link ">
+          <i class="menu-icon menu-icon bx bx-user"></i>
+          <div class="text-truncate" data-i18n="Banners">Banners</div>
+        </a>
+      </li> 
       
     </ul>
 </aside>

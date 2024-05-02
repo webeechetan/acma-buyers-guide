@@ -177,11 +177,15 @@
           url: '{{ route('acma.member.verify_otp') }}',
           data: formData,
           success: function (response) {
+
+          
               if(response.success){
+               
                   localStorage.removeItem('checked_companies');
                   toast('success','Login Successfully','success');
                   window.location.href = "{{ route('company.dashboard') }}";
               }else{
+                
                   toast('Error',response.message,'success');
               }
           },
@@ -213,9 +217,8 @@
                   $(".login_btn").html('Verify OTP');
               }else{
                
-
                   if (response.code == 419) {
-                      
+                  
                      toast('Error','Session Expired','success');
                       window.location.reload();
                   }

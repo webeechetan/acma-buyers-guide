@@ -13,6 +13,7 @@ use App\Models\CompanyKeyPersonnel;
 use App\Models\CompanyProductDetails;
 use App\Models\CompanyForeignCollaboration;
 use App\Models\Setting;
+use App\Models\Banner;
 use App\Notifications\Company\ForgotPasswordOtpNotification;
 use App\Notifications\Company\LoginOtpNotification;
 use App\Helpers\CompanyHelper;
@@ -292,7 +293,11 @@ class CompanyController extends Controller
         // // If you want to re-index the array after removing duplicates
         $combinedLocations = array_values($uniqueLocations);
 
-        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','salesTurnovers','combinedLocations','combinedProducts'));
+        $banners = Banner::all();
+
+       
+
+        return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','salesTurnovers','combinedLocations','combinedProducts' , 'banners'));
     
     }
 

@@ -17,9 +17,14 @@ class CompanyAuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
        
-        if (Auth::guard('company')->check() || Auth::guard('guest')->check()) {
+        // if (Auth::guard('company')->check() || Auth::guard('guest')->check()) {
+        //     return $next($request);
+        // }
+
+        if (Auth::guard('company')->check() || Auth::guard('guest')->check() || Auth::guard('web')->check()) {
             return $next($request);
         }
+        
         return redirect()->route('company.login')->with('alert', [
             'type' => 'danger',
             'msg' => 'Session expired',

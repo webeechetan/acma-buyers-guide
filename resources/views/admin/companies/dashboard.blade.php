@@ -21,7 +21,9 @@
                         <div>
                            <h2 class="title mb-md-0 text-center text-md-start">Buyers Guide Database</h2>
                         </div>
-                     </div>                    
+                     </div>           
+
+
                      <div class="col-md-6">
                         <div class="custom_search_filter text-center text-md-end">
                            <button data-bs-toggle="modal" data-bs-target="#static"  data-bs-target="#static" class="btn btn-primary"id="filter_category" name="filter_category">Filter by Category<span class='bx bx-filter ms-2'></span></button>           
@@ -645,9 +647,7 @@
                      <span class="total_companies badge bg-dark text-uppercase"></span>
                      <span class="checked_companies badge bg-primary text-uppercase"></span>
 
-                     {{-- @if(!empty(request()->query()))
-                        <a href="{{ url()->current() }}" class="badge bg-info text-uppercase p-3 view-all-button">View All</a>
-                     @endif --}}
+                    
 
                      <span class="clear_checked badge bg-danger text-uppercase pe-auto" onclick="clear_checked()">Clear <i class="fa fa-times text-white" aria-hidden="true"></i></span>
                      
@@ -678,95 +678,165 @@
                      @csrf    
                      <div class="row">
                         <span class="appended_checkboxes_for_download" style="display: none"></span>
-                            @forelse($companies as $company)
 
-                               <div class="col-md-6 col-lg-4 mb-3">
-                                     <div class="card card-data">
-                                        <div class="company-title">
-                                        <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
-                                           <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select"> <i class='bx bx-check check-icon' ></i> </span>
-                                        </div>
-                                        <div class="card-body">
-                                           <div class="information-list">
-                                              <ul>
-                                                 <li>
-                                                    <div>
-                                                       <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
-                                                    </div>
-                                                    <div>
-                                                       {{-- @if($company && $company->contact_details->state) --}}
-                                                       @if($company && $company->contact_details && $company->contact_details->state)
-                                                          <span>{{ucfirst($company->contact_details->state)}}</span>
-                                                       @else
-                                                       <span>NA</span>
-                                                       @endif
-                                                    </div>
-                                                 </li>
-                                                 <li>
-                                                    <div>
-                                                       <i class="fa fa-phone"></i><span>Phone</span>
-                                                    </div>
-                                                    <div>
+                        {{-- This is to show the banners added from admin panel --}}
+                          
+                                 {{-- @foreach($banners as $banner)
+                                    <div class="banner">
+                                       <!-- Display banner image or any other banner content -->
+                                       <img src="{{ asset('storage/' . $banner->image) }}" width="100px" height="100px" alt="{{ $banner->title }}">
+                                    </div>
+                                 @endforeach --}}
 
-                                                      @if($company && $company->contact_details && $company->contact_details->phone)
-                                                       
-                                                             <span>{{$company->contact_details->phone}}</span>
-                                                       @else 
-                                                       <span>NA</span>
-                                                       @endif
-                                                 
-                                                    </div>
-                                                 </li>
-                                                 <li>
-                                                    <div>
-                                                       <i class="fa fa-fax"></i><span>Fax</span>
-                                                    </div>
-                                                    <div>
-                                                    
-                                                      @if($company && $company->contact_details && $company->contact_details->fax)
-                                                          <span>{{$company->contact_details->fax}}</span> 
-                                                          @else 
-                                                          <span>NA</span>
-                                                          @endif
-                                                 
-                                                    </div>
-                                                 </li>
-                                                 <li>
-                                                    <div>
-                                                       <i class="fa fa-envelope"></i><span>E-mail</span>
-                                                    </div>
-                                                    <div>
-                                                       
-                                                       @if($company && $company->email)
-                                                       <a href="">{{ucfirst($company->email)}}</a>
-                                                       @else 
-                                                       <span>NA</span>
-                                                       @endif
-                                                    
-                                                    </div>
-                                                 </li>
-                                                 <li>
-                                                    <div>
-                                                       <i class="fa fa-globe"></i><span>Website</span>
-                                                    </div>
-                                                    <div>
-                                                       @if($company && $company->website)
-                                                       <a href="">{{$company->website}}</a>
-                                                       @else 
-                                                       <span>NA</span>
-                                                    @endif
-                                                    </div>
-                                                 </li>
-                                              </ul>
-                                           </div>
-                                        </div>
-                                     </div>
-                               </div>
-                            @empty
-                            <h2 class="text-center text-danger">No Result</h2>
-                            @endforelse
+                                 @php
+                                     $nextLoopIndexForPrintBanner = 3; // Initialize the index for printing banners
+                                 @endphp
+                           
+                           @forelse($companies as $company)
 
-                         
+                                 {{-- @foreach ($banners as $banner)
+
+                                    @if($loop->index == 0)
+
+                                 
+
+                                 
+                                          @php  
+                                                $currentRunningBannerId = $banner->id ;
+                                          @endphp
+                                             <img src="{{ asset('storage/' . $banner->image) }}" width="100px" height="100px" alt="{{ $banner->title }}">
+                                             
+
+                                          @php  $nextLoopIndexForPrintBanner = $loop->index + 3 ; 
+                                                $currentRunningBannerId = $banner->id ; 
+                                          @endphp
+
+                                         
+
+                                          
+
+                                    @endif
+
+
+                                    @if($loop->index == $nextLoopIndexForPrintBanner && $currentRunningBannerId != $banner->id)
+                                    <img src="{{ asset('storage/' . $banner->image) }}" width="100px" height="100px" alt="{{ $banner->title }}">
+                                             
+                                          @php 
+                                          $nextLoopIndexForPrintBanner = $loop->index + 3 ;
+                                          $currentRunningBannerId = $banner->id ; 
+                                          @endphp
+                                    @endif
+
+                                    
+                                 @endforeach --}}
+
+                                 @foreach ($banners as $banner)
+                                       @if($loop->index == 1) 
+                                             @php  
+                                                $currentRunningBannerId = $banner->id;
+                                             @endphp
+                                             <img src="{{ asset('storage/' . $banner->image) }}" width="100px" height="100px" alt="{{ $banner->title }}">
+                                       @endif
+
+                                       @if($loop->index == $nextLoopIndexForPrintBanner && $currentRunningBannerId != $banner->id)
+                                             <img src="{{ asset('storage/' . $banner->image) }}" width="100px" height="100px" alt="{{ $banner->title }}">
+                                             @php 
+                                                $nextLoopIndexForPrintBanner += 3; 
+                                                $currentRunningBannerId = $banner->id;
+                                             @endphp
+                                       @endif
+                                 @endforeach
+                                                                     
+                                
+                           <div class="col-md-6 col-lg-4 mb-3">
+                              <div class="card card-data">
+                                 <div class="company-title">
+                                 <h4 class="sub-title mb-0"> <a target="_blank" class="text-dark" href="{{ route('company.view_company',$company->id) }}"> {{ $company->name }}</a></h4>
+                                    <span> <input type="checkbox" class="check company_checkbox" id="company_checkbox_{{$company->id}}" data-id="{{$company->id}}" name="company_ids[]" value="{{ $company->id }}"  data-bs-custom-class="tooltip-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Select"> <i class='bx bx-check check-icon' ></i> </span>
+                                 </div>
+                                 <div class="card-body">
+                                    <div class="information-list">
+                                       <ul>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i><span>State</span>
+                                             </div>
+                                             <div>
+                                                {{-- @if($company && $company->contact_details->state) --}}
+                                                @if($company && $company->contact_details && $company->contact_details->state)
+                                                   <span>{{ucfirst($company->contact_details->state)}}</span>
+                                                @else
+                                                <span>NA</span>
+                                                @endif
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-phone"></i><span>Phone</span>
+                                             </div>
+                                             <div>
+
+                                             @if($company && $company->contact_details && $company->contact_details->phone)
+                                                
+                                                      <span>{{$company->contact_details->phone}}</span>
+                                                @else 
+                                                <span>NA</span>
+                                                @endif
+                                          
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-fax"></i><span>Fax</span>
+                                             </div>
+                                             <div>
+                                             
+                                             @if($company && $company->contact_details && $company->contact_details->fax)
+                                                   <span>{{$company->contact_details->fax}}</span> 
+                                                   @else 
+                                                   <span>NA</span>
+                                                   @endif
+                                          
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-envelope"></i><span>E-mail</span>
+                                             </div>
+                                             <div>
+                                                
+                                                @if($company && $company->email)
+                                                <a href="">{{ucfirst($company->email)}}</a>
+                                                @else 
+                                                <span>NA</span>
+                                                @endif
+                                             
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div>
+                                                <i class="fa fa-globe"></i><span>Website</span>
+                                             </div>
+                                             <div>
+                                                @if($company && $company->website)
+                                                <a href="">{{$company->website}}</a>
+                                                @else 
+                                                <span>NA</span>
+                                             @endif
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                            
+
+                           @empty
+                              <h2 class="text-center text-danger">No Result</h2>
+                           @endforelse 
+                           
                          {{ $companies->onEachSide(1)->withQueryString()->links() }}
                          <input type="hidden" name="" id="total_companies" value="{{ $companies->total() }}">
                      </div>

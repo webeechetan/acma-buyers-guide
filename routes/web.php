@@ -10,6 +10,7 @@ use App\Imports\CompanyImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\Admin\GuestController;
+use App\Http\Controllers\BannerController;
 use App\Models\Company;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Style\Font;
@@ -151,6 +152,8 @@ Route::post('/guest/login', [GuestController::class, 'authenticate'])->name('gue
 
 /************* Company Routes ****************/
 
+
+
 Route::middleware(['company.auth'])->prefix('company')->group(function () {
 
 
@@ -210,10 +213,13 @@ Route::post('company/login', [CompanyController::class, 'authenticate'])->name('
 
     // Acma memebrs auth routes
 
+    
     Route::get('/acma-member/login', [AuthController::class, 'acmaMemberLogin'])->name('acma.member.login');
     Route::post('/acma-member/login', [AuthController::class, 'acmaMemberAuthenticate'])->name('acma.member.authenticate');
     Route::post('/acma-member/generate-otp', [AuthController::class, 'generateOtp'])->name('acma.member.generate_otp');
     Route::post('/acma-member/otp-verify', [AuthController::class, 'verifyOtp'])->name('acma.member.verify_otp');
 
 
-
+    Route::get('/banner', [BannerController::class, 'index'])->name('banners');
+    Route::post('/banner', [BannerController::class, 'store'])->name('banners.store');
+    Route::delete('/banner/destroy/{id}', [BannerController::class, 'destroy'])->name('banner.destroy');

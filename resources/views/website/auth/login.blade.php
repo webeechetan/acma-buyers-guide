@@ -90,7 +90,7 @@
                       <div class="mt-4">
                         <div class="text-center">
                           <p class="mb-0">Login as Guest? <a href="{{ route('guest.login') }}" class="fw-bold">Login</a></p>
-                          <p class="mb-0">Login as Acma Member? <a href="{{ route('guest.login') }}" class="fw-bold">Login</a></p>
+                          <p class="mb-0">Login as Acma Member? <a href="{{ route('acma.member.login') }}" class="fw-bold">Login</a></p>
                         </div>
                       </div>
                     </div>

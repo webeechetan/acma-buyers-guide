@@ -6,9 +6,10 @@
             <img src="https://www.acma.in/images/logo.png" alt="">
             </div>
         </a>
+
         <div class="top-header-right">
             @if(session('guard')=='company')
-            <div><a class="me-4 text-white" href="{{route('company.profile')}}"><i class='bx bx-user'></i> Profile</a></div>
+                <div><a class="me-4 text-white" href="{{route('company.profile')}}"><i class='bx bx-user'></i> Profile</a></div>
             @endif
             <div><a class="me-4 text-white btn btn-danger btn-sm" href="{{ route('company.logout') }}"><i class='bx bx-power-off'></i> Logout</a></div>
            
@@ -100,7 +101,7 @@
                     <div class="avatar avatar-online">
 
                         @php
-                        $company = auth()->guard(session('gurard'))->user();
+                        $company = auth()->guard(session('guard'))->user();
                         $name = '';
                         if(!$company->name) {
                             $name = $company->username;

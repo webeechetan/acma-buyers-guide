@@ -88,6 +88,7 @@ class AuthController extends Controller
             'otp.digits' => 'Please enter 6 digit otp',
         ];
 
+        
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
@@ -95,6 +96,8 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request->email)->where('otp', $request->otp)->first();
+
+        // dd($user);
 
         if(!$user){
             return $this->sendError('Invalid otp', [], 422);
@@ -104,6 +107,7 @@ class AuthController extends Controller
 
         try{
             $user->save();
+
             return $this->sendResponse('Otp verified successfully');
 
         }catch(\Exception $e){

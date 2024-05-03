@@ -28,17 +28,17 @@
                                 <form method="POST" action="{{ route('banners.store') }}" enctype="multipart/form-data">
                                     @csrf
                                 
-                                    <div class="mb-3">
+                                    <div class="mb-3 text-start">
                                         <label for="title" class="form-label">Banner Title</label>
                                         <input type="text" class="form-control" id="title" name="title" required>
                                     </div>
                                 
-                                    <div class="mb-3">
+                                    <div class="mb-3 text-start">
                                         <label for="image" class="form-label">Banner Image</label>
                                         <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
                                     </div>
 
-                                    <div class="mb-3">
+                                    <div class="mb-3 text-start">
                                         <label for="link" class="form-label">Banner Link</label>
                                         <input type="url" class="form-control" id="link" name="link">
                                     </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped guest-table">
                     <thead>
                         <tr>
                             <th>Title</th>

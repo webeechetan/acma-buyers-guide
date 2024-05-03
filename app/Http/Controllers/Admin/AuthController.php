@@ -20,6 +20,7 @@ class AuthController extends Controller
 
     public function authenticate(Request $request)
     {
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -108,6 +109,9 @@ class AuthController extends Controller
 
         try{
             $user->save();
+            //below guard set by ajay on 3 may 2024
+            Auth::guard('web')->login($user);
+            session()->put('guard','web');
 
             return $this->sendResponse('Otp verified successfully');
 

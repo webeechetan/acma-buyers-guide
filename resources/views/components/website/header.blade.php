@@ -10,15 +10,21 @@
         @php
         
             $company = auth()->guard(session('guard'))->user();
-            dd($company);
+            
             $name = '';
             $email = '';
             if(session('guard')=='company'){
+                
                 $name = $company->name;
+                $email = $company->email;
             } elseif (session('guard') == 'guest') {
+
+                
                 $name = $company->username;
                 $email = $company->name;
             } elseif(session('guard') == 'web'){
+
+                
                 $name = $company->name;
                 $email = $company->email;
             }

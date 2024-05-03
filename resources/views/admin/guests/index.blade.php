@@ -28,12 +28,16 @@
                                 <form id="guestForm"  action="{{ route('guest.store') }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <input type="text" style="min-height: 50px;" class="form-control " id="username" name="username" placeholder="Enter your user name" value="" required>
+                                        <input type="text" style="min-height: 50px;" class="form-control " id="username" name="username" placeholder="Enter your user name" value="{{ old('username') }}" required>
                                     </div>
+                                    @error('username')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
                                     <div class="mb-3">
-                                        <input type="text" style="min-height: 50px;" class="form-control" id="password" name="password" placeholder="Enter your password" value="" required>
+                                        <input type="text" style="min-height: 50px;" class="form-control" id="password" name="password" placeholder="Enter 6 digits password" value="{{ old('password') }}" required>
                                     </div>
-                                    @error('email')
+                                    @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     <button type="submit" class="btn btn-primary">Submit</button>

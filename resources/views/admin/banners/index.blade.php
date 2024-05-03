@@ -37,6 +37,12 @@
                                         <label for="image" class="form-label">Banner Image</label>
                                         <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
                                     </div>
+
+                                    <div class="mb-3">
+                                        <label for="link" class="form-label">Banner Link</label>
+                                        <input type="url" class="form-control" id="link" name="link">
+                                    </div>
+                                
                                 
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
@@ -64,6 +70,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Image</th>
+                            <th>Url</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -72,6 +79,7 @@
                         <tr>
                             <td>{{ $banner->title }}</td>
                             <td><img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}" style="max-width: 100px; max-height: 100px;"></td>
+                            <td>{{ $banner->link }}</td>
                             
                             <td>
                                 <!-- Action buttons go here -->

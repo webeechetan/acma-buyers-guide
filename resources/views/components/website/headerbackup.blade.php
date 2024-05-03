@@ -12,12 +12,8 @@
 
         <div class="top-header-right">
             @if(session('guard')=='company')
-
-            {{dd('guard company')}}
                 <div><a class="me-4 text-white" href="{{route('company.profile')}}"><i class='bx bx-user'></i> Profile</a></div>
             @endif
-{{dd(session('guard'))}}
-            {{dd('endif')}}
             <div><a class="me-4 text-white btn btn-danger btn-sm" href="{{ route('company.logout') }}"><i class='bx bx-power-off'></i> Logout</a></div>
            
             <div class="nav-item navbar-dropdown dropdown-user dropdown">

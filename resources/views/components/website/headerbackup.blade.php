@@ -12,12 +12,8 @@
 
         <div class="top-header-right">
             @if(session('guard')=='company')
-
-            {{dd('guard company')}}
                 <div><a class="me-4 text-white" href="{{route('company.profile')}}"><i class='bx bx-user'></i> Profile</a></div>
             @endif
-{{dd(session('guard'))}}
-            {{dd('endif')}}
             <div><a class="me-4 text-white btn btn-danger btn-sm" href="{{ route('company.logout') }}"><i class='bx bx-power-off'></i> Logout</a></div>
            
             <div class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -28,10 +24,10 @@
                         @php
                         $company = auth()->guard(session('guard'))->user();
                         $name = '';
-                        if(!$company?->name) {
-                            $name = $company?->username;
+                        if(!$company->name) {
+                            $name = $company->username;
                         } else {
-                            $name = $company?->name;
+                            $name = $company->name;
                         }
                         $companyInitials = strtoupper(substr($name, 0, 2)) ?? 'DC'; // Default initials if name is empty
                         @endphp
@@ -61,7 +57,7 @@
                             </div>
                             </div>
                             <div class="flex-grow-1">
-                            <span class="fw-medium d-flex flex-wrap">{{ $authenticatedCompany?->name }}</span>
+                            <span class="fw-medium d-flex flex-wrap">{{ $authenticatedCompany->name }}</span>
                             </div>
                         </div>
                         </a>
@@ -83,7 +79,7 @@
 
                         <a class="dropdown-item pe-none" href="javascript:void(0);">
                             <i class='bx bxs-envelope me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany?->email }}</span>
+                        <span class="align-middle">{{ $authenticatedCompany->email }}</span>
                         </a>
                     </li>
                     <li>
@@ -112,12 +108,12 @@
                         @php
                         $company = auth()->guard(session('guard'))->user();
                         $name = '';
-                        if(!$company?->name) {
-                            $name = $company?->username;
+                        if(!$company->name) {
+                            $name = $company->username;
                         } else {
-                            $name = $company?->name;
+                            $name = $company->name;
                         }
-                        $companyInitials = strtoupper(substr($company?->name, 0, 2)) ?? 'DC'; // Default initials if name is empty
+                        $companyInitials = strtoupper(substr($company->name, 0, 2)) ?? 'DC'; // Default initials if name is empty
                         @endphp
 
                         <div class="d-flex align-items-center">
@@ -145,7 +141,7 @@
                             </div>
                             </div>
                             <div class="flex-grow-1">
-                            <span class="fw-medium d-flex flex-wrap text-wrap">{{ $authenticatedCompany?->name }}</span>
+                            <span class="fw-medium d-flex flex-wrap text-wrap">{{ $authenticatedCompany->name }}</span>
                             </div>
                         </div>
                         </a>
@@ -164,7 +160,7 @@
 
                         <a class="dropdown-item" href="">
                             <i class='bx bxs-envelope me-2'></i>
-                        <span class="align-middle">{{ $authenticatedCompany?->email }}</span>
+                        <span class="align-middle">{{ $authenticatedCompany->email }}</span>
                         </a>
                     </li>
                     <li>

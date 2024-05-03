@@ -77,9 +77,14 @@ class CompanyController extends Controller
         
         $company = Company::where('otp', $request->otp)->first();
 
-        if ($company) {
+        if ($company) { 
+           
             Auth::guard('company')->login($company);
             $request->session()->regenerate();
+
+            session('guard', 'company');
+
+            dd(session('guard'));
             return redirect()->route('company.dashboard');
         }
 

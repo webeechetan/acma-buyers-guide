@@ -42,6 +42,7 @@ class BannerController extends Controller
         
         $banner = new Banner();
         $banner->title = $request->title;
+        $banner->link = $request->link;
         $banner->image = $imagePath; 
 
         

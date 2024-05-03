@@ -82,7 +82,8 @@ class CompanyController extends Controller
             Auth::guard('company')->login($company);
             $request->session()->regenerate();
 
-            session('guard', 'company');
+            session()->put('guard','company');
+
 
             dd(session('guard'));
             return redirect()->route('company.dashboard');
@@ -310,6 +311,7 @@ class CompanyController extends Controller
     public function logout()
     {
         $this->alert('success', 'You are logged out successfully','success');
+        session()->forget('guard');
         Auth::guard('company')->logout();
         return redirect()->route('company.login');
     }
@@ -373,7 +375,7 @@ class CompanyController extends Controller
         }
 
         $company = Company::where('otp', $request->otp)->first();
-        session('guard', 'company');
+        session()->put('guard', 'company');
         Auth::guard('company')->login($company);
 
         return $this->sendResponse('Otp verified successfully');

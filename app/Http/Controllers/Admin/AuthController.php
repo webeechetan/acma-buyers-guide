@@ -42,6 +42,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        session()->forget('guard');
         $this->alert('success', 'You are logged out successfully','success');
         auth()->logout();
         return redirect()->route('admin.login');

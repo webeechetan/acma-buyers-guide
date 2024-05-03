@@ -109,7 +109,7 @@ class GuestController extends Controller
         $res = Auth::guard('guest')->attempt(['username' => $request->username, 'password' => $request->password]);
 
         if ($res) {
-            session('guard', 'guest');
+            session()->put('guard','guest');
             return redirect()->route('company.dashboard');
         } else {
             $this->alert('Error', 'Invalid login details', 'danger');

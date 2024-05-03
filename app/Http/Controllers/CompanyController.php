@@ -85,7 +85,6 @@ class CompanyController extends Controller
             session()->put('guard','company');
 
 
-            dd(session('guard'));
             return redirect()->route('company.dashboard');
         }
 
@@ -199,12 +198,9 @@ class CompanyController extends Controller
 
             dd('not deleted');
             $this->alert('error', 'Something went wrong', 'danger');
-            // return redirect()->back();
+            
         }
-        // dd($company->id);
-
-        // $company->delete();
-        // return redirect()->route('your.index.route')->with('success', 'Company deleted successfully');
+        
     }
 
     public function fillUpDetailsStore(Request $request){
@@ -278,8 +274,8 @@ class CompanyController extends Controller
          
 
         $combinedProducts = CompanyProductDetails::select('id', 'products_manufactured', 'product2', 'product3', 'product4')
-    ->groupBy('id', 'products_manufactured', 'product2', 'product3', 'product4')
-    ->get();
+        ->groupBy('id', 'products_manufactured', 'product2', 'product3', 'product4')
+        ->get();
 
     
         $trademarks = CompanyProductDetails::select('trademark')
@@ -299,7 +295,10 @@ class CompanyController extends Controller
         // // If you want to re-index the array after removing duplicates
         $combinedLocations = array_values($uniqueLocations);
 
-        $banners = Banner::all();
+        // $banners = Banner::all();
+
+        $banners = Banner::latest()->take(3)->get();
+
 
        
 
@@ -358,6 +357,7 @@ class CompanyController extends Controller
 
     public function otp_authentication(Request $request)
     {
+
         $rules = [
             'otp' => 'required|digits:6|exists:companies',
         ];
@@ -376,6 +376,7 @@ class CompanyController extends Controller
 
         $company = Company::where('otp', $request->otp)->first();
         session()->put('guard', 'company');
+        
         Auth::guard('company')->login($company);
 
         return $this->sendResponse('Otp verified successfully');
@@ -439,8 +440,8 @@ class CompanyController extends Controller
         // $CompanyUpdateRequests = CompanyUpdateRequest::where('company_id', auth()->guard('company')->user()->id)->get();
 
         $CompanyUpdateRequests = CompanyUpdateRequest::where('company_id', auth()->guard('company')->user()->id)
-    ->orderBy('created_at', 'desc') 
-    ->get();
+        ->orderBy('created_at', 'desc') 
+        ->get();
 
         return view('website.profile', compact('company','company_contact_details','company_key_personnels','company_product_details','company_foreign_collaboration','CompanyUpdateRequests'));
 
@@ -449,7 +450,6 @@ class CompanyController extends Controller
 
     public function CurrencyconversionRate(Request $request)
     {
-
 
 
         $request->validate([
@@ -470,7 +470,6 @@ class CompanyController extends Controller
     
        
     }
-
 
 
 }

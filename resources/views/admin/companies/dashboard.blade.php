@@ -689,14 +689,14 @@
                     
                     {{-- Show the first banner --}}
                     @if ($banners->count() > 0)
-                    <div class="row">
-                        <div class="col-md-6 col-lg-4 mb-3">
+                    {{-- <div class="row"> --}}
+                        <div class="col-md-12 mb-3">
 
-                           <a href="{{ $banners[0]->link }}" target="_blank">
-                                 <img src="{{ asset('storage/' . $banners[0]->image) }}" width="200px" height="200px" alt="{{ $banners[0]->title }}">
+                           <a class="ads-banner" href="{{ $banners[0]->link }}" target="_blank">
+                                 <img src="{{ asset('storage/' . $banners[0]->image) }}"  alt="{{ $banners[0]->title }}">
                            </a>
                         </div>
-                     </div>
+                     {{-- </div> --}}
                         @php
                             $bannerIndex++;
                         @endphp
@@ -792,13 +792,13 @@
                               @if (($loop->index + 1) % 6 == 0)
                               {{-- Print the next banner --}}
                               @if ($bannerIndex < $banners->count())
-                                  <div class="row">
-                                      <div class="col-md-6 col-lg-4 mb-3">
-                                       <a href="{{ $banners[$bannerIndex]->link }}" target="_blank">
-                                          <img src="{{ asset('storage/' . $banners[$bannerIndex]->image) }}" width="200px" height="200px" alt="{{ $banners[$bannerIndex]->title }}">
+                                  
+                                      <div class="col-md-12 mb-3">
+                                       <a class="ads-banner" href="{{ $banners[$bannerIndex]->link }}" target="_blank">
+                                          <img src="{{ asset('storage/' . $banners[$bannerIndex]->image) }}" alt="{{ $banners[$bannerIndex]->title }}">
                                        </a>
                                       </div>
-                                  </div>
+                                  
                                   @php $bannerIndex++; @endphp
                               @endif
                           @endif
@@ -809,16 +809,14 @@
                            @endforelse 
 
                            @for ($i = $bannerIndex; $i < $banners->count(); $i++)
-    <div class="row">
-        <div class="col-md-6 col-lg-4 mb-3">
-
-         <a href="{{ $banners[$i]->link }}" target="_blank">
-
-            <img src="{{ asset('storage/' . $banners[$i]->image) }}" width="100px" height="100px" alt="{{ $banners[$i]->title }}">
-         </a>
+    
+         <div class="col-md-12 mb-3">
+            <a class="ads-banner" href="{{ $banners[$i]->link }}" target="_blank">
+               <img src="{{ asset('storage/' . $banners[$i]->image) }}" alt="{{ $banners[$i]->title }}">
+            </a>
          </div>
-    </div>
-@endfor
+    
+      @endfor
 
 
                            

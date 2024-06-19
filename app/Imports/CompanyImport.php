@@ -196,7 +196,7 @@ class CompanyImport implements ToCollection
                 $CompanyForeignCollaboration->emark = $row['emark'];
                 $CompanyForeignCollaboration->bismark = $row['bismark'];
 
-                $CompanyForeignCollaboration->save();
+                $CompanyForeignCollaboration->save(); 
             }    
 
         }

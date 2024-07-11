@@ -39,7 +39,15 @@ class CompanyImport implements ToCollection
                 $company->name = $row['name'];
                 $company->email = $row['email'];
                 $company->website = $row['website'];
-                $company->save();
+
+
+                  
+                try{
+                    $company->save();
+                    Log::info($company->name .' created');
+                }catch (\Exception $e) {
+                    Log::info($e->getMessage());
+                }
 
 
                 $company_contact_details = new CompanyContactDetail();

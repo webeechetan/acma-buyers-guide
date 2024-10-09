@@ -49,7 +49,7 @@
     <div class="container-xxl">
         <div class="row text-center text-md-start">
         <div class="col-md-6">
-            <p class="mb-2 mb-sm-0 text-white">© Copyright 2024 ACMA India, All Right Reserved.</p>
+            <p class="mb-2 mb-sm-0 text-white">© Copyright 2024 ACMA India, All Right Reserved..</p>
         </div>
         <div class="col-md-6 text-md-end">
             <p class="mb-0 text-white">Powered By <a href="https://www.webeesocial.com/" class="text-white">Webeesocial</a>

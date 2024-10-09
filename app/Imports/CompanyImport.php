@@ -6,6 +6,7 @@ namespace App\Imports;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Facades\Log;
 
 
 use App\Models\ {

@@ -296,14 +296,9 @@ class CompanyController extends Controller
         $combinedLocations = array_values($uniqueLocations);
 
         // $banners = Banner::all();
-
         $banners = Banner::latest()->take(3)->get();
-
-
-       
-
         return view('admin.companies.dashboard', compact('companies','regions','companies_name','trademarks','salesTurnovers','combinedLocations','combinedProducts' , 'banners'));
-    
+        
     }
 
 

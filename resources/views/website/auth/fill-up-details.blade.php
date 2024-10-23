@@ -84,7 +84,7 @@
                               </div>
                               <div class="col-md-3">
                                 <label class="form-label" for="image"> Company Logo</label>
-                                <span class="text text-danger">(size 50 kb max)</span>
+                                <span class="text text-danger">(size 500 kb max)</span>
                                 <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ $company_contact_details->image }}" onchange="previewImage()">
                                 <x-validation-error name="image" id="imageError"/>
                                 <div id="imagePreview" class="preview-image">
@@ -896,8 +896,8 @@
             const file = event.target.files[0];
             if(file) {
               const fileSizeInKB = file.size/1024;
-              if(fileSizeInKB >50) {
-                 alert('File size should be less than 50 kb');
+              if(fileSizeInKB >500) {
+                 alert('File size should be less than 500 kb');
                   document.getElementById('image').value = '';
                   return;
               }else{
